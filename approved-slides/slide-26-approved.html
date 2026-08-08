@@ -1,0 +1,204 @@
+<!doctype html>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>ITPF — Slide 26 Draft v3 — Business-driven ITIL Service Lifecycle</title>
+<style>
+:root {
+  --navy:#003b70;
+  --cyan:#12bddf;
+  --orange:#ff5a00;
+  --green:#3aa25a;
+  --purple:#6b5fb5;
+  --ink:#003b70;
+  --line:#c7d9ea;
+  --soft:#f7fbff;
+  --grey:#93adbf;
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
+.stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
+.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:5}
+.header{position:absolute;left:5.6%;top:6.1%;right:17%}
+.session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.34rem}
+.dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
+h1{margin:0;color:var(--navy);font-size:clamp(31px,2.7vw,52px);line-height:1.03;letter-spacing:-.02em;font-weight:900}
+.subtitle{font-size:clamp(17px,1.18vw,24px);margin-top:.36rem;color:#2f5f88;font-weight:700}
+
+.canvas{position:absolute;left:4.8%;right:4.8%;top:22.7%;bottom:15.0%;display:grid;grid-template-columns:27% 46% 27%;gap:1.7rem;align-items:stretch}
+.sideStack{display:grid;gap:.7rem;height:100%}
+.leftStack{grid-template-rows:.72fr .88fr 1.04fr}
+.rightStack{grid-template-rows:.9fr 1.1fr}
+.box{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-width:0;border-radius:8px;overflow:hidden}
+.box h2{margin:0;background:var(--navy);color:#fff;font-size:clamp(20px,1.42vw,29px);line-height:1.04;padding:.62rem .8rem;font-weight:900}
+.body{padding:.56rem .70rem .62rem;display:grid;gap:.22rem;font-size:clamp(13px,.89vw,17px);line-height:1.08;font-weight:760;color:#244d72}
+.body div{padding-bottom:.23rem}
+.smallTag{margin-top:auto;border-top:2px solid var(--line);padding:.34rem .62rem .40rem;color:#24547e;font-weight:900;font-size:clamp(12px,.82vw,16px);line-height:1.06;background:#f8fbfe}
+
+
+.centerWrap{position:relative;display:flex;align-items:center;justify-content:center}
+
+
+
+
+
+
+
+.centerCard{position:relative;border:3px solid var(--cyan);background:linear-gradient(180deg,#fbfdff,#f5fbff);width:100%;height:100%;border-radius:10px;padding:.9rem .9rem .75rem;display:flex;flex-direction:column}
+.centerTitle{font-size:clamp(19px,1.34vw,27px);font-weight:900;color:var(--navy);text-align:center;line-height:1.08;margin-bottom:.36rem}
+.svgWrap{flex:1;min-height:0;display:grid;place-items:center}
+.caption{border-top:2px solid var(--line);padding-top:.38rem;text-align:center;font-size:clamp(13px,.9vw,17px);font-weight:820;color:#335f86;line-height:1.1}
+
+
+
+
+
+
+
+
+.procCallout{position:absolute;left:5.8%;right:5.8%;bottom:3.4%;border-top:2px solid var(--line);padding-top:.42rem;text-align:center;font-size:clamp(13px,.92vw,18px);font-weight:860;color:#244d72;line-height:1.10}
+.footer{position:absolute;left:4.9%;bottom:2.4%;font-size:clamp(14px,1vw,22px);color:#168cff}
+</style>
+</head>
+<body>
+<main class="stage">
+<section aria-label="Business-driven ITIL Service Lifecycle" class="slide">
+<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<div class="header">
+<div class="session"><span class="dot"></span><span>Session 2 Integrated Procurement Planning</span></div>
+<h1>Business-driven ITIL® Service Lifecycle</h1>
+<div class="subtitle">Procurement supports a service lifecycle, not a one-off technical purchase.</div>
+</div>
+<div class="canvas">
+<div class="sideStack leftStack">
+<div class="box">
+<h2>Business input</h2>
+<div class="body">
+<div>Business and customer requirements</div>
+</div>
+<div class="smallTag">Starts Service Strategy</div>
+</div>
+<div class="box">
+<h2>Strategic input</h2>
+<div class="body">
+<div>Strategies and policies</div>
+<div>Resources and constraints</div>
+<div>Service level expectations</div>
+</div>
+<div class="smallTag">Defines the strategic service direction</div>
+</div>
+<div class="box">
+<h2>Design outputs</h2>
+<div class="body">
+<div>Solution designs</div>
+<div>Architectures and standards</div>
+<div>Service Design Packages</div>
+<div>Tested solution plans</div>
+</div>
+<div class="smallTag">Moves into Service Transition and delivery</div>
+</div>
+</div>
+<div class="centerWrap"><div class="centerCard">
+<div class="centerTitle">ITIL service lifecycle</div>
+<div class="svgWrap">
+<svg aria-label="ITIL service lifecycle diagram" height="100%" viewbox="0 0 760 560" width="100%">
+<defs>
+<marker id="loopArrow" markerheight="18" markerunits="userSpaceOnUse" markerwidth="18" orient="auto" refx="14" refy="9">
+<path d="M0,0 L18,9 L0,18 z" fill="#7e93a4"></path>
+</marker>
+<filter height="140%" id="shadow" width="140%" x="-20%" y="-20%">
+<fedropshadow dx="0" dy="3" flood-color="#003b70" flood-opacity=".10" stddeviation="4"></fedropshadow>
+</filter>
+</defs>
+<!-- Clear outer lifecycle loop -->
+<path d="M218,122 C292,54 468,54 542,122" fill="none" marker-end="url(#loopArrow)" stroke="#7e93a4" stroke-linecap="round" stroke-width="12"></path>
+<path d="M608,194 C652,257 652,323 608,386" fill="none" marker-end="url(#loopArrow)" stroke="#7e93a4" stroke-linecap="round" stroke-width="12"></path>
+<path d="M542,438 C468,506 292,506 218,438" fill="none" marker-end="url(#loopArrow)" stroke="#7e93a4" stroke-linecap="round" stroke-width="12"></path>
+<path d="M152,386 C108,323 108,257 152,194" fill="none" marker-end="url(#loopArrow)" stroke="#7e93a4" stroke-linecap="round" stroke-width="12"></path>
+<g filter="url(#shadow)">
+<rect fill="#12bddf" height="88" rx="22" ry="22" stroke="#003b70" stroke-width="4" width="304" x="228" y="98"></rect>
+<text fill="#ffffff" font-size="30" font-weight="900" text-anchor="middle" x="380" y="133">Service Design</text>
+<text fill="#ffffff" font-size="17" font-weight="800" text-anchor="middle" x="380" y="160">Translate requirements into</text>
+<text fill="#ffffff" font-size="17" font-weight="800" text-anchor="middle" x="380" y="181">service solutions</text>
+<rect fill="#6b5fb5" height="132" rx="22" ry="22" stroke="#003b70" stroke-width="4" width="140" x="542" y="212"></rect>
+<text fill="#ffffff" font-size="24" font-weight="900" text-anchor="middle" x="612" y="246">Service</text>
+<text fill="#ffffff" font-size="24" font-weight="900" text-anchor="middle" x="612" y="273">Transition</text>
+<text fill="#ffffff" font-size="15" font-weight="800" text-anchor="middle" x="612" y="300">Build, test and</text>
+<text fill="#ffffff" font-size="15" font-weight="800" text-anchor="middle" x="612" y="320">deploy changes</text>
+<rect fill="#3aa25a" height="88" rx="22" ry="22" stroke="#003b70" stroke-width="4" width="304" x="228" y="374"></rect>
+<text fill="#ffffff" font-size="29" font-weight="900" text-anchor="middle" x="380" y="409">Service Operation</text>
+<text fill="#ffffff" font-size="17" font-weight="800" text-anchor="middle" x="380" y="436">Run and support</text>
+<text fill="#ffffff" font-size="17" font-weight="800" text-anchor="middle" x="380" y="457">live services</text>
+<rect fill="#003b70" height="132" rx="22" ry="22" stroke="#003b70" stroke-width="4" width="140" x="78" y="212"></rect>
+<text fill="#ffffff" font-size="21" font-weight="900" text-anchor="middle" x="148" y="244">Continual</text>
+<text fill="#ffffff" font-size="21" font-weight="900" text-anchor="middle" x="148" y="268">Service</text>
+<text fill="#ffffff" font-size="21" font-weight="900" text-anchor="middle" x="148" y="292">Improvement</text>
+<text fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle" x="148" y="316">Measure, learn</text>
+<text fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle" x="148" y="335">and optimize</text>
+<circle cx="380" cy="278" fill="#ff5a00" r="94" stroke="#003b70" stroke-width="5"></circle>
+<text fill="#ffffff" font-size="29" font-weight="900" text-anchor="middle" x="380" y="252">Service</text>
+<text fill="#ffffff" font-size="29" font-weight="900" text-anchor="middle" x="380" y="284">Strategy</text>
+<text fill="#ffffff" font-size="15" font-weight="800" text-anchor="middle" x="380" y="311">Define value, demand</text>
+<text fill="#ffffff" font-size="15" font-weight="800" text-anchor="middle" x="380" y="331">and sourcing direction</text>
+</g>
+</svg>
+</div>
+<div class="caption">Business requirements feed Service Strategy, which then sets policies, constraints and service level expectations before Service Design begins.</div>
+</div>
+</div>
+<div class="sideStack rightStack">
+<div class="box">
+<h2>Operational output</h2>
+<div class="body">
+<div>Operational services</div>
+<div>Transition plans</div>
+<div>Knowledge updated</div>
+<div>Service catalogue and portfolio</div>
+</div>
+<div class="smallTag">Produced mainly by Operation and Transition</div>
+</div>
+<div class="box">
+<h2>Procurement implication</h2>
+<div class="body">
+<div>Source integrated services, not isolated buys</div>
+<div>Plan for implementation and operation</div>
+<div>Include improvement actions and lifecycle cost</div>
+<div>Example: Printing-as-a-Service</div>
+</div>
+<div class="smallTag">Sourcing decisions affect the full lifecycle</div>
+</div>
+</div>
+</div>
+<div class="procCallout">Discussion: where does procurement influence the lifecycle most — strategy, design, transition or operation?</div>
+<div class="footer">©</div>
+</section>
+</main>
+<script id="itpf-deck-bridge">
+(function(){
+  function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
+  window.addEventListener('keydown',function(e){
+    var t=e.target, tag=(t&&t.tagName||'').toLowerCase();
+    if(tag==='input'||tag==='textarea'||tag==='select'||(t&&t.isContentEditable)) return;
+    var action=null;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') action='next';
+    else if(e.key==='ArrowLeft'||e.key==='PageUp') action='prev';
+    else if(e.key==='Home') action='first';
+    else if(e.key==='End') action='last';
+    if(action){ e.preventDefault(); e.stopPropagation(); send(action); }
+  },true);
+  document.addEventListener('click',function(e){
+    var b=e.target&&e.target.closest?e.target.closest('button'):null;
+    if(!b) return;
+    var label=(b.textContent||'').trim().toLowerCase();
+    if(label==='full screen'||label==='fullscreen'||label==='⛶'){
+      e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
+    }
+  },true);
+})();
+</script>
+</body>
+</html>

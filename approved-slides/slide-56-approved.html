@@ -1,0 +1,261 @@
+<!doctype html>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>ITPF — Slide 56 — Software Maintenance and Support</title>
+<style>
+:root{
+  --navy:#003b70;
+  --cyan:#12bddf;
+  --blue:#6d9fd8;
+  --ink:#173f66;
+  --line:#c7d9ea;
+  --soft:#f7fbff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--navy)}
+.stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
+.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:5}
+.header{position:absolute;left:6%;top:5.4%;right:17%}
+.session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.25rem}
+.dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
+h1{margin:0;color:var(--navy);font-size:clamp(32px,2.9vw,56px);line-height:1.03;letter-spacing:-.02em;font-weight:900}
+.subtitle{font-size:clamp(17px,1.2vw,24px);margin-top:.28rem;color:#2f5f88;font-weight:750}
+
+.tabs{position:absolute;left:6%;right:6%;top:18.6%;display:flex;gap:.85rem}
+.tab{border:3px solid var(--navy);background:#fff;color:var(--navy);font-size:clamp(20px,1.45vw,30px);font-weight:900;padding:.50rem 1rem;cursor:pointer}
+.tab.active{background:var(--navy);color:#fff}
+.panel{position:absolute;left:3.8%;right:3.8%;top:27.2%;bottom:3.0%;display:none}
+.panel.active{display:block}
+.content{width:100%;height:100%;display:grid;grid-template-columns:34% 66%;gap:.85rem;min-height:0}
+.sectionTitle{font-size:clamp(22px,1.55vw,31px);font-weight:900;color:var(--navy);padding-bottom:.28rem;border-bottom:3px solid var(--cyan);margin-bottom:.42rem}
+
+.maintenance{display:grid;grid-template-rows:auto 1fr;min-width:0;min-height:0}
+.maintenanceList{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:.45rem;min-height:0}
+.maintItem{border:2px solid var(--line);border-left:7px solid var(--cyan);border-radius:8px;padding:.48rem .55rem;background:#fff;display:grid;grid-template-columns:34px 1fr;align-items:center;min-height:0}
+.num{font-size:clamp(21px,1.55vw,32px);font-weight:900;color:var(--cyan);line-height:1}
+.maintText strong{display:block;font-size:clamp(14px,1vw,20px);line-height:1.05;color:var(--navy)}
+.maintText em{display:block;font-size:12pt;line-height:1.08;color:var(--ink);margin-top:.12rem}
+
+.support{display:grid;grid-template-rows:auto 1fr;min-width:0;min-height:0}
+.supportGrid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:.50rem;min-height:0}
+.supportCard{border:2px solid var(--line);border-radius:8px;background:var(--soft);padding:.46rem .58rem;overflow:hidden;min-height:0}
+.supportHead{display:flex;align-items:center;gap:.45rem;margin-bottom:.22rem}
+.level{width:33px;height:33px;border:3px solid var(--blue);border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:17px;color:var(--blue);background:#fff;flex:none}
+.supportHead h3{margin:0;font-size:clamp(14px,1vw,20px);line-height:1.04;color:var(--navy);font-weight:900}
+.note{font-style:italic;font-size:12pt;color:var(--ink);margin:-.05rem 0 .18rem}
+ul{margin:.1rem 0 0;padding-left:.9rem}
+li{font-size:12pt;line-height:1.04;color:#173f66;margin:.04rem 0;font-weight:650}
+
+.exercise{height:100%;display:grid;grid-template-rows:auto 1fr auto;gap:.85rem}
+.question{font-size:clamp(24px,1.85vw,36px);line-height:1.12;font-weight:900;color:var(--navy);text-align:center}
+.exerciseTiles{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:.85rem;min-height:0}
+.choice{border:4px solid var(--line);background:#fff;border-radius:12px;padding:1rem .9rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:pointer;min-width:0}
+.choice .num{font-size:clamp(34px,2.5vw,52px);margin-bottom:.45rem}
+.choice strong{font-size:clamp(22px,1.55vw,32px);line-height:1.05;color:var(--navy)}
+.choice em{font-size:clamp(18px,1.2vw,25px);line-height:1.08;color:var(--ink);margin-top:.45rem}
+.choice.correct{border-color:#1d8f52;background:#eefaf3}
+.choice.wrong{border-color:#c93333;background:#fff0f0}
+.choice.correct::after{content:"Included in SaaS fee";margin-top:.65rem;color:#106b3c;font-size:clamp(16px,1.05vw,21px);font-weight:900}
+.choice.wrong::after{content:attr(data-explain);margin-top:.65rem;color:#a31818;font-size:clamp(15px,1vw,20px);font-weight:900;line-height:1.08}
+.feedback{min-height:42px;text-align:center;font-size:clamp(19px,1.32vw,27px);line-height:1.12;font-weight:900;color:var(--navy)}
+.feedback.done{color:#106b3c}
+.feedback.error{color:#a31818}
+.footer{position:absolute;left:4.9%;bottom:1.7%;font-size:clamp(14px,1vw,22px);color:#168cff}
+</style>
+</head>
+<body>
+<main class="stage">
+<section aria-label="Software Maintenance and Support" class="slide">
+<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<div class="header">
+<div class="session"><span class="dot"></span><span>Session 3 Cloud Computing</span></div>
+<h1>Software Maintenance and Support</h1>
+<div class="subtitle">Types of software maintenance and support. Digitalization Paradox.</div>
+</div>
+<div class="tabs">
+<button class="tab active" data-panel="overview" type="button">Overview</button>
+<button class="tab" data-panel="exercise" type="button">Exercise</button>
+</div>
+<div class="panel active" id="overview">
+<div class="content">
+<section class="maintenance">
+<div class="sectionTitle">Maintenance</div>
+<div class="maintenanceList">
+<div class="maintItem">
+<div class="num">1</div>
+<div class="maintText"><strong>Corrective maintenance</strong><em>Rectify an actual fault</em></div>
+</div>
+<div class="maintItem">
+<div class="num">2</div>
+<div class="maintText"><strong>Perfective maintenance</strong><em>Improve the value</em></div>
+</div>
+<div class="maintItem">
+<div class="num">3</div>
+<div class="maintText"><strong>Adaptive maintenance</strong><em>Maintain compliance</em></div>
+</div>
+<div class="maintItem">
+<div class="num">4</div>
+<div class="maintText"><strong>Preventative maintenance</strong><em>Prevent a future fault</em></div>
+</div>
+</div>
+</section>
+<section class="support">
+<div class="sectionTitle">Support</div>
+<div class="supportGrid">
+<div class="supportCard">
+<div class="supportHead"><div class="level">1</div><h3>Customer Support</h3></div>
+<ul>
+<li>Act as Single Point of Contact for all tickets</li>
+<li>Assist end users on daily operations</li>
+<li>Address Application usage requests</li>
+<li>Provide End User training</li>
+<li>Scheduled Job Management</li>
+<li>Provide issue analysis to L2 if unable to resolve</li>
+<li>Provide ticket updates to end users</li>
+<li>Coordinate with L2 on open issues</li>
+</ul>
+</div>
+<div class="supportCard">
+<div class="supportHead"><div class="level">2</div><h3>Business Process Support</h3></div>
+<ul>
+<li>Ensure application availability to end users</li>
+<li>Ensure business continuity</li>
+<li>Resolve usage queries</li>
+<li>Configuration Support</li>
+<li>Admin – User management</li>
+<li>Manage workflows, roles, minor label changes etc.</li>
+<li>manage minor enhancements</li>
+<li>Resolve Integration failures</li>
+<li>Patch updates for data correction</li>
+<li>Testing of any developments</li>
+<li>Provide Training to L1</li>
+<li>Coordinate with L3 &amp; L4 team</li>
+</ul>
+</div>
+<div class="supportCard">
+<div class="supportHead"><div class="level">3</div><h3>Technical Support</h3></div>
+<ul>
+<li>Change Requests related to new functionality development or integration developments where the effort is upto 3 man-days</li>
+<li>Bug Fixes</li>
+<li>Deep Configurations</li>
+<li>Temporary Fixes</li>
+<li>Enhancement Tag Deliveries</li>
+</ul>
+</div>
+<div class="supportCard">
+<div class="supportHead"><div class="level">4</div><h3>Product Support</h3></div>
+<div class="note">(Part of Subscription)</div>
+<ul>
+<li>Standard Product Support</li>
+<li>Patch updates</li>
+<li>Version Upgrades</li>
+<li>Change Request where code level changes are required</li>
+</ul>
+</div>
+</div>
+</section>
+</div>
+</div>
+<div class="panel" id="exercise">
+<div class="exercise">
+<div class="question">Which two types of maintenance are normally included in the SaaS fee?</div>
+<div class="exerciseTiles">
+<button class="choice" data-answer="correct" type="button">
+<span class="num">1</span>
+<strong>Corrective maintenance</strong>
+<em>Rectify an actual fault</em>
+</button>
+<button class="choice" data-answer="wrong" data-explain="Usually an enhancement / improvement request, not standard SaaS maintenance." type="button">
+<span class="num">2</span>
+<strong>Perfective maintenance</strong>
+<em>Improve the value</em>
+</button>
+<button class="choice" data-answer="wrong" data-explain="Usually compliance adaptation or custom change, often chargeable." type="button">
+<span class="num">3</span>
+<strong>Adaptive maintenance</strong>
+<em>Maintain compliance</em>
+</button>
+<button class="choice" data-answer="correct" type="button">
+<span class="num">4</span>
+<strong>Preventative maintenance</strong>
+<em>Prevent a future fault</em>
+</button>
+</div>
+<div class="feedback" id="exerciseFeedback">Select exactly two tiles.</div>
+</div>
+</div>
+<div class="footer">©</div>
+</section>
+</main>
+<script>
+document.querySelectorAll('.tab').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(btn.dataset.panel).classList.add('active');
+}));
+
+const choices = Array.from(document.querySelectorAll('.choice'));
+const feedback = document.getElementById('exerciseFeedback');
+
+choices.forEach(btn => btn.addEventListener('click', () => {
+  if (btn.classList.contains('correct') || btn.classList.contains('wrong')) return;
+
+  const selected = choices.filter(c => c.classList.contains('correct') || c.classList.contains('wrong')).length;
+  if (selected >= 2) {
+    feedback.textContent = 'Two answers already selected. Refresh or reopen the slide to try again.';
+    feedback.className = 'feedback error';
+    return;
+  }
+
+  if (btn.dataset.answer === 'correct') {
+    btn.classList.add('correct');
+  } else {
+    btn.classList.add('wrong');
+  }
+
+  const marked = choices.filter(c => c.classList.contains('correct') || c.classList.contains('wrong'));
+  const correct = choices.filter(c => c.classList.contains('correct')).length;
+
+  if (marked.length < 2) {
+    feedback.textContent = 'Select one more tile.';
+    feedback.className = 'feedback';
+  } else if (correct === 2) {
+    feedback.textContent = 'Correct: corrective and preventative maintenance are included in the SaaS fee.';
+    feedback.className = 'feedback done';
+  } else {
+    feedback.textContent = 'Not correct. The expected answer is: corrective and preventative maintenance.';
+    feedback.className = 'feedback error';
+  }
+}));
+</script>
+<script id="itpf-deck-bridge">
+(function(){
+  function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
+  window.addEventListener('keydown',function(e){
+    var t=e.target, tag=(t&&t.tagName||'').toLowerCase();
+    if(tag==='input'||tag==='textarea'||tag==='select'||(t&&t.isContentEditable)) return;
+    var action=null;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') action='next';
+    else if(e.key==='ArrowLeft'||e.key==='PageUp') action='prev';
+    else if(e.key==='Home') action='first';
+    else if(e.key==='End') action='last';
+    if(action){ e.preventDefault(); e.stopPropagation(); send(action); }
+  },true);
+  document.addEventListener('click',function(e){
+    var b=e.target&&e.target.closest?e.target.closest('button'):null;
+    if(!b) return;
+    var label=(b.textContent||'').trim().toLowerCase();
+    if(label==='full screen'||label==='fullscreen'||label==='⛶'){
+      e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
+    }
+  },true);
+})();
+</script>
+</body>
+</html>

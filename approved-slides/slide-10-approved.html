@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>ITPF — Slide 10 — Software Inflation: Microsoft AI Licensing</title>
+<style>
+:root{--navy:#003b70;--cyan:#00b7e5;--magenta:#c00067;--paper:#fff;--ink:#183d61;--muted:#607588;--soft:#eef8fd;--line:#b9d3e3;--total:#dceef7}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif}
+.stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:var(--paper);box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.logo{position:absolute;right:4.2%;top:4.8%;width:10.4%;height:auto;z-index:4}.header{position:absolute;left:5.2%;top:4.6%;right:18%}.kicker{color:var(--magenta);font-weight:800;font-size:clamp(16px,1.1vw,22px);letter-spacing:.02em;text-transform:uppercase}h1{margin:.35% 0 0;color:var(--navy);font-size:clamp(35px,2.7vw,51px);line-height:1.03;letter-spacing:-.03em}
+.tabs{position:absolute;left:5.2%;top:18.8%;display:flex;gap:8px;z-index:5}.tab{border:1px solid var(--navy);background:#fff;color:var(--navy);border-radius:9px;padding:9px 17px;font-size:clamp(15px,.98vw,19px);font-weight:800;cursor:pointer}.tab.active{background:var(--navy);color:#fff}
+.panel{display:none;position:absolute;left:5.2%;right:5.2%;top:27%;bottom:8.8%}.panel.active{display:block}
+.spec-wrap{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 72px;gap:12px;align-items:center}.table-card{height:100%;border:2px solid var(--line);border-radius:14px;background:#fff;overflow:hidden;box-shadow:0 8px 20px rgba(0,59,112,.08)}
+table.cost{border-collapse:collapse;width:100%;height:100%;table-layout:fixed;color:#102b45;font-size:clamp(14px,.92vw,18px);line-height:1.1}table.cost th,table.cost td{border:1px solid #244663;padding:5px 8px;text-align:center;vertical-align:middle}table.cost th{background:#d9eef4;color:var(--navy);font-weight:900;font-size:clamp(15px,1vw,19px)}table.cost td:first-child{text-align:left;font-weight:700;padding-left:12px}table.cost th:first-child{width:47%}table.cost th:nth-child(2){width:15%}table.cost th:nth-child(3){width:20%}table.cost th:nth-child(4){width:18%}.total td{background:var(--total);font-weight:900;font-size:clamp(16px,1.05vw,20px)}.uplift{display:flex;align-items:center;justify-content:center;height:72px;border:2px solid var(--navy);border-radius:50%;color:var(--navy);font-size:clamp(23px,1.7vw,32px);font-weight:900;background:#fff}.uplift-label{position:absolute;right:0;bottom:7px;width:72px;text-align:center;color:var(--muted);font-size:clamp(11px,.75vw,14px);font-weight:800}
+.mitigation-intro{margin:0 0 1.8%;color:var(--ink);font-size:clamp(20px,1.3vw,25px);line-height:1.24;font-weight:800}.mitigation-intro strong{color:var(--magenta)}.mitigation-grid{height:84%;display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(4,1fr);gap:1.7%}.mitigation{border:2px solid var(--line);border-radius:14px;background:linear-gradient(145deg,#fff,var(--soft));padding:2% 2.5%;display:grid;grid-template-columns:42px 1fr;column-gap:12px;align-items:center}.mitigation:nth-child(8){grid-column:2;grid-row:4}.num{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:#fff;font-weight:900;font-size:19px}.mitigation h2{margin:0;color:var(--navy);font-size:clamp(19px,1.27vw,25px);line-height:1.08}.mitigation p{grid-column:2;margin:4px 0 0;color:var(--ink);font-size:clamp(15px,.95vw,18px);line-height:1.18;font-weight:650}
+.footer{position:absolute;left:5.2%;right:5.2%;bottom:2%;display:flex;justify-content:space-between;color:var(--muted);font-size:clamp(11px,.75vw,14px);z-index:3}.rule{position:absolute;left:0;bottom:0;width:100%;height:8px;background:linear-gradient(90deg,var(--navy) 0 32%,var(--cyan) 32% 100%);z-index:3}.controls{position:absolute;right:1.7%;bottom:1.5%;opacity:.15;transition:.2s;z-index:4}.slide:hover .controls{opacity:.85}.controls button{border:1px solid #c8d3df;background:#fff;color:var(--navy);border-radius:6px;padding:8px 12px;font-weight:700;cursor:pointer}
+</style>
+</head>
+<body><div class="stage"><section aria-label="Slide 10: Software Inflation — Microsoft AI Licensing" class="slide">
+<img alt="CIPS logo" class="logo" src="../assets/cips-logo.png"/>
+<div class="header"><div class="kicker">Session 1 · Setting the Scene</div><h1>Software Inflation: Microsoft AI Licensing</h1></div>
+<div class="tabs" role="tablist"><button class="tab active" data-panel="spec" type="button">1. Microsoft specification</button><button class="tab" data-panel="mitigate" type="button">2. How to mitigate software inflation</button></div>
+<section class="panel active" id="spec">
+<div class="spec-wrap">
+<div class="table-card"><table class="cost" aria-label="Microsoft AI licensing cost specification">
+<thead><tr><th>Cost Element</th><th>Users/Units</th><th>Unit Cost<br/>(USD/month)</th><th>Annual Cost<br/>(USD)</th></tr></thead>
+<tbody>
+<tr><td>Microsoft 365 E3 Licenses</td><td>2000</td><td>33.75</td><td>810 000</td></tr>
+<tr><td>Power Automate Premium (10% of headcount)</td><td>200</td><td>15</td><td>36 000</td></tr>
+<tr><td>AI Builder (5 heavy users @ $150)</td><td>5</td><td>150</td><td>9 000</td></tr>
+<tr><td>AI Builder (45 light users @ $50)</td><td>45</td><td>50</td><td>27 000</td></tr>
+<tr><td>Copilot Plus Licenses</td><td>200</td><td>30</td><td>72 000</td></tr>
+<tr><td>Copilot Pro Licenses</td><td>20</td><td>200</td><td>48 000</td></tr>
+<tr><td>Power BI Pro Licenses</td><td>20</td><td>10</td><td>2 400</td></tr>
+<tr><td>Power Pages (Tier 3, est. 5 packs)</td><td>5</td><td>50</td><td>3 000</td></tr>
+<tr><td>Copilot Agent Bots (PAYG — 20 000 msgs/month)</td><td>20 000</td><td>0.01</td><td>2 400</td></tr>
+<tr><td>Unattended RPA Bots (10 @ $150)</td><td>10</td><td>150</td><td>18 000</td></tr>
+<tr class="total"><td>TOTAL</td><td></td><td></td><td>1 027 800</td></tr>
+</tbody></table></div>
+<div class="uplift" aria-label="27 percent uplift">27%</div><div class="uplift-label">uplift</div>
+</div>
+</section>
+<section class="panel" id="mitigate">
+<p class="mitigation-intro">Mitigation requires controls across <strong>demand, licensing, adoption and consumption.</strong></p>
+<div class="mitigation-grid">
+<article class="mitigation"><div class="num">1</div><div><h2>Review adoption regularly</h2><p>Compare assigned licences with active usage and remove shelfware.</p></div></article>
+<article class="mitigation"><div class="num">2</div><div><h2>Track committed benefits</h2><p>Separate measurable legacy benefits from uncertain innovation value.</p></div></article>
+<article class="mitigation"><div class="num">3</div><div><h2>Segment licences by role</h2><p>Allocate premium functionality to roles that genuinely need it.</p></div></article>
+<article class="mitigation"><div class="num">4</div><div><h2>Use trials and entitlements first</h2><p>Test demand before scaling and use included features before add-ons.</p></div></article>
+<article class="mitigation"><div class="num">5</div><div><h2>Control experimental licences</h2><p>Define approval, ownership, review dates and exit conditions.</p></div></article>
+<article class="mitigation"><div class="num">6</div><div><h2>Deploy quotas and caps</h2><p>Set consumption thresholds, alerts and budget limits.</p></div></article>
+<article class="mitigation"><div class="num">7</div><div><h2>Use bundles selectively</h2><p>Choose bundles only where the included products are actually used.</p></div></article>
+<article class="mitigation"><div class="num">8</div><div><h2>Manage change and adoption</h2><p>Link rollout, training and ownership to realised business outcomes.</p></div></article>
+</div>
+</section>
+<div class="footer"><span>Technology (IT) Procurement Foundations</span><span>10</span></div><div class="rule"></div><div class="controls"><button type="button">Full screen</button></div>
+</section></div>
+<script>
+const tabs=[...document.querySelectorAll('.tab')],panels=[...document.querySelectorAll('.panel')];
+tabs.forEach(t=>t.addEventListener('click',()=>{tabs.forEach(x=>x.classList.toggle('active',x===t));panels.forEach(p=>p.classList.toggle('active',p.id===t.dataset.panel));}));
+</script>
+<script id="itpf-deck-bridge">
+(function(){
+  function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
+  window.addEventListener('keydown',function(e){
+    var t=e.target, tag=(t&&t.tagName||'').toLowerCase();
+    if(tag==='input'||tag==='textarea'||tag==='select'||(t&&t.isContentEditable)) return;
+    if(tag==='button'&&e.key==='Enter') return;
+    var action=null;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') action='next';
+    else if(e.key==='ArrowLeft'||e.key==='PageUp') action='prev';
+    else if(e.key==='Home') action='first';
+    else if(e.key==='End') action='last';
+    if(action){ e.preventDefault(); e.stopPropagation(); send(action); }
+  },true);
+  document.addEventListener('click',function(e){
+    var b=e.target&&e.target.closest?e.target.closest('.controls button'):null;
+    if(!b) return;
+    e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
+  },true);
+})();
+</script>
+</body></html>

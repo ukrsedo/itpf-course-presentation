@@ -1,0 +1,113 @@
+<!doctype html>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>ITPF — Slide 18 Draft — Concepts for IT Transformation</title>
+<style>
+:root {
+  --navy:#003b70;
+  --cyan:#12bddf;
+  --orange:#ff5a00;
+  --blue:#2d8cff;
+  --ink:#003b70;
+  --line:#c7d9ea;
+  --soft:#f6fbff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
+.stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
+.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:5}
+.header{position:absolute;left:6.2%;top:7.6%;right:18%}
+.session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.45rem}
+.dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
+h1{margin:0;color:var(--navy);font-size:clamp(33px,2.8vw,52px);line-height:1.03;letter-spacing:-.02em;font-weight:800}
+.subtitle{font-size:clamp(17px,1.25vw,25px);margin-top:.45rem;color:#2f5f88;font-weight:600}
+.grid{position:absolute;left:6.2%;right:6.2%;top:26%;bottom:10.5%;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.1rem}
+.card{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-width:0}
+.card:nth-child(1){border-color:var(--cyan)}
+.card:nth-child(2){border-color:var(--orange)}
+.card:nth-child(3){border-color:var(--navy)}
+.cardHead{color:#fff;font-size:clamp(24px,1.9vw,36px);font-weight:800;line-height:1.04;padding:.85rem 1rem}
+.card:nth-child(1) .cardHead{background:var(--cyan)}
+.card:nth-child(2) .cardHead{background:var(--orange)}
+.card:nth-child(3) .cardHead{background:var(--navy)}
+.cardBody{padding:1rem 1.05rem;font-size:clamp(16px,1.12vw,22px);line-height:1.22;display:flex;flex-direction:column;gap:.75rem}
+.label{font-weight:800;color:var(--navy);font-size:clamp(15px,1.02vw,21px);text-transform:uppercase;letter-spacing:.03em}
+.bodyText{color:#123f66}
+.modeList{margin:0;padding-left:1.3rem}
+.modeList li{margin:.35rem 0}
+.footer{position:absolute;left:4.9%;bottom:4.1%;font-size:clamp(14px,1vw,22px);color:#168cff}
+</style>
+</head>
+<body>
+<main class="stage">
+<section aria-label="Concepts for IT Transformation" class="slide">
+<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<div class="header">
+<div class="session"><span class="dot"></span><span>Session 1 Setting the Scene</span></div>
+<h1>Concepts for IT Transformation</h1>
+<div class="subtitle">From products and digital tools to service value and bimodal delivery</div>
+</div>
+<div class="grid">
+<div class="card">
+<div class="cardHead">Servitization</div>
+<div class="cardBody">
+<div class="label">Definition</div>
+<div class="bodyText">The transformation of a business from selling products to offering integrated products and services, creating added value and long-term customer relationships.</div>
+<div class="label">Procurement implication</div>
+<div class="bodyText">Buying shifts from asset ownership to outcomes, continuity, availability and provider capability.</div>
+</div>
+</div>
+<div class="card">
+<div class="cardHead">Digitalization Paradox</div>
+<div class="cardBody">
+<div class="label">Definition</div>
+<div class="bodyText">The phenomenon where organizations invest in advanced digital technologies expecting improved performance, efficiency and competitive advantage but fail to realize those benefits, or even experience setbacks.</div>
+<div class="label">Why it happens</div>
+<div class="bodyText">Digital initiatives create unanticipated complexity or operational disruption when processes, skills, governance and culture do not change with the technology.</div>
+</div>
+</div>
+<div class="card">
+<div class="cardHead">Bi-modal IT</div>
+<div class="cardBody">
+<div class="label">Definition</div>
+<div class="bodyText">An approach where an organization manages two separate modes of IT operations:</div>
+<ol class="modeList">
+<li>Mode 1 focuses on stability and efficiency, managing traditional IT systems with predictable processes.</li>
+<li>Mode 2 emphasizes agility and innovation, enabling faster experimentation and adaptation to change.</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="footer">©</div>
+</section>
+</main>
+<script id="itpf-deck-bridge">
+(function(){
+  function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
+  window.addEventListener('keydown',function(e){
+    var t=e.target, tag=(t&&t.tagName||'').toLowerCase();
+    if(tag==='input'||tag==='textarea'||tag==='select'||(t&&t.isContentEditable)) return;
+    var action=null;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') action='next';
+    else if(e.key==='ArrowLeft'||e.key==='PageUp') action='prev';
+    else if(e.key==='Home') action='first';
+    else if(e.key==='End') action='last';
+    if(action){ e.preventDefault(); e.stopPropagation(); send(action); }
+  },true);
+  document.addEventListener('click',function(e){
+    var b=e.target&&e.target.closest?e.target.closest('button'):null;
+    if(!b) return;
+    var label=(b.textContent||'').trim().toLowerCase();
+    if(label==='full screen'||label==='fullscreen'||label==='⛶'){
+      e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
+    }
+  },true);
+})();
+</script>
+</body>
+</html>

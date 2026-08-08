@@ -1,0 +1,156 @@
+<!doctype html>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>ITPF — Slide 30 Approved Fixed — TCO of a Technology Service</title>
+<style>
+:root {
+  --navy:#003b70;
+  --cyan:#13bfe6;
+  --blue:#3794eb;
+  --green:#8fd044;
+  --orange:#ff8200;
+  --purple:#8f79cc;
+  --ink:#003b70;
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
+.stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
+.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:5}
+.header{position:absolute;left:6%;top:5.6%;right:17%}
+.session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.28rem}
+.dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
+h1{margin:0;color:var(--navy);font-size:clamp(32px,2.85vw,55px);line-height:1.03;letter-spacing:-.02em;font-weight:900}
+.subtitle{font-size:clamp(17px,1.2vw,24px);margin-top:.32rem;color:#2f5f88;font-weight:750}
+
+.grid{position:absolute;left:3.6%;right:3.6%;top:20.2%;bottom:3.0%;display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1.12fr .88fr;gap:.70rem}
+.card{border-radius:8px;overflow:hidden;display:flex;flex-direction:column;min-width:0;box-shadow:0 4px 14px rgba(0,35,70,.12)}
+.card h2{margin:0;color:#fff;text-align:center;font-size:clamp(18px,1.28vw,28px);line-height:1.02;font-weight:900;padding:.42rem .50rem}
+.card .body{flex:1;color:#fff;font-size:clamp(12pt,.92vw,16pt);line-height:1.07;font-weight:760;padding:.44rem .58rem;overflow:hidden}
+.body div{margin-bottom:.10rem;break-inside:avoid}
+.strategy{background:#0b99bd} .strategy h2{background:#13bfe6}
+.design{background:#073b70} .design h2{background:#3794eb}
+.transition{background:#58bd0b} .transition h2{background:#8fd044}
+.operations{background:#ff5a00;grid-column:1 / span 2} .operations h2{background:#ff8200}
+.eol{background:#99249f} .eol h2{background:#8f79cc}
+.design .body{font-size:clamp(12pt,.86vw,15pt);line-height:1.06}
+.transition .body{font-size:clamp(12pt,.80vw,14pt);line-height:1.02}
+.operations .body{font-size:clamp(12pt,.82vw,14.5pt);line-height:1.04;column-count:2;column-gap:1.1rem}
+.eol .body,.strategy .body{font-size:clamp(13pt,1.0vw,17pt);line-height:1.12}
+.footer{position:absolute;left:4.9%;bottom:1.9%;font-size:clamp(14px,1vw,22px);color:#168cff}
+</style>
+</head>
+<body>
+<main class="stage">
+<section aria-label="TCO of a Technology Service" class="slide">
+<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<div class="header">
+<div class="session"><span class="dot"></span><span>Session 2 Integrated Procurement Planning</span></div>
+<h1>TCO of a Technology Service</h1>
+<div class="subtitle">Technology costs accumulate across the full IT service lifecycle, not only at supplier selection.</div>
+</div>
+<div class="grid">
+<section class="card strategy">
+<h2>SERVICE STRATEGY</h2>
+<div class="body">
+<div>Cost of discovery (BA)</div>
+</div>
+</section>
+<section class="card design">
+<h2>SERVICE DESIGN</h2>
+<div class="body">
+<div>Cost of service design</div>
+<div>Cost of supplier selection</div>
+<div>Market research</div>
+<div>Reference and background checks</div>
+<div>Evaluation</div>
+<div>POC/MVP/Prototype</div>
+<div>Communication</div>
+<div>Travel</div>
+<div>Relationship building</div>
+<div>Negotiations</div>
+<div>Cost of contract negotiations</div>
+</div>
+</section>
+<section class="card transition">
+<h2>SERVICE TRANSITION</h2>
+<div class="body">
+<div>Cost of supplier audit</div>
+<div>Cost of scoping</div>
+<div>Cost of setup (cloud and infra)</div>
+<div>Cost of customisation</div>
+<div>Cost of perpetual software</div>
+<div>Cost of hardware and end-user devices (including logistics)</div>
+<div>Cost of deployment (Including travel)</div>
+<div>Cost of migration (data and users)</div>
+<div>Cost of testing</div>
+<div>Cost of legacy platform decommissioning</div>
+<div>Cost of project management</div>
+<div>Cost of knowledge management</div>
+<div>Cost of change management (documents, processes, comms)</div>
+</div>
+</section>
+<section class="card operations">
+<h2>SERVICE OPERATIONS</h2>
+<div class="body">
+<div>Cost of cloud services</div>
+<div>Cost of software rental</div>
+<div>Cost of communication network</div>
+<div>Cost of change requests (incl renegotiation)</div>
+<div>Cost of quality management</div>
+<div>Cost of support</div>
+<div>Cost of maintenance</div>
+<div>- Preventative and corrective – SaaS</div>
+<div>- Perfective and adaptive –    ad-hoc</div>
+<div>Cost of upgrades</div>
+<div>- Software</div>
+<div>- Firmware</div>
+<div>Cost of asset management</div>
+<div>Cost of SRM (incl. supplier performance management)</div>
+<div>Cost of compliance</div>
+<div>- Technical</div>
+<div>- Legal</div>
+<div>- Environmental</div>
+<div>Cost of risk management</div>
+</div>
+</section>
+<section class="card eol">
+<h2>END-OF-LIFE COST</h2>
+<div class="body">
+<div>Cost of retirement/</div>
+<div>Replacement (incl environmental costs)</div>
+</div>
+</section>
+</div>
+<div class="footer">©</div>
+</section>
+</main>
+<script id="itpf-deck-bridge">
+(function(){
+  function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
+  window.addEventListener('keydown',function(e){
+    var t=e.target, tag=(t&&t.tagName||'').toLowerCase();
+    if(tag==='input'||tag==='textarea'||tag==='select'||(t&&t.isContentEditable)) return;
+    var action=null;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') action='next';
+    else if(e.key==='ArrowLeft'||e.key==='PageUp') action='prev';
+    else if(e.key==='Home') action='first';
+    else if(e.key==='End') action='last';
+    if(action){ e.preventDefault(); e.stopPropagation(); send(action); }
+  },true);
+  document.addEventListener('click',function(e){
+    var b=e.target&&e.target.closest?e.target.closest('button'):null;
+    if(!b) return;
+    var label=(b.textContent||'').trim().toLowerCase();
+    if(label==='full screen'||label==='fullscreen'||label==='⛶'){
+      e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
+    }
+  },true);
+})();
+</script>
+</body>
+</html>

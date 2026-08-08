@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Slide 76 — Incomplete Contracts and Hold-up Problem</title>
+<style>
+:root{--navy:#003b70;--cyan:#12bddf;--orange:#ff5a00;--ink:#173f66;--line:#c7d9ea;--soft:#f7fbff;--pale:#eef8fc;--green:#16885a;--greenSoft:#eaf7f0;--red:#b42318;--redSoft:#fff1f0;--amber:#9a6700;--amberSoft:#fff7df}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--navy)}
+.stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
+.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.corner{position:absolute;right:0;top:0;width:25%;height:42%;background:var(--cyan);clip-path:polygon(100% 0,100% 100%,0 0);opacity:.95}
+.logo{position:absolute;right:4.1%;top:3.8%;width:9.6%;height:auto;z-index:5}
+.header{position:absolute;left:5.2%;top:4.4%;right:22%;z-index:3}
+.session{font-size:clamp(15px,1vw,20px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem;font-weight:850}
+.dot{width:12px;height:12px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
+h1{margin:0;color:var(--navy);font-size:clamp(31px,2.48vw,48px);line-height:1.02;letter-spacing:-.03em;font-weight:950}
+.tabs{position:absolute;right:15.8%;top:4.3%;z-index:8;display:flex;gap:.45rem}
+.tab{border:2px solid var(--navy);border-radius:999px;background:#fff;color:var(--navy);font-weight:900;font-size:clamp(12px,.86vw,16px);padding:.48rem .82rem;cursor:pointer}
+.tab.active{background:var(--navy);color:#fff}
+.view{display:none;position:absolute;left:5.2%;right:5.2%;top:18.2%;bottom:6.6%}
+.view.active{display:block}
+.theoryGrid{height:100%;display:grid;grid-template-columns:1.06fr .94fr;gap:1.2rem}
+.card{border:3px solid var(--line);border-radius:20px;background:#fff;padding:1rem 1.05rem;box-shadow:0 8px 24px rgba(0,35,70,.06)}
+.card h2{margin:0 0 .62rem 0;font-size:clamp(22px,1.45vw,29px);line-height:1.05;color:var(--navy);font-weight:950}
+.card p{margin:.36rem 0;font-size:clamp(16px,1.03vw,20px);line-height:1.22;color:var(--ink);font-weight:760}
+.lead{background:linear-gradient(180deg,var(--soft),#fff)}
+.quote{border-left:8px solid var(--orange);background:#fff7f0;border-radius:14px;padding:.75rem .84rem;margin:.78rem 0;font-size:clamp(15px,1vw,19px);line-height:1.22;color:var(--ink);font-weight:820}
+.steps{display:grid;gap:.58rem;margin-top:.72rem}
+.step{display:grid;grid-template-columns:2.1rem 1fr;gap:.62rem;align-items:start;border:2px solid var(--line);border-radius:14px;padding:.62rem .68rem;background:#fff}
+.badge{width:2.1rem;height:2.1rem;border-radius:50%;display:grid;place-items:center;background:var(--orange);color:#fff;font-size:clamp(14px,.92vw,18px);font-weight:950}
+.step strong{display:block;color:var(--navy);font-size:clamp(16px,1.04vw,20px);line-height:1.08;margin-bottom:.12rem}
+.step span{display:block;color:var(--ink);font-size:clamp(15px,.98vw,19px);line-height:1.16;font-weight:760}
+.solutionGrid{display:grid;grid-template-columns:1fr;gap:.65rem;margin-top:.65rem}
+.solution{border:2px solid var(--line);border-radius:15px;padding:.66rem .72rem;background:var(--pale)}
+.solution strong{display:block;font-size:clamp(16px,1.08vw,21px);color:var(--navy);margin-bottom:.16rem}
+.solution span{font-size:clamp(15px,.98vw,19px);line-height:1.18;color:var(--ink);font-weight:760}
+.lesson{margin-top:.75rem;border-left:8px solid var(--green);background:var(--greenSoft);border-radius:14px;padding:.72rem .82rem;font-size:clamp(15px,1vw,19px);line-height:1.2;color:#155c42;font-weight:850}
+.scenarioWrap{height:100%;display:grid;grid-template-columns:31% 69%;gap:1.05rem}
+.assumptions{background:linear-gradient(180deg,var(--soft),#fff)}
+.metric{display:grid;grid-template-columns:1fr auto;gap:.65rem;align-items:center;border-bottom:2px solid #dbe8f2;padding:.62rem 0}
+.metric:last-of-type{border-bottom:0}
+.metric span{font-size:clamp(15px,1vw,19px);line-height:1.14;color:var(--ink);font-weight:780}
+.metric strong{font-size:clamp(20px,1.32vw,26px);color:var(--navy);font-weight:950;white-space:nowrap}
+.question{margin-top:.85rem;background:var(--navy);color:#fff;border-radius:16px;padding:.8rem .85rem;font-size:clamp(16px,1.06vw,20px);line-height:1.2;font-weight:900;text-align:center}
+.tree{display:grid;grid-template-rows:auto auto 1fr auto;gap:.52rem}
+.start{border:3px solid var(--navy);border-radius:16px;background:var(--pale);padding:.65rem .8rem;text-align:center;font-size:clamp(16px,1.08vw,21px);line-height:1.16;font-weight:900;color:var(--navy)}
+.decisionRow{display:grid;grid-template-columns:1fr 1.18fr;gap:.7rem;align-items:stretch}
+.branch{border:3px solid var(--line);border-radius:17px;padding:.64rem .68rem;background:#fff;display:flex;flex-direction:column;gap:.25rem}
+.branch.good{border-color:#94d4ba;background:var(--greenSoft)}
+.branch.raise{border-color:#f0c86f;background:var(--amberSoft)}
+.branch h3{margin:0;font-size:clamp(16px,1.05vw,21px);line-height:1.06;color:var(--navy);font-weight:950}
+.branch p{margin:.15rem 0;font-size:clamp(14px,.91vw,18px);line-height:1.15;color:var(--ink);font-weight:780}
+.responseLabel{text-align:center;font-size:clamp(14px,.92vw,18px);font-weight:950;color:var(--navy);padding:.08rem 0}
+.responseGrid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;min-height:0}
+.outcome{border:3px solid var(--line);border-radius:18px;padding:.62rem .68rem;background:#fff;display:flex;flex-direction:column;gap:.28rem}
+.outcome.warn{border-color:#f0c86f;background:var(--amberSoft)}
+.outcome.bad{border-color:#efb2ad;background:var(--redSoft)}
+.outcome h3{margin:0;font-size:clamp(16px,1.03vw,20px);line-height:1.06;color:var(--navy);font-weight:950}
+.calc{font-size:clamp(14px,.9vw,18px);line-height:1.15;color:var(--ink);font-weight:800}
+.payoff{margin-top:auto;border-radius:12px;background:#fff;padding:.48rem .56rem;font-size:clamp(14px,.92vw,18px);line-height:1.14;font-weight:900;color:var(--navy)}
+.payoff strong{font-size:1.13em}
+.rationale{font-size:clamp(13px,.84vw,16px);line-height:1.13;color:var(--ink);font-weight:760;margin-top:.08rem}
+.joint{border-left:8px solid var(--orange);background:#fff7f0;border-radius:14px;padding:.58rem .72rem;font-size:clamp(14px,.92vw,18px);line-height:1.16;color:var(--ink);font-weight:840}
+.joint strong{color:var(--navy)}
+.footer{position:absolute;left:5.2%;right:5.2%;bottom:1.4%;font-size:clamp(9px,.68vw,13px);font-weight:700;color:#7892aa}
+</style>
+</head>
+<body>
+<main class="stage">
+<section class="slide" aria-label="Incomplete contracts and hold-up problem">
+<div class="corner"></div>
+<img alt="CIPS" class="logo" src="../assets/cips-logo.png">
+<div class="header">
+  <div class="session"><span class="dot"></span><span>Session 5 Source-to-Contract</span></div>
+  <h1>Incomplete Contracts and the Hold-up Problem</h1>
+</div>
+<div class="tabs" role="tablist" aria-label="Slide views">
+  <button class="tab active" data-view="theory" type="button">Core concept</button>
+  <button class="tab" data-view="scenario" type="button">Numeric scenario</button>
+</div>
+
+<section class="view active" id="theory">
+  <div class="theoryGrid">
+    <article class="card lead">
+      <h2>Why contracts remain incomplete</h2>
+      <p>No contract can specify every action for every possible future state. Uncertainty leaves gaps, discretion and decision rights.</p>
+      <div class="quote">When one party makes a relationship-specific investment, those gaps may allow the counterparty to renegotiate after dependency has been created.</div>
+      <div class="steps">
+        <div class="step"><div class="badge">1</div><div><strong>Specific investment</strong><span>The investment has limited value outside this relationship.</span></div></div>
+        <div class="step"><div class="badge">2</div><div><strong>Dependency</strong><span>Switching becomes expensive or destroys the investment.</span></div></div>
+        <div class="step"><div class="badge">3</div><div><strong>Opportunistic renegotiation</strong><span>The stronger party seeks to capture more value after lock-in.</span></div></div>
+        <div class="step"><div class="badge">4</div><div><strong>Underinvestment</strong><span>Anticipating hold-up, the buyer may reject an otherwise valuable investment.</span></div></div>
+      </div>
+    </article>
+    <article class="card">
+      <h2>How procurement can reduce the risk</h2>
+      <div class="solutionGrid">
+        <div class="solution"><strong>Vertical integration</strong><span>Bring the critical capability in-house where market dependency is unacceptable.</span></div>
+        <div class="solution"><strong>Long-term contractual protection</strong><span>Fix red-flag terms, decision rights, price mechanisms, change control and exit rights.</span></div>
+        <div class="solution"><strong>Revenue or risk sharing</strong><span>Align incentives so both parties gain from the investment’s success.</span></div>
+        <div class="solution"><strong>Relational governance</strong><span>Use escalation, transparency and joint decision-making where every contingency cannot be written down.</span></div>
+      </div>
+      <div class="lesson">The objective is not to make the contract complete. It is to make opportunism less attractive and adaptation more governable.</div>
+    </article>
+  </div>
+</section>
+
+<section class="view" id="scenario">
+  <div class="scenarioWrap">
+    <article class="card assumptions">
+      <h2>Scenario assumptions</h2>
+      <div class="metric"><span>Buyer’s specialised investment</span><strong>£100k</strong></div>
+      <div class="metric"><span>Incremental benefit if the project continues</span><strong>£180k</strong></div>
+      <div class="metric"><span>Supplier’s post-investment price increase</span><strong>£70k</strong></div>
+      <div class="metric"><span>Supplier’s loss if the buyer exits</span><strong>£40k</strong></div>
+      <p style="margin-top:.8rem">All figures are incremental and exclude the original contract price.</p>
+      <div class="question">Knowing these possible outcomes, should the buyer invest?</div>
+    </article>
+    <article class="tree">
+      <div class="start"><strong>Step 1 — Buyer invests £100k.</strong> The supplier then chooses whether to honour the deal or demand an opportunistic £70k increase.</div>
+      <div class="decisionRow">
+        <div class="branch good">
+          <h3>Supplier honours the original economics</h3>
+          <p>The project continues and creates the intended benefit.</p>
+          <div class="payoff">Buyer: <strong>+£80k</strong><br>Supplier: <strong>£0 extra</strong></div>
+        </div>
+        <div class="branch raise">
+          <h3>Supplier demands an extra £70k after lock-in</h3>
+          <p><strong>Step 2 — Buyer must respond:</strong> accept the increase or refuse it and terminate/switch.</p>
+        </div>
+      </div>
+      <div>
+        <div class="responseLabel">Buyer response to opportunistic price increase</div>
+        <div class="responseGrid">
+          <div class="outcome warn">
+            <h3>A. Accept and continue</h3>
+            <div class="calc">£180k benefit − £100k investment − £70k increase</div>
+            <div class="payoff">Buyer: <strong>+£10k</strong><br>Supplier: <strong>+£70k</strong></div>
+            <div class="rationale">The buyer preserves the project but rewards the supplier’s opportunistic behaviour.</div>
+          </div>
+          <div class="outcome bad">
+            <h3>B. Refuse and terminate/switch</h3>
+            <div class="calc">The specialised investment is stranded; the supplier loses the account and future margin.</div>
+            <div class="payoff">Buyer: <strong>−£100k</strong><br>Supplier: <strong>−£40k</strong></div>
+            <div class="rationale">Refusal may protect precedent and credibility, but both parties destroy value.</div>
+          </div>
+        </div>
+      </div>
+      <div class="joint"><strong>Backward-induction lesson:</strong> if the buyer expects a post-investment price increase and is unwilling to reward it, the rational ex-ante decision may be <strong>do not invest</strong> (Buyer £0; Supplier £0). The fear of hold-up therefore causes underinvestment even though cooperation could create £80k of buyer value.</div>
+    </article>
+  </div>
+</section>
+<div class="footer">© CIPS. Simplified classroom example; payoffs illustrate the logic of relationship-specific investment and opportunistic renegotiation.</div>
+</section>
+</main>
+<script>
+(function(){
+  const tabs=[...document.querySelectorAll('.tab')];
+  const views=[...document.querySelectorAll('.view')];
+  tabs.forEach(tab=>tab.addEventListener('click',()=>{
+    tabs.forEach(x=>x.classList.toggle('active',x===tab));
+    views.forEach(v=>v.classList.toggle('active',v.id===tab.dataset.view));
+  }));
+})();
+</script>
+<script id="itpf-deck-bridge">
+(function(){
+  function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
+  window.addEventListener('keydown',function(e){
+    var t=e.target, tag=(t&&t.tagName||'').toLowerCase();
+    if(tag==='input'||tag==='textarea'||tag==='select'||(t&&t.isContentEditable)) return;
+    var action=null;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') action='next';
+    else if(e.key==='ArrowLeft'||e.key==='PageUp') action='prev';
+    else if(e.key==='Home') action='first';
+    else if(e.key==='End') action='last';
+    if(action){ e.preventDefault(); e.stopPropagation(); send(action); }
+  },true);
+  document.addEventListener('click',function(e){
+    var b=e.target&&e.target.closest?e.target.closest('button'):null;
+    if(!b) return;
+    var label=(b.textContent||'').trim().toLowerCase();
+    if(label==='full screen'||label==='fullscreen'||label==='⛶'){
+      e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
+    }
+  },true);
+})();
+</script>
+</body>
+</html>

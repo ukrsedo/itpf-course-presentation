@@ -1,0 +1,93 @@
+<!doctype html>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>ITPF — Slide 2 Approved</title>
+<style>
+:root{--navy:#002b52;--blue:#0078e8;--pale:#eef6fc;--line:#c9d9e7;--paper:#fff;}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;overflow:hidden}
+.stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
+.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:var(--paper);overflow:hidden;box-shadow:0 18px 60px rgba(0,25,55,.18);padding:5.6% 6.7% 5.1%}
+.logo{position:absolute;right:4.2%;top:4.5%;width:9.8%;height:auto}
+.kicker{font-size:clamp(14px,1.05vw,19px);font-weight:700;color:var(--blue);letter-spacing:.02em;margin-bottom:.65%}
+h1{margin:0;width:78%;color:var(--navy);font-size:clamp(28px,3.05vw,52px);line-height:1.12;letter-spacing:-.02em}
+.intro{margin:1.5% 0 2.2%;width:91%;font-size:clamp(15px,1.25vw,22px);line-height:1.43;color:#26384a}
+.grid{display:grid;grid-template-columns:1.22fr .78fr;gap:2.2%;height:54%}
+.panel{border:1px solid var(--line);border-radius:12px;padding:3.6% 4%;background:#fff}
+.panel.outcomes{background:var(--pale);border-color:#b9d5ea}
+h2{margin:0 0 3%;color:var(--navy);font-size:clamp(18px,1.55vw,27px);line-height:1.15}
+ul{margin:0;padding-left:1.25em;display:grid;gap:2.1%;font-size:clamp(14px,1.05vw,19px);line-height:1.25;color:#26384a}
+.outcome-list{display:grid;gap:6%;margin-top:4%}
+.outcome{display:flex;align-items:center;gap:4%;font-size:clamp(15px,1.15vw,20px);font-weight:700;color:var(--navy)}
+.num{display:grid;place-items:center;flex:0 0 auto;width:2.05em;height:2.05em;border-radius:50%;background:var(--blue);color:#fff;font-size:.85em}
+.footer{position:absolute;left:6.7%;right:6.7%;bottom:2.5%;display:flex;justify-content:space-between;align-items:center;color:#627589;font-size:clamp(10px,.75vw,13px)}
+.rule{position:absolute;left:0;bottom:0;width:100%;height:8px;background:linear-gradient(90deg,var(--navy) 0 31%,var(--blue) 31% 100%)}
+.controls{position:absolute;right:2%;bottom:2.2%;opacity:.18;transition:opacity .2s}
+.slide:hover .controls{opacity:.8}
+button{border:1px solid #c8d3df;background:#fff;color:var(--navy);border-radius:6px;padding:8px 12px;font-weight:700;cursor:pointer}
+@media(max-width:760px){.slide{padding:6%}.grid{grid-template-columns:1fr;height:auto;gap:3%}.intro{width:100%}.logo{width:14%}.panel{padding:3%}}
+</style>
+</head>
+<body>
+<div class="stage">
+<section aria-label="Course welcome and purpose" class="slide">
+<img alt="CIPS logo" class="logo" src="../assets/cips-logo.png"/>
+<div class="kicker">COURSE INTRODUCTION</div>
+<h1>Welcome to your Technology IT Procurement Foundations course</h1>
+<p class="intro">As a procurement professional or a member of a cross-functional team sourcing a complex technology service, you would need to:</p>
+<div class="grid">
+<div class="panel">
+<h2>Understand and analyse</h2>
+<ul>
+<li>the underlying technology at a conceptual level;</li>
+<li>core business requirements;</li>
+<li>the digital service lifecycle;</li>
+<li>the TCO model;</li>
+<li>a project management plan; and</li>
+<li>how to translate these into negotiation arguments and contract provisions.</li>
+</ul>
+</div>
+<div class="panel outcomes">
+<h2>This course will help you prepare</h2>
+<div class="outcome-list">
+<div class="outcome"><span class="num">1</span><span>A simple, yet useful costing model</span></div>
+<div class="outcome"><span class="num">2</span><span>An efficient sourcing strategy</span></div>
+<div class="outcome"><span class="num">3</span><span>A sound negotiation plan</span></div>
+<div class="outcome"><span class="num">4</span><span>A fit-for-purpose contract</span></div>
+</div>
+</div>
+</div>
+<div class="footer"><span>Technology (IT) Procurement Foundations</span><span>2</span></div>
+<div class="rule"></div>
+<div class="controls"><button onclick="parent.postMessage({type:'ITPF_DECK_NAV',action:'fullscreen'},'*')">Full screen</button></div>
+</section>
+</div>
+<script id="itpf-deck-bridge">
+(function(){
+  function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
+  window.addEventListener('keydown',function(e){
+    var t=e.target, tag=(t&&t.tagName||'').toLowerCase();
+    if(tag==='input'||tag==='textarea'||tag==='select'||(t&&t.isContentEditable)) return;
+    var action=null;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') action='next';
+    else if(e.key==='ArrowLeft'||e.key==='PageUp') action='prev';
+    else if(e.key==='Home') action='first';
+    else if(e.key==='End') action='last';
+    if(action){ e.preventDefault(); e.stopPropagation(); send(action); }
+  },true);
+  document.addEventListener('click',function(e){
+    var b=e.target&&e.target.closest?e.target.closest('button'):null;
+    if(!b) return;
+    var label=(b.textContent||'').trim().toLowerCase();
+    if(label==='full screen'||label==='fullscreen'||label==='⛶'){
+      e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
+    }
+  },true);
+})();
+</script>
+</body>
+</html>

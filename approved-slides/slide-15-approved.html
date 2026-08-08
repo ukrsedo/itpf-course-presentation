@@ -1,0 +1,98 @@
+<!doctype html>
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>ITPF — Slide 15 Draft — Digitalization</title>
+<style>
+:root{--navy:#003b70;--blue:#0077b6;--cyan:#00a6d6;--magenta:#c00067;--ink:#16354f;--muted:#60758a;--soft:#f5f9fc;--line:#cbddea;--orange:#f58220;--green:#0d8a73}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
+.stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
+.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.slide:before{content:"";position:absolute;inset:auto -10% -18% -8%;height:34%;background:linear-gradient(135deg,transparent 0 28%,rgba(0,183,229,.13) 28% 43%,transparent 43% 54%,rgba(0,59,112,.09) 54% 68%,transparent 68%);pointer-events:none}
+.logo{position:absolute;right:4.1%;top:3.5%;width:10.3%;height:auto;z-index:5}
+.header{position:absolute;left:5.2%;top:4.7%;right:18%}
+.kicker{color:var(--magenta);font-size:clamp(12px,.9vw,17px);font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.45%}
+h1{margin:0;color:var(--navy);font-size:clamp(34px,3.15vw,56px);line-height:1.02;letter-spacing:-.025em}
+.tabs{position:absolute;left:5.2%;right:5.2%;top:17.2%;display:flex;gap:1.1%;z-index:4}
+.tab{border:2px solid var(--blue);background:white;color:var(--navy);border-radius:999px;padding:.75% 2.2%;font-weight:800;font-size:clamp(15px,1.05vw,20px);cursor:pointer;box-shadow:0 5px 14px rgba(0,59,112,.08)}
+.tab.active{background:var(--navy);color:white;border-color:var(--navy)}
+.panel{position:absolute;left:5.2%;right:5.2%;top:25%;bottom:7%;display:none;z-index:2}
+.panel.active{display:block}
+/* Tab 1 */
+.flow{height:100%;display:grid;grid-template-columns:1fr 12% 1fr;gap:2%;align-items:center}
+.card{border:3px solid var(--blue);border-radius:22px;background:#fff;box-shadow:0 12px 30px rgba(0,59,112,.1);padding:6%;height:75%;display:flex;flex-direction:column;justify-content:center}
+.card h2{margin:0 0 5%;color:var(--navy);font-size:clamp(28px,2vw,38px)}
+.card p{margin:0;font-size:clamp(21px,1.5vw,28px);line-height:1.28;font-weight:700}
+.card.digitalization{border-color:var(--magenta)}
+.arrow{font-size:clamp(48px,5vw,90px);color:var(--orange);font-weight:900;text-align:center}
+.note{position:absolute;left:0;right:0;bottom:1%;border-left:7px solid var(--orange);background:#fff7ed;border-radius:14px;padding:1.1% 1.5%;font-size:clamp(17px,1.18vw,22px);font-weight:800;color:#4d5560}
+/* Tab 2 */
+.paradoxGrid{height:100%;display:grid;grid-template-columns:.88fr 1.12fr;gap:2.4%}
+.problem{border:3px solid var(--magenta);border-radius:22px;padding:5%;box-shadow:0 12px 30px rgba(192,0,103,.1);background:#fff;display:flex;flex-direction:column;justify-content:center}
+.problem h2{margin:0 0 4%;font-size:clamp(29px,2vw,39px);color:var(--magenta)}
+.problem p{margin:0 0 4%;font-size:clamp(20px,1.4vw,26px);line-height:1.27;font-weight:700}
+.stat{border-radius:16px;background:#fdf0f6;padding:3.5%;font-size:clamp(15px,1.03vw,19px);line-height:1.22;font-weight:800;color:var(--navy)}
+.solution{display:grid;grid-template-rows:auto 1fr auto;gap:3%}
+.solution h2{margin:0;color:var(--navy);font-size:clamp(27px,1.9vw,36px)}
+.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:3%}
+.step{border:2px solid var(--blue);border-radius:18px;padding:5%;background:#fff;box-shadow:0 8px 22px rgba(0,59,112,.07);font-size:clamp(18px,1.25vw,23px);line-height:1.22;font-weight:800;display:flex;align-items:center}
+.power{border:3px solid var(--green);border-radius:18px;background:#effaf7;padding:2.7% 3%;display:grid;grid-template-columns:auto 1fr;gap:3%;align-items:center}
+.power b{font-size:clamp(32px,2.4vw,45px);color:var(--green);letter-spacing:.08em}
+.power span{font-size:clamp(17px,1.18vw,22px);line-height:1.22;font-weight:800}.power .power-lines{display:grid;grid-template-columns:1fr 1fr;gap:.42rem 1.1rem;align-items:center;text-align:left}.power .power-lines div:nth-child(3){grid-column:1 / span 2;justify-self:center;text-align:center;width:74%;margin:.15rem auto;display:flex;justify-content:center}.sourceLink{display:inline-block;margin-top:.55rem;font-weight:900;color:var(--navy);text-decoration:underline}
+.footer{position:absolute;left:5.2%;right:5.2%;bottom:1.4%;font-size:clamp(11px,.75vw,14px);color:var(--muted);display:flex;justify-content:space-between;gap:2%}
+</style></head>
+<body><main class="stage"><section aria-label="Digitalization" class="slide">
+<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<div class="header"><div class="kicker">Session 1 · Setting the Scene</div><h1>Digitalization: Technology ≠ Transformation</h1></div>
+<div class="tabs" role="tablist"><button class="tab active" data-panel="difference">Digitization vs Digitalization</button><button class="tab" data-panel="paradox">Digitalization Paradox</button></div>
+<section class="panel active" id="difference">
+<div class="flow">
+<article class="card"><h2>Digitization</h2><p>The process of converting information or physical objects into a digital format.</p></article>
+<div class="arrow">→</div>
+<article class="card digitalization"><h2>Digitalization</h2><p>The use of digital technologies to transform existing business processes, services or products.</p></article>
+</div>
+<div class="note">Digitization records information digitally. Digitalization changes processes and workflows to improve how the organization operates.</div>
+</section>
+<section class="panel" id="paradox">
+<div class="paradoxGrid">
+<article class="problem"><h2>The paradox</h2><p>Adopting AI, IoT, ERP or other digital tools does not guarantee better outcomes.</p><p>Without corresponding changes in processes, skills, governance and culture, technology can remain underused or become disruptive.</p><div class="stat"><b>Source note:</b> Financial Times Partner Content by TeamViewer cites McKinsey that 70% of digital transformation initiatives fail to meet their objectives and cites Gartner that only 48% meet or exceed their targets.<br/><br/>The article argues that transformation failure is usually an execution problem, not a vision problem. Its main practical point is that proactive IT support, monitoring and employee enablement are needed to prevent disruption, workarounds and poor adoption.<br/><a class="sourceLink" href="https://www.ft.com/partnercontent/teamviewer/70-per-cent-of-transformation-projects-fail-and-everyones-ignoring-the-same-fix.html" rel="noopener" target="_blank">FT / TeamViewer source</a></div></article>
+<section class="solution"><h2>Response: incremental development and financing</h2>
+<div class="steps"><div class="step">Iterative sprints delivering topical micro-services</div><div class="step">Start small with a POC or prototype</div><div class="step">Make incremental digital investments</div><div class="step">Tie financing to demonstrated outcomes</div></div>
+<div class="power"><b>P.O.W.E.R.</b><span class="power-lines"><div><strong>P</strong> = Processes</div><div><strong>O</strong> = Operating Model</div><div><strong>W</strong> = Workforce</div><div><strong>E</strong> = Enablement</div><div><strong>R</strong> = Results</div></span></div>
+</section>
+</div>
+</section>
+<div class="footer"><span>Sources reproduced from the course material.</span><span>©</span></div>
+<script>
+document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+ document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+ btn.classList.add('active');
+ document.getElementById(btn.dataset.panel).classList.add('active');
+}));
+</script>
+</section></main>
+<script id="itpf-deck-bridge">
+(function(){
+  function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
+  window.addEventListener('keydown',function(e){
+    var t=e.target, tag=(t&&t.tagName||'').toLowerCase();
+    if(tag==='input'||tag==='textarea'||tag==='select'||(t&&t.isContentEditable)) return;
+    var action=null;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') action='next';
+    else if(e.key==='ArrowLeft'||e.key==='PageUp') action='prev';
+    else if(e.key==='Home') action='first';
+    else if(e.key==='End') action='last';
+    if(action){ e.preventDefault(); e.stopPropagation(); send(action); }
+  },true);
+  document.addEventListener('click',function(e){
+    var b=e.target&&e.target.closest?e.target.closest('button'):null;
+    if(!b) return;
+    var label=(b.textContent||'').trim().toLowerCase();
+    if(label==='full screen'||label==='fullscreen'||label==='⛶'){
+      e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
+    }
+  },true);
+})();
+</script>
+</body></html>

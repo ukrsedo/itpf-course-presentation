@@ -1,0 +1,198 @@
+<!doctype html>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ITPF — Slide 4 Live Responses</title>
+<style>
+:root{--navy:#002b52;--blue:#0078e8;--light:#eef5fa;--line:#cbd9e5;--text:#263b4e}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;font-family:Arial,Helvetica,sans-serif;background:#e7ecf1;color:var(--text)}
+body{display:grid;place-items:center;padding:16px}
+.slide{position:relative;width:min(96vw,1600px);aspect-ratio:16/9;background:#fff;box-shadow:0 20px 60px rgba(0,35,70,.18);overflow:hidden;padding:5.2% 6.2% 5%}
+.logo{position:absolute;right:4.5%;top:4.2%;width:11%;height:auto}
+.eyebrow{font-size:clamp(13px,1vw,18px);font-weight:700;letter-spacing:.05em;color:var(--blue);margin-bottom:.8%}
+h1{margin:0;max-width:74%;font-size:clamp(34px,3.35vw,60px);line-height:1.04;color:var(--navy);letter-spacing:-.025em}
+.subtitle{margin:1% 0 2.2%;font-size:clamp(14px,1.15vw,20px);color:#5e7286}
+.grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:3%;height:59%}
+.panel{border:1px solid var(--line);border-radius:16px;min-height:0}
+.entry{background:var(--light);padding:5%;display:flex;flex-direction:column}
+.responses{background:#fff;padding:4%;display:flex;flex-direction:column}
+h2{margin:0;color:var(--navy);font-size:clamp(18px,1.45vw,26px)}
+.prompt{margin:2.4% 0 4%;font-size:clamp(13px,1vw,17px);line-height:1.4}
+textarea{width:100%;flex:1;min-height:110px;resize:none;border:1px solid #a9bfd2;border-radius:10px;padding:16px;background:#fff;font:inherit;font-size:clamp(14px,1vw,18px);line-height:1.35;outline:none}
+textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,120,232,.12)}
+.actions{display:flex;align-items:center;gap:12px;margin-top:14px}
+button{border:0;border-radius:8px;background:var(--navy);color:#fff;padding:11px 20px;font-weight:700;font-size:clamp(13px,.9vw,16px);cursor:pointer}
+button:hover{background:#004a84}
+.counter{margin-left:auto;color:#63778a;font-size:13px}
+.message{height:18px;margin-top:8px;font-size:13px;font-weight:700}
+.response-head{display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--blue);padding-bottom:12px}
+.count{font-size:13px;font-weight:700;color:#687d90}
+.empty{margin:auto;text-align:center;color:#718496;max-width:72%;font-size:clamp(13px,1vw,17px);line-height:1.45}
+ul{list-style:none;margin:14px 0 0;padding:0;overflow:auto;display:flex;flex-direction:column;gap:10px}
+li{border-left:4px solid var(--blue);background:#f6f9fb;padding:12px 14px;border-radius:0 8px 8px 0;font-size:clamp(13px,1vw,17px);line-height:1.35;overflow-wrap:anywhere}
+.footer{position:absolute;left:6.2%;right:6.2%;bottom:2.1%;display:flex;justify-content:space-between;color:#667b8e;font-size:clamp(10px,.75vw,13px)}
+.bar{position:absolute;left:0;right:0;bottom:0;height:8px;background:linear-gradient(90deg,var(--navy) 0 32%,var(--blue) 32% 100%)}
+@media(max-width:800px){body{padding:0}.slide{width:100vw;height:100vh;aspect-ratio:auto;padding:7%}.logo{width:18%}.grid{grid-template-columns:1fr;height:auto;gap:14px}.panel{min-height:220px}.footer{display:none}}
+</style>
+</head>
+<body>
+<main aria-label="Slide 4: Course expectations" class="slide">
+<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<div class="eyebrow">COURSE INTRODUCTION</div>
+<h1>What are your expectations of this course?</h1>
+<p class="subtitle">Add one expectation. Submitted responses are shared live across all devices and expire after the class session.</p>
+<div class="grid">
+<section class="panel entry">
+<h2>Your expectation</h2>
+<p class="prompt">What would make these two days useful for you?</p>
+<textarea id="expectation" maxlength="200" placeholder="Type your expectation here…"></textarea>
+<div class="actions">
+<button id="submit">Submit</button>
+<span class="counter"><span id="chars">0</span>/200</span>
+</div>
+<div aria-live="polite" class="message" id="message"></div>
+</section>
+<section class="panel responses">
+<div class="response-head"><h2>Group expectations</h2><span class="count" id="count">0 responses</span></div>
+<div class="empty" id="empty">Responses will appear here as they are submitted.</div>
+<ul id="list"></ul>
+</section>
+</div>
+<div class="footer"><span>Technology (IT) Procurement Foundations</span><span>4</span></div>
+<div class="bar"></div>
+</main>
+<!-- Build: Slide 4 connected v3; Worker URL configured -->
+<script>
+const WORKER_URL = "https://itpf-live-responses.ukrsedo-e2e.workers.dev";
+const SESSION_ID = "ITPF-2026-09-10-11";
+const QUESTION_ID = "EXPECTATIONS-01";
+const REFRESH_INTERVAL_MS = 3000;
+
+const input=document.getElementById('expectation');
+const submit=document.getElementById('submit');
+const chars=document.getElementById('chars');
+const message=document.getElementById('message');
+const list=document.getElementById('list');
+const empty=document.getElementById('empty');
+const count=document.getElementById('count');
+let refreshTimer=null;
+let submitting=false;
+
+input.addEventListener('input',()=>{chars.textContent=input.value.length;message.textContent='';});
+
+function endpoint(){
+  return `${WORKER_URL.replace(/\/$/, '')}/responses`;
+}
+
+function workerConfigured(){
+  return WORKER_URL.startsWith('https://') && !WORKER_URL.includes('PASTE_');
+}
+
+function setMessage(text,type='info'){
+  message.textContent=text;
+  message.style.color=type==='error'?'#a22':type==='success'?'#197241':'#5e7286';
+}
+
+function renderResponses(items){
+  list.replaceChildren();
+  for(const item of items){
+    const li=document.createElement('li');
+    li.textContent=item.response;
+    list.appendChild(li);
+  }
+  empty.hidden=items.length>0;
+  count.textContent=`${items.length} response${items.length===1?'':'s'}`;
+}
+
+async function loadResponses(showError=false){
+  if(!workerConfigured()){
+    if(showError) setMessage('Worker URL has not been configured.','error');
+    return;
+  }
+  try{
+    const url=new URL(endpoint());
+    url.searchParams.set('sessionId',SESSION_ID);
+    url.searchParams.set('questionId',QUESTION_ID);
+    const response=await fetch(url,{method:'GET',cache:'no-store'});
+    const data=await response.json();
+    if(!response.ok||!data.success) throw new Error(data.error||'Unable to load responses.');
+    renderResponses(Array.isArray(data.responses)?data.responses:[]);
+  }catch(error){
+    if(showError) setMessage(error.message||'Unable to load responses.','error');
+  }
+}
+
+async function submitResponse(){
+  if(submitting) return;
+  const value=input.value.trim().replace(/\s+/g,' ');
+  if(!value){setMessage('Please enter an expectation.','error');return;}
+  if(!workerConfigured()){setMessage('Worker URL has not been configured.','error');return;}
+
+  submitting=true;
+  submit.disabled=true;
+  submit.textContent='Submitting…';
+  setMessage('');
+
+  try{
+    const response=await fetch(endpoint(),{
+      method:'POST',
+      headers:{'content-type':'application/json'},
+      body:JSON.stringify({sessionId:SESSION_ID,questionId:QUESTION_ID,responseId:(crypto.randomUUID?crypto.randomUUID():`${Date.now()}-${Math.random().toString(36).slice(2)}`),response:value})
+    });
+    const data=await response.json();
+    if(!response.ok||!data.success) throw new Error(data.error||'Submission failed.');
+    input.value='';
+    chars.textContent='0';
+    setMessage('Submitted.','success');
+    await loadResponses(true);
+    input.focus();
+  }catch(error){
+    setMessage(`${error.message||'Submission failed.'} Your text has not been cleared.`,'error');
+  }finally{
+    submitting=false;
+    submit.disabled=false;
+    submit.textContent='Submit';
+  }
+}
+
+submit.addEventListener('click',submitResponse);
+input.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='Enter')submitResponse();});
+
+if(workerConfigured()){
+  loadResponses(true);
+  refreshTimer=setInterval(()=>loadResponses(false),REFRESH_INTERVAL_MS);
+}else{
+  setMessage('Backend connection pending: add the deployed Worker URL.','info');
+}
+
+window.addEventListener('beforeunload',()=>{if(refreshTimer) clearInterval(refreshTimer);});
+</script>
+<script id="itpf-deck-bridge">
+(function(){
+  function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
+  window.addEventListener('keydown',function(e){
+    var t=e.target, tag=(t&&t.tagName||'').toLowerCase();
+    if(tag==='input'||tag==='textarea'||tag==='select'||(t&&t.isContentEditable)) return;
+    var action=null;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') action='next';
+    else if(e.key==='ArrowLeft'||e.key==='PageUp') action='prev';
+    else if(e.key==='Home') action='first';
+    else if(e.key==='End') action='last';
+    if(action){ e.preventDefault(); e.stopPropagation(); send(action); }
+  },true);
+  document.addEventListener('click',function(e){
+    var b=e.target&&e.target.closest?e.target.closest('button'):null;
+    if(!b) return;
+    var label=(b.textContent||'').trim().toLowerCase();
+    if(label==='full screen'||label==='fullscreen'||label==='⛶'){
+      e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
+    }
+  },true);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!doctype html>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>ITPF — Slide 35 — FSE and Right to Reduce FSE</title>
+<style>
+:root {
+  --navy:#003b70;
+  --cyan:#12bddf;
+  --orange:#ff5a00;
+  --green:#3aa25a;
+  --ink:#173f66;
+  --line:#c7d9ea;
+  --soft:#f7fbff;
+  --grey:#e7eaee;
+  --yellow:#fff36a;
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--navy)}
+.stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
+.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:5}
+.header{position:absolute;left:6%;top:5.4%;right:17%}
+.session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.24rem}
+.dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
+h1{margin:0;color:var(--navy);font-size:clamp(32px,2.9vw,56px);line-height:1.03;letter-spacing:-.02em;font-weight:900}
+.subtitle{font-size:clamp(17px,1.2vw,24px);margin-top:.28rem;color:#2f5f88;font-weight:750}
+.tabs{position:absolute;left:6%;right:6%;top:18.7%;display:flex;gap:.7rem}
+.tab{border:3px solid var(--navy);background:#fff;color:var(--navy);font-size:clamp(18px,1.28vw,26px);font-weight:900;padding:.48rem .95rem;cursor:pointer}
+.tab.active{background:var(--navy);color:#fff}
+.panel{position:absolute;left:4.6%;right:4.6%;top:27.0%;bottom:3.4%;display:none}
+.panel.active{display:block}
+
+.calc{height:100%;display:grid;grid-template-columns:37% 63%;gap:1rem;min-height:0}
+.explain,.clause,.capsBox{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.boxTitle{margin:0;background:var(--navy);color:#fff;font-size:clamp(21px,1.5vw,31px);line-height:1.04;padding:.62rem .82rem;font-weight:900}
+.explain .body{padding:.9rem 1rem;font-size:clamp(20px,1.35vw,28px);line-height:1.17;font-weight:760;color:var(--ink)}
+.formula{margin-top:1rem;border-left:8px solid var(--cyan);background:#f7fbff;padding:.8rem .9rem;font-size:clamp(21px,1.45vw,30px);font-weight:900;color:var(--navy)}
+.tableWrap{display:flex;flex-direction:column;min-height:0}
+.tableTitle{font-style:italic;font-size:clamp(18px,1.2vw,24px);font-weight:900;color:var(--navy);padding:.35rem .2rem .45rem}
+table{border-collapse:collapse;width:100%;font-size:clamp(18px,1.18vw,24px);line-height:1.05;color:var(--navy);font-weight:760}
+th{background:var(--navy);color:#fff;text-align:left;padding:.55rem .7rem;border:2px solid #fff;font-weight:900}
+td{background:#e4e6e9;padding:.58rem .7rem;border:2px solid #fff}
+td.bold{font-weight:900}
+
+.mechanism{height:100%;display:grid;grid-template-columns:52% 48%;gap:1rem;min-height:0}
+.clauseText{padding:.9rem 1rem;font-size:clamp(18px,1.22vw,25px);line-height:1.18;font-weight:760;color:var(--ink);overflow:hidden}
+.clauseText strong{color:var(--navy);font-weight:900}
+.schedule{border:3px solid var(--cyan);background:#fff;display:flex;flex-direction:column;overflow:hidden}
+.schedule .boxTitle{background:var(--cyan)}
+.scheduleTable{padding:.7rem;overflow:hidden}
+.scheduleTable table{font-size:clamp(13px,.86vw,18px);line-height:1.02}
+.scheduleTable th{padding:.38rem .35rem;text-align:center}
+.scheduleTable td{padding:.32rem .35rem;background:#f0f1f3;color:#111;font-weight:650}
+.scheduleTable .sku{font-weight:900;color:#111}
+.scheduleTable .num{text-align:center;color:#111;font-weight:850}
+
+.caps{height:100%;display:grid;grid-template-columns:49% 51%;gap:1rem;min-height:0}
+.capsBox{border-color:var(--orange)}
+.capsBox .boxTitle{background:var(--orange)}
+.capText{padding:.9rem 1rem;font-size:clamp(19px,1.28vw,26px);line-height:1.16;font-weight:760;color:var(--ink);overflow:hidden}
+mark{background:var(--yellow);padding:0 .12rem}
+mark.cyan{background:#48e9f3}
+.rightPanel{display:grid;grid-template-rows:auto 1fr;gap:.75rem;min-height:0}
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.rule{border:3px solid var(--line);border-left:8px solid var(--orange);background:#fff;padding:.75rem .85rem;font-size:clamp(20px,1.32vw,27px);line-height:1.13;font-weight:900;color:var(--navy)}
+.rule strong{font-size:clamp(28px,2vw,42px);color:var(--orange)}
+.footer{position:absolute;left:4.9%;bottom:1.8%;font-size:clamp(14px,1vw,22px);color:#168cff}
+</style>
+</head>
+<body>
+<main class="stage">
+<section aria-label="FSE and the Right to Reduce FSE" class="slide">
+<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<div class="header">
+<div class="session"><span class="dot"></span><span>Session 3 Cloud Computing</span></div>
+<h1>FSE and the Right to Reduce FSE</h1>
+<div class="subtitle">Full-Service Equivalent mechanics and annual reduction limits.</div>
+</div>
+<div class="tabs">
+<button class="tab active" data-panel="calc" type="button">FSE calculation</button>
+<button class="tab" data-panel="mechanism" type="button">Reduction mechanism</button>
+<button class="tab" data-panel="caps" type="button">Caps and limits</button>
+</div>
+<div class="panel active" id="calc">
+<div class="calc">
+<section class="explain">
+<h2 class="boxTitle">FSE Workers Calculation</h2>
+<div class="body">
+        FSE Workers are calculated by categorising each Customer Worker to one of the worker categories below, multiplying the Worker number by the applicable percentage rate, and then adding totals for each category of worker.
+        <div class="formula">Worker count × applicable percentage = FSE Worker Calculation</div>
+</div>
+</section>
+<section class="tableWrap">
+<div class="tableTitle">Sample Total FSE Worker Calculation:</div>
+<table>
+<tr><th>Worker Category</th><th>Applicable Number</th><th>Applicable Percentage</th><th>FSE Worker Calculation</th></tr>
+<tr><td>Full-time Employees</td><td>66,094</td><td>100.0%</td><td>66,094</td></tr>
+<tr><td>Part-time Employees</td><td>2,776</td><td>25.0%</td><td>694</td></tr>
+<tr><td>Associates</td><td>0</td><td>12.5%</td><td>0</td></tr>
+<tr><td>Former Workers with Access</td><td>0</td><td>2.5%</td><td>0</td></tr>
+<tr><td class="bold">Totals:</td><td class="bold">68,870</td><td></td><td class="bold">66,788</td></tr>
+</table>
+</section>
+</div>
+</div>
+<div class="panel" id="mechanism">
+<div class="mechanism">
+<section class="clause">
+<h2 class="boxTitle">5. Right to Reduce FSE OR SKUs</h2>
+<div class="clauseText">
+<strong>Ay. FSE Reduction Option Part 1.</strong><br/>
+        Starting as of the commencement of Year 2 of the Order Term, if Customer’s Annual Reporting results in a decrease of FSE Workers below the maximum FSE Worker count of 66,788 (“Initial Maximum FSE Worker Count”), Customer may request as adjustment to the Annual Subscription Fees during the Order Term and Workday shall provide such adjustment in accordance with this subsection 5(a). The adjustment to the annual subscription fees will be calculated based on the FSE Worker count by SKU bundle reported by Customer (As calculated in accordance with Section 2 (FSE Worker Calculation)) multiplied by the annual subscription fee per addition FSE Worker per SKU Bundle...
+      </div>
+</section>
+<section class="schedule">
+<h2 class="boxTitle">SKU bundle count schedule</h2>
+<div class="scheduleTable">
+<table>
+<tr><th>SKU</th><th>Service</th><th>2020/21</th><th>2021/22</th><th>2022/23</th><th>2023/24</th><th>2024/30</th></tr>
+<tr><td class="sku">FIN*</td><td>Core Financials</td><td class="num" rowspan="7">33,394</td><td class="num" rowspan="7">50,091</td><td class="num" rowspan="7">66,788</td><td class="num" rowspan="7">66,788</td><td></td></tr>
+<tr><td class="sku">GM*</td><td>Grants Management</td><td></td></tr>
+<tr><td class="sku">PRJT*</td><td>Projects</td><td></td></tr>
+<tr><td class="sku">PB*</td><td>Project Billing</td><td></td></tr>
+<tr><td class="sku">PRO*</td><td>Procurement</td><td></td></tr>
+<tr><td class="sku">INV*</td><td>Inventory</td><td></td></tr>
+<tr><td class="sku">EXP*</td><td>Expenses</td><td></td></tr>
+<tr><td class="sku">CHCM*</td><td>Core Human Capital Management</td><td></td><td></td><td></td><td></td><td class="num" rowspan="9">66,788</td></tr>
+<tr><td class="sku">USP*</td><td>Payroll for United States</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="sku">LRN*</td><td>Learning</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="sku">MCNF*</td><td>Media Cloud - No Fee</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">33,394</td></tr>
+<tr><td class="sku">REC*</td><td>Recruiting</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="sku">PLNF*</td><td>Financial Planning</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="sku">PLNW*</td><td>Workforce Planning</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="sku">PRA*</td><td>Prism Analytics</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="sku">TT*</td><td>Time Tracking</td><td></td><td></td><td></td><td></td></tr>
+</table>
+</div>
+</section>
+</div>
+</div>
+<div class="panel" id="caps">
+<div class="caps">
+<section class="capsBox">
+<h2 class="boxTitle">Reduction caps</h2>
+<div class="capText">
+<strong>Ay. FSE Reduction Option Part 1.</strong><br/>
+        The decreases in the FSE Worker count under this subsection 5(a) may not exceed a decrease of <mark>nine percent (9%)</mark> of the initial maximum FSE Worker count in any <mark class="cyan">single annual reporting period</mark>, and the maximum total FSE Worker count decrease may not result in an adjusted maximum FSE Worker count that is less than <mark>eighty two percent (82%)</mark> of the initial maximum FSE Worker count <mark class="cyan">during the order term</mark>. Any future fees associated with the reduced FSE Workers will be reduced from future invoices. If the fees associated with the reduced FSE Workers have been prepaid an unearned, a credit for the reduced fees will be applied only to subsequent invoice for the subscription service...
+      </div>
+</section>
+<section class="rightPanel">
+<div class="rules">
+<div class="rule"><strong>9%</strong><br/>maximum decrease in any single annual reporting period</div>
+<div class="rule"><strong>82%</strong><br/>minimum adjusted maximum FSE Worker count during the order term</div>
+</div>
+<section class="schedule">
+<h2 class="boxTitle">Commercial meaning</h2>
+<div class="clauseText">
+          The right to reduce is not an unlimited scale-down right. It is an annual adjustment mechanism constrained by a yearly reduction cap and a floor for the whole order term.
+        </div>
+</section>
+</section>
+</div>
+</div>
+<div class="footer">©</div>
+</section>
+</main>
+<script>
+document.querySelectorAll('.tab').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(btn.dataset.panel).classList.add('active');
+}));
+</script>
+<script id="itpf-deck-bridge">
+(function(){
+  function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
+  window.addEventListener('keydown',function(e){
+    var t=e.target, tag=(t&&t.tagName||'').toLowerCase();
+    if(tag==='input'||tag==='textarea'||tag==='select'||(t&&t.isContentEditable)) return;
+    var action=null;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') action='next';
+    else if(e.key==='ArrowLeft'||e.key==='PageUp') action='prev';
+    else if(e.key==='Home') action='first';
+    else if(e.key==='End') action='last';
+    if(action){ e.preventDefault(); e.stopPropagation(); send(action); }
+  },true);
+  document.addEventListener('click',function(e){
+    var b=e.target&&e.target.closest?e.target.closest('button'):null;
+    if(!b) return;
+    var label=(b.textContent||'').trim().toLowerCase();
+    if(label==='full screen'||label==='fullscreen'||label==='⛶'){
+      e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
+    }
+  },true);
+})();
+</script>
+</body>
+</html>

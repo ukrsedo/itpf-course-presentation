@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>IT Procurement Foundations — 84-slide presentation</title>
+<style>
+:root{--bar:#071b2f;--blue:#1484e6;--ink:#eef6ff;--muted:#a9bdd1}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#1b252f;font-family:Arial,Helvetica,sans-serif}
+body{display:grid;grid-template-rows:50px minmax(0,1fr)}
+.toolbar{display:flex;align-items:center;gap:8px;padding:7px 10px;background:var(--bar);color:var(--ink);border-bottom:1px solid rgba(255,255,255,.12);z-index:10}
+.brand{font-weight:700;font-size:14px;white-space:nowrap;margin-right:4px}
+button,select{height:34px;border:1px solid rgba(255,255,255,.22);border-radius:7px;background:#102c47;color:var(--ink);font:600 13px Arial,Helvetica,sans-serif}
+button{min-width:38px;padding:0 11px;cursor:pointer}
+button:hover{background:#17466f;border-color:#5aa9ed}
+button:disabled{opacity:.35;cursor:default}
+select{min-width:250px;max-width:42vw;padding:0 30px 0 10px}
+.counter{font-variant-numeric:tabular-nums;font-size:13px;color:var(--muted);white-space:nowrap;margin-left:auto}
+.hint{font-size:12px;color:var(--muted);white-space:nowrap}
+.framewrap{position:relative;min-height:0;overflow:hidden;background:#1b252f}
+iframe{display:block;width:100%;height:100%;border:0;background:#dfe5eb}
+.toast{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);padding:7px 12px;border-radius:999px;background:rgba(7,27,47,.88);color:#fff;font-size:12px;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.show{opacity:1}
+.fullscreen-nav{display:none;position:absolute;left:50%;bottom:max(14px,env(safe-area-inset-bottom));transform:translateX(-50%);align-items:center;gap:10px;padding:7px 10px;border-radius:999px;background:rgba(7,27,47,.94);box-shadow:0 3px 16px rgba(0,0,0,.42);z-index:2147483647;color:#fff;user-select:none}
+.fullscreen-nav button{height:36px;min-width:42px;border-radius:999px;background:#17466f;border-color:rgba(255,255,255,.35);font-size:20px;line-height:1}
+.fullscreen-nav button:hover{background:#23699f}
+.fullscreen-counter{min-width:96px;text-align:center;font:700 14px Arial,Helvetica,sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap}
+.framewrap:fullscreen .fullscreen-nav{display:flex}
+.framewrap:-webkit-full-screen .fullscreen-nav{display:flex}
+html:fullscreen .fullscreen-nav{display:flex}
+html:-webkit-full-screen .fullscreen-nav{display:flex}
+html:fullscreen .toolbar{display:none}
+html:-webkit-full-screen .toolbar{display:none}
+html:fullscreen body{grid-template-rows:minmax(0,1fr)}
+html:-webkit-full-screen body{grid-template-rows:minmax(0,1fr)}
+.framewrap:fullscreen,.framewrap:-webkit-full-screen{width:100vw;height:100vh;background:#1b252f}
+
+.assistant-button{white-space:nowrap;background:#0d6fbd;border-color:#5ab2f2}
+.assistant-button:hover{background:#1484e6}
+.assistant-panel{position:absolute;top:0;right:0;width:min(430px,44vw);height:100%;background:#f7fbff;color:#15283a;box-shadow:-8px 0 28px rgba(0,0,0,.32);z-index:2147483646;display:flex;flex-direction:column;transform:translateX(105%);transition:transform .22s ease;visibility:hidden}
+.assistant-panel.open{transform:translateX(0);visibility:visible}
+.assistant-header{display:flex;align-items:flex-start;gap:12px;padding:16px 16px 12px;background:#071b2f;color:#fff;border-bottom:1px solid rgba(255,255,255,.15)}
+.assistant-heading{min-width:0;flex:1}
+.assistant-kicker{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#9fd0fa;margin-bottom:4px}
+.assistant-title{font-size:17px;font-weight:700;line-height:1.25}
+.assistant-close{height:32px;min-width:32px;padding:0;border-radius:999px;background:transparent;border-color:rgba(255,255,255,.35);font-size:20px}
+.assistant-body{padding:18px;overflow:auto;flex:1;font-size:15px;line-height:1.52}
+.assistant-status{display:flex;align-items:center;gap:10px;color:#526a80}
+.assistant-spinner{width:18px;height:18px;border:3px solid #c8d8e6;border-top-color:#1484e6;border-radius:50%;animation:assistant-spin .8s linear infinite;flex:0 0 auto}
+@keyframes assistant-spin{to{transform:rotate(360deg)}}
+.assistant-explanation{white-space:pre-wrap}
+.assistant-error{padding:12px;border:1px solid #d6a4a4;background:#fff2f2;border-radius:8px;color:#6d2020}
+.assistant-retry{margin-top:12px;background:#0d6fbd;border-color:#0d6fbd;color:#fff}
+.framewrap.assistant-open iframe{width:calc(100% - min(430px,44vw))}
+.framewrap iframe{transition:width .22s ease}
+.fullscreen-nav .assistant-button{height:36px;border-radius:999px;font-size:13px;line-height:1;padding:0 14px}
+@media(max-width:760px){body{grid-template-rows:46px minmax(0,1fr)}.toolbar{padding:6px}.brand,.hint{display:none}select{min-width:0;max-width:none;flex:1}button{padding:0 9px}.assistant-panel{width:min(92vw,430px)}.framewrap.assistant-open iframe{width:100%}.fullscreen-nav{gap:7px}.fullscreen-nav .assistant-button{padding:0 10px;font-size:12px}}
+</style>
+</head>
+<body>
+<nav class="toolbar" aria-label="Presentation controls">
+  <div class="brand">IT Procurement Foundations</div>
+  <button id="prev" type="button" title="Previous slide (←)">←</button>
+  <button id="next" type="button" title="Next slide (→)">→</button>
+  <select id="picker" aria-label="Choose slide"></select>
+  <span class="hint">Arrow keys / Page Up / Page Down</span>
+  <span class="counter" id="counter">1 / 84</span>
+  <button id="assistantOpen" class="assistant-button" type="button" title="Explain the current slide">Explain this slide</button>
+  <button id="full" type="button" title="Full screen">⛶</button>
+</nav>
+<main class="framewrap">
+  <iframe id="slideframe" title="Presentation slide" allow="fullscreen; clipboard-write"></iframe>
+  <div class="toast" id="toast"></div>
+  <div class="fullscreen-nav" aria-label="Fullscreen slide navigation">
+    <button id="fsPrev" type="button" title="Previous slide">←</button>
+    <span class="fullscreen-counter" id="fsCounter">1 / 84</span>
+    <button id="fsNext" type="button" title="Next slide">→</button>
+    <button id="fsAssistantOpen" class="assistant-button" type="button" title="Explain the current slide">Explain this slide</button>
+  </div>
+  <aside id="assistantPanel" class="assistant-panel" aria-hidden="true" aria-label="Course Assistant explanation">
+    <header class="assistant-header">
+      <div class="assistant-heading">
+        <div class="assistant-kicker">Course Assistant</div>
+        <div id="assistantTitle" class="assistant-title">Explain this slide</div>
+      </div>
+      <button id="assistantClose" class="assistant-close" type="button" aria-label="Close Course Assistant">×</button>
+    </header>
+    <div id="assistantBody" class="assistant-body"></div>
+  </aside>
+</main>
+<script>
+const slides=[{"n": 1, "title": "ITPF — Slide 1 Draft", "src": "approved-slides/slide-01-approved.html"}, {"n": 2, "title": "ITPF — Slide 2 Approved", "src": "approved-slides/slide-02-approved.html"}, {"n": 3, "title": "ITPF — Slide 3 Draft", "src": "approved-slides/slide-03-approved.html"}, {"n": 4, "title": "ITPF — Slide 4 Live Responses", "src": "approved-slides/slide-04-approved.html"}, {"n": 5, "title": "ITPF — Slide 5 Draft v3", "src": "approved-slides/slide-05-approved.html"}, {"n": 6, "title": "ITPF — Slide 6 Draft", "src": "approved-slides/slide-06-approved.html"}, {"n": 7, "title": "ITPF — Slide 7 Draft v3", "src": "approved-slides/slide-07-approved.html"}, {"n": 8, "title": "ITPF — Slide 8 Approved", "src": "approved-slides/slide-08-approved.html"}, {"n": 9, "title": "ITPF — Slide 9 — Software Inflation Drivers", "src": "approved-slides/slide-09-approved.html"}, {"n": 10, "title": "Slide 10 - Software Inflation: Microsoft AI Licensing", "src": "approved-slides/slide-10-approved.html"}, {"n": 11, "title": "ITPF — Slide 11 Draft", "src": "approved-slides/slide-11-approved.html"}, {"n": 12, "title": "ITPF — Slide 12 — Case 1", "src": "approved-slides/slide-12-approved.html"}, {"n": 13, "title": "ITPF — Slide 13 Draft", "src": "approved-slides/slide-13-approved.html"}, {"n": 14, "title": "ITPF — Slide 14 Draft", "src": "approved-slides/slide-14-approved.html"}, {"n": 15, "title": "ITPF — Slide 15 Draft — Digitalization", "src": "approved-slides/slide-15-approved.html"}, {"n": 16, "title": "ITPF — Slide 16 Draft — Transformation of IT", "src": "approved-slides/slide-16-approved.html"}, {"n": 17, "title": "ITPF — Slide 17 Draft — Reliability vs Agility", "src": "approved-slides/slide-17-approved.html"}, {"n": 18, "title": "ITPF — Slide 18 Draft — Concepts for IT Transformation", "src": "approved-slides/slide-18-approved.html"}, {"n": 19, "title": "ITPF — Slide 19 Draft v2 — Bimodal Procurement by ADB", "src": "approved-slides/slide-19-approved.html"}, {"n": 20, "title": "ITPF — Slide 20 Draft v2 — Buyclasses from Buygrid Framework", "src": "approved-slides/slide-20-approved.html"}, {"n": 21, "title": "ITPF — Slide 21 Draft — Pace Layer Model", "src": "approved-slides/slide-21-approved.html"}, {"n": 22, "title": "ITPF — Slide 22 Draft — Hybrid Sourcing Strategy", "src": "approved-slides/slide-22-approved.html"}, {"n": 23, "title": "ITPF — Slide 23 Draft — Sourcing Strategy Tool", "src": "approved-slides/slide-23-approved.html"}, {"n": 24, "title": "ITPF — Slide 24 Draft — ERP Cost Feedback", "src": "approved-slides/slide-24-approved.html"}, {"n": 25, "title": "ITPF — Slide 25 Draft — Integrated Procurement Planning", "src": "approved-slides/slide-25-approved.html"}, {"n": 26, "title": "ITPF — Slide 26 Draft v3 — Business-driven ITIL Service Lifecycle", "src": "approved-slides/slide-26-approved.html"}, {"n": 27, "title": "ITPF — Slide 27 Draft — Project Management Cycle", "src": "approved-slides/slide-27-approved.html"}, {"n": 28, "title": "ITPF — Slide 28 Draft v3 — Project End Feedback", "src": "approved-slides/slide-28-approved.html"}, {"n": 29, "title": "ITPF — Slide 29 Approved — Strategic Sourcing Cycle", "src": "approved-slides/slide-29-approved.html"}, {"n": 30, "title": "ITPF — Slide 30 Approved Fixed — TCO of a Technology Service", "src": "approved-slides/slide-30-approved.html"}, {"n": 31, "title": "ITPF — Slide 31 Draft — Case 2", "src": "approved-slides/slide-31-approved.html"}, {"n": 32, "title": "ITPF — Slide 32 Fixed — Integrated Planning in Technology Procurement", "src": "approved-slides/slide-32-approved.html"}, {"n": 33, "title": "ITPF — Slide 33 Draft — Cloud Computing", "src": "approved-slides/slide-33-approved.html"}, {"n": 34, "title": "ITPF — Slide 34 — NIST Cloud Computing Model", "src": "approved-slides/slide-34-approved.html"}, {"n": 35, "title": "ITPF — Slide 35 — FSE and Right to Reduce FSE", "src": "approved-slides/slide-35-approved.html"}, {"n": 36, "title": "ITPF — Slide 36 — WEF 2025 Misinformation Risk", "src": "approved-slides/slide-36-approved.html"}, {"n": 37, "title": "ITPF — Slide 37 v5 — Cloud Deployment Models", "src": "approved-slides/slide-37-approved.html"}, {"n": 38, "title": "ITPF — Slide 38 — Cloud Services", "src": "approved-slides/slide-38-approved.html"}, {"n": 39, "title": "ITPF — Slide 39 — Case 3 Transition", "src": "approved-slides/slide-39-approved.html"}, {"n": 40, "title": "ITPF — Slide 40 — Buy or Build", "src": "approved-slides/slide-40-approved.html"}, {"n": 41, "title": "ITPF — Slide 41 — Delivery Models", "src": "approved-slides/slide-41-approved.html"}, {"n": 42, "title": "Slide 42 - SaaS License Metrics", "src": "approved-slides/slide-42-approved.html"}, {"n": 43, "title": "Slide 43", "src": "approved-slides/slide-43-approved.html"}, {"n": 44, "title": "Slide 44", "src": "approved-slides/slide-44-approved.html"}, {"n": 45, "title": "Slide 45", "src": "approved-slides/slide-45-approved.html"}, {"n": 46, "title": "Slide 46", "src": "approved-slides/slide-46-approved.html"}, {"n": 47, "title": "Slide 47", "src": "approved-slides/slide-47-approved.html"}, {"n": 48, "title": "Slide 48", "src": "approved-slides/slide-48-approved.html"}, {"n": 49, "title": "Slide 49 - Pricing Models", "src": "approved-slides/slide-49-approved.html"}, {"n": 50, "title": "Slide 50", "src": "approved-slides/slide-50-approved.html"}, {"n": 51, "title": "Slide 51 - Token Waste", "src": "approved-slides/slide-51-approved.html"}, {"n": 52, "title": "Slide 52", "src": "approved-slides/slide-52-approved.html"}, {"n": 53, "title": "Slide 53", "src": "approved-slides/slide-53-approved.html"}, {"n": 54, "title": "Slide 54 — SAP Negotiation Game", "src": "approved-slides/slide-54-approved.html"}, {"n": 55, "title": "Slide 55", "src": "approved-slides/slide-55-approved.html"}, {"n": 56, "title": "ITPF — Slide 56 — Software Maintenance and Support", "src": "approved-slides/slide-56-approved.html"}, {"n": 57, "title": "Slide 57", "src": "approved-slides/slide-57-approved.html"}, {"n": 58, "title": "Slide 58 — Quiz #1 Day 1", "src": "approved-slides/slide-58-approved.html"}, {"n": 59, "title": "Slide 59", "src": "approved-slides/slide-59-approved.html"}, {"n": 60, "title": "Slide 60 — Types of IT Outsourcing Services", "src": "approved-slides/slide-60-approved.html"}, {"n": 61, "title": "Slide 61", "src": "approved-slides/slide-61-approved.html"}, {"n": 62, "title": "Slide 62", "src": "approved-slides/slide-62-approved.html"}, {"n": 63, "title": "Slide 63 — Delivery Model Mapping Exercise", "src": "approved-slides/slide-63-approved.html"}, {"n": 64, "title": "Slide 64", "src": "approved-slides/slide-64-approved.html"}, {"n": 65, "title": "Slide 65 — Case #4 Transition", "src": "approved-slides/slide-65-approved.html"}, {"n": 66, "title": "Slide 66 — Source-to-Contract", "src": "approved-slides/slide-66-approved.html"}, {"n": 67, "title": "Slide 67 — ISO 19770-1:2017 Framework of ITAM Processes", "src": "approved-slides/slide-67-approved.html"}, {"n": 68, "title": "Slide 68 — Case #5 Transition", "src": "approved-slides/slide-68-approved.html"}, {"n": 69, "title": "Slide 69 — Oracle Audit Negotiation Game", "src": "approved-slides/slide-69-approved.html"}, {"n": 70, "title": "Slide 70 — Kraljic Matrix", "src": "approved-slides/slide-70-approved.html"}, {"n": 71, "title": "Slide 71 — Sourcing Value Levers", "src": "approved-slides/slide-71-approved.html"}, {"n": 72, "title": "Slide 72 — snapshot from source deck", "src": "approved-slides/slide-72-approved.html"}, {"n": 73, "title": "Slide 73 — Principal-Agent Problem and Incentive Alignment", "src": "approved-slides/slide-73-approved.html"}, {"n": 74, "title": "Slide 74 — snapshot from source deck", "src": "approved-slides/slide-74-approved.html"}, {"n": 75, "title": "Slide 75 — Types of Negotiation", "src": "approved-slides/slide-75-approved.html"}, {"n": 76, "title": "Slide 76 — Incomplete Contracts and Hold-up Problem", "src": "approved-slides/slide-76-approved.html"}, {"n": 77, "title": "Slide 77 — Formal and Relational Contracts", "src": "approved-slides/slide-77-approved.html"}, {"n": 78, "title": "Slide 78 — Vendor’s and Client’s Expectations Under Relational Contract", "src": "approved-slides/slide-78-approved.html"}, {"n": 79, "title": "Slide 79 — IT Procurement Contracts", "src": "approved-slides/slide-79-approved.html"}, {"n": 80, "title": "Slide 80 — AI Procurement Contracts", "src": "approved-slides/slide-80-approved.html"}, {"n": 81, "title": "Slide 81 — Case #6 Transition", "src": "approved-slides/slide-81-approved.html"}, {"n": 82, "title": "Slide 82 — ACV vs TCV in SaaS", "src": "approved-slides/slide-82-approved.html"}, {"n": 83, "title": "Slide 83 — Case #7 Transition", "src": "approved-slides/slide-83-approved.html"}, {"n": 84, "title": "Slide 84 — Quiz #2 Day 2", "src": "approved-slides/slide-84-approved.html"}];
+const framewrap=document.querySelector('.framewrap');
+const frame=document.getElementById('slideframe');
+const picker=document.getElementById('picker');
+const counter=document.getElementById('counter');
+const prev=document.getElementById('prev');
+const next=document.getElementById('next');
+const toast=document.getElementById('toast');
+const fsCounter=document.getElementById('fsCounter');
+const fsPrev=document.getElementById('fsPrev');
+const fsNext=document.getElementById('fsNext');
+const assistantOpen=document.getElementById('assistantOpen');
+const fsAssistantOpen=document.getElementById('fsAssistantOpen');
+const assistantPanel=document.getElementById('assistantPanel');
+const assistantClose=document.getElementById('assistantClose');
+const assistantTitle=document.getElementById('assistantTitle');
+const assistantBody=document.getElementById('assistantBody');
+const ASSISTANT_ENDPOINT='https://itpf-course-assistant.ukrsedo-e2e.workers.dev/explain-slide';
+const explanationCache=new Map();
+let assistantRequestController=null;
+let current=0;
+slides.forEach((s,i)=>{const o=document.createElement('option');o.value=i;o.textContent=String(s.n).padStart(2,'0')+' — '+s.title;picker.appendChild(o)});
+function flash(text){toast.textContent=text;toast.classList.add('show');clearTimeout(flash.t);flash.t=setTimeout(()=>toast.classList.remove('show'),900)}
+function setAssistantOpen(open){
+  assistantPanel.classList.toggle('open',open);
+  framewrap.classList.toggle('assistant-open',open);
+  assistantPanel.setAttribute('aria-hidden',open?'false':'true');
+  if(!open&&assistantRequestController){assistantRequestController.abort();assistantRequestController=null}
+}
+function closeAssistant(){setAssistantOpen(false)}
+function showAssistantLoading(slide){
+  assistantTitle.textContent='Slide '+slide.n+' — '+slide.title.replace(/^ITPF\s*[—-]\s*Slide\s*\d+\s*[—-]?\s*/i,'').replace(/^Slide\s*\d+\s*[—-]?\s*/i,'');
+  assistantBody.innerHTML='';
+  const status=document.createElement('div');status.className='assistant-status';
+  const spinner=document.createElement('span');spinner.className='assistant-spinner';spinner.setAttribute('aria-hidden','true');
+  const text=document.createElement('span');text.textContent='Preparing the explanation…';
+  status.append(spinner,text);assistantBody.appendChild(status);
+}
+function showAssistantExplanation(text){
+  assistantBody.innerHTML='';
+  const div=document.createElement('div');div.className='assistant-explanation';div.textContent=text;assistantBody.appendChild(div);
+}
+function showAssistantError(message){
+  assistantBody.innerHTML='';
+  const box=document.createElement('div');box.className='assistant-error';box.textContent=message;assistantBody.appendChild(box);
+  const retry=document.createElement('button');retry.type='button';retry.className='assistant-retry';retry.textContent='Try again';retry.onclick=explainCurrentSlide;assistantBody.appendChild(retry);
+}
+async function explainCurrentSlide(){
+  const slide=slides[current];
+  setAssistantOpen(true);
+  if(explanationCache.has(slide.n)){
+    assistantTitle.textContent='Slide '+slide.n+' — '+slide.title.replace(/^ITPF\s*[—-]\s*Slide\s*\d+\s*[—-]?\s*/i,'').replace(/^Slide\s*\d+\s*[—-]?\s*/i,'');
+    showAssistantExplanation(explanationCache.get(slide.n));
+    return;
+  }
+  showAssistantLoading(slide);
+  if(assistantRequestController)assistantRequestController.abort();
+  assistantRequestController=new AbortController();
+  const timeout=setTimeout(()=>assistantRequestController.abort(),30000);
+  try{
+    const response=await fetch(ASSISTANT_ENDPOINT,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({slideNumber:slide.n}),
+      signal:assistantRequestController.signal
+    });
+    let data;
+    try{data=await response.json()}catch{throw new Error('The Course Assistant returned an unreadable response.')}
+    if(!response.ok||!data.success)throw new Error(data.error||data.details||'The Course Assistant could not explain this slide.');
+    const explanation=String(data.explanation||'').trim();
+    if(!explanation)throw new Error('The Course Assistant returned no explanation.');
+    explanationCache.set(slide.n,explanation);
+    if(slides[current].n===slide.n&&assistantPanel.classList.contains('open'))showAssistantExplanation(explanation);
+  }catch(error){
+    if(error.name==='AbortError'){
+      if(assistantPanel.classList.contains('open'))showAssistantError('The request timed out. Please try again.');
+    }else if(assistantPanel.classList.contains('open')){
+      const originHint=location.protocol==='file:'?' Open the presentation from Good Spending or GitHub Pages rather than as a local file.':'';
+      showAssistantError((error.message||'The Course Assistant is unavailable.')+originHint);
+    }
+  }finally{clearTimeout(timeout);assistantRequestController=null}
+}
+assistantOpen.onclick=explainCurrentSlide;
+fsAssistantOpen.onclick=explainCurrentSlide;
+assistantClose.onclick=closeAssistant;
+assistantPanel.addEventListener('keydown',e=>{if(e.key==='Escape')closeAssistant()});
+function show(index,updateHash=true){
+  current=Math.max(0,Math.min(slides.length-1,index));
+  closeAssistant();
+  frame.src=slides[current].src;
+  picker.value=String(current);
+  counter.textContent=(current+1)+' / '+slides.length;
+  fsCounter.textContent=(current+1)+' / '+slides.length;
+  prev.disabled=current===0;next.disabled=current===slides.length-1;
+  fsPrev.disabled=current===0;fsNext.disabled=current===slides.length-1;
+  document.title='Slide '+(current+1)+' — IT Procurement Foundations';
+  if(updateHash) history.replaceState(null,'','#'+(current+1));
+}
+function go(d){show(current+d)}
+prev.onclick=()=>go(-1);next.onclick=()=>go(1);fsPrev.onclick=()=>go(-1);fsNext.onclick=()=>go(1);picker.onchange=()=>show(Number(picker.value));
+async function toggleDeckFullscreen(){
+  try{
+    const active=document.fullscreenElement||document.webkitFullscreenElement;
+    if(!active){
+      const request=framewrap.requestFullscreen||framewrap.webkitRequestFullscreen;
+      if(!request) throw new Error('Fullscreen unsupported');
+      await request.call(framewrap);
+    }else{
+      const exit=document.exitFullscreen||document.webkitExitFullscreen;
+      if(exit) await exit.call(document);
+    }
+  }catch(e){flash('Use the browser full-screen command')}
+}
+document.getElementById('full').onclick=toggleDeckFullscreen;
+function keynav(e){
+ if(e.key==='Escape'&&assistantPanel.classList.contains('open')){e.preventDefault();closeAssistant();return;}
+ const tag=(e.target&&e.target.tagName||'').toLowerCase(); if(tag==='input'||tag==='textarea'||tag==='select')return;
+ if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(1)}
+ else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(-1)}
+ else if(e.key==='Home'){e.preventDefault();show(0)} else if(e.key==='End'){e.preventDefault();show(slides.length-1)}
+}
+window.addEventListener('keydown',keynav);
+window.addEventListener('message',e=>{
+  if(e.source!==frame.contentWindow||!e.data||e.data.type!=='ITPF_DECK_NAV')return;
+  if(e.data.action==='next')go(1);
+  else if(e.data.action==='prev')go(-1);
+  else if(e.data.action==='first')show(0);
+  else if(e.data.action==='last')show(slides.length-1);
+  else if(e.data.action==='fullscreen')toggleDeckFullscreen();
+});
+window.addEventListener('hashchange',()=>{const n=parseInt(location.hash.slice(1),10);if(Number.isFinite(n)&&n>=1&&n<=slides.length)show(n-1,false)});
+const requested=parseInt(location.hash.slice(1),10);show(Number.isFinite(requested)&&requested>=1&&requested<=slides.length?requested-1:0,false);
+</script>
+</body>
+</html>

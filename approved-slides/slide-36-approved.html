@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>ITPF — Slide 36 — AI-enabled sourcing risk</title>
+<style>
+:root{--navy:#003b70;--cyan:#12bddf;--orange:#ff5a00;--ink:#173f66;--line:#c7d9ea;--soft:#f7fbff;--warn:#fff7f1}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--navy)}
+.stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
+.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:5}
+.header{position:absolute;left:6%;top:5.4%;right:17%}
+.session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.24rem}
+.dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
+h1{margin:0;color:var(--navy);font-size:clamp(31px,2.75vw,54px);line-height:1.03;letter-spacing:-.02em;font-weight:900}
+.subtitle{font-size:clamp(17px,1.2vw,24px);margin-top:.28rem;color:#2f5f88;font-weight:750}
+.content{position:absolute;left:4.2%;right:4.2%;top:22.5%;bottom:7%;display:grid;grid-template-columns:1fr 1fr;gap:1rem;min-height:0}
+.panel{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-width:0;overflow:hidden}
+.panel h2{margin:0;background:var(--navy);color:#fff;font-size:clamp(22px,1.55vw,32px);line-height:1.04;padding:.58rem .78rem;font-weight:900}
+.panel.controls{border-color:var(--orange)}
+.panel.controls h2{background:var(--orange)}
+.stack{padding:.72rem .78rem;display:grid;grid-template-rows:repeat(5,1fr);gap:.48rem;flex:1;min-height:0}
+.card{border:2px solid var(--line);border-left:8px solid var(--cyan);border-radius:8px;background:var(--soft);padding:.48rem .62rem;display:flex;flex-direction:column;justify-content:center;min-height:0}
+.card.risk{border-left-color:var(--orange);background:var(--warn)}
+.card strong{display:block;font-size:clamp(17px,1.13vw,23px);line-height:1.03;color:var(--navy);margin-bottom:.16rem}
+.card span{display:block;font-size:clamp(14px,.96vw,19px);line-height:1.10;font-weight:740;color:var(--ink)}
+.bottomBar{position:absolute;left:4.2%;right:4.2%;bottom:2.3%;border-top:2px solid var(--line);padding-top:.38rem;background:#fff}
+.takeaway{font-size:clamp(15px,1vw,20px);line-height:1.08;font-weight:900;color:var(--navy);text-align:center}
+.footer{position:absolute;left:4.9%;bottom:.7%;font-size:clamp(12px,.85vw,18px);color:#168cff}
+</style>
+</head>
+<body>
+<main class="stage">
+<section aria-label="AI-enabled sourcing risk and procurement controls" class="slide">
+<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<div class="header">
+<div class="session"><span class="dot"></span><span>Session 3 Cloud Computing</span></div>
+<h1>AI-Enabled Sourcing Risk</h1>
+<div class="subtitle">AI can accelerate analysis and communication, but it also creates new evidence, governance and accountability risks.</div>
+</div>
+<div class="content">
+<section class="panel">
+<h2>Where procurement is exposed</h2>
+<div class="stack">
+<div class="card risk"><strong>Unsupported claims</strong><span>AI may produce plausible but false facts, benchmarks, supplier comparisons or contract interpretations.</span></div>
+<div class="card risk"><strong>Supplier-generated content</strong><span>Proposals, references and technical statements may be AI-assisted, making authorship and validation less transparent.</span></div>
+<div class="card risk"><strong>Hidden limitations</strong><span>Models may use incomplete, outdated or biased information without clearly showing what is missing.</span></div>
+<div class="card risk"><strong>Confidentiality leakage</strong><span>Tender data, prices, evaluation notes or personal information may enter tools outside approved controls.</span></div>
+<div class="card risk"><strong>Inconsistent evaluation</strong><span>Automated scoring can reproduce bias or apply criteria unevenly when prompts, data or model versions change.</span></div>
+</div>
+</section>
+<section class="panel controls">
+<h2>Procurement controls</h2>
+<div class="stack">
+<div class="card"><strong>Validate evidence</strong><span>Require named sources, direct links, dates and verification before using AI-supported claims in decisions.</span></div>
+<div class="card"><strong>Assign accountability</strong><span>Keep a named human owner for supplier evaluation, recommendations and external communication.</span></div>
+<div class="card"><strong>Control data</strong><span>Define which procurement information may enter AI tools and use only approved environments.</span></div>
+<div class="card"><strong>Audit the process</strong><span>Retain prompts, outputs, model versions, scoring logic and decision records for material sourcing events.</span></div>
+<div class="card"><strong>Contract for transparency</strong><span>Set supplier obligations for AI-use disclosure, data handling, correction, monitoring and liability.</span></div>
+</div>
+</section>
+</div>
+<div class="bottomBar"><div class="takeaway">Use AI to support procurement judgement—not to replace evidence, governance or accountable decision-making.</div></div>
+<div class="footer">©</div>
+</section>
+</main>
+<script id="itpf-deck-bridge">
+(function(){
+  function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
+  window.addEventListener('keydown',function(e){
+    var t=e.target, tag=(t&&t.tagName||'').toLowerCase();
+    if(tag==='input'||tag==='textarea'||tag==='select'||(t&&t.isContentEditable)) return;
+    var action=null;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') action='next';
+    else if(e.key==='ArrowLeft'||e.key==='PageUp') action='prev';
+    else if(e.key==='Home') action='first';
+    else if(e.key==='End') action='last';
+    if(action){ e.preventDefault(); e.stopPropagation(); send(action); }
+  },true);
+  document.addEventListener('click',function(e){
+    var b=e.target&&e.target.closest?e.target.closest('button'):null;
+    if(!b) return;
+    var label=(b.textContent||'').trim().toLowerCase();
+    if(label==='full screen'||label==='fullscreen'||label==='⛶'){
+      e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
+    }
+  },true);
+})();
+</script>
+</body>
+</html>

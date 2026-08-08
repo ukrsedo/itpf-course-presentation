@@ -1,0 +1,60 @@
+<!doctype html>
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>ITPF — Slide 11 Draft</title>
+<style>
+:root{--navy:#003b70;--blue:#0077b6;--cyan:#00a6d6;--magenta:#c00067;--ink:#16354f;--muted:#60758a;--soft:#f5f9fc;--line:#cbddea;--orange:#f58220}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
+.stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
+.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.slide:before{content:"";position:absolute;inset:auto -10% -18% -8%;height:34%;background:linear-gradient(135deg,transparent 0 28%,rgba(0,183,229,.18) 28% 43%,transparent 43% 54%,rgba(0,59,112,.12) 54% 68%,transparent 68%);pointer-events:none}
+.logo{position:absolute;right:4.1%;top:3.5%;width:10.3%;height:auto;z-index:5}
+.header{position:absolute;left:5.2%;top:4.6%;right:17%}
+.kicker{color:var(--magenta);font-size:clamp(12px,.9vw,17px);font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.55%}
+h1{margin:0;color:var(--navy);font-size:clamp(31px,3.2vw,56px);line-height:1.03;letter-spacing:-.025em}
+.sub{margin:.75% 0 0;color:var(--muted);font-size:clamp(15px,1.1vw,20px);font-weight:700}
+.grid{position:absolute;left:5.2%;right:5.2%;top:24.8%;bottom:7.6%;display:grid;grid-template-columns:.96fr .96fr 1.08fr;gap:1.35%}
+.card{border:2px solid var(--blue);border-radius:18px;background:#fff;box-shadow:0 10px 28px rgba(0,59,112,.08);display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.card .top{padding:3.8% 4.7% 3.3%;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#f7fbfe 0%,#eef7fc 100%)}
+.num{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;font-size:clamp(15px,1.1vw,20px);font-weight:900;margin-bottom:2.5%}
+h2{margin:0;color:var(--navy);font-size:clamp(20px,1.65vw,30px);line-height:1.06;letter-spacing:-.015em}
+ul{margin:0;padding:4.1% 4.8% 3.8% 7.2%;font-size:clamp(15px,1.02vw,19px);line-height:1.22;overflow:visible}
+li{margin:0 0 3.2%}
+li::marker{color:var(--magenta)}
+.copy{position:absolute;left:2.3%;bottom:1.8%;font-size:clamp(10px,.75vw,13px);color:#7a8795}
+@media(max-aspect-ratio:4/3){.grid{grid-template-columns:1fr;top:23%;bottom:12%;overflow:auto}.card{min-height:230px}.slide{height:100%;width:auto}}
+</style></head><body><main class="stage"><section aria-label="3 Key Themes Shaping IT Procurement" class="slide">
+<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<div class="header"><div class="kicker">Session 1 · Setting the Scene</div><h1>3 Key Themes Shaping IT Procurement <span style="white-space:nowrap">(2025–2027)</span></h1><div class="sub">From SaaS market evidence to procurement implications</div></div>
+<div class="grid">
+<article class="card"><div class="top"><div class="num">1</div><h2>SaaS Cost and Governance Management</h2></div><ul><li>SaaS waste — shelfware, redundant apps and multichannel spend — remains material.</li><li>Shadow IT and decentralised IT demand undermine control, while Shadow IT shifts towards vibe coding.</li><li>Massive digital investments require strict ROI discipline.</li></ul></article>
+<article class="card"><div class="top"><div class="num">2</div><h2>SaaS Vendors’ Drive to Improve Margins and EBITDA</h2></div><ul><li>SaaS inflation and auto-renewals.</li><li>Changes in licensing models.</li><li>Unexpected costs and bill shock.</li></ul></article>
+<article class="card"><div class="top"><div class="num">3</div><h2>Shift to AI-Native SaaS Models and PaaS-centric Business Models</h2></div><ul><li>AI app and feature spend skyrockets.</li><li>In the face of vibe coding, there’s a shift from end-user solutions to service orchestration and integration.</li><li>AI functionality is becoming the decisive factor for supplier/solution selection.</li><li>IT procurement skills, practice and governance in the AI sub-category are still being established.</li></ul></article>
+</div>
+<div class="copy">©</div>
+</section></main>
+<script id="itpf-deck-bridge">
+(function(){
+  function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
+  window.addEventListener('keydown',function(e){
+    var t=e.target, tag=(t&&t.tagName||'').toLowerCase();
+    if(tag==='input'||tag==='textarea'||tag==='select'||(t&&t.isContentEditable)) return;
+    var action=null;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') action='next';
+    else if(e.key==='ArrowLeft'||e.key==='PageUp') action='prev';
+    else if(e.key==='Home') action='first';
+    else if(e.key==='End') action='last';
+    if(action){ e.preventDefault(); e.stopPropagation(); send(action); }
+  },true);
+  document.addEventListener('click',function(e){
+    var b=e.target&&e.target.closest?e.target.closest('button'):null;
+    if(!b) return;
+    var label=(b.textContent||'').trim().toLowerCase();
+    if(label==='full screen'||label==='fullscreen'||label==='⛶'){
+      e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
+    }
+  },true);
+})();
+</script>
+</body></html>

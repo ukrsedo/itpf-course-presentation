@@ -1,0 +1,63 @@
+<!doctype html>
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>ITPF — Slide 8 Approved</title>
+<style>
+:root{--navy:#003b70;--cyan:#00b7e5;--magenta:#c00067;--paper:#fff;--ink:#183d61;--muted:#5d7286;--soft:#eef8fd;--line:#cbdde8}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif}
+.stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
+.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:var(--paper);box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.logo{position:absolute;right:4.3%;top:4.1%;width:10.5%;height:auto;z-index:3}
+.header{position:absolute;left:5.2%;top:5.2%;right:18%;}
+.kicker{color:var(--magenta);font-weight:800;font-size:clamp(15px,1.15vw,22px);letter-spacing:.02em;text-transform:uppercase}
+h1{margin:.45% 0 0;color:var(--navy);font-size:clamp(36px,3.15vw,58px);line-height:1.02;letter-spacing:-.03em}
+.cards{position:absolute;left:5.2%;right:5.2%;top:22%;height:48%;display:grid;grid-template-columns:1fr 1fr;gap:2.3%}
+.card{position:relative;border:2px solid var(--line);border-radius:18px;padding:6.4% 6.2% 5.6%;background:linear-gradient(145deg,#fff 0%,var(--soft) 100%);overflow:hidden}
+.card:before{content:"";position:absolute;left:0;top:0;width:100%;height:9px;background:var(--cyan)}
+.card.shelf:before{background:var(--magenta)}
+.label{display:flex;align-items:center;gap:14px;margin-bottom:5%}
+.icon{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:#fff;font-weight:900;font-size:22px;flex:0 0 auto}
+.shelf .icon{background:var(--magenta)}
+h2{margin:0;color:var(--navy);font-size:clamp(25px,2.15vw,40px);line-height:1.05}
+.card p{margin:0;color:var(--ink);font-size:clamp(17px,1.35vw,25px);line-height:1.38;font-weight:500}
+.stat{position:absolute;left:5.2%;right:5.2%;bottom:11.5%;height:13.2%;border-radius:16px;background:var(--navy);display:grid;grid-template-columns:22% 78%;align-items:center;overflow:hidden}
+.range{height:100%;display:grid;place-items:center;background:var(--cyan);color:var(--navy);font-weight:900;font-size:clamp(32px,3.15vw,58px);letter-spacing:-.04em}
+.stat p{margin:0;padding:0 4.5%;color:#fff;font-size:clamp(17px,1.35vw,25px);line-height:1.25;font-weight:700}
+.footer{position:absolute;left:5.2%;right:5.2%;bottom:2.05%;display:flex;justify-content:space-between;color:#607588;font-size:clamp(10px,.72vw,13px);z-index:3}
+.rule{position:absolute;left:0;bottom:0;width:100%;height:8px;background:linear-gradient(90deg,var(--navy) 0 32%,var(--cyan) 32% 100%);z-index:3}
+.controls{position:absolute;right:1.7%;bottom:1.6%;opacity:.15;transition:.2s;z-index:4}.slide:hover .controls{opacity:.85}button{border:1px solid #c8d3df;background:#fff;color:var(--navy);border-radius:6px;padding:8px 12px;font-weight:700;cursor:pointer}
+</style></head><body><div class="stage"><section aria-label="Slide 8: Software Inflation and Shelfware definitions" class="slide">
+<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<div class="header"><div class="kicker">Session 1 · Setting the Scene</div><h1>Software Inflation and Shelfware</h1></div>
+<div class="cards">
+<article class="card"><div class="label"><div class="icon">↑</div><h2>Software Inflation</h2></div><p>The progressive growth of an organization’s software estate—in terms of applications, subscriptions, licenses, and consumption-based services—leading to rising costs, increasing complexity, and diminishing cost efficiency.</p></article>
+<article class="card shelf"><div class="label"><div class="icon">∅</div><h2>Shelfware</h2></div><p>The software or digital licenses that an organization pays for but never actively installs, uses, or fully adopts.</p></article>
+</div>
+<div class="stat"><div class="range">4%–18%</div><p>Software spend spreads from 4% to 18% of an average company's revenue, depending on the industry.</p></div>
+<div class="footer"><span>Technology (IT) Procurement Foundations</span><span>8</span></div><div class="rule"></div><div class="controls"><button onclick="parent.postMessage({type:'ITPF_DECK_NAV',action:'fullscreen'},'*')">Full screen</button></div>
+</section></div>
+<script id="itpf-deck-bridge">
+(function(){
+  function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
+  window.addEventListener('keydown',function(e){
+    var t=e.target, tag=(t&&t.tagName||'').toLowerCase();
+    if(tag==='input'||tag==='textarea'||tag==='select'||(t&&t.isContentEditable)) return;
+    var action=null;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') action='next';
+    else if(e.key==='ArrowLeft'||e.key==='PageUp') action='prev';
+    else if(e.key==='Home') action='first';
+    else if(e.key==='End') action='last';
+    if(action){ e.preventDefault(); e.stopPropagation(); send(action); }
+  },true);
+  document.addEventListener('click',function(e){
+    var b=e.target&&e.target.closest?e.target.closest('button'):null;
+    if(!b) return;
+    var label=(b.textContent||'').trim().toLowerCase();
+    if(label==='full screen'||label==='fullscreen'||label==='⛶'){
+      e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
+    }
+  },true);
+})();
+</script>
+</body></html>

@@ -1,0 +1,137 @@
+<!doctype html>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>ITPF — Slide 17 Draft — Reliability vs Agility</title>
+<style>
+:root{--navy:#003b70;--cyan:#12bddf;--orange:#ff5a00;--blue:#2d8cff;--ink:#003b70;--soft:#f6fbff;--line:#b8d4ef;}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
+.stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
+.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:5}
+.header{position:absolute;left:6.3%;top:8.5%;right:16%}
+.session{font-size:clamp(15px,1.08vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.55rem}
+.dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
+h1{margin:0;color:var(--navy);font-size:clamp(34px,3vw,54px);line-height:1.02;letter-spacing:-.02em;font-weight:800}
+.subtitle{font-size:clamp(18px,1.3vw,25px);margin-top:.55rem;color:#2f5f88;font-weight:600}
+.tabs{position:absolute;left:6.3%;right:6.3%;top:23%;display:flex;gap:1rem}
+.tab{border:2px solid var(--navy);background:#fff;color:var(--navy);font-size:clamp(18px,1.35vw,27px);font-weight:800;padding:.65rem 1.15rem;border-radius:999px;cursor:pointer}
+.tab.active{background:var(--navy);color:#fff}
+.panel{position:absolute;left:6.3%;right:6.3%;top:33%;bottom:9%;display:none}
+#activity.panel{bottom:10%}
+#activity.panel.active{display:grid;grid-template-rows:auto 1fr;gap:.7rem}
+.panel.active{display:block}
+.modeGrid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;height:100%}
+.mode{border:3px solid var(--navy);overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.mode.rel{border-color:var(--cyan)}.mode.ag{border-color:var(--orange)}
+.modeHead{padding:.85rem 1.05rem;color:#fff;font-weight:800;font-size:clamp(24px,2vw,38px);line-height:1.05}
+.rel .modeHead{background:var(--cyan)}.ag .modeHead{background:var(--orange)}
+.modeSub{font-size:clamp(16px,1.15vw,23px);font-weight:700;opacity:.95;margin-top:.25rem}
+.modeBody{padding:1rem 1.15rem;font-size:clamp(17px,1.22vw,25px);line-height:1.23;display:grid;gap:.62rem}
+.modeBody div{border-bottom:1px solid #dbe7f4;padding-bottom:.42rem}
+.modeBody div:last-child{border-bottom:0}
+.promptBox{margin-top:1rem;border:2px dashed var(--orange);padding:.8rem 1rem;font-weight:800;font-size:clamp(17px,1.23vw,25px);line-height:1.18;color:var(--navy);background:#fff8f4}
+.activityGrid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;height:78%}
+.example{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column}
+.example.rel{border-color:var(--cyan)}.example.ag{border-color:var(--orange)}
+.example h2{margin:0;padding:.75rem 1rem;color:#fff;font-size:clamp(23px,1.85vw,36px);line-height:1.05}
+.example.rel h2{background:var(--cyan)}.example.ag h2{background:var(--orange)}
+.example ul{margin:0;padding:1rem 1.3rem 1rem 2rem;font-size:clamp(16px,1.12vw,22px);line-height:1.18}
+.example li{margin:.45rem 0}
+.bottomPrompt{position:absolute;left:0;right:0;bottom:0;border:3px solid var(--navy);background:#f7fbff;padding:.85rem 1rem;font-size:clamp(18px,1.35vw,27px);font-weight:800;display:flex;justify-content:space-between;gap:1rem;align-items:center}
+.bottomPrompt span:last-child{color:var(--orange)}
+
+.exerciseWrap{display:grid;grid-template-columns:34% 66%;gap:1rem;height:100%}
+.scenarioList{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-width:0}
+.scenarioHead{background:var(--navy);color:#fff;font-size:clamp(20px,1.45vw,29px);font-weight:800;line-height:1.05;padding:.72rem .9rem}
+.scenarios{padding:.75rem;display:grid;gap:.45rem;overflow:hidden}
+.scenario{border:2px solid var(--line);background:#fff;color:var(--navy);font-size:clamp(14px,1vw,19px);line-height:1.12;font-weight:800;text-align:left;padding:.46rem .55rem;cursor:pointer}
+.scenario.active{border-color:var(--orange);background:#fff5ef}
+.bucketGrid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;height:100%}
+.bucket{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;cursor:pointer;min-width:0}
+.bucket.rel{border-color:var(--cyan)}.bucket.ag{border-color:var(--orange)}
+.bucket h2{margin:0;color:#fff;font-size:clamp(22px,1.65vw,32px);line-height:1.04;padding:.75rem .9rem;font-weight:800}
+.bucket.rel h2{background:var(--cyan)}.bucket.ag h2{background:var(--orange)}
+.drop{padding:.65rem;display:grid;gap:.42rem;align-content:start;overflow:hidden}
+.answer{border:2px solid var(--line);background:#f7fbff;padding:.42rem;font-size:clamp(13px,.9vw,17px);line-height:1.08;font-weight:700}
+.answer.correct{border-color:#11844f;background:#edf9f2;color:#075f38}
+.answer.wrong{border-color:#d42f2f;background:#fff0f0;color:#a50f0f}
+.answer small{display:block;margin-top:.22rem;font-size:clamp(11px,.72vw,14px);line-height:1.05;font-weight:800}
+.feedback{position:static;font-size:clamp(14px,1.0vw,19px);line-height:1.12;color:#244d72;font-weight:800;text-align:center;padding:.3rem 0 .15rem;background:transparent;border-top:0;z-index:auto}
+.footer{position:absolute;left:4.9%;bottom:4.3%;font-size:clamp(14px,1vw,22px);color:#168cff}
+</style>
+</head>
+<body>
+<main class="stage"><section aria-label="Reliability versus Agility" class="slide">
+<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<div class="header"><div class="session"><span class="dot"></span><span>Session 1 Setting the Scene</span></div><h1>Reliability vs Agility</h1><div class="subtitle">Bimodal operations: plan-driven stability and iterative change</div></div>
+<div class="tabs" role="tablist"><button class="tab active" data-panel="modes" type="button">Operating modes</button><button class="tab" data-panel="activity" type="button">Activity</button></div>
+<div class="panel active" id="modes"><div class="modeGrid"><div class="mode rel"><div class="modeHead">Reliability<div class="modeSub">Plan-driven</div></div><div class="modeBody"><div>Stable regulated mission environment</div><div>Well-defined requirements based on established technology</div><div>Established and diverse supply base</div><div>Homogeneous stakeholders</div><div>Formal documented relationships</div><div>Cost and reliability predominance, low risk appetite</div></div></div><div class="mode ag">
+<div class="modeHead">Agility<div class="modeSub">Iterative change-driven</div></div>
+<div class="modeBody">
+<div>Fast-changing business or customer environment</div>
+<div>Evolving requirements and emerging technologies</div>
+<div>Exploratory or fragmented supply base</div>
+<div>Multiple stakeholders with changing priorities</div>
+<div>Collaborative working and short feedback cycles</div>
+<div>Value, speed and learning predominance, higher risk appetite</div>
+</div>
+</div>
+</div>
+</div>
+<div class="panel" id="activity"><div class="feedback">Choose a scenario, then click Reliability or Agility. Wrong answers are marked in red and corrected immediately.</div><div class="exerciseWrap">
+<div class="scenarioList">
+<div class="scenarioHead">Select a function or category</div>
+<div class="scenarios">
+<button class="scenario" data-answer="reliability" data-text="Data centre operations" type="button">Data centre operations</button>
+<button class="scenario" data-answer="reliability" data-text="ERP core support" type="button">ERP core support</button>
+<button class="scenario" data-answer="agility" data-text="AI proof of concept" type="button">AI proof of concept</button>
+<button class="scenario" data-answer="agility" data-text="Customer mobile app feature squad" type="button">Customer mobile app feature squad</button>
+<button class="scenario" data-answer="reliability" data-text="Payroll system maintenance" type="button">Payroll system maintenance</button>
+<button class="scenario" data-answer="agility" data-text="Marketing automation experiment" type="button">Marketing automation experiment</button>
+<button class="scenario" data-answer="reliability" data-text="Cybersecurity monitoring service" type="button">Cybersecurity monitoring service</button>
+<button class="scenario" data-answer="agility" data-text="Low-code workflow prototype" type="button">Low-code workflow prototype</button>
+</div>
+</div>
+<div class="bucketGrid">
+<div class="bucket rel" data-bucket="reliability"><h2>Reliability</h2><div class="drop"></div></div>
+<div class="bucket ag" data-bucket="agility"><h2>Agility</h2><div class="drop"></div></div>
+</div>
+</div></div>
+<div class="footer">©</div>
+</section></main>
+<script>
+document.querySelectorAll('.tab').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));btn.classList.add('active');document.getElementById(btn.dataset.panel).classList.add('active');});});
+const labels={reliability:'Reliability',agility:'Agility'};
+let selected=null;
+document.querySelectorAll('.scenario').forEach(s=>s.addEventListener('click',()=>{document.querySelectorAll('.scenario').forEach(x=>x.classList.remove('active'));selected=s;s.classList.add('active');}));
+document.querySelectorAll('.bucket').forEach(bucket=>bucket.addEventListener('click',()=>{if(!selected)return;const chosen=bucket.dataset.bucket;const correct=selected.dataset.answer;const item=document.createElement('div');item.className='answer '+(chosen===correct?'correct':'wrong');item.innerHTML=selected.dataset.text+(chosen===correct?'<small>Correct</small>':'<small>Wrong. Correct: '+labels[correct]+'</small>');bucket.querySelector('.drop').appendChild(item);selected.remove();selected=null;}));
+</script>
+<script id="itpf-deck-bridge">
+(function(){
+  function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
+  window.addEventListener('keydown',function(e){
+    var t=e.target, tag=(t&&t.tagName||'').toLowerCase();
+    if(tag==='input'||tag==='textarea'||tag==='select'||(t&&t.isContentEditable)) return;
+    var action=null;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') action='next';
+    else if(e.key==='ArrowLeft'||e.key==='PageUp') action='prev';
+    else if(e.key==='Home') action='first';
+    else if(e.key==='End') action='last';
+    if(action){ e.preventDefault(); e.stopPropagation(); send(action); }
+  },true);
+  document.addEventListener('click',function(e){
+    var b=e.target&&e.target.closest?e.target.closest('button'):null;
+    if(!b) return;
+    var label=(b.textContent||'').trim().toLowerCase();
+    if(label==='full screen'||label==='fullscreen'||label==='⛶'){
+      e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
+    }
+  },true);
+})();
+</script>
+</body></html>

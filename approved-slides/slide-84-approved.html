@@ -1,0 +1,125 @@
+<!doctype html>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Slide 84 — Quiz #2 Day 2</title>
+<style>
+:root {
+  --navy:#003b70;
+  --cyan:#12bddf;
+  --orange:#ff5a00;
+  --ink:#173f66;
+  --line:#c7d9ea;
+  --soft:#f7fbff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--navy)}
+.stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
+.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:5}
+.logoText{position:absolute;right:4.3%;top:4%;font-size:30px;font-weight:900;color:var(--navy);z-index:5}
+.corner{position:absolute;right:0;top:0;width:28%;height:50%;background:var(--cyan);clip-path:polygon(100% 0,100% 100%,0 0);opacity:.95}
+.header{position:absolute;left:6%;top:5.3%;right:17%}
+.session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.35rem}
+.dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
+h1{margin:0;color:var(--navy);font-size:clamp(42px,4.0vw,74px);line-height:1.00;letter-spacing:-.035em;font-weight:900}
+.subtitle{font-size:clamp(22px,1.55vw,32px);margin-top:.55rem;color:#2f5f88;font-weight:850}
+
+.main{position:absolute;left:6%;right:6%;top:31%;bottom:7%;display:grid;grid-template-columns:45% 55%;gap:1.1rem;min-height:0}
+.quizBox{border:4px solid var(--navy);border-radius:18px;background:#fff;overflow:hidden;box-shadow:0 10px 28px rgba(0,35,70,.08)}
+.quizHead{background:var(--navy);color:#fff;font-size:clamp(26px,1.9vw,38px);font-weight:900;line-height:1.05;padding:.82rem 1.05rem}
+.quizBody{padding:1.05rem 1.15rem;font-size:clamp(20px,1.38vw,28px);line-height:1.23;font-weight:780;color:var(--ink)}
+.quizBody strong{color:var(--navy)}
+.signal{margin-top:.9rem;border-left:10px solid var(--orange);background:#fff8f4;border-radius:14px;padding:.85rem 1rem;font-size:clamp(18px,1.22vw,25px);line-height:1.18;font-weight:820;color:var(--ink)}
+
+.right{display:grid;grid-template-rows:auto 1fr;gap:.8rem;min-height:0}
+.title2{font-size:clamp(25px,1.75vw,36px);font-weight:900;color:var(--navy);margin:0}
+.steps{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:.75rem;min-height:0}
+.step{border:3px solid var(--line);border-radius:16px;background:var(--soft);padding:.85rem .9rem;display:grid;grid-template-columns:auto 1fr;gap:.65rem;align-content:start;min-height:0}
+.num{width:42px;height:42px;border-radius:50%;background:var(--cyan);display:grid;place-items:center;color:#003b70;font-size:clamp(20px,1.38vw,28px);font-weight:900;flex:none}
+.step h3{margin:0 0 .25rem 0;font-size:clamp(18px,1.25vw,25px);line-height:1.05;font-weight:900;color:var(--navy)}
+.step p{margin:0;font-size:clamp(15px,1.0vw,20px);line-height:1.16;font-weight:760;color:var(--ink)}
+
+.launch{position:absolute;left:6%;right:6%;bottom:2.2%;display:flex;justify-content:space-between;align-items:center;border-top:2px solid var(--line);padding-top:.45rem}
+.launchText{font-size:clamp(15px,1.05vw,21px);font-weight:900;color:var(--navy)}
+.badge{background:var(--orange);color:#fff;border-radius:999px;padding:.55rem 1.15rem;font-size:clamp(16px,1.1vw,22px);font-weight:900;text-decoration:none;display:inline-block}
+</style>
+</head>
+<body>
+<main class="stage">
+<section aria-label="Transition to Quiz 2 Day 2" class="slide">
+<div class="corner"></div>
+<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<div class="header">
+<div class="session"><span class="dot"></span><span>IT Procurement Foundations</span></div>
+<h1>Quiz #2</h1>
+<div class="subtitle">Day 2 Knowledge Check</div>
+</div>
+<div class="main">
+<div>
+<section class="quizBox">
+<div class="quizHead">Assessment checkpoint</div>
+<div class="quizBody">
+          Complete <strong>Quiz #2</strong> to check your understanding of the Day 2 concepts. The quiz records the score after you enter your Student ID at the end.
+        </div>
+</section>
+<div class="signal">
+        Complete the quiz first. Enter your Student ID after the quiz if you want the score recorded in the course results tracker.
+      </div>
+</div>
+<div class="right">
+<h2 class="title2">Before you start</h2>
+<div class="steps">
+<div class="step">
+<div class="num">1</div>
+<div><h3>Complete the quiz</h3><p>Answer the questions first. Student ID is entered after the quiz to record the score.</p></div>
+</div>
+<div class="step">
+<div class="num">2</div>
+<div><h3>Answer individually</h3><p>This is a knowledge check, not a group exercise.</p></div>
+</div>
+<div class="step">
+<div class="num">3</div>
+<div><h3>Submit once</h3><p>Check your answers before final submission.</p></div>
+</div>
+<div class="step">
+<div class="num">4</div>
+<div><h3>Record the score</h3><p>After completion, enter your Student ID if score recording is required.</p></div>
+</div>
+</div>
+</div>
+</div>
+<div class="launch">
+<div class="launchText">Open Quiz #2 when instructed by the trainer.</div>
+<a class="badge" href="https://www.goodspending.com/techology-it-procurement-foundations-cips-skills/course-quizzes" rel="noopener" target="_blank">Start Quiz</a>
+</div>
+</section>
+</main>
+<script id="itpf-deck-bridge">
+(function(){
+  function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
+  window.addEventListener('keydown',function(e){
+    var t=e.target, tag=(t&&t.tagName||'').toLowerCase();
+    if(tag==='input'||tag==='textarea'||tag==='select'||(t&&t.isContentEditable)) return;
+    var action=null;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') action='next';
+    else if(e.key==='ArrowLeft'||e.key==='PageUp') action='prev';
+    else if(e.key==='Home') action='first';
+    else if(e.key==='End') action='last';
+    if(action){ e.preventDefault(); e.stopPropagation(); send(action); }
+  },true);
+  document.addEventListener('click',function(e){
+    var b=e.target&&e.target.closest?e.target.closest('button'):null;
+    if(!b) return;
+    var label=(b.textContent||'').trim().toLowerCase();
+    if(label==='full screen'||label==='fullscreen'||label==='⛶'){
+      e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
+    }
+  },true);
+})();
+</script>
+</body>
+</html>

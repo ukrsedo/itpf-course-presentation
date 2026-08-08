@@ -1,0 +1,256 @@
+<!doctype html>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>ITPF — Slide 24 Draft — ERP Cost Feedback</title>
+<style>
+:root {
+  --navy:#003b70;
+  --deep:#132d55;
+  --cyan:#12bddf;
+  --orange:#ff9966;
+  --red:#c93a3d;
+  --green:#3aa25a;
+  --blue:#4778c8;
+  --ink:#003b70;
+  --line:#c7d9ea;
+  --soft:#f7fbff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
+.stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
+.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.logo{position:absolute;right:4.3%;top:3.5%;width:10%;height:auto;z-index:5}
+.header{position:absolute;left:0;right:0;top:0;height:18.4%;background:var(--deep);color:#fff;padding:2.4% 6% 1.4%}
+.header h1{margin:0;font-size:clamp(35px,3.2vw,62px);line-height:1.02;font-weight:900;letter-spacing:-.02em}
+.header .subtitle{font-size:clamp(19px,1.45vw,29px);font-weight:800;margin-top:.35rem}
+.tabs{position:absolute;left:6%;right:6%;top:21.2%;display:flex;gap:.85rem}
+.tab{border:3px solid var(--navy);background:#fff;color:var(--navy);font-size:clamp(20px,1.45vw,30px);font-weight:900;padding:.56rem 1rem;cursor:pointer}
+.tab.active{background:var(--navy);color:#fff}
+.panel{position:absolute;left:6%;right:6%;top:30%;bottom:6.5%;display:none}
+.panel.active{display:block}
+
+.chart{position:relative;width:100%;height:100%}
+.myth,.reality{position:absolute;top:0;width:32.5%;height:31%;color:#fff;padding:1.1rem 1.15rem;display:flex;flex-direction:column;justify-content:center}
+.myth{left:0;background:var(--red)}
+.reality{right:0;background:var(--green)}
+.boxTitle{font-size:clamp(22px,1.65vw,34px);font-weight:900;margin-bottom:1.6rem}
+.boxText{font-size:clamp(21px,1.55vw,31px);line-height:1.18;font-weight:750}
+
+.bigArrow{position:absolute;left:45.7%;top:13%;font-size:clamp(54px,4.6vw,86px);line-height:1;color:var(--orange);-webkit-text-stroke:1px #9a38aa;text-shadow:0 0 0 #9a38aa}
+
+.flow{position:absolute;left:0;right:0;top:38.5%;height:20%;display:grid;grid-template-columns:1.18fr .22fr 1.18fr .22fr 1.18fr .22fr 1fr;align-items:center;gap:.4rem}
+.oval{height:76%;border-radius:999px;background:var(--blue);border:2px solid #9a38aa;color:#fff;display:flex;align-items:center;justify-content:center;font-size:clamp(22px,1.75vw,34px);font-weight:750}
+.arrow{font-size:clamp(42px,3.6vw,68px);color:var(--orange);-webkit-text-stroke:1px #9a38aa;line-height:1;text-align:center}
+.drivers{position:absolute;left:4%;right:4%;top:63%;bottom:12%;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem 2.2rem}
+.driver{border:2px solid #b14bb8;border-radius:16px;background:#e9e9e9;color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:clamp(20px,1.5vw,30px);font-weight:800;text-align:center;padding:.5rem}
+.question{position:absolute;left:0;right:0;bottom:0;border-top:2px solid var(--line);padding-top:.55rem;text-align:center;font-size:clamp(18px,1.35vw,27px);line-height:1.12;font-weight:900;color:var(--navy)}
+
+.feedbackGrid{height:100%;display:grid;grid-template-columns:.9fr 1.1fr;gap:1.1rem}
+.entry,.responses{border:3px solid var(--navy);background:#fff;min-height:0;display:flex;flex-direction:column}
+.entry h2,.responses h2{margin:0;background:var(--navy);color:#fff;font-size:clamp(23px,1.75vw,35px);line-height:1.05;padding:.75rem .95rem;font-weight:900}
+.entryBody{padding:1rem;display:flex;flex-direction:column;flex:1;min-height:0}
+.prompt{font-size:clamp(17px,1.2vw,24px);line-height:1.2;font-weight:800;color:#244d72;margin:0 0 .8rem}
+textarea{width:100%;flex:1;min-height:130px;resize:none;border:2px solid var(--line);border-radius:10px;padding:.9rem;font:inherit;font-size:clamp(16px,1.12vw,22px);line-height:1.25;color:#183d60;outline:none}
+textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(18,189,223,.16)}
+.actions{display:flex;align-items:center;gap:.75rem;margin-top:.8rem}
+button.submit{border:0;background:var(--navy);color:#fff;border-radius:8px;padding:.7rem 1.1rem;font-size:clamp(15px,1vw,19px);font-weight:900;cursor:pointer}
+.counter{margin-left:auto;font-size:clamp(12px,.85vw,16px);font-weight:800;color:#60768c}
+.message{height:20px;margin-top:.45rem;font-size:clamp(12px,.85vw,16px);font-weight:900}
+.responseHead{display:flex;align-items:center;justify-content:space-between;background:var(--navy);color:#fff;padding:0 .95rem 0 0}
+.responseHead h2{padding:.75rem .95rem;background:transparent}
+.count{font-size:clamp(12px,.85vw,16px);font-weight:900}
+.empty{margin:auto;text-align:center;color:#5e7286;font-size:clamp(16px,1.1vw,22px);line-height:1.3;max-width:74%;font-weight:750}
+ul{list-style:none;margin:.75rem 0 0;padding:0 1rem 1rem;overflow:auto;display:flex;flex-direction:column;gap:.6rem}
+li{border-left:5px solid var(--cyan);background:#f6f9fb;padding:.65rem .8rem;border-radius:0 8px 8px 0;font-size:clamp(14px,1vw,19px);line-height:1.25;font-weight:700;overflow-wrap:anywhere}
+.footer{position:absolute;left:4.9%;bottom:2.7%;font-size:clamp(14px,1vw,22px);color:#168cff}
+</style>
+</head>
+<body>
+<main class="stage">
+<section aria-label="ERP cost feedback" class="slide">
+<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<div class="header">
+<h1>ERP COST ≠ PRICE TAG</h1>
+<div class="subtitle">It is a function of decisions, not a fixed number</div>
+</div>
+<div class="tabs">
+<button class="tab active" data-panel="chart" type="button">Chart</button>
+<button class="tab" data-panel="feedback" type="button">Feedback</button>
+</div>
+<div class="panel active" id="chart">
+<div class="chart">
+<div class="myth">
+<div class="boxTitle">MYTH</div>
+<div class="boxText">$80k–$120k<br/>“Typical ERP”</div>
+</div>
+<div class="bigArrow">➜</div>
+<div class="reality">
+<div class="boxTitle">REALITY</div>
+<div class="boxText">$3k → $1M+<br/>Depends on choices</div>
+</div>
+<div class="flow">
+<div class="oval">Scope</div><div class="arrow">➜</div>
+<div class="oval">Complexity</div><div class="arrow">➜</div>
+<div class="oval">Effort</div><div class="arrow">➜</div>
+<div class="oval">Cost</div>
+</div>
+<div class="drivers">
+<div class="driver">Depth</div>
+<div class="driver">Scale</div>
+<div class="driver">Integrations</div>
+<div class="driver">Customizations</div>
+<div class="driver">Team</div>
+<div class="driver">Decision-making</div>
+</div>
+</div>
+</div>
+<div class="panel" id="feedback">
+<div class="feedbackGrid">
+<section class="entry">
+<h2>Your view</h2>
+<div class="entryBody">
+<p class="prompt">Which decision driver most often turns an ERP project from affordable into expensive?</p>
+<textarea id="input" maxlength="220" placeholder="Type your answer here…"></textarea>
+<div class="actions">
+<button class="submit" id="submit">Submit</button>
+<span class="counter"><span id="chars">0</span>/220</span>
+</div>
+<div aria-live="polite" class="message" id="message"></div>
+</div>
+</section>
+<section class="responses">
+<div class="responseHead"><h2>Group feedback</h2><span class="count" id="count">0 responses</span></div>
+<div class="empty" id="empty">Responses will appear here as they are submitted.</div>
+<ul id="list"></ul>
+</section>
+</div>
+</div>
+<div class="footer">©</div>
+</section>
+</main>
+<script>
+document.querySelectorAll('.tab').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(btn.dataset.panel).classList.add('active');
+}));
+
+const WORKER_URL = "https://itpf-live-responses.ukrsedo-e2e.workers.dev";
+const SESSION_ID = "ITPF-2026-09-10-11";
+const QUESTION_ID = "ERP-COST-DRIVERS-01";
+const REFRESH_INTERVAL_MS = 15000;
+
+const input = document.getElementById('input');
+const submit = document.getElementById('submit');
+const chars = document.getElementById('chars');
+const message = document.getElementById('message');
+const list = document.getElementById('list');
+const empty = document.getElementById('empty');
+const count = document.getElementById('count');
+let submitting = false;
+
+input.addEventListener('input', () => { chars.textContent = input.value.length; message.textContent = ''; });
+
+function endpoint() { return `${WORKER_URL.replace(/\/$/, '')}/responses`; }
+
+function setMessage(text, type='info') {
+  message.textContent = text;
+  message.style.color = type === 'error' ? '#a22' : type === 'success' ? '#197241' : '#5e7286';
+}
+
+function renderResponses(items) {
+  list.replaceChildren();
+  for (const item of items) {
+    const li = document.createElement('li');
+    li.textContent = item.response || item.text || '';
+    list.appendChild(li);
+  }
+  empty.hidden = items.length > 0;
+  count.textContent = `${items.length} response${items.length === 1 ? '' : 's'}`;
+}
+
+async function loadResponses(showError=false) {
+  try {
+    const url = new URL(endpoint());
+    url.searchParams.set('sessionId', SESSION_ID);
+    url.searchParams.set('questionId', QUESTION_ID);
+    const response = await fetch(url, { method: 'GET', cache: 'no-store' });
+    const data = await response.json();
+    if (!response.ok || !data.success) throw new Error(data.error || 'Unable to load responses.');
+    renderResponses(Array.isArray(data.responses) ? data.responses : []);
+  } catch (error) {
+    if (showError) setMessage(error.message || 'Unable to load responses.', 'error');
+  }
+}
+
+async function submitResponse() {
+  if (submitting) return;
+  const value = input.value.trim().replace(/\s+/g, ' ');
+  if (!value) { setMessage('Please enter a response.', 'error'); return; }
+
+  submitting = true;
+  submit.disabled = true;
+  submit.textContent = 'Submitting…';
+  setMessage('');
+
+  try {
+    const response = await fetch(endpoint(), {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        sessionId: SESSION_ID,
+        questionId: QUESTION_ID,
+        responseId: (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`),
+        response: value
+      })
+    });
+    const data = await response.json();
+    if (!response.ok || !data.success) throw new Error(data.error || 'Submission failed.');
+    input.value = '';
+    chars.textContent = '0';
+    setMessage('Submitted.', 'success');
+    await loadResponses(true);
+    input.focus();
+  } catch (error) {
+    setMessage(`${error.message || 'Submission failed.'} Your text has not been cleared.`, 'error');
+  } finally {
+    submitting = false;
+    submit.disabled = false;
+    submit.textContent = 'Submit';
+  }
+}
+
+submit.addEventListener('click', submitResponse);
+loadResponses(false);
+setInterval(() => loadResponses(false), REFRESH_INTERVAL_MS);
+</script>
+<script id="itpf-deck-bridge">
+(function(){
+  function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
+  window.addEventListener('keydown',function(e){
+    var t=e.target, tag=(t&&t.tagName||'').toLowerCase();
+    if(tag==='input'||tag==='textarea'||tag==='select'||(t&&t.isContentEditable)) return;
+    var action=null;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') action='next';
+    else if(e.key==='ArrowLeft'||e.key==='PageUp') action='prev';
+    else if(e.key==='Home') action='first';
+    else if(e.key==='End') action='last';
+    if(action){ e.preventDefault(); e.stopPropagation(); send(action); }
+  },true);
+  document.addEventListener('click',function(e){
+    var b=e.target&&e.target.closest?e.target.closest('button'):null;
+    if(!b) return;
+    var label=(b.textContent||'').trim().toLowerCase();
+    if(label==='full screen'||label==='fullscreen'||label==='⛶'){
+      e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
+    }
+  },true);
+})();
+</script>
+</body>
+</html>

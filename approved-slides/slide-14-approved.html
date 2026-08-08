@@ -1,0 +1,70 @@
+<!doctype html>
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>ITPF — Slide 14 Draft</title>
+<style>
+:root{--navy:#003b70;--blue:#0077b6;--cyan:#00a6d6;--magenta:#c00067;--ink:#16354f;--muted:#60758a;--soft:#f5f9fc;--line:#cbddea;--orange:#f58220}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
+.stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
+.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.slide:before{content:"";position:absolute;inset:auto -10% -18% -8%;height:34%;background:linear-gradient(135deg,transparent 0 28%,rgba(0,183,229,.16) 28% 43%,transparent 43% 54%,rgba(0,59,112,.11) 54% 68%,transparent 68%);pointer-events:none}
+.logo{position:absolute;right:4.1%;top:3.5%;width:10.3%;height:auto;z-index:5}
+.header{position:absolute;left:5.2%;top:5%;right:18%}
+.kicker{color:var(--magenta);font-size:clamp(12px,.9vw,17px);font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.55%}
+h1{margin:0;color:var(--navy);font-size:clamp(36px,3.5vw,62px);line-height:1.02;letter-spacing:-.025em}
+.main{position:absolute;left:7%;right:7%;top:25%;bottom:20%;display:grid;grid-template-columns:1.2fr .8fr;gap:4%;align-items:stretch}
+.quoteCard{position:relative;border:3px solid var(--blue);border-radius:24px;background:#fff;box-shadow:0 12px 34px rgba(0,59,112,.12);padding:5.2% 5.6%;display:flex;flex-direction:column;justify-content:center}
+.quoteMark{position:absolute;left:4%;top:-3%;font-size:clamp(72px,7vw,126px);line-height:1;color:rgba(0,119,182,.13);font-weight:900}
+.quote{position:relative;z-index:2;font-size:clamp(25px,2vw,37px);line-height:1.22;color:var(--navy);font-weight:800;letter-spacing:-.02em}
+.source{margin-top:4%;font-size:clamp(12px,.95vw,17px);line-height:1.35;color:var(--muted);font-weight:700;word-break:break-word}
+.side{display:grid;grid-template-rows:1fr 1fr;gap:6%}
+.box{border:2px solid var(--line);border-radius:20px;background:var(--soft);padding:7%;display:flex;flex-direction:column;justify-content:center;box-shadow:0 8px 22px rgba(0,59,112,.06)}
+.box h2{margin:0 0 4%;color:var(--magenta);font-size:clamp(21px,1.45vw,27px);line-height:1.1}
+.box p{margin:0;color:var(--ink);font-size:clamp(18px,1.25vw,24px);line-height:1.28;font-weight:700}
+.discussion{position:absolute;left:7%;right:7%;bottom:7%;border-left:7px solid var(--orange);background:#fff7ed;color:#4d5560;border-radius:14px;padding:1.05% 1.45%;font-size:clamp(16px,1.15vw,21px);line-height:1.25;box-shadow:0 8px 20px rgba(245,130,32,.1)}
+.discussion b{color:var(--navy)}
+.copy{position:absolute;left:2.3%;bottom:1.8%;font-size:clamp(10px,.75vw,13px);color:#7a8795}
+@media(max-aspect-ratio:4/3){.main{grid-template-columns:1fr;grid-template-rows:auto auto;top:22%;bottom:18%;overflow:auto}.side{grid-template-columns:1fr 1fr;grid-template-rows:1fr}.slide{height:100%;width:auto}}
+</style></head>
+<body><main class="stage"><section aria-label="Servitization of IT" class="slide">
+<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<div class="header"><div class="kicker">Session 1 · Setting the Scene</div><h1>Servitization of IT</h1></div>
+<div class="main">
+<article class="quoteCard">
+<div class="quoteMark">“</div>
+<div class="quote">The real source of competitive advantage now derives from the ability of firms to provide integrated solutions rather than simply delivering a product or service at a competitive price and in a timely manner.</div>
+<div class="source">Source: https://doi.org/10.1093/0199263221.003.0016</div>
+</article>
+<aside class="side">
+<div class="box"><h2>Core shift</h2><p>From buying products and services to sourcing integrated solutions.</p></div>
+<div class="box"><h2>Why it matters</h2><p>The value discussion moves beyond price, delivery and basic service levels.</p></div>
+</aside>
+</div>
+<div class="discussion"><b>Discussion:</b> We break out to compare theories explaining value and what changes when IT is sourced as a solution.</div>
+<div class="copy">©</div>
+</section></main>
+<script id="itpf-deck-bridge">
+(function(){
+  function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
+  window.addEventListener('keydown',function(e){
+    var t=e.target, tag=(t&&t.tagName||'').toLowerCase();
+    if(tag==='input'||tag==='textarea'||tag==='select'||(t&&t.isContentEditable)) return;
+    var action=null;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') action='next';
+    else if(e.key==='ArrowLeft'||e.key==='PageUp') action='prev';
+    else if(e.key==='Home') action='first';
+    else if(e.key==='End') action='last';
+    if(action){ e.preventDefault(); e.stopPropagation(); send(action); }
+  },true);
+  document.addEventListener('click',function(e){
+    var b=e.target&&e.target.closest?e.target.closest('button'):null;
+    if(!b) return;
+    var label=(b.textContent||'').trim().toLowerCase();
+    if(label==='full screen'||label==='fullscreen'||label==='⛶'){
+      e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
+    }
+  },true);
+})();
+</script>
+</body></html>

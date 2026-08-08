@@ -1,0 +1,154 @@
+<!doctype html>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>ITPF — Slide 20 Draft v2 — Buyclasses from Buygrid Framework</title>
+<style>
+:root {
+  --navy:#003b70;--cyan:#12bddf;--orange:#ff5a00;--blue:#2d8cff;--ink:#003b70;--line:#c7d9ea;--soft:#f7fbff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
+.stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
+.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:5}
+.header{position:absolute;left:6%;top:6.4%;right:17%}
+.session{font-size:clamp(17px,1.2vw,24px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.42rem}
+.dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
+h1{margin:0;color:var(--navy);font-size:clamp(34px,2.9vw,56px);line-height:1.03;letter-spacing:-.02em;font-weight:800}
+.subtitle{font-size:clamp(18px,1.25vw,26px);margin-top:.42rem;color:#2f5f88;font-weight:600}
+.tabs{position:absolute;left:6%;right:6%;top:21%;display:flex;gap:.85rem}
+.tab{border:3px solid var(--navy);background:#fff;color:var(--navy);font-size:clamp(20px,1.45vw,30px);font-weight:800;padding:.58rem 1rem;cursor:pointer}
+.tab.active{background:var(--navy);color:#fff}
+.panel{position:absolute;left:6%;right:6%;top:30%;bottom:8%;display:none}
+#exercise.panel{bottom:10%}
+#exercise.panel.active{display:grid;grid-template-rows:auto 1fr;gap:.7rem}
+.panel.active{display:block}
+.matrix{height:100%;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+.card{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-width:0}
+.card.straight{border-color:var(--cyan)}.card.modified{border-color:var(--navy)}.card.newtask{border-color:var(--orange)}
+.cardHead{padding:.74rem .88rem;color:#fff;font-weight:800;line-height:1.03;font-size:clamp(26px,2vw,38px)}
+.straight .cardHead{background:var(--cyan)}.modified .cardHead{background:var(--navy)}.newtask .cardHead{background:var(--orange)}
+.cardHead small{display:block;font-size:clamp(14px,.98vw,20px);line-height:1.12;font-weight:700;margin-top:.28rem}
+.body{padding:.72rem .85rem .82rem;display:grid;gap:.34rem;font-size:clamp(16px,1.13vw,22px);line-height:1.12}
+.metric{display:grid;grid-template-columns:42% 58%;border-bottom:1px solid var(--line);padding-bottom:.28rem;gap:.35rem}
+.metric:last-child{border-bottom:0}.label{font-weight:800;color:var(--navy)}.value{font-weight:700;color:#244d72}
+.desc{font-size:clamp(15px,1.05vw,21px);line-height:1.14;margin:.03rem 0 .15rem;color:#244d72;min-height:3em}
+.mode{margin-top:.12rem;border:2px solid currentColor;padding:.42rem .5rem;font-weight:800;text-align:center;font-size:clamp(17px,1.2vw,24px);line-height:1.06}
+.exercise{height:100%;display:grid;grid-template-columns:32% 68%;gap:1rem}
+.instructions{border:3px solid var(--navy);padding:1rem;background:#fff;font-size:clamp(19px,1.35vw,27px);line-height:1.2;font-weight:700}
+.instructions h2{margin:0 0 .7rem;color:var(--navy);font-size:clamp(28px,2.1vw,40px);line-height:1}
+.instructions ol{margin:.4rem 0 0;padding-left:1.5rem}.instructions li{margin:.45rem 0}
+.mapGrid{display:grid;grid-template-rows:auto 1fr;gap:.8rem;min-width:0}
+.scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem}
+.scenario{border:2px solid var(--line);padding:.55rem;background:#f8fbff;font-size:clamp(15px,1.02vw,20px);line-height:1.12;font-weight:700;cursor:pointer;min-height:78px}
+.scenario.active{outline:4px solid var(--orange)}
+.buckets{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;min-height:0}
+.bucket{border:3px solid var(--navy);display:flex;flex-direction:column;min-width:0;background:#fff}
+.bucket h3{margin:0;color:#fff;font-size:clamp(21px,1.55vw,31px);padding:.62rem .75rem;line-height:1.05}
+.bucket.straight{border-color:var(--cyan)}.bucket.straight h3{background:var(--cyan)}
+.bucket.modified{border-color:var(--navy)}.bucket.modified h3{background:var(--navy)}
+.bucket.newtask{border-color:var(--orange)}.bucket.newtask h3{background:var(--orange)}
+.drop{flex:1;padding:.55rem;display:flex;flex-direction:column;gap:.45rem}
+.answer{border:2px solid var(--line);background:#f7fbff;padding:.45rem;font-size:clamp(14px,.98vw,19px);line-height:1.1;font-weight:700}
+.answer.correct{border-color:#11844f;background:#edf9f2;color:#075f38}
+.answer.wrong{border-color:#d42f2f;background:#fff0f0;color:#a50f0f}
+.answer small{display:block;margin-top:.25rem;font-size:clamp(12px,.82vw,16px);line-height:1.08;font-weight:800}
+.feedback{position:static;font-size:clamp(15px,1.05vw,20px);line-height:1.12;color:#244d72;font-weight:800;text-align:center;padding:.3rem 0 .15rem;background:transparent;border-top:0;z-index:auto}
+.footer{position:absolute;left:4.9%;bottom:3.5%;font-size:clamp(14px,1vw,22px);color:#168cff}
+</style>
+</head>
+<body>
+<main class="stage"><section aria-label="Buyclasses from Buygrid Framework" class="slide">
+<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<div class="header"><div class="session"><span class="dot"></span><span>Session 1 Setting the Scene</span></div><h1>Buyclasses from Buygrid Framework</h1><div class="subtitle">Robinson, Faris, Wind 1967 — buying situation drives sourcing approach</div></div>
+<div class="tabs"><button class="tab active" data-panel="framework" type="button">Framework</button><button class="tab" data-panel="exercise" type="button">Exercise</button></div>
+<div class="panel active" id="framework">
+<div class="matrix">
+<div class="card straight"><div class="cardHead">Straight rebuy<small>Routine repeated purchase with minimal decision-making</small></div><div class="body"><div class="desc">Standard requirement, familiar market, low need for new analysis.</div><div class="metric"><div class="label">Urgency</div><div class="value">Low</div></div><div class="metric"><div class="label">Market research</div><div class="value">Low</div></div><div class="metric"><div class="label">Competition</div><div class="value">High</div></div><div class="metric"><div class="label">Business value</div><div class="value">Low</div></div><div class="mode">Competitive bidding</div></div></div>
+<div class="card modified"><div class="cardHead">Modified rebuy<small>Repeated purchase with changes in requirement or supplier</small></div><div class="body"><div class="desc">Existing demand pattern, but commercial, technical or supplier conditions have changed.</div><div class="metric"><div class="label">Urgency</div><div class="value">Medium</div></div><div class="metric"><div class="label">Market research</div><div class="value">Low</div></div><div class="metric"><div class="label">Competition</div><div class="value">Low</div></div><div class="metric"><div class="label">Business value</div><div class="value">Medium</div></div><div class="mode">Negotiations</div></div></div>
+<div class="card newtask"><div class="cardHead">New task<small>New purchase requiring extensive research and decision-making</small></div><div class="body"><div class="desc">Unfamiliar need, unclear solution options, higher uncertainty and stakeholder learning.</div><div class="metric"><div class="label">Urgency</div><div class="value">High</div></div><div class="metric"><div class="label">Market research</div><div class="value">High</div></div><div class="metric"><div class="label">Competition</div><div class="value">Unknown</div></div><div class="metric"><div class="label">Business value</div><div class="value">High</div></div><div class="mode">Prototype / POC</div></div></div>
+</div></div>
+<div class="panel" id="exercise"><div class="feedback">Select a scenario and then choose a buyclass. Wrong answers are marked in red and corrected immediately.</div><div class="exercise">
+<div class="instructions"><h2>Map categories to buyclasses</h2><ol><li>Select a category scenario.</li><li>Click the matching buyclass column.</li><li>Discuss why the same category can move class when the buying situation changes.</li></ol></div>
+<div class="mapGrid"><div class="scenarios">
+<div class="scenario" data-answer="straight" data-text="M365 E3 licences — unchanged annual renewal">M365 E3 licences<br/>unchanged annual renewal</div>
+<div class="scenario" data-answer="modified" data-text="Support &amp; Maintenance — renewal with changed SLA scope">Support &amp; Maintenance<br/>changed SLA scope</div>
+<div class="scenario" data-answer="newtask" data-text="Cybersecurity platform — first enterprise deployment">Cybersecurity platform<br/>first deployment</div>
+<div class="scenario" data-answer="newtask" data-text="Copilot licences — pilot before enterprise rollout">Copilot licences<br/>pilot / POC</div>
+<div class="scenario" data-answer="modified" data-text="ERP upgrade — same platform, expanded modules and integrations">ERP upgrade<br/>expanded modules</div>
+<div class="scenario" data-answer="newtask" data-text="AI procurement analytics tool — first-time exploratory pilot">AI analytics tool<br/>exploratory pilot</div>
+</div><div class="buckets">
+<div class="bucket straight" data-bucket="straight"><h3>Straight rebuy</h3><div class="drop"></div></div>
+<div class="bucket modified" data-bucket="modified"><h3>Modified rebuy</h3><div class="drop"></div></div>
+<div class="bucket newtask" data-bucket="newtask"><h3>New task</h3><div class="drop"></div></div>
+</div></div></div></div>
+<div class="footer">©</div></section></main>
+<script>
+const tabs=document.querySelectorAll('.tab');
+tabs.forEach(btn=>btn.addEventListener('click',()=>{
+  tabs.forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(btn.dataset.panel).classList.add('active');
+}));
+
+const labels = {
+  straight: 'Straight rebuy',
+  modified: 'Modified rebuy',
+  newtask: 'New task'
+};
+
+let selected=null;
+document.querySelectorAll('.scenario').forEach(s=>s.addEventListener('click',()=>{
+  document.querySelectorAll('.scenario').forEach(x=>x.classList.remove('active'));
+  selected=s;
+  s.classList.add('active');
+}));
+
+document.querySelectorAll('.bucket').forEach(bucket=>bucket.addEventListener('click',()=>{
+  if(!selected) return;
+
+  const chosen = bucket.dataset.bucket;
+  const correct = selected.dataset.answer;
+  const item = document.createElement('div');
+  item.className = 'answer ' + (chosen === correct ? 'correct' : 'wrong');
+
+  if(chosen === correct){
+    item.innerHTML = selected.dataset.text + '<small>Correct</small>';
+  } else {
+    item.innerHTML = selected.dataset.text + '<small>Wrong. Correct: ' + labels[correct] + '</small>';
+  }
+
+  bucket.querySelector('.drop').appendChild(item);
+  selected.remove();
+  selected=null;
+}));
+</script>
+<script id="itpf-deck-bridge">
+(function(){
+  function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
+  window.addEventListener('keydown',function(e){
+    var t=e.target, tag=(t&&t.tagName||'').toLowerCase();
+    if(tag==='input'||tag==='textarea'||tag==='select'||(t&&t.isContentEditable)) return;
+    var action=null;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') action='next';
+    else if(e.key==='ArrowLeft'||e.key==='PageUp') action='prev';
+    else if(e.key==='Home') action='first';
+    else if(e.key==='End') action='last';
+    if(action){ e.preventDefault(); e.stopPropagation(); send(action); }
+  },true);
+  document.addEventListener('click',function(e){
+    var b=e.target&&e.target.closest?e.target.closest('button'):null;
+    if(!b) return;
+    var label=(b.textContent||'').trim().toLowerCase();
+    if(label==='full screen'||label==='fullscreen'||label==='⛶'){
+      e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
+    }
+  },true);
+})();
+</script>
+</body></html>
