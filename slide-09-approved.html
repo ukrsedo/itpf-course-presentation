@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>ITPF — Slide 9 — Software Inflation Drivers</title>
+<style>
+:root{--navy:#003b70;--cyan:#00b7e5;--magenta:#c00067;--paper:#fff;--ink:#183d61;--muted:#5d7286;--soft:#eef8fd;--line:#cbdde8;--ok:#147a56;--warn:#a44a00}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif}
+.stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:var(--paper);box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.logo{position:absolute;right:4.2%;top:4.8%;width:10.4%;height:auto;z-index:4}.header{position:absolute;left:5.2%;top:4.6%;right:18%}.kicker{color:var(--magenta);font-weight:800;font-size:clamp(16px,1.1vw,22px);letter-spacing:.02em;text-transform:uppercase}h1{margin:.35% 0 0;color:var(--navy);font-size:clamp(36px,2.85vw,53px);line-height:1.03;letter-spacing:-.03em}
+.tabs{position:absolute;left:5.2%;top:19.2%;display:flex;gap:8px;z-index:5}.tab{border:1px solid var(--navy);background:#fff;color:var(--navy);border-radius:9px;padding:9px 17px;font-size:clamp(15px,.98vw,19px);font-weight:800;cursor:pointer}.tab.active{background:var(--navy);color:#fff}
+.panel{display:none;position:absolute;left:5.2%;right:5.2%;top:27%;bottom:9.2%}.panel.active{display:block}.intro{margin:0 0 1.2%;color:var(--ink);font-size:clamp(19px,1.25vw,24px);line-height:1.28;font-weight:800}.intro strong{color:var(--magenta)}
+.core-grid{height:84%;display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,1fr);gap:1.8%}.driver{border:2px solid var(--line);border-radius:14px;background:linear-gradient(145deg,#fff,var(--soft));padding:2.1% 2.6%;display:grid;grid-template-columns:42px 1fr;column-gap:12px;align-items:start}.driver:last-child{grid-column:1/3;width:49.1%;justify-self:center}.num{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:#fff;font-weight:900;font-size:19px}.driver h2{margin:0 0 3px;color:var(--navy);font-size:clamp(20px,1.35vw,26px);line-height:1.06}.driver p{grid-column:2;margin:0;color:var(--ink);font-size:clamp(16px,1.01vw,19px);line-height:1.19;font-weight:650}.example{grid-column:2;margin-top:5px;color:var(--magenta);font-size:clamp(15px,.92vw,18px);line-height:1.15;font-weight:800}
+.extended{height:84%;display:grid;grid-template-rows:repeat(3,1fr);gap:2.1%}.effect{border:2px solid var(--line);border-radius:15px;background:linear-gradient(145deg,#fff,var(--soft));padding:1.5% 2.1%;display:grid;grid-template-columns:48px 23% 1fr;column-gap:16px;align-items:center}.effect .num{background:var(--magenta)}.effect h2{margin:0;color:var(--navy);font-size:clamp(21px,1.45vw,28px);line-height:1.08}.effect .body{color:var(--ink);font-size:clamp(17px,1.08vw,21px);line-height:1.22;font-weight:650}.effect .body strong{color:var(--magenta)}
+.task{margin:0 0 1.1%;color:var(--ink);font-size:clamp(17px,1.08vw,21px);line-height:1.2;font-weight:800}.task strong{color:var(--magenta)}
+.mapping-wrap{height:80%;display:grid;grid-template-columns:1.03fr .97fr;gap:1.4%}
+.scenario-bank,.target-bank{border:1px solid var(--line);border-radius:12px;background:#f8fbfd;padding:1.2%;min-height:0}
+.bank-title{margin:0 0 1%;font-size:clamp(15px,.93vw,18px);font-weight:900;color:var(--navy)}
+.scenarios{height:calc(100% - 28px);display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,1fr);gap:1.4%}
+.scenario{border:2px solid var(--line);border-radius:10px;background:#fff;padding:1.5% 2%;cursor:grab;display:flex;align-items:center;gap:9px;transition:.16s;user-select:none}
+.scenario:hover{border-color:#90b9d3;box-shadow:0 4px 12px rgba(0,59,112,.08)}
+.scenario.selected{border-color:var(--magenta);box-shadow:0 0 0 2px rgba(177,39,92,.12)}
+.scenario.placed{opacity:.34;cursor:default}
+.scenario .num{width:28px;height:28px;min-width:28px;font-size:14px}
+.scenario .text{flex:1;color:var(--ink);font-size:clamp(12px,.75vw,15px);line-height:1.12;font-weight:750}
+.targets{height:calc(100% - 28px);display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,1fr);gap:1.4%}
+.dropbox{border:2px dashed #9eb2c4;border-radius:10px;background:#fff;padding:1.4% 2%;cursor:pointer;display:flex;flex-direction:column;justify-content:center;min-height:0;transition:.16s}
+.dropbox:hover{border-color:var(--cyan)}
+.dropbox h3{margin:0;color:var(--navy);font-size:clamp(12px,.76vw,15px);line-height:1.08}
+.dropbox .placed-text{margin-top:4px;color:#54697a;font-size:clamp(11px,.66vw,13px);line-height:1.08;font-weight:700}
+.dropbox.filled{border-style:solid;border-color:#82a8c2;background:#f5f9fc}
+.dropbox.correct{border-color:#55a77e;background:#f1faf5}
+.dropbox.incorrect{border-color:#cf6d6d;background:#fff4f4}
+.dropbox.correct .placed-text{color:#2f7856}
+.dropbox.incorrect .placed-text{color:#a14444}
+.mapping-actions{position:absolute;right:0;bottom:-.1%;display:flex;gap:8px}
+.checkbtn,.showbtn,.resetbtn,.sources-btn{border:1px solid var(--navy);background:#fff;color:var(--navy);border-radius:8px;padding:8px 12px;font-size:clamp(13px,.82vw,16px);font-weight:800;cursor:pointer}
+.checkbtn{background:var(--navy);color:#fff}
+.mapping-feedback{position:absolute;left:0;bottom:0;color:var(--muted);font-size:clamp(14px,.9vw,18px);font-weight:800;max-width:55%}
+.footer{position:absolute;left:5.2%;right:5.2%;bottom:2.0%;display:flex;justify-content:space-between;color:#607588;font-size:clamp(11px,.75vw,14px);z-index:3}.rule{position:absolute;left:0;bottom:0;width:100%;height:8px;background:linear-gradient(90deg,var(--navy) 0 32%,var(--cyan) 32% 100%);z-index:3}.controls{position:absolute;right:1.7%;bottom:1.5%;opacity:.15;transition:.2s;z-index:4}.slide:hover .controls{opacity:.85}.controls button{border:1px solid #c8d3df;background:#fff;color:var(--navy);border-radius:6px;padding:8px 12px;font-weight:700;cursor:pointer}
+.modal{display:none;position:absolute;inset:0;background:rgba(0,31,61,.68);z-index:20;place-items:center}.modal.open{display:grid}.modal-card{width:78%;max-height:75%;overflow:auto;background:#fff;border-radius:16px;padding:2.5% 3%;box-shadow:0 18px 50px rgba(0,0,0,.3)}.modal-card h2{margin:0 0 12px;color:var(--navy);font-size:clamp(25px,1.8vw,34px)}.modal-card ul{margin:0;padding-left:24px}.modal-card li{margin:8px 0;color:var(--ink);font-size:clamp(15px,1vw,19px);line-height:1.25}.modal-card a{color:var(--navy);font-weight:700}.close{float:right;border:0;background:var(--navy);color:#fff;border-radius:8px;padding:8px 13px;font-weight:800;cursor:pointer}
+</style></head><body><div class="stage"><section aria-label="Slide 9: Software Inflation Drivers" class="slide">
+<img alt="CIPS logo" class="logo" src="../assets/cips-logo.png"/>
+<div class="header"><div class="kicker">Session 1 · Setting the Scene</div><h1>Software Inflation Drivers</h1></div>
+<div class="tabs" role="tablist"><button class="tab active" data-panel="core" type="button">1. Core cost drivers</button><button class="tab" data-panel="effects" type="button">2. Additional effects</button><button class="tab" data-panel="diagnostic" type="button">3. Diagnose examples</button></div>
+<section class="panel active" id="core">
+<p class="intro">First distinguish the <strong>five direct drivers</strong> of software cost growth:</p>
+<div class="core-grid">
+<article class="driver"><div class="num">1</div><div><h2>Price inflation</h2><p>The unit price rises while licence scope and quantity stay unchanged.</p><div class="example">Example: Salesforce announced an average 9% list-price increase in 2023.</div></div></article>
+<article class="driver"><div class="num">2</div><div><h2>Volume inflation</h2><p>The billable population, seats, licences or service units increase.</p><div class="example">Example: Oracle Java SE Universal Subscription uses an employee-based metric.</div></div></article>
+<article class="driver"><div class="num">3</div><div><h2>Add-on inflation</h2><p>Premium modules, AI features or support tiers are added to the baseline product.</p><div class="example">Example: Microsoft 365 Copilot requires a qualifying Microsoft 365 subscription.</div></div></article>
+<article class="driver"><div class="num">4</div><div><h2>Portfolio inflation</h2><p>New applications enter the estate, often creating overlap or redundancy.</p><div class="example">Example: Microsoft 365 expands with Power BI, Visio, Project and Viva.</div></div></article>
+<article class="driver"><div class="num">5</div><div><h2>Consumption inflation</h2><p>Usage-based charges rise through tokens, APIs, storage, compute or transactions.</p><div class="example">Example: Azure OpenAI charges pay-as-you-go input and output tokens.</div></div></article>
+</div>
+</section>
+<section class="panel" id="effects">
+<p class="intro">Three further effects can <strong>increase cost or distort how inflation is measured:</strong></p>
+<div class="extended">
+<article class="effect"><div class="num">6</div><h2>SaaS shrinkflation</h2><div class="body">Baseline prices rise while feature access is reduced or existing tiers are split, so customers may need a higher plan or separate licence for the same utility. <strong>Example:</strong> in 2024 Microsoft introduced new commercial Microsoft 365 and Office 365 suites without Teams and a standalone Teams offer.</div></article>
+<article class="effect"><div class="num">7</div><h2>Statistical discrepancy</h2><div class="body">Economic indices such as CPI or PCE use defined product baskets and quality-adjustment methods that may not match an organisation’s SaaS portfolio. <strong>Example:</strong> a Microsoft 365 renewal can combine seat changes, bundle changes and Copilot add-ons that a broad software index cannot isolate as one like-for-like price movement.</div></article>
+<article class="effect"><div class="num">8</div><h2>Category-specific inflation</h2><div class="body">Price growth is uneven across software categories, editions and demand segments. <strong>Example:</strong> Salesforce’s 2025 update targeted Enterprise and Unlimited editions of selected Sales, Service and Field Service products, while Starter and Pro editions were unchanged.</div></article>
+</div>
+</section>
+<section class="panel" id="diagnostic">
+<p class="task"><strong>Your task:</strong> map each real-world example to the correct inflation driver or effect. Drag a tile to a destination, or on touch screens tap the tile and then the destination.</p>
+<div class="mapping-wrap">
+  <div class="scenario-bank">
+    <div class="bank-title">Examples to classify</div>
+    <div class="scenarios">
+      <article class="scenario" draggable="true" data-id="s1" data-answer="Price inflation"><div class="num">1</div><div class="text">Salesforce raises list prices while the customer renews the same scope.</div></article>
+      <article class="scenario" draggable="true" data-id="s2" data-answer="Volume inflation"><div class="num">2</div><div class="text">Oracle Java charges against an employee metric and the workforce grows.</div></article>
+      <article class="scenario" draggable="true" data-id="s3" data-answer="Add-on inflation"><div class="num">3</div><div class="text">Microsoft 365 Copilot is purchased on top of the qualifying base subscription.</div></article>
+      <article class="scenario" draggable="true" data-id="s4" data-answer="Portfolio inflation"><div class="num">4</div><div class="text">Power BI, Visio, Project and Viva are added alongside Microsoft 365.</div></article>
+      <article class="scenario" draggable="true" data-id="s5" data-answer="Consumption inflation"><div class="num">5</div><div class="text">Azure OpenAI input and output token volumes increase month by month.</div></article>
+      <article class="scenario" draggable="true" data-id="s6" data-answer="SaaS shrinkflation"><div class="num">6</div><div class="text">A previously bundled collaboration capability requires a separate licence.</div></article>
+      <article class="scenario" draggable="true" data-id="s7" data-answer="Statistical discrepancy"><div class="num">7</div><div class="text">The CPI software movement differs sharply from the company’s SaaS renewals.</div></article>
+      <article class="scenario" draggable="true" data-id="s8" data-answer="Category-specific inflation"><div class="num">8</div><div class="text">CRM and field-service editions rise faster than unaffected entry-level editions.</div></article>
+    </div>
+  </div>
+  <div class="target-bank">
+    <div class="bank-title">Inflation drivers / effects</div>
+    <div class="targets">
+      <div class="dropbox" data-target="Price inflation"><h3>Price inflation</h3><div class="placed-text">Drop example here</div></div>
+      <div class="dropbox" data-target="Volume inflation"><h3>Volume inflation</h3><div class="placed-text">Drop example here</div></div>
+      <div class="dropbox" data-target="Add-on inflation"><h3>Add-on inflation</h3><div class="placed-text">Drop example here</div></div>
+      <div class="dropbox" data-target="Portfolio inflation"><h3>Portfolio inflation</h3><div class="placed-text">Drop example here</div></div>
+      <div class="dropbox" data-target="Consumption inflation"><h3>Consumption inflation</h3><div class="placed-text">Drop example here</div></div>
+      <div class="dropbox" data-target="SaaS shrinkflation"><h3>SaaS shrinkflation</h3><div class="placed-text">Drop example here</div></div>
+      <div class="dropbox" data-target="Statistical discrepancy"><h3>Statistical discrepancy</h3><div class="placed-text">Drop example here</div></div>
+      <div class="dropbox" data-target="Category-specific inflation"><h3>Category-specific inflation</h3><div class="placed-text">Drop example here</div></div>
+    </div>
+  </div>
+</div>
+<div class="mapping-feedback" id="mappingFeedback">Map all eight examples, then check your answers.</div>
+<div class="mapping-actions">
+  <button class="sources-btn" id="sourcesBtn" type="button">Sources</button>
+  <button class="checkbtn" id="checkMapping" type="button">Check answers</button>
+  <button class="showbtn" id="showMapping" type="button">Show suggested mapping</button>
+  <button class="resetbtn" id="resetMapping" type="button">Reset</button>
+</div>
+</section>
+<div class="footer"><span>Technology (IT) Procurement Foundations</span><span>9</span></div><div class="rule"></div><div class="controls"><button onclick="parent.postMessage({type:'ITPF_DECK_NAV',action:'fullscreen'},'*')">Full screen</button></div>
+<div class="modal" id="sourcesModal"><div class="modal-card"><button class="close" id="closeSources" type="button">Close</button><h2>Official example sources</h2><ul>
+<li><a href="https://www.salesforce.com/au/news/stories/pricing-update/" target="_blank" rel="noopener">Salesforce: average 9% list-price increase announced in 2023</a></li>
+<li><a href="https://www.oracle.com/java/technologies/java-se-subscription-faq.html" target="_blank" rel="noopener">Oracle: Java SE Universal Subscription employee-based metric</a></li>
+<li><a href="https://www.microsoft.com/en-us/microsoft-365-copilot/enterprise" target="_blank" rel="noopener">Microsoft: Microsoft 365 Copilot as an add-on to a qualifying subscription</a></li>
+<li><a href="https://azure.microsoft.com/en-us/pricing/details/azure-openai/" target="_blank" rel="noopener">Microsoft Azure: pay-as-you-go input and output token pricing</a></li>
+<li><a href="https://www.microsoft.com/en-us/licensing/news/microsoft365-teams-ww" target="_blank" rel="noopener">Microsoft: 2024 Microsoft 365, Office 365 and Teams licensing change</a></li>
+<li><a href="https://www.bls.gov/cpi/quality-adjustment/home.htm" target="_blank" rel="noopener">U.S. BLS: CPI quality-adjustment methodology</a></li>
+<li><a href="https://www.salesforce.com/news/stories/pricing-update-2025/" target="_blank" rel="noopener">Salesforce: selected 2025 edition and product price changes</a></li>
+</ul></div></div>
+</section></div>
+<script>
+const tabs=[...document.querySelectorAll('.tab')],panels=[...document.querySelectorAll('.panel')];
+tabs.forEach(t=>t.addEventListener('click',()=>{tabs.forEach(x=>x.classList.toggle('active',x===t));panels.forEach(p=>p.classList.toggle('active',p.id===t.dataset.panel));}));
+
+const scenarioCards=[...document.querySelectorAll('.scenario')];
+const dropboxes=[...document.querySelectorAll('.dropbox')];
+let selectedScenario=null;
+
+function scenarioLabel(card){
+  return card.querySelector('.num').textContent.trim() + ' · ' + card.querySelector('.text').textContent.trim();
+}
+function clearSelection(){
+  scenarioCards.forEach(c=>c.classList.remove('selected'));
+  selectedScenario=null;
+}
+function placeScenario(card,box){
+  if(!card||!box) return;
+  const oldBox=dropboxes.find(b=>b.dataset.scenarioId===card.dataset.id);
+  if(oldBox && oldBox!==box){
+    oldBox.dataset.scenarioId='';
+    oldBox.querySelector('.placed-text').textContent='Drop example here';
+    oldBox.classList.remove('filled','correct','incorrect');
+  }
+  if(box.dataset.scenarioId){
+    const displaced=scenarioCards.find(c=>c.dataset.id===box.dataset.scenarioId);
+    if(displaced) displaced.classList.remove('placed');
+  }
+  box.dataset.scenarioId=card.dataset.id;
+  box.querySelector('.placed-text').textContent=scenarioLabel(card);
+  box.classList.add('filled');
+  box.classList.remove('correct','incorrect');
+  card.classList.add('placed');
+  clearSelection();
+  document.getElementById('mappingFeedback').textContent='Continue mapping, then check your answers.';
+}
+scenarioCards.forEach(card=>{
+  card.addEventListener('dragstart',e=>{
+    if(card.classList.contains('placed')) return;
+    e.dataTransfer.setData('text/plain',card.dataset.id);
+  });
+  card.addEventListener('click',()=>{
+    if(card.classList.contains('placed')) return;
+    const was=card.classList.contains('selected');
+    clearSelection();
+    if(!was){ selectedScenario=card; card.classList.add('selected'); }
+  });
+});
+dropboxes.forEach(box=>{
+  box.addEventListener('dragover',e=>e.preventDefault());
+  box.addEventListener('drop',e=>{
+    e.preventDefault();
+    const card=scenarioCards.find(c=>c.dataset.id===e.dataTransfer.getData('text/plain'));
+    placeScenario(card,box);
+  });
+  box.addEventListener('click',()=>{ if(selectedScenario) placeScenario(selectedScenario,box); });
+});
+
+document.getElementById('checkMapping').addEventListener('click',()=>{
+  let filled=0,correct=0;
+  dropboxes.forEach(box=>{
+    box.classList.remove('correct','incorrect');
+    if(!box.dataset.scenarioId) return;
+    filled++;
+    const card=scenarioCards.find(c=>c.dataset.id===box.dataset.scenarioId);
+    const ok=card && card.dataset.answer===box.dataset.target;
+    box.classList.add(ok?'correct':'incorrect');
+    if(ok) correct++;
+  });
+  document.getElementById('mappingFeedback').textContent =
+    filled<8 ? `Mapped ${filled}/8. Complete all eight before final checking.` :
+    correct===8 ? '8/8 correct — all examples are mapped properly.' :
+    `${correct}/8 correct. Review the red boxes and try again.`;
+});
+
+document.getElementById('showMapping').addEventListener('click',()=>{
+  dropboxes.forEach(box=>{
+    const card=scenarioCards.find(c=>c.dataset.answer===box.dataset.target);
+    placeScenario(card,box);
+    box.classList.add('correct');
+  });
+  document.getElementById('mappingFeedback').textContent='Suggested mapping shown: all eight examples are matched to their drivers/effects.';
+});
+
+document.getElementById('resetMapping').addEventListener('click',()=>{
+  dropboxes.forEach(box=>{
+    box.dataset.scenarioId='';
+    box.querySelector('.placed-text').textContent='Drop example here';
+    box.classList.remove('filled','correct','incorrect');
+  });
+  scenarioCards.forEach(c=>c.classList.remove('placed','selected'));
+  selectedScenario=null;
+  document.getElementById('mappingFeedback').textContent='Map all eight examples, then check your answers.';
+});
+
+const modal=document.getElementById('sourcesModal');
+document.getElementById('sourcesBtn').addEventListener('click',()=>modal.classList.add('open'));
+document.getElementById('closeSources').addEventListener('click',()=>modal.classList.remove('open'));
+modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open')});
+</script>
+<script id="itpf-deck-bridge">
+(function(){
+  function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
+  window.addEventListener('keydown',function(e){
+    var t=e.target, tag=(t&&t.tagName||'').toLowerCase();
+    if(tag==='input'||tag==='textarea'||tag==='select'||(t&&t.isContentEditable)) return;
+    if((tag==='article'||tag==='button')&&e.key==='Enter') return;
+    var action=null;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') action='next';
+    else if(e.key==='ArrowLeft'||e.key==='PageUp') action='prev';
+    else if(e.key==='Home') action='first';
+    else if(e.key==='End') action='last';
+    if(action){ e.preventDefault(); e.stopPropagation(); send(action); }
+  },true);
+  document.addEventListener('click',function(e){
+    var b=e.target&&e.target.closest?e.target.closest('.controls button'):null;
+    if(!b) return;
+    e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
+  },true);
+})();
+</script>
+</body></html>
