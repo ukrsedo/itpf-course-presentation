@@ -44,15 +44,20 @@ h1{margin:0;color:var(--navy);font-size:clamp(32px,2.9vw,56px);line-height:1.03;
 
 .right{border:3px solid var(--cyan);background:#fff;display:flex;flex-direction:column;min-height:0;overflow:hidden}
 .right .boxTitle{background:var(--cyan)}
-.grid{flex:1;min-height:0;padding:.55rem;display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(2,1fr);gap:.52rem}
+.compareTabs{display:flex;gap:.42rem;padding:.48rem .55rem .12rem;background:#f7fbff;border-bottom:1px solid var(--line)}
+.compareTab{flex:1;border:2px solid var(--cyan);background:#fff;color:var(--navy);border-radius:8px 8px 0 0;padding:.42rem .50rem;font-size:clamp(15px,1vw,20px);line-height:1.05;font-weight:900;cursor:pointer}
+.compareTab.active{background:var(--cyan);color:#fff}
+.comparePanels{flex:1;min-height:0;padding:.52rem}
+.comparePanel{display:none;height:100%;grid-template-columns:1fr 1fr;gap:.58rem}
+.comparePanel.active{display:grid}
 .model{border:3px solid var(--line);border-radius:10px;display:flex;flex-direction:column;min-width:0;overflow:hidden;background:#fff}
-.model h3{margin:0;color:#fff;text-align:center;font-size:clamp(22px,1.55vw,31px);line-height:1.03;font-weight:900;padding:.46rem .40rem}
+.model h3{margin:0;color:#fff;text-align:center;font-size:clamp(24px,1.72vw,34px);line-height:1.03;font-weight:900;padding:.50rem .40rem}
 .private h3{background:var(--navy)} .communityDef h3{background:var(--green)} .hybridDef h3{background:var(--purple)} .publicDef h3{background:var(--orange)}
-.model .body{padding:.46rem .50rem;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto repeat(3,1fr);gap:.30rem .38rem;flex:1;min-height:0}
-.def{font-size:clamp(14px,.98vw,19px);line-height:1.08;font-weight:760;color:var(--ink);padding-bottom:.20rem;border-bottom:2px solid var(--line);grid-column:1 / -1}
-.dimension{border-radius:7px;background:#f7fbff;padding:.30rem .34rem;display:flex;flex-direction:column;justify-content:center;min-height:0}
-.dimension b{font-size:clamp(14px,.98vw,19px);line-height:1.03;color:var(--navy);margin-bottom:.10rem}
-.dimension span{font-size:clamp(13px,.90vw,17px);line-height:1.12;font-weight:760;color:#315b7e}
+.model .body{padding:.52rem .56rem;display:grid;grid-template-columns:1fr;grid-template-rows:auto repeat(5,1fr);gap:.32rem;flex:1;min-height:0}
+.def{font-size:clamp(16px,1.08vw,21px);line-height:1.12;font-weight:780;color:var(--ink);padding-bottom:.28rem;border-bottom:2px solid var(--line)}
+.dimension{border-radius:7px;background:#f7fbff;padding:.34rem .42rem;display:grid;grid-template-columns:38% 62%;align-items:center;gap:.36rem;min-height:0}
+.dimension b{font-size:clamp(15px,1vw,20px);line-height:1.04;color:var(--navy)}
+.dimension span{font-size:clamp(14px,.95vw,18px);line-height:1.13;font-weight:760;color:#315b7e}
 .private .dimension{border-left:4px solid var(--navy)}
 .communityDef .dimension{border-left:4px solid var(--green)}
 .hybridDef .dimension{border-left:4px solid var(--purple)}
@@ -99,7 +104,12 @@ h1{margin:0;color:var(--navy);font-size:clamp(32px,2.9vw,56px);line-height:1.03;
 </section>
 <section class="right">
 <h2 class="boxTitle">Qualitative sourcing comparison</h2>
-<div class="grid">
+<div class="compareTabs" role="tablist" aria-label="Cloud deployment comparison groups">
+<button class="compareTab active" type="button" data-panel="pcPanel" aria-selected="true">Private + Community</button>
+<button class="compareTab" type="button" data-panel="hpPanel" aria-selected="false">Hybrid + Public</button>
+</div>
+<div class="comparePanels">
+<div class="comparePanel active" id="pcPanel">
 <div class="model private">
 <h3>Private</h3>
 <div class="body">
@@ -122,6 +132,8 @@ h1{margin:0;color:var(--navy);font-size:clamp(32px,2.9vw,56px);line-height:1.03;
 <div class="dimension"><b>Integration complexity</b><span>High where multiple organisations and standards must align.</span></div>
 </div>
 </div>
+</div>
+<div class="comparePanel" id="hpPanel">
 <div class="model hybridDef">
 <h3>Hybrid</h3>
 <div class="body">
@@ -145,6 +157,7 @@ h1{margin:0;color:var(--navy);font-size:clamp(32px,2.9vw,56px);line-height:1.03;
 </div>
 </div>
 </div>
+</div>
 </section>
 </div>
 <div class="note">
@@ -153,6 +166,20 @@ h1{margin:0;color:var(--navy);font-size:clamp(32px,2.9vw,56px);line-height:1.03;
 </div>
 </section>
 </main>
+<script>
+const compareTabs=[...document.querySelectorAll('.compareTab')];
+const comparePanels=[...document.querySelectorAll('.comparePanel')];
+compareTabs.forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    compareTabs.forEach(t=>{
+      const active=t===tab;
+      t.classList.toggle('active',active);
+      t.setAttribute('aria-selected',active?'true':'false');
+    });
+    comparePanels.forEach(panel=>panel.classList.toggle('active',panel.id===tab.dataset.panel));
+  });
+});
+</script>
 <script id="itpf-deck-bridge">
 (function(){
   function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
