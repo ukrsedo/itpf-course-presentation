@@ -42,26 +42,20 @@ h1{margin:0;color:var(--navy);font-size:clamp(32px,2.9vw,56px);line-height:1.03;
 
 .model{border-color:var(--cyan)}
 .model .boxTitle{background:var(--cyan)}
-.modelCanvas{position:relative;flex:1;min-height:0;padding:.55rem .62rem .48rem;display:grid;grid-template-rows:auto 1fr auto;gap:.44rem}
-.actorRow{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:.42rem}
-.actor{border:2px solid var(--line);background:#f7fbff;border-radius:8px;padding:.48rem .54rem;text-align:center;font-size:clamp(15px,1.02vw,20px);line-height:1.06;font-weight:900;color:var(--navy)}
-.actor.orange{border-color:var(--orange);background:#fff7f1}
-.actor.purple{border-color:var(--purple);background:#f5f3fb}
-.provider{border:3px solid var(--navy);border-radius:10px;display:grid;grid-template-columns:15% 70% 15%;min-height:0;overflow:hidden;background:#fff}
-.sideBand{display:flex;align-items:center;justify-content:center;padding:.38rem;background:#eef8fb;border-right:2px solid var(--line);font-size:clamp(15px,1vw,20px);font-weight:900;color:var(--navy);text-align:center;line-height:1.05}
-.sideBand.right{border-right:0;border-left:2px solid var(--line)}
-.providerCore{display:grid;grid-template-rows:auto auto 1fr;gap:.36rem;padding:.42rem;min-height:0}
-.coreTop{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.34rem}
-.coreTop div{border:2px solid var(--cyan);border-radius:7px;background:#eefbff;text-align:center;padding:.34rem .38rem;font-size:clamp(13px,.9vw,18px);line-height:1.04;font-weight:850;color:var(--navy)}
-.orch{border:2px solid var(--orange);background:#fff7f1;border-radius:7px;text-align:center;padding:.38rem .44rem;font-size:clamp(15px,1vw,20px);font-weight:900;color:var(--navy)}
-.layers{display:grid;grid-template-rows:1fr 1fr 1fr;gap:.34rem;min-height:0}
-.layer{border:2px solid var(--line);border-radius:8px;padding:.38rem .46rem;font-size:clamp(15px,1vw,20px);line-height:1.05;font-weight:800;color:var(--ink);overflow:hidden}
-.layer strong{color:var(--navy);font-weight:900}
-.layer.service{border-color:var(--cyan);background:#f2fbff}
-.layer.control{border-color:var(--purple);background:#f5f3fb}
-.layer.physical{border-color:var(--green);background:#f4fbf1}
-.chars{display:grid;grid-template-columns:repeat(5,1fr);gap:.34rem}
-.char{border:2px solid var(--cyan);background:#eefbff;border-radius:7px;text-align:center;font-size:clamp(13px,.9vw,18px);line-height:1.04;font-weight:900;color:var(--navy);padding:.38rem .32rem}
+.modelCanvas{position:relative;flex:1;min-height:0;padding:.62rem;display:block}
+.stackDiagram{height:100%;display:grid;grid-template-columns:18% 58% 24%;gap:.55rem;align-items:stretch;min-height:0}
+.externalActors,.procurementMessage{display:flex;flex-direction:column;justify-content:center;gap:.4rem;min-width:0}
+.externalLabel{text-align:center;color:#4f6f8c;font-size:clamp(12px,.78vw,15px);font-weight:900}
+.actor{border:2px solid var(--line);background:#f7fbff;border-radius:7px;padding:.38rem .28rem;text-align:center;font-size:clamp(12px,.78vw,15px);line-height:1.05;font-weight:900;color:var(--navy)}
+.providerStack{border:3px solid var(--navy);padding:.45rem;background:#f8fbfe;display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.providerHead{display:flex;justify-content:space-between;align-items:flex-start;gap:.4rem;margin-bottom:.34rem;font-size:clamp(12px,.8vw,16px);line-height:1.05;font-weight:900;color:var(--navy)}
+.providerExamples{text-align:right;color:#4f6f8c;font-size:clamp(11px,.7vw,14px)}
+.stackLayers{display:grid;grid-template-rows:repeat(4,1fr);gap:.3rem;min-height:0;flex:1}
+.stackLayer{border:2px solid var(--line);background:#fff;padding:.35rem .42rem;font-size:clamp(12px,.78vw,15px);line-height:1.08;color:var(--ink);overflow:hidden}
+.stackLayer strong{display:block;color:var(--navy);font-size:clamp(13px,.85vw,17px);line-height:1.03;margin-bottom:.12rem}
+.stackLayer.primary{border-color:var(--cyan);background:#eefbff}
+.messageBox{border-left:5px solid var(--cyan);padding:.45rem .25rem .45rem .55rem;color:var(--ink);font-size:clamp(12px,.78vw,15px);line-height:1.12;font-weight:750}
+.messageBox strong{display:block;color:var(--navy);font-size:clamp(13px,.86vw,17px);margin-bottom:.3rem}
 
 .elasticGrid{height:100%;display:grid;grid-template-columns:41% 59%;gap:.9rem;min-height:0}
 .elasticDef{border:3px solid var(--orange);background:#fff8f4;display:flex;flex-direction:column;min-width:0}
@@ -105,39 +99,17 @@ li{border-left:5px solid var(--cyan);background:#f6f9fb;padding:.48rem .6rem;fon
 <div class="source">Source: https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-145.pdf</div>
 </section>
 <section class="model">
-<h2 class="boxTitle">NIST Cloud Computing Model</h2>
-<div class="modelCanvas">
-<div class="actorRow">
-<div class="actor">Cloud consumer</div>
-<div class="actor purple">Cloud broker<br/><span style="font-weight:750">intermediation · aggregation · arbitrage</span></div>
-<div class="actor orange">Cloud carrier</div>
-<div class="actor">Cloud auditor<br/><span style="font-weight:750">security · privacy · performance</span></div>
-</div>
-<div class="provider">
-<div class="sideBand">Security<br/>&amp;<br/>Privacy</div>
-<div class="providerCore">
-<div class="coreTop">
-<div>Business support</div>
-<div>Provisioning configuration</div>
-<div>Portability inter-operability</div>
-</div>
-<div class="orch">Service Orchestration</div>
-<div class="layers">
-<div class="layer service"><strong>Service Layer</strong><br/>SaaS · PaaS · IaaS</div>
-<div class="layer control"><strong>Resource Abstraction and Control Layer</strong><br/>Virtualization · hypervisor · virtual machines · virtual hardware</div>
-<div class="layer physical"><strong>Physical Resource Layer</strong><br/>Hardware · facility · server hardware</div>
-</div>
-</div>
-<div class="sideBand right">Cloud<br/>Service<br/>Management</div>
-</div>
-<div class="chars">
-<div class="char">On-demand self-service</div>
-<div class="char">Broad network access</div>
-<div class="char">Resource pooling / multi-tenancy</div>
-<div class="char">Rapid elasticity</div>
-<div class="char">Measured Service</div>
-</div>
-</div>
+<h2 class="boxTitle">Cloud Provider and Hyperscaler Stack</h2>
+<div class="modelCanvas"><div class="stackDiagram">
+<div class="externalActors"><div class="externalLabel">External actors</div><div class="actor">Cloud consumer</div><div class="actor">Cloud broker</div><div class="actor">Cloud carrier</div><div class="actor">Cloud auditor</div></div>
+<div class="providerStack"><div class="providerHead"><span>CLOUD PROVIDER / HYPERSCALER</span><span class="providerExamples">AWS · Azure · Google Cloud</span></div><div class="stackLayers">
+<div class="stackLayer primary"><strong>1. Cloud Service Layer</strong>SaaS · PaaS · IaaS — what the customer consumes</div>
+<div class="stackLayer primary"><strong>2. Service Orchestration</strong>Context · policies · rules · workflows · provisioning</div>
+<div class="stackLayer"><strong>3. Resource Abstraction and Control</strong>Virtual machines · containers · virtual networks · virtual storage</div>
+<div class="stackLayer"><strong>4. Physical Resources</strong>Data centres · servers · storage · networks</div>
+</div></div>
+<div class="procurementMessage"><div class="messageBox"><strong>Procurement implication</strong>The hyperscaler controls the integrated stack—not only the physical infrastructure.</div></div>
+</div></div>
 </section>
 </div>
 </div>
