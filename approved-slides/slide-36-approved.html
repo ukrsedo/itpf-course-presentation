@@ -1,11 +1,22 @@
 <!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>ITPF — Slide 36 — AI-enabled sourcing risk</title>
+<title>ITPF — Slide 36 v6 — Cloud Deployment Models</title>
 <style>
-:root{--navy:#003b70;--cyan:#12bddf;--orange:#ff5a00;--ink:#173f66;--line:#c7d9ea;--soft:#f7fbff;--warn:#fff7f1}
+:root {
+  --navy:#003b70;
+  --cyan:#12bddf;
+  --orange:#ff5a00;
+  --green:#3aa25a;
+  --purple:#6b5fb5;
+  --ink:#173f66;
+  --line:#c7d9ea;
+  --soft:#f7fbff;
+}
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--navy)}
 .stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
@@ -14,56 +25,132 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;fon
 .header{position:absolute;left:6%;top:5.4%;right:17%}
 .session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.24rem}
 .dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
-h1{margin:0;color:var(--navy);font-size:clamp(31px,2.75vw,54px);line-height:1.03;letter-spacing:-.02em;font-weight:900}
+h1{margin:0;color:var(--navy);font-size:clamp(32px,2.9vw,56px);line-height:1.03;letter-spacing:-.02em;font-weight:900}
 .subtitle{font-size:clamp(17px,1.2vw,24px);margin-top:.28rem;color:#2f5f88;font-weight:750}
-.content{position:absolute;left:4.2%;right:4.2%;top:22.5%;bottom:7%;display:grid;grid-template-columns:1fr 1fr;gap:1rem;min-height:0}
-.panel{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-width:0;overflow:hidden}
-.panel h2{margin:0;background:var(--navy);color:#fff;font-size:clamp(22px,1.55vw,32px);line-height:1.04;padding:.58rem .78rem;font-weight:900}
-.panel.controls{border-color:var(--orange)}
-.panel.controls h2{background:var(--orange)}
-.stack{padding:.72rem .78rem;display:grid;grid-template-rows:repeat(5,1fr);gap:.48rem;flex:1;min-height:0}
-.card{border:2px solid var(--line);border-left:8px solid var(--cyan);border-radius:8px;background:var(--soft);padding:.48rem .62rem;display:flex;flex-direction:column;justify-content:center;min-height:0}
-.card.risk{border-left-color:var(--orange);background:var(--warn)}
-.card strong{display:block;font-size:clamp(17px,1.13vw,23px);line-height:1.03;color:var(--navy);margin-bottom:.16rem}
-.card span{display:block;font-size:clamp(14px,.96vw,19px);line-height:1.10;font-weight:740;color:var(--ink)}
-.bottomBar{position:absolute;left:4.2%;right:4.2%;bottom:2.3%;border-top:2px solid var(--line);padding-top:.38rem;background:#fff}
-.takeaway{font-size:clamp(15px,1vw,20px);line-height:1.08;font-weight:900;color:var(--navy);text-align:center}
-.footer{position:absolute;left:4.9%;bottom:.7%;font-size:clamp(12px,.85vw,18px);color:#168cff}
+
+.content{position:absolute;left:4.3%;right:4.3%;top:20.2%;bottom:4.4%;display:grid;grid-template-columns:29% 71%;gap:.85rem;min-height:0}
+.boxTitle{margin:0;background:var(--navy);color:#fff;font-size:clamp(20px,1.42vw,30px);line-height:1.04;padding:.54rem .72rem;font-weight:900}
+.diagram{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.diagramBody{flex:1;min-height:0;display:grid;grid-template-rows:repeat(4,1fr);gap:.34rem;padding:.48rem}
+.deployCard{border:3px solid var(--line);border-radius:9px;background:#fff;display:grid;grid-template-columns:31% 39% 30%;gap:.34rem;align-items:center;padding:.32rem .40rem;min-height:0}
+.deployCard h3{margin:0;font-size:clamp(15px,1.02vw,20px);line-height:1.04;font-weight:900;color:var(--navy)}
+.infra{border:3px solid var(--navy);background:#eef8fb;border-radius:8px;min-height:44px;display:grid;place-items:center;text-align:center;font-size:clamp(12px,.82vw,16px);line-height:1.04;font-weight:900;color:var(--navy);padding:.15rem}
+.customerWrap{display:flex;justify-content:center;align-items:center;gap:.22rem;flex-wrap:wrap}
+.customer{min-width:62px;height:24px;border-radius:999px;background:var(--orange);color:#fff;display:grid;place-items:center;font-size:clamp(10px,.68vw,13px);font-weight:900;padding:0 .35rem}
+.link{font-size:clamp(13px,.90vw,18px);font-weight:900;color:var(--purple)}
+.community{border-color:var(--green);background:#f8fff5} .community h3{color:var(--green)} .community .infra{border-color:var(--green);background:#f1faee}
+.public{border-color:var(--orange)} .public .infra{border-color:var(--orange);background:#fff7f1}
+.hybrid{border-color:var(--purple);background:#fbfaff} .hybrid h3{color:var(--purple)} .hybrid .infra{border-color:var(--purple);background:#f5f3fb}
+
+.right{border:3px solid var(--cyan);background:#fff;display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.right .boxTitle{background:var(--cyan)}
+.grid{flex:1;min-height:0;padding:.55rem;display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(2,1fr);gap:.52rem}
+.model{border:3px solid var(--line);border-radius:10px;display:flex;flex-direction:column;min-width:0;overflow:hidden;background:#fff}
+.model h3{margin:0;color:#fff;text-align:center;font-size:clamp(22px,1.55vw,31px);line-height:1.03;font-weight:900;padding:.46rem .40rem}
+.private h3{background:var(--navy)} .communityDef h3{background:var(--green)} .hybridDef h3{background:var(--purple)} .publicDef h3{background:var(--orange)}
+.model .body{padding:.46rem .50rem;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto repeat(3,1fr);gap:.30rem .38rem;flex:1;min-height:0}
+.def{font-size:clamp(14px,.98vw,19px);line-height:1.08;font-weight:760;color:var(--ink);padding-bottom:.20rem;border-bottom:2px solid var(--line);grid-column:1 / -1}
+.dimension{border-radius:7px;background:#f7fbff;padding:.30rem .34rem;display:flex;flex-direction:column;justify-content:center;min-height:0}
+.dimension b{font-size:clamp(14px,.98vw,19px);line-height:1.03;color:var(--navy);margin-bottom:.10rem}
+.dimension span{font-size:clamp(13px,.90vw,17px);line-height:1.12;font-weight:760;color:#315b7e}
+.private .dimension{border-left:4px solid var(--navy)}
+.communityDef .dimension{border-left:4px solid var(--green)}
+.hybridDef .dimension{border-left:4px solid var(--purple)}
+.publicDef .dimension{border-left:4px solid var(--orange)}
+.note{position:absolute;left:4.3%;right:4.3%;bottom:1.5%;border-top:2px solid var(--line);padding-top:.32rem;display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center;background:#fff}
+.noteText{font-size:clamp(12px,.85vw,16px);line-height:1.08;font-weight:850;color:#315b7e}
+.footer{font-size:clamp(12px,.85vw,18px);color:#168cff}
 </style>
 </head>
 <body>
 <main class="stage">
-<section aria-label="AI-enabled sourcing risk and procurement controls" class="slide">
+<section aria-label="Cloud Deployment Models" class="slide">
 <img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
 <div class="header">
 <div class="session"><span class="dot"></span><span>Session 3 Cloud Computing</span></div>
-<h1>AI-Enabled Sourcing Risk</h1>
-<div class="subtitle">AI can accelerate analysis and communication, but it also creates new evidence, governance and accountability risks.</div>
+<h1>Cloud Deployment Models</h1>
+<div class="subtitle">Public, private, community and hybrid cloud choices change control, scalability and cost base.</div>
 </div>
 <div class="content">
-<section class="panel">
-<h2>Where procurement is exposed</h2>
-<div class="stack">
-<div class="card risk"><strong>Unsupported claims</strong><span>AI may produce plausible but false facts, benchmarks, supplier comparisons or contract interpretations.</span></div>
-<div class="card risk"><strong>Supplier-generated content</strong><span>Proposals, references and technical statements may be AI-assisted, making authorship and validation less transparent.</span></div>
-<div class="card risk"><strong>Hidden limitations</strong><span>Models may use incomplete, outdated or biased information without clearly showing what is missing.</span></div>
-<div class="card risk"><strong>Confidentiality leakage</strong><span>Tender data, prices, evaluation notes or personal information may enter tools outside approved controls.</span></div>
-<div class="card risk"><strong>Inconsistent evaluation</strong><span>Automated scoring can reproduce bias or apply criteria unevenly when prompts, data or model versions change.</span></div>
+<section class="diagram">
+<h2 class="boxTitle">Deployment view</h2>
+<div class="diagramBody">
+<div class="deployCard">
+<h3>Private cloud</h3>
+<div class="infra">Dedicated<br/>environment</div>
+<div class="customerWrap"><div class="customer">Customer</div></div>
+</div>
+<div class="deployCard community">
+<h3>Community cloud</h3>
+<div class="infra">Shared by related<br/>organisations</div>
+<div class="customerWrap"><div class="customer">Customer</div><div class="customer">Customer</div></div>
+</div>
+<div class="deployCard hybrid">
+<h3>Hybrid cloud</h3>
+<div class="infra">Private + public<br/>connected</div>
+<div class="customerWrap"><div class="customer">Customer</div><span class="link">↔</span></div>
+</div>
+<div class="deployCard public">
+<h3>Public cloud</h3>
+<div class="infra">Shared provider<br/>environment</div>
+<div class="customerWrap"><div class="customer">Customer</div><div class="customer">Customer</div></div>
+</div>
 </div>
 </section>
-<section class="panel controls">
-<h2>Procurement controls</h2>
-<div class="stack">
-<div class="card"><strong>Validate evidence</strong><span>Require named sources, direct links, dates and verification before using AI-supported claims in decisions.</span></div>
-<div class="card"><strong>Assign accountability</strong><span>Keep a named human owner for supplier evaluation, recommendations and external communication.</span></div>
-<div class="card"><strong>Control data</strong><span>Define which procurement information may enter AI tools and use only approved environments.</span></div>
-<div class="card"><strong>Audit the process</strong><span>Retain prompts, outputs, model versions, scoring logic and decision records for material sourcing events.</span></div>
-<div class="card"><strong>Contract for transparency</strong><span>Set supplier obligations for AI-use disclosure, data handling, correction, monitoring and liability.</span></div>
+<section class="right">
+<h2 class="boxTitle">Qualitative sourcing comparison</h2>
+<div class="grid">
+<div class="model private">
+<h3>Private</h3>
+<div class="body">
+<div class="def">Dedicated to one organisation and tailored to its operating and control requirements.</div>
+<div class="dimension"><b>Relative cost</b><span>High: dedicated capacity and operating capability.</span></div>
+<div class="dimension"><b>Control</b><span>Very high: architecture, access and governance can be customised.</span></div>
+<div class="dimension"><b>Scalability</b><span>Moderate: constrained by owned or reserved capacity.</span></div>
+<div class="dimension"><b>Security / compliance</b><span>Strongest custom control, but the organisation carries more responsibility.</span></div>
+<div class="dimension"><b>Integration complexity</b><span>Medium to high, especially with legacy environments.</span></div>
+</div>
+</div>
+<div class="model communityDef">
+<h3>Community</h3>
+<div class="body">
+<div class="def">Shared by organisations with common mission, policy, security or regulatory requirements.</div>
+<div class="dimension"><b>Relative cost</b><span>Medium to high, with infrastructure and governance costs shared.</span></div>
+<div class="dimension"><b>Control</b><span>High, but decisions require shared governance.</span></div>
+<div class="dimension"><b>Scalability</b><span>Moderate: larger than a single private cloud but limited to the community.</span></div>
+<div class="dimension"><b>Security / compliance</b><span>Designed around common sector or regulatory controls.</span></div>
+<div class="dimension"><b>Integration complexity</b><span>High where multiple organisations and standards must align.</span></div>
+</div>
+</div>
+<div class="model hybridDef">
+<h3>Hybrid</h3>
+<div class="body">
+<div class="def">Connects private or on-premises environments with public cloud services.</div>
+<div class="dimension"><b>Relative cost</b><span>Medium to high because several environments must be operated.</span></div>
+<div class="dimension"><b>Control</b><span>High for sensitive workloads; lower in public components.</span></div>
+<div class="dimension"><b>Scalability</b><span>High when public cloud is used for variable demand.</span></div>
+<div class="dimension"><b>Security / compliance</b><span>Supports workload segregation, but controls must remain consistent.</span></div>
+<div class="dimension"><b>Integration complexity</b><span>Highest: identity, data, networking and governance must work across environments.</span></div>
+</div>
+</div>
+<div class="model publicDef">
+<h3>Public</h3>
+<div class="body">
+<div class="def">Provider-owned, multi-tenant infrastructure offered to customers as standardised services.</div>
+<div class="dimension"><b>Relative cost</b><span>Low entry cost, but total spend varies with usage and configuration.</span></div>
+<div class="dimension"><b>Control</b><span>Lower: customers operate within the provider's service model.</span></div>
+<div class="dimension"><b>Scalability</b><span>Very high: resources can be provisioned rapidly.</span></div>
+<div class="dimension"><b>Security / compliance</b><span>Strong standard controls under a shared-responsibility model.</span></div>
+<div class="dimension"><b>Integration complexity</b><span>Low to medium for cloud-native use; higher when connected to legacy systems.</span></div>
+</div>
+</div>
 </div>
 </section>
 </div>
-<div class="bottomBar"><div class="takeaway">Use AI to support procurement judgement—not to replace evidence, governance or accountable decision-making.</div></div>
+<div class="note">
+<div class="noteText">No model is universally cheaper or safer. The result depends on workload design, utilisation, data sensitivity, internal capability and contractual terms.</div>
 <div class="footer">©</div>
+</div>
 </section>
 </main>
 <script id="itpf-deck-bridge">
