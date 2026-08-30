@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>ITPF — Slide 23 Draft — Sourcing Strategy Tool</title>
+<title>ITPF — Slide 22 Draft — Hybrid Sourcing Strategy</title>
 <style>
 :root {
   --navy:#003b70;
@@ -20,50 +20,76 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;fon
 .stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
 .slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
 .logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:5}
-.header{position:absolute;left:6%;top:7%;right:18%}
+.header{position:absolute;left:6%;top:6.8%;right:18%}
 .session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.42rem}
 .dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
 h1{margin:0;color:var(--navy);font-size:clamp(36px,3.05vw,60px);line-height:1.03;letter-spacing:-.02em;font-weight:900}
 .subtitle{font-size:clamp(20px,1.38vw,28px);margin-top:.42rem;color:#2f5f88;font-weight:700}
-.main{position:absolute;left:6%;right:6%;top:29%;bottom:13%;display:grid;grid-template-columns:1.05fr .95fr;gap:1.25rem;align-items:stretch}
-.panel{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-width:0}
-.panel h2{margin:0;background:var(--navy);color:#fff;font-size:clamp(26px,2vw,40px);line-height:1.04;padding:.85rem 1rem;font-weight:900}
-.panel .body{padding:1.05rem 1.1rem;font-size:clamp(20px,1.42vw,28px);line-height:1.2;font-weight:750;color:#244d72;display:grid;gap:.9rem}
-.panel .body div{border-bottom:1px solid var(--line);padding-bottom:.65rem}
-.panel .body div:last-child{border-bottom:0}
-.action{border:3px solid var(--orange);background:#fff8f4;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:1.2rem}
-.action h2{margin:0 0 1rem;color:var(--navy);font-size:clamp(30px,2.35vw,46px);line-height:1.05;font-weight:900}
-.action p{margin:0 0 1.2rem;color:#244d72;font-size:clamp(20px,1.45vw,29px);line-height:1.18;font-weight:800}
-.btn{display:inline-block;background:var(--orange);color:#fff;text-decoration:none;border-radius:999px;padding:.9rem 1.45rem;font-size:clamp(22px,1.65vw,32px);font-weight:900;box-shadow:0 10px 24px rgba(255,90,0,.22)}
-.url{margin-top:.95rem;color:var(--navy);font-size:clamp(14px,1vw,19px);line-height:1.15;font-weight:800;word-break:break-word}
+
+.columns{position:absolute;left:6%;right:6%;top:26%;bottom:10%;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+.card{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-width:0}
+.card.run{border-color:var(--navy)}
+.card.diff{border-color:var(--cyan)}
+.card.innov{border-color:var(--orange)}
+.card h2{margin:0;color:#fff;font-size:clamp(28px,2.1vw,41px);line-height:1.04;padding:.78rem .95rem;font-weight:900}
+.run h2{background:var(--navy)}
+.diff h2{background:var(--cyan)}
+.innov h2{background:var(--orange)}
+.body{padding:.76rem .82rem .82rem;display:grid;gap:.36rem;font-size:clamp(17px,1.18vw,23px);line-height:1.12;font-weight:700;color:#244d72}
+.item{border-bottom:1px solid var(--line);padding-bottom:.38rem}
+.item:last-child{border-bottom:0}
+.label{display:block;font-size:clamp(13px,.92vw,18px);line-height:1.05;text-transform:uppercase;letter-spacing:.035em;color:var(--navy);font-weight:900;margin-bottom:.16rem}
+.badge{margin-top:.18rem;border:2px solid currentColor;color:var(--navy);font-weight:900;text-align:center;padding:.38rem .45rem;font-size:clamp(18px,1.25vw,24px);line-height:1.05}
+.connect{position:absolute;left:6%;right:6%;bottom:4.6%;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;text-align:center;font-size:clamp(16px,1.12vw,21px);line-height:1.1;font-weight:900;color:var(--navy)}
+.connect div{border-top:2px solid var(--line);padding-top:.45rem}
 .footer{position:absolute;left:4.9%;bottom:3.1%;font-size:clamp(14px,1vw,22px);color:#168cff}
 </style>
 </head>
 <body>
 <main class="stage">
-<section aria-label="Sourcing Strategy Tool Transition" class="slide">
+<section aria-label="Hybrid Sourcing Strategy" class="slide">
 <img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
 <div class="header">
 <div class="session"><span class="dot"></span><span>Session 1 Setting the Scene</span></div>
-<h1>Apply the Models: HITSS</h1>
-<div class="subtitle">From sourcing theory to an AI-supported sourcing strategy recommendation</div>
+<h1>Hybrid Sourcing Strategy</h1>
+<div class="subtitle">Align sourcing mode with system pace and buying situation</div>
 </div>
-<div class="main">
-<div class="panel">
-<h2>What students do next</h2>
+<div class="columns">
+<div class="card run">
+<h2>Run</h2>
 <div class="body">
-<div>Open the Sourcing Strategy Tool.</div>
-<div>Use the case context and category assumptions to complete the intake.</div>
-<div>Review the recommended sourcing approach and challenge the logic.</div>
-<div>Be ready to explain what changed if the buying class, pace layer or risk profile changes.</div>
+<div class="item"><span class="label">Requirement</span>Recurring long-term requirements</div>
+<div class="item"><span class="label">Solution type</span>Standardized solutions (COTS) with long lifecycle: 7–10 years</div>
+<div class="item"><span class="label">Priority</span>Reliability, security and compatibility</div>
+<div class="item"><span class="label">Market</span>Established supply base with clear leaders</div>
+<div class="badge">Systems of Record<br/>+ Straight Rebuy</div>
 </div>
 </div>
-<div class="action">
-<h2>Open HITSS</h2>
-<p>Sourcing Strategy Tool</p>
-<a class="btn" href="https://www.goodspending.com/sourcing-strategy-tool" rel="noopener" target="_blank">Open Tool</a>
-<div class="url">https://www.goodspending.com/sourcing-strategy-tool</div>
+<div class="card diff">
+<h2>Differentiate</h2>
+<div class="body">
+<div class="item"><span class="label">Requirement</span>Continuous process improvement and reconfiguration</div>
+<div class="item"><span class="label">Solution type</span>Best-of-breed solutions with unique customizations</div>
+<div class="item"><span class="label">Lifecycle</span>Medium lifecycle: 2–5 years</div>
+<div class="item"><span class="label">Purpose</span>Respond to changing business and customer demand</div>
+<div class="badge">Systems of Differentiation<br/>+ Modified Rebuy</div>
 </div>
+</div>
+<div class="card innov">
+<h2>Innovate</h2>
+<div class="body">
+<div class="item"><span class="label">Requirement</span>Ad-hoc requirements addressing emerging opportunities</div>
+<div class="item"><span class="label">Response</span>Dynamic response and experimentation</div>
+<div class="item"><span class="label">Lifecycle</span>Short lifecycle: 3–12 months</div>
+<div class="item"><span class="label">Market</span>Fragmented supply base with no best-of-breed</div>
+<div class="badge">Systems of Innovation<br/>+ New Task</div>
+</div>
+</div>
+</div>
+<div class="connect">
+<div>Exploit stable capability</div>
+<div>Improve current advantage</div>
+<div>Explore future advantage</div>
 </div>
 <div class="footer">©</div>
 </section>

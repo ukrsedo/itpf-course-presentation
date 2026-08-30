@@ -5,17 +5,18 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>ITPF — Slide 36 v6 — Cloud Deployment Models</title>
+<title>ITPF — Slide 35 — FSE and Right to Reduce FSE</title>
 <style>
 :root {
   --navy:#003b70;
   --cyan:#12bddf;
   --orange:#ff5a00;
   --green:#3aa25a;
-  --purple:#6b5fb5;
   --ink:#173f66;
   --line:#c7d9ea;
   --soft:#f7fbff;
+  --grey:#e7eaee;
+  --yellow:#fff36a;
 }
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--navy)}
@@ -27,132 +28,154 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;fon
 .dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
 h1{margin:0;color:var(--navy);font-size:clamp(32px,2.9vw,56px);line-height:1.03;letter-spacing:-.02em;font-weight:900}
 .subtitle{font-size:clamp(17px,1.2vw,24px);margin-top:.28rem;color:#2f5f88;font-weight:750}
+.tabs{position:absolute;left:6%;right:6%;top:18.7%;display:flex;gap:.7rem}
+.tab{border:3px solid var(--navy);background:#fff;color:var(--navy);font-size:clamp(18px,1.28vw,26px);font-weight:900;padding:.48rem .95rem;cursor:pointer}
+.tab.active{background:var(--navy);color:#fff}
+.panel{position:absolute;left:4.6%;right:4.6%;top:27.0%;bottom:3.4%;display:none}
+.panel.active{display:block}
 
-.content{position:absolute;left:4.3%;right:4.3%;top:20.2%;bottom:4.4%;display:grid;grid-template-columns:29% 71%;gap:.85rem;min-height:0}
-.boxTitle{margin:0;background:var(--navy);color:#fff;font-size:clamp(20px,1.42vw,30px);line-height:1.04;padding:.54rem .72rem;font-weight:900}
-.diagram{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-height:0;overflow:hidden}
-.diagramBody{flex:1;min-height:0;display:grid;grid-template-rows:repeat(4,1fr);gap:.34rem;padding:.48rem}
-.deployCard{border:3px solid var(--line);border-radius:9px;background:#fff;display:grid;grid-template-columns:31% 39% 30%;gap:.34rem;align-items:center;padding:.32rem .40rem;min-height:0}
-.deployCard h3{margin:0;font-size:clamp(15px,1.02vw,20px);line-height:1.04;font-weight:900;color:var(--navy)}
-.infra{border:3px solid var(--navy);background:#eef8fb;border-radius:8px;min-height:44px;display:grid;place-items:center;text-align:center;font-size:clamp(12px,.82vw,16px);line-height:1.04;font-weight:900;color:var(--navy);padding:.15rem}
-.customerWrap{display:flex;justify-content:center;align-items:center;gap:.22rem;flex-wrap:wrap}
-.customer{min-width:62px;height:24px;border-radius:999px;background:var(--orange);color:#fff;display:grid;place-items:center;font-size:clamp(10px,.68vw,13px);font-weight:900;padding:0 .35rem}
-.link{font-size:clamp(13px,.90vw,18px);font-weight:900;color:var(--purple)}
-.community{border-color:var(--green);background:#f8fff5} .community h3{color:var(--green)} .community .infra{border-color:var(--green);background:#f1faee}
-.public{border-color:var(--orange)} .public .infra{border-color:var(--orange);background:#fff7f1}
-.hybrid{border-color:var(--purple);background:#fbfaff} .hybrid h3{color:var(--purple)} .hybrid .infra{border-color:var(--purple);background:#f5f3fb}
+.calc{height:100%;display:grid;grid-template-columns:37% 63%;gap:1rem;min-height:0}
+.explain,.clause,.capsBox{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.boxTitle{margin:0;background:var(--navy);color:#fff;font-size:clamp(21px,1.5vw,31px);line-height:1.04;padding:.62rem .82rem;font-weight:900}
+.explain .body{padding:.9rem 1rem;font-size:clamp(20px,1.35vw,28px);line-height:1.17;font-weight:760;color:var(--ink)}
+.formula{margin-top:1rem;border-left:8px solid var(--cyan);background:#f7fbff;padding:.8rem .9rem;font-size:clamp(21px,1.45vw,30px);font-weight:900;color:var(--navy)}
+.tableWrap{display:flex;flex-direction:column;min-height:0}
+.tableTitle{font-style:italic;font-size:clamp(18px,1.2vw,24px);font-weight:900;color:var(--navy);padding:.35rem .2rem .45rem}
+table{border-collapse:collapse;width:100%;font-size:clamp(18px,1.18vw,24px);line-height:1.05;color:var(--navy);font-weight:760}
+th{background:var(--navy);color:#fff;text-align:left;padding:.55rem .7rem;border:2px solid #fff;font-weight:900}
+td{background:#e4e6e9;padding:.58rem .7rem;border:2px solid #fff}
+td.bold{font-weight:900}
 
-.right{border:3px solid var(--cyan);background:#fff;display:flex;flex-direction:column;min-height:0;overflow:hidden}
-.right .boxTitle{background:var(--cyan)}
-.grid{flex:1;min-height:0;padding:.55rem;display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(2,1fr);gap:.52rem}
-.model{border:3px solid var(--line);border-radius:10px;display:flex;flex-direction:column;min-width:0;overflow:hidden;background:#fff}
-.model h3{margin:0;color:#fff;text-align:center;font-size:clamp(22px,1.55vw,31px);line-height:1.03;font-weight:900;padding:.46rem .40rem}
-.private h3{background:var(--navy)} .communityDef h3{background:var(--green)} .hybridDef h3{background:var(--purple)} .publicDef h3{background:var(--orange)}
-.model .body{padding:.46rem .50rem;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto repeat(3,1fr);gap:.30rem .38rem;flex:1;min-height:0}
-.def{font-size:clamp(14px,.98vw,19px);line-height:1.08;font-weight:760;color:var(--ink);padding-bottom:.20rem;border-bottom:2px solid var(--line);grid-column:1 / -1}
-.dimension{border-radius:7px;background:#f7fbff;padding:.30rem .34rem;display:flex;flex-direction:column;justify-content:center;min-height:0}
-.dimension b{font-size:clamp(14px,.98vw,19px);line-height:1.03;color:var(--navy);margin-bottom:.10rem}
-.dimension span{font-size:clamp(13px,.90vw,17px);line-height:1.12;font-weight:760;color:#315b7e}
-.private .dimension{border-left:4px solid var(--navy)}
-.communityDef .dimension{border-left:4px solid var(--green)}
-.hybridDef .dimension{border-left:4px solid var(--purple)}
-.publicDef .dimension{border-left:4px solid var(--orange)}
-.note{position:absolute;left:4.3%;right:4.3%;bottom:1.5%;border-top:2px solid var(--line);padding-top:.32rem;display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center;background:#fff}
-.noteText{font-size:clamp(12px,.85vw,16px);line-height:1.08;font-weight:850;color:#315b7e}
-.footer{font-size:clamp(12px,.85vw,18px);color:#168cff}
+.mechanism{height:100%;display:grid;grid-template-columns:52% 48%;gap:1rem;min-height:0}
+.clauseText{padding:.9rem 1rem;font-size:clamp(18px,1.22vw,25px);line-height:1.18;font-weight:760;color:var(--ink);overflow:hidden}
+.clauseText strong{color:var(--navy);font-weight:900}
+.schedule{border:3px solid var(--cyan);background:#fff;display:flex;flex-direction:column;overflow:hidden}
+.schedule .boxTitle{background:var(--cyan)}
+.scheduleTable{padding:.7rem;overflow:hidden}
+.scheduleTable table{font-size:clamp(13px,.86vw,18px);line-height:1.02}
+.scheduleTable th{padding:.38rem .35rem;text-align:center}
+.scheduleTable td{padding:.32rem .35rem;background:#f0f1f3;color:#111;font-weight:650}
+.scheduleTable .sku{font-weight:900;color:#111}
+.scheduleTable .num{text-align:center;color:#111;font-weight:850}
+
+.caps{height:100%;display:grid;grid-template-columns:49% 51%;gap:1rem;min-height:0}
+.capsBox{border-color:var(--orange)}
+.capsBox .boxTitle{background:var(--orange)}
+.capText{padding:.9rem 1rem;font-size:clamp(19px,1.28vw,26px);line-height:1.16;font-weight:760;color:var(--ink);overflow:hidden}
+mark{background:var(--yellow);padding:0 .12rem}
+mark.cyan{background:#48e9f3}
+.rightPanel{display:grid;grid-template-rows:auto 1fr;gap:.75rem;min-height:0}
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.rule{border:3px solid var(--line);border-left:8px solid var(--orange);background:#fff;padding:.75rem .85rem;font-size:clamp(20px,1.32vw,27px);line-height:1.13;font-weight:900;color:var(--navy)}
+.rule strong{font-size:clamp(28px,2vw,42px);color:var(--orange)}
+.footer{position:absolute;left:4.9%;bottom:1.8%;font-size:clamp(14px,1vw,22px);color:#168cff}
 </style>
 </head>
 <body>
 <main class="stage">
-<section aria-label="Cloud Deployment Models" class="slide">
+<section aria-label="FSE and the Right to Reduce FSE" class="slide">
 <img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
 <div class="header">
 <div class="session"><span class="dot"></span><span>Session 3 Cloud Computing</span></div>
-<h1>Cloud Deployment Models</h1>
-<div class="subtitle">Public, private, community and hybrid cloud choices change control, scalability and cost base.</div>
+<h1>FSE and the Right to Reduce FSE</h1>
+<div class="subtitle">Full-Service Equivalent mechanics and annual reduction limits.</div>
 </div>
-<div class="content">
-<section class="diagram">
-<h2 class="boxTitle">Deployment view</h2>
-<div class="diagramBody">
-<div class="deployCard">
-<h3>Private cloud</h3>
-<div class="infra">Dedicated<br/>environment</div>
-<div class="customerWrap"><div class="customer">Customer</div></div>
+<div class="tabs">
+<button class="tab active" data-panel="calc" type="button">FSE calculation</button>
+<button class="tab" data-panel="mechanism" type="button">Reduction mechanism</button>
+<button class="tab" data-panel="caps" type="button">Caps and limits</button>
 </div>
-<div class="deployCard community">
-<h3>Community cloud</h3>
-<div class="infra">Shared by related<br/>organisations</div>
-<div class="customerWrap"><div class="customer">Customer</div><div class="customer">Customer</div></div>
-</div>
-<div class="deployCard hybrid">
-<h3>Hybrid cloud</h3>
-<div class="infra">Private + public<br/>connected</div>
-<div class="customerWrap"><div class="customer">Customer</div><span class="link">↔</span></div>
-</div>
-<div class="deployCard public">
-<h3>Public cloud</h3>
-<div class="infra">Shared provider<br/>environment</div>
-<div class="customerWrap"><div class="customer">Customer</div><div class="customer">Customer</div></div>
-</div>
+<div class="panel active" id="calc">
+<div class="calc">
+<section class="explain">
+<h2 class="boxTitle">FSE Workers Calculation</h2>
+<div class="body">
+        FSE Workers are calculated by categorising each Customer Worker to one of the worker categories below, multiplying the Worker number by the applicable percentage rate, and then adding totals for each category of worker.
+        <div class="formula">Worker count × applicable percentage = FSE Worker Calculation</div>
 </div>
 </section>
-<section class="right">
-<h2 class="boxTitle">Qualitative sourcing comparison</h2>
-<div class="grid">
-<div class="model private">
-<h3>Private</h3>
-<div class="body">
-<div class="def">Dedicated to one organisation and tailored to its operating and control requirements.</div>
-<div class="dimension"><b>Relative cost</b><span>High: dedicated capacity and operating capability.</span></div>
-<div class="dimension"><b>Control</b><span>Very high: architecture, access and governance can be customised.</span></div>
-<div class="dimension"><b>Scalability</b><span>Moderate: constrained by owned or reserved capacity.</span></div>
-<div class="dimension"><b>Security / compliance</b><span>Strongest custom control, but the organisation carries more responsibility.</span></div>
-<div class="dimension"><b>Integration complexity</b><span>Medium to high, especially with legacy environments.</span></div>
+<section class="tableWrap">
+<div class="tableTitle">Sample Total FSE Worker Calculation:</div>
+<table>
+<tr><th>Worker Category</th><th>Applicable Number</th><th>Applicable Percentage</th><th>FSE Worker Calculation</th></tr>
+<tr><td>Full-time Employees</td><td>66,094</td><td>100.0%</td><td>66,094</td></tr>
+<tr><td>Part-time Employees</td><td>2,776</td><td>25.0%</td><td>694</td></tr>
+<tr><td>Associates</td><td>0</td><td>12.5%</td><td>0</td></tr>
+<tr><td>Former Workers with Access</td><td>0</td><td>2.5%</td><td>0</td></tr>
+<tr><td class="bold">Totals:</td><td class="bold">68,870</td><td></td><td class="bold">66,788</td></tr>
+</table>
+</section>
 </div>
 </div>
-<div class="model communityDef">
-<h3>Community</h3>
-<div class="body">
-<div class="def">Shared by organisations with common mission, policy, security or regulatory requirements.</div>
-<div class="dimension"><b>Relative cost</b><span>Medium to high, with infrastructure and governance costs shared.</span></div>
-<div class="dimension"><b>Control</b><span>High, but decisions require shared governance.</span></div>
-<div class="dimension"><b>Scalability</b><span>Moderate: larger than a single private cloud but limited to the community.</span></div>
-<div class="dimension"><b>Security / compliance</b><span>Designed around common sector or regulatory controls.</span></div>
-<div class="dimension"><b>Integration complexity</b><span>High where multiple organisations and standards must align.</span></div>
-</div>
-</div>
-<div class="model hybridDef">
-<h3>Hybrid</h3>
-<div class="body">
-<div class="def">Connects private or on-premises environments with public cloud services.</div>
-<div class="dimension"><b>Relative cost</b><span>Medium to high because several environments must be operated.</span></div>
-<div class="dimension"><b>Control</b><span>High for sensitive workloads; lower in public components.</span></div>
-<div class="dimension"><b>Scalability</b><span>High when public cloud is used for variable demand.</span></div>
-<div class="dimension"><b>Security / compliance</b><span>Supports workload segregation, but controls must remain consistent.</span></div>
-<div class="dimension"><b>Integration complexity</b><span>Highest: identity, data, networking and governance must work across environments.</span></div>
-</div>
-</div>
-<div class="model publicDef">
-<h3>Public</h3>
-<div class="body">
-<div class="def">Provider-owned, multi-tenant infrastructure offered to customers as standardised services.</div>
-<div class="dimension"><b>Relative cost</b><span>Low entry cost, but total spend varies with usage and configuration.</span></div>
-<div class="dimension"><b>Control</b><span>Lower: customers operate within the provider's service model.</span></div>
-<div class="dimension"><b>Scalability</b><span>Very high: resources can be provisioned rapidly.</span></div>
-<div class="dimension"><b>Security / compliance</b><span>Strong standard controls under a shared-responsibility model.</span></div>
-<div class="dimension"><b>Integration complexity</b><span>Low to medium for cloud-native use; higher when connected to legacy systems.</span></div>
-</div>
-</div>
+<div class="panel" id="mechanism">
+<div class="mechanism">
+<section class="clause">
+<h2 class="boxTitle">5. Right to Reduce FSE OR SKUs</h2>
+<div class="clauseText">
+<strong>Ay. FSE Reduction Option Part 1.</strong><br/>
+        Starting as of the commencement of Year 2 of the Order Term, if Customer’s Annual Reporting results in a decrease of FSE Workers below the maximum FSE Worker count of 66,788 (“Initial Maximum FSE Worker Count”), Customer may request as adjustment to the Annual Subscription Fees during the Order Term and Workday shall provide such adjustment in accordance with this subsection 5(a). The adjustment to the annual subscription fees will be calculated based on the FSE Worker count by SKU bundle reported by Customer (As calculated in accordance with Section 2 (FSE Worker Calculation)) multiplied by the annual subscription fee per addition FSE Worker per SKU Bundle...
+      </div>
+</section>
+<section class="schedule">
+<h2 class="boxTitle">SKU bundle count schedule</h2>
+<div class="scheduleTable">
+<table>
+<tr><th>SKU</th><th>Service</th><th>2020/21</th><th>2021/22</th><th>2022/23</th><th>2023/24</th><th>2024/30</th></tr>
+<tr><td class="sku">FIN*</td><td>Core Financials</td><td class="num" rowspan="7">33,394</td><td class="num" rowspan="7">50,091</td><td class="num" rowspan="7">66,788</td><td class="num" rowspan="7">66,788</td><td></td></tr>
+<tr><td class="sku">GM*</td><td>Grants Management</td><td></td></tr>
+<tr><td class="sku">PRJT*</td><td>Projects</td><td></td></tr>
+<tr><td class="sku">PB*</td><td>Project Billing</td><td></td></tr>
+<tr><td class="sku">PRO*</td><td>Procurement</td><td></td></tr>
+<tr><td class="sku">INV*</td><td>Inventory</td><td></td></tr>
+<tr><td class="sku">EXP*</td><td>Expenses</td><td></td></tr>
+<tr><td class="sku">CHCM*</td><td>Core Human Capital Management</td><td></td><td></td><td></td><td></td><td class="num" rowspan="9">66,788</td></tr>
+<tr><td class="sku">USP*</td><td>Payroll for United States</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="sku">LRN*</td><td>Learning</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="sku">MCNF*</td><td>Media Cloud - No Fee</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">33,394</td></tr>
+<tr><td class="sku">REC*</td><td>Recruiting</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="sku">PLNF*</td><td>Financial Planning</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="sku">PLNW*</td><td>Workforce Planning</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="sku">PRA*</td><td>Prism Analytics</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="sku">TT*</td><td>Time Tracking</td><td></td><td></td><td></td><td></td></tr>
+</table>
 </div>
 </section>
 </div>
-<div class="note">
-<div class="noteText">No model is universally cheaper or safer. The result depends on workload design, utilisation, data sensitivity, internal capability and contractual terms.</div>
+</div>
+<div class="panel" id="caps">
+<div class="caps">
+<section class="capsBox">
+<h2 class="boxTitle">Reduction caps</h2>
+<div class="capText">
+<strong>Ay. FSE Reduction Option Part 1.</strong><br/>
+        The decreases in the FSE Worker count under this subsection 5(a) may not exceed a decrease of <mark>nine percent (9%)</mark> of the initial maximum FSE Worker count in any <mark class="cyan">single annual reporting period</mark>, and the maximum total FSE Worker count decrease may not result in an adjusted maximum FSE Worker count that is less than <mark>eighty two percent (82%)</mark> of the initial maximum FSE Worker count <mark class="cyan">during the order term</mark>. Any future fees associated with the reduced FSE Workers will be reduced from future invoices. If the fees associated with the reduced FSE Workers have been prepaid an unearned, a credit for the reduced fees will be applied only to subsequent invoice for the subscription service...
+      </div>
+</section>
+<section class="rightPanel">
+<div class="rules">
+<div class="rule"><strong>9%</strong><br/>maximum decrease in any single annual reporting period</div>
+<div class="rule"><strong>82%</strong><br/>minimum adjusted maximum FSE Worker count during the order term</div>
+</div>
+<section class="schedule">
+<h2 class="boxTitle">Commercial meaning</h2>
+<div class="clauseText">
+          The right to reduce is not an unlimited scale-down right. It is an annual adjustment mechanism constrained by a yearly reduction cap and a floor for the whole order term.
+        </div>
+</section>
+</section>
+</div>
+</div>
 <div class="footer">©</div>
-</div>
 </section>
 </main>
+<script>
+document.querySelectorAll('.tab').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(btn.dataset.panel).classList.add('active');
+}));
+</script>
 <script id="itpf-deck-bridge">
 (function(){
   function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }

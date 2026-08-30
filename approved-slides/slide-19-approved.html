@@ -5,130 +5,87 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>ITPF — Slide 19 Draft v2 — Bimodal Procurement by ADB</title>
+<title>ITPF — Slide 18 Draft — Concepts for IT Transformation</title>
 <style>
 :root {
   --navy:#003b70;
   --cyan:#12bddf;
   --orange:#ff5a00;
+  --blue:#2d8cff;
   --ink:#003b70;
   --line:#c7d9ea;
-  --soft:#f7fbff;
+  --soft:#f6fbff;
 }
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
 .stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
 .slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
 .logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:5}
-.header{position:absolute;left:6%;top:7%;right:17%}
+.header{position:absolute;left:6.2%;top:7.6%;right:18%}
 .session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.45rem}
 .dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
-h1{margin:0;color:var(--navy);font-size:clamp(31px,2.7vw,51px);line-height:1.04;letter-spacing:-.02em;font-weight:800}
-
-.tabs{position:absolute;left:6%;right:6%;top:21.5%;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.tab{border:3px solid var(--navy);background:#fff;color:var(--navy);font-size:clamp(22px,1.65vw,33px);font-weight:800;padding:.8rem 1rem;cursor:pointer;text-align:left}
-.tab span{display:block;font-size:clamp(15px,1.05vw,21px);font-weight:700;margin-top:.25rem}
-.tab.run.active{background:var(--cyan);color:#fff;border-color:var(--cyan)}
-.tab.innov.active{background:var(--orange);color:#fff;border-color:var(--orange)}
-
-.panel{position:absolute;left:6%;right:6%;top:34%;bottom:7%;display:none}
-.panel.active{display:grid;grid-template-columns:32% 47% 21%;gap:1rem}
-.box{border:3px solid var(--navy);background:#fff;min-width:0;display:flex;flex-direction:column}
-#runPanel .box{border-color:var(--cyan)}
-#innovationPanel .box{border-color:var(--orange)}
-.box h2{margin:0;color:#fff;background:var(--navy);font-size:clamp(20px,1.45vw,29px);line-height:1.05;padding:.75rem .9rem;font-weight:800}
-#runPanel .box h2{background:var(--cyan)}
-#innovationPanel .box h2{background:var(--orange)}
-.body{padding:.95rem 1rem;font-size:clamp(17px,1.2vw,24px);line-height:1.22}
-.body p{margin:.05rem 0 .75rem}
-.body p:last-child{margin-bottom:0}
-.body strong{font-weight:800;color:var(--navy)}
-.methods{font-size:clamp(21px,1.55vw,31px);line-height:1.18;font-weight:800;padding:1rem .85rem;color:var(--navy)}
-.pill{display:block;border:2px solid currentColor;padding:.55rem .5rem;margin:.42rem 0;text-align:center}
-.pill small{display:block;font-size:clamp(11px,.72vw,15px);line-height:1.08;font-weight:700;margin-top:.22rem;color:#2f5f88}
-.footer{position:absolute;left:4.9%;bottom:3.3%;font-size:clamp(14px,1vw,22px);color:#168cff}
+h1{margin:0;color:var(--navy);font-size:clamp(33px,2.8vw,52px);line-height:1.03;letter-spacing:-.02em;font-weight:800}
+.subtitle{font-size:clamp(17px,1.25vw,25px);margin-top:.45rem;color:#2f5f88;font-weight:600}
+.grid{position:absolute;left:6.2%;right:6.2%;top:26%;bottom:10.5%;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.1rem}
+.card{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-width:0}
+.card:nth-child(1){border-color:var(--cyan)}
+.card:nth-child(2){border-color:var(--orange)}
+.card:nth-child(3){border-color:var(--navy)}
+.cardHead{color:#fff;font-size:clamp(24px,1.9vw,36px);font-weight:800;line-height:1.04;padding:.85rem 1rem}
+.card:nth-child(1) .cardHead{background:var(--cyan)}
+.card:nth-child(2) .cardHead{background:var(--orange)}
+.card:nth-child(3) .cardHead{background:var(--navy)}
+.cardBody{padding:1rem 1.05rem;font-size:clamp(16px,1.12vw,22px);line-height:1.22;display:flex;flex-direction:column;gap:.75rem}
+.label{font-weight:800;color:var(--navy);font-size:clamp(15px,1.02vw,21px);text-transform:uppercase;letter-spacing:.03em}
+.bodyText{color:#123f66}
+.modeList{margin:0;padding-left:1.3rem}
+.modeList li{margin:.35rem 0}
+.footer{position:absolute;left:4.9%;bottom:4.1%;font-size:clamp(14px,1vw,22px);color:#168cff}
 </style>
 </head>
 <body>
 <main class="stage">
-<section aria-label="Bimodal Procurement by ADB" class="slide">
+<section aria-label="Concepts for IT Transformation" class="slide">
 <img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
 <div class="header">
 <div class="session"><span class="dot"></span><span>Session 1 Setting the Scene</span></div>
-<h1>Bimodal Procurement by the Asian Development Bank (ADB)</h1>
+<h1>Concepts for IT Transformation</h1>
+<div class="subtitle">From products and digital tools to service value and bimodal delivery</div>
 </div>
-<div class="tabs">
-<button class="tab run active" data-panel="runPanel" type="button">“Run” Procurement <span>Off-the-shelf commodities</span></button>
-<button class="tab innov" data-panel="innovationPanel" type="button">Procurement of Innovation <span>Complex solutions and services</span></button>
-</div>
-<div class="panel active" id="runPanel">
-<div class="box">
-<h2>Mode logic</h2>
-<div class="body">
-      Conventional procurement processes prioritising compliance, risk mitigation and cost efficiency.
-      <br/><br/>
-      Standardised procedures and documentation keep procurement aligned with ADB regulations and policies.
-    </div>
-</div>
-<div class="box">
-<h2>Scope</h2>
-<div class="body">
-<p><strong>Predefined goods and services:</strong> standard equipment, supplies and software licences that do not require design or customisation.</p>
-<p><strong>Non-complex procurements:</strong> lower-value, low-risk contracts following routine bidding procedures.</p>
-<p><strong>Open competitive bidding and alternative arrangements:</strong> packaged for competition, with flexibility to use borrower procedures if aligned with ADB standards.</p>
-<p><strong>Consultants and non-consulting services:</strong> standard IT, maintenance or facility services.</p>
+<div class="grid">
+<div class="card">
+<div class="cardHead">Servitization</div>
+<div class="cardBody">
+<div class="label">Definition</div>
+<div class="bodyText">The transformation of a business from selling products to offering integrated products and services, creating added value and long-term customer relationships.</div>
+<div class="label">Procurement implication</div>
+<div class="bodyText">Buying shifts from asset ownership to outcomes, continuity, availability and provider capability.</div>
 </div>
 </div>
-<div class="box">
-<h2>Supplier selection</h2>
-<div class="methods">
-<span class="pill">ICB<small>International Competitive Bidding</small></span>
-<span class="pill">NCB<small>National Competitive Bidding</small></span>
-<span class="pill">RFQ<small>Request for Quotation</small></span>
+<div class="card">
+<div class="cardHead">Digitalization Paradox</div>
+<div class="cardBody">
+<div class="label">Definition</div>
+<div class="bodyText">The phenomenon where organizations invest in advanced digital technologies expecting improved performance, efficiency and competitive advantage but fail to realize those benefits, or even experience setbacks.</div>
+<div class="label">Why it happens</div>
+<div class="bodyText">Digital initiatives create unanticipated complexity or operational disruption when processes, skills, governance and culture do not change with the technology.</div>
 </div>
 </div>
-</div>
-<div class="panel" id="innovationPanel">
-<div class="box">
-<h2>Mode logic</h2>
-<div class="body">
-      Flexible, agile and innovation-oriented procurement for complex project requirements and emerging market trends.
-      <br/><br/>
-      The model explores new procurement methods, digital technologies and sustainable practices.
-    </div>
-</div>
-<div class="box">
-<h2>Scope</h2>
-<div class="body">
-<p><strong>Digital Sandbox Programs:</strong> engagement with startups and technology companies to test and co-create solutions.</p>
-<p><strong>Knowledge sharing and capacity building:</strong> workshops on innovative procurement practices, especially in infrastructure and digital transformation.</p>
-<p><strong>Pilot projects and PPP models:</strong> novel solutions such as smart infrastructure or green technologies.</p>
-<p><strong>Policy and advisory work:</strong> guidelines and policy notes encouraging procurement to stimulate innovation.</p>
-</div>
-</div>
-<div class="box">
-<h2>Supplier selection</h2>
-<div class="methods">
-<span class="pill">Competitive dialogues</span>
-<span class="pill">PPPs<small>Public-Private Partnerships</small></span>
-<span class="pill">Sandboxes</span>
-<span class="pill">QCBS<small>Quality and Cost-Based Selection</small></span>
+<div class="card">
+<div class="cardHead">Bi-modal IT</div>
+<div class="cardBody">
+<div class="label">Definition</div>
+<div class="bodyText">An approach where an organization manages two separate modes of IT operations:</div>
+<ol class="modeList">
+<li>Mode 1 focuses on stability and efficiency, managing traditional IT systems with predictable processes.</li>
+<li>Mode 2 emphasizes agility and innovation, enabling faster experimentation and adaptation to change.</li>
+</ol>
 </div>
 </div>
 </div>
 <div class="footer">©</div>
 </section>
 </main>
-<script>
-document.querySelectorAll('.tab').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(btn.dataset.panel).classList.add('active');
-  });
-});
-</script>
 <script id="itpf-deck-bridge">
 (function(){
   function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }

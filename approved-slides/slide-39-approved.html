@@ -5,14 +5,14 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>ITPF — Slide 39 — Buy or Build</title>
+<title>ITPF — Slide 37 v6 — Cloud Deployment Models</title>
 <style>
 :root {
   --navy:#003b70;
   --cyan:#12bddf;
   --orange:#ff5a00;
-  --purple:#6b5fb5;
   --green:#3aa25a;
+  --purple:#6b5fb5;
   --ink:#173f66;
   --line:#c7d9ea;
   --soft:#f7fbff;
@@ -25,97 +25,130 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;fon
 .header{position:absolute;left:6%;top:5.4%;right:17%}
 .session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.24rem}
 .dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
-h1{margin:0;color:var(--navy);font-size:clamp(34px,3vw,58px);line-height:1.03;letter-spacing:-.02em;font-weight:900}
+h1{margin:0;color:var(--navy);font-size:clamp(32px,2.9vw,56px);line-height:1.03;letter-spacing:-.02em;font-weight:900}
 .subtitle{font-size:clamp(17px,1.2vw,24px);margin-top:.28rem;color:#2f5f88;font-weight:750}
-.content{position:absolute;left:4.4%;right:4.4%;top:20.6%;bottom:4.4%;display:grid;grid-template-columns:34% 66%;gap:.95rem;min-height:0}
-.boxTitle{margin:0;background:var(--navy);color:#fff;font-size:clamp(21px,1.48vw,31px);line-height:1.04;padding:.58rem .78rem;font-weight:900}
-.choice{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-height:0;overflow:hidden}
-.choiceBody{flex:1;min-height:0;padding:.85rem;display:grid;grid-template-rows:1fr auto 1fr;gap:.65rem}
-.bigChoice{border:4px solid var(--line);border-radius:12px;background:#fff;display:grid;place-items:center;text-align:center;padding:.8rem}
-.bigChoice strong{display:block;font-size:clamp(34px,2.5vw,52px);line-height:1;color:var(--navy);font-weight:900}
-.bigChoice span{display:block;font-size:clamp(17px,1.12vw,22px);line-height:1.08;color:var(--ink);font-weight:800;margin-top:.28rem}
-.buy{border-color:var(--orange);background:#fff8f4} .buy strong{color:var(--orange)}
-.build{border-color:var(--purple);background:#fbfaff} .build strong{color:var(--purple)}
-.or{font-size:clamp(32px,2.2vw,46px);font-weight:900;color:var(--navy);text-align:center}
-.framework{border:3px solid var(--cyan);background:#fff;display:flex;flex-direction:column;min-height:0;overflow:hidden}
-.framework .boxTitle{background:var(--cyan)}
-.grid{flex:1;min-height:0;padding:.72rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:.62rem}
-.card{border:3px solid var(--line);border-radius:10px;background:#fff;display:flex;flex-direction:column;overflow:hidden;min-width:0}
-.card h3{margin:0;color:#fff;text-align:center;font-size:clamp(20px,1.42vw,29px);line-height:1.03;font-weight:900;padding:.55rem .48rem}
-.cots h3{background:var(--orange)} .custom h3{background:var(--purple)} .customise h3{background:var(--green)}
-.cardBody{padding:.62rem .65rem;display:grid;gap:.45rem;align-content:start;flex:1;min-height:0}
-.cardBody div{font-size:clamp(14px,.95vw,18px);line-height:1.10;font-weight:760;color:var(--ink);border-left:5px solid var(--line);padding-left:.45rem}
-.cardBody strong{display:block;color:var(--navy);font-size:clamp(16px,1.05vw,21px);line-height:1.06;margin-bottom:.10rem}
-.lifecycle{border-top:3px solid var(--line);padding:.58rem .72rem;background:#f9fcff}
-.lifecycleTitle{font-size:clamp(17px,1.1vw,22px);font-weight:900;color:var(--navy);margin-bottom:.35rem}
-.steps{display:grid;grid-template-columns:repeat(6,1fr);gap:.38rem}
-.step{background:#fff;border:2px solid var(--cyan);border-radius:999px;text-align:center;padding:.34rem .22rem;font-size:clamp(12px,.82vw,16px);font-weight:900;color:var(--navy)}
-.note{position:absolute;left:4.4%;right:4.4%;bottom:1.4%;border-top:2px solid var(--line);padding-top:.30rem;display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center;background:#fff}
+
+.content{position:absolute;left:4.3%;right:4.3%;top:20.2%;bottom:4.4%;display:grid;grid-template-columns:29% 71%;gap:.85rem;min-height:0}
+.boxTitle{margin:0;background:var(--navy);color:#fff;font-size:clamp(20px,1.42vw,30px);line-height:1.04;padding:.54rem .72rem;font-weight:900}
+.diagram{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.diagramBody{flex:1;min-height:0;display:grid;grid-template-rows:repeat(4,1fr);gap:.34rem;padding:.48rem}
+.deployCard{border:3px solid var(--line);border-radius:9px;background:#fff;display:grid;grid-template-columns:31% 39% 30%;gap:.34rem;align-items:center;padding:.32rem .40rem;min-height:0}
+.deployCard h3{margin:0;font-size:clamp(15px,1.02vw,20px);line-height:1.04;font-weight:900;color:var(--navy)}
+.infra{border:3px solid var(--navy);background:#eef8fb;border-radius:8px;min-height:44px;display:grid;place-items:center;text-align:center;font-size:clamp(12px,.82vw,16px);line-height:1.04;font-weight:900;color:var(--navy);padding:.15rem}
+.customerWrap{display:flex;justify-content:center;align-items:center;gap:.22rem;flex-wrap:wrap}
+.customer{min-width:62px;height:24px;border-radius:999px;background:var(--orange);color:#fff;display:grid;place-items:center;font-size:clamp(10px,.68vw,13px);font-weight:900;padding:0 .35rem}
+.link{font-size:clamp(13px,.90vw,18px);font-weight:900;color:var(--purple)}
+.community{border-color:var(--green);background:#f8fff5} .community h3{color:var(--green)} .community .infra{border-color:var(--green);background:#f1faee}
+.public{border-color:var(--orange)} .public .infra{border-color:var(--orange);background:#fff7f1}
+.hybrid{border-color:var(--purple);background:#fbfaff} .hybrid h3{color:var(--purple)} .hybrid .infra{border-color:var(--purple);background:#f5f3fb}
+
+.right{border:3px solid var(--cyan);background:#fff;display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.right .boxTitle{background:var(--cyan)}
+.grid{flex:1;min-height:0;padding:.55rem;display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(2,1fr);gap:.52rem}
+.model{border:3px solid var(--line);border-radius:10px;display:flex;flex-direction:column;min-width:0;overflow:hidden;background:#fff}
+.model h3{margin:0;color:#fff;text-align:center;font-size:clamp(22px,1.55vw,31px);line-height:1.03;font-weight:900;padding:.46rem .40rem}
+.private h3{background:var(--navy)} .communityDef h3{background:var(--green)} .hybridDef h3{background:var(--purple)} .publicDef h3{background:var(--orange)}
+.model .body{padding:.46rem .50rem;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto repeat(3,1fr);gap:.30rem .38rem;flex:1;min-height:0}
+.def{font-size:clamp(14px,.98vw,19px);line-height:1.08;font-weight:760;color:var(--ink);padding-bottom:.20rem;border-bottom:2px solid var(--line);grid-column:1 / -1}
+.dimension{border-radius:7px;background:#f7fbff;padding:.30rem .34rem;display:flex;flex-direction:column;justify-content:center;min-height:0}
+.dimension b{font-size:clamp(14px,.98vw,19px);line-height:1.03;color:var(--navy);margin-bottom:.10rem}
+.dimension span{font-size:clamp(13px,.90vw,17px);line-height:1.12;font-weight:760;color:#315b7e}
+.private .dimension{border-left:4px solid var(--navy)}
+.communityDef .dimension{border-left:4px solid var(--green)}
+.hybridDef .dimension{border-left:4px solid var(--purple)}
+.publicDef .dimension{border-left:4px solid var(--orange)}
+.note{position:absolute;left:4.3%;right:4.3%;bottom:1.5%;border-top:2px solid var(--line);padding-top:.32rem;display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center;background:#fff}
 .noteText{font-size:clamp(12px,.85vw,16px);line-height:1.08;font-weight:850;color:#315b7e}
 .footer{font-size:clamp(12px,.85vw,18px);color:#168cff}
 </style>
 </head>
 <body>
 <main class="stage">
-<section aria-label="Buy or Build" class="slide">
+<section aria-label="Cloud Deployment Models" class="slide">
 <img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
 <div class="header">
 <div class="session"><span class="dot"></span><span>Session 3 Cloud Computing</span></div>
-<h1>Buy or Build?</h1>
-<div class="subtitle">COTS, custom build, or customise: the sourcing decision changes cost, risk and delivery model.</div>
+<h1>Cloud Deployment Models</h1>
+<div class="subtitle">Public, private, community and hybrid cloud choices change control, scalability and cost base.</div>
 </div>
 <div class="content">
-<section class="choice">
-<h2 class="boxTitle">Core sourcing choice</h2>
-<div class="choiceBody">
-<div class="bigChoice buy"><strong>BUY</strong><span>Commercial off-the-shelf (COTS) product or cloud service</span></div>
-<div class="or">or</div>
-<div class="bigChoice build"><strong>BUILD</strong><span>Software development lifecycle and internal / outsourced delivery</span></div>
+<section class="diagram">
+<h2 class="boxTitle">Deployment view</h2>
+<div class="diagramBody">
+<div class="deployCard">
+<h3>Private cloud</h3>
+<div class="infra">Dedicated<br/>environment</div>
+<div class="customerWrap"><div class="customer">Customer</div></div>
+</div>
+<div class="deployCard community">
+<h3>Community cloud</h3>
+<div class="infra">Shared by related<br/>organisations</div>
+<div class="customerWrap"><div class="customer">Customer</div><div class="customer">Customer</div></div>
+</div>
+<div class="deployCard hybrid">
+<h3>Hybrid cloud</h3>
+<div class="infra">Private + public<br/>connected</div>
+<div class="customerWrap"><div class="customer">Customer</div><span class="link">↔</span></div>
+</div>
+<div class="deployCard public">
+<h3>Public cloud</h3>
+<div class="infra">Shared provider<br/>environment</div>
+<div class="customerWrap"><div class="customer">Customer</div><div class="customer">Customer</div></div>
+</div>
 </div>
 </section>
-<section class="framework">
-<h2 class="boxTitle">Decision framing</h2>
+<section class="right">
+<h2 class="boxTitle">Qualitative sourcing comparison</h2>
 <div class="grid">
-<div class="card cots">
-<h3>COTS / SaaS</h3>
-<div class="cardBody">
-<div><strong>Use when</strong>requirements fit market capability.</div>
-<div><strong>Procurement focus</strong>license model, data terms, SLA, support, exit rights.</div>
-<div><strong>Main risk</strong>configuration limits, lock-in, shelfware.</div>
+<div class="model private">
+<h3>Private</h3>
+<div class="body">
+<div class="def">Dedicated to one organisation and tailored to its operating and control requirements.</div>
+<div class="dimension"><b>Relative cost</b><span>High: dedicated capacity and operating capability.</span></div>
+<div class="dimension"><b>Control</b><span>Very high: architecture, access and governance can be customised.</span></div>
+<div class="dimension"><b>Scalability</b><span>Moderate: constrained by owned or reserved capacity.</span></div>
+<div class="dimension"><b>Security / compliance</b><span>Strongest custom control, but the organisation carries more responsibility.</span></div>
+<div class="dimension"><b>Integration complexity</b><span>Medium to high, especially with legacy environments.</span></div>
 </div>
 </div>
-<div class="card customise">
-<h3>Customise</h3>
-<div class="cardBody">
-<div><strong>Use when</strong>standard solution needs material adaptation.</div>
-<div><strong>Procurement focus</strong>scope control, change requests, IP, acceptance criteria.</div>
-<div><strong>Main risk</strong>cost creep, upgrade friction, bespoke dependency.</div>
+<div class="model communityDef">
+<h3>Community</h3>
+<div class="body">
+<div class="def">Shared by organisations with common mission, policy, security or regulatory requirements.</div>
+<div class="dimension"><b>Relative cost</b><span>Medium to high, with infrastructure and governance costs shared.</span></div>
+<div class="dimension"><b>Control</b><span>High, but decisions require shared governance.</span></div>
+<div class="dimension"><b>Scalability</b><span>Moderate: larger than a single private cloud but limited to the community.</span></div>
+<div class="dimension"><b>Security / compliance</b><span>Designed around common sector or regulatory controls.</span></div>
+<div class="dimension"><b>Integration complexity</b><span>High where multiple organisations and standards must align.</span></div>
 </div>
 </div>
-<div class="card custom">
-<h3>Build</h3>
-<div class="cardBody">
-<div><strong>Use when</strong>capability is differentiating or market fit is poor.</div>
-<div><strong>Procurement focus</strong>delivery method, team capability, roadmap, ownership.</div>
-<div><strong>Main risk</strong>delivery uncertainty, technical debt, maintenance burden.</div>
+<div class="model hybridDef">
+<h3>Hybrid</h3>
+<div class="body">
+<div class="def">Connects private or on-premises environments with public cloud services.</div>
+<div class="dimension"><b>Relative cost</b><span>Medium to high because several environments must be operated.</span></div>
+<div class="dimension"><b>Control</b><span>High for sensitive workloads; lower in public components.</span></div>
+<div class="dimension"><b>Scalability</b><span>High when public cloud is used for variable demand.</span></div>
+<div class="dimension"><b>Security / compliance</b><span>Supports workload segregation, but controls must remain consistent.</span></div>
+<div class="dimension"><b>Integration complexity</b><span>Highest: identity, data, networking and governance must work across environments.</span></div>
 </div>
 </div>
+<div class="model publicDef">
+<h3>Public</h3>
+<div class="body">
+<div class="def">Provider-owned, multi-tenant infrastructure offered to customers as standardised services.</div>
+<div class="dimension"><b>Relative cost</b><span>Low entry cost, but total spend varies with usage and configuration.</span></div>
+<div class="dimension"><b>Control</b><span>Lower: customers operate within the provider's service model.</span></div>
+<div class="dimension"><b>Scalability</b><span>Very high: resources can be provisioned rapidly.</span></div>
+<div class="dimension"><b>Security / compliance</b><span>Strong standard controls under a shared-responsibility model.</span></div>
+<div class="dimension"><b>Integration complexity</b><span>Low to medium for cloud-native use; higher when connected to legacy systems.</span></div>
 </div>
-<div class="lifecycle">
-<div class="lifecycleTitle">SDLC stages to consider in build / customise decisions</div>
-<div class="steps">
-<div class="step">Plan</div>
-<div class="step">Define</div>
-<div class="step">Design</div>
-<div class="step">Build</div>
-<div class="step">Test</div>
-<div class="step">Deploy</div>
 </div>
 </div>
 </section>
 </div>
 <div class="note">
-<div class="noteText">Discussion: IT Procurement is not only about buying. Key decision is whether to buy, build, or customise — and who carries lifecycle risk.</div>
+<div class="noteText">No model is universally cheaper or safer. The result depends on workload design, utilisation, data sensitivity, internal capability and contractual terms.</div>
 <div class="footer">©</div>
 </div>
 </section>

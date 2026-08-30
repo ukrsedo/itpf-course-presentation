@@ -5,98 +5,60 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>Slide 69 — Oracle Audit Negotiation Game</title>
+<title>Slide 69 — Source-to-Contract</title>
 <style>
 :root {
-  --navy:#003b70;
-  --cyan:#12bddf;
-  --orange:#ff5a00;
-  --ink:#173f66;
-  --line:#c7d9ea;
-  --soft:#f7fbff;
+  --navy:#003b70; --cyan:#12bddf; --orange:#ff5a00; --ink:#173f66; --line:#c7d9ea; --soft:#f7fbff;
 }
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--navy)}
 .stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
 .slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.corner{position:absolute;right:0;top:0;width:31%;height:54%;background:var(--cyan);clip-path:polygon(100% 0,100% 100%,0 0);opacity:.95}
 .logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:5}
-.logoText{position:absolute;right:4.3%;top:4%;font-size:30px;font-weight:900;color:var(--navy);z-index:5}
-.corner{position:absolute;right:0;top:0;width:28%;height:50%;background:var(--cyan);clip-path:polygon(100% 0,100% 100%,0 0);opacity:.95}
-.header{position:absolute;left:6%;top:5.3%;right:17%}
-.session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.35rem}
+.header{position:absolute;left:6%;top:5.5%;right:18%;z-index:3}
+.session{font-size:clamp(17px,1.2vw,24px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.7rem;font-weight:800}
 .dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
-h1{margin:0;color:var(--navy);font-size:clamp(42px,4.0vw,74px);line-height:1.00;letter-spacing:-.035em;font-weight:900}
-.subtitle{font-size:clamp(20px,1.45vw,30px);margin-top:.55rem;color:#2f5f88;font-weight:800}
-
-.main{position:absolute;left:6%;right:6%;top:30%;bottom:7%;display:grid;grid-template-columns:44% 56%;gap:1.15rem;min-height:0}
-.left{display:flex;flex-direction:column;gap:.9rem;min-height:0}
-.caseBox{border:4px solid var(--navy);border-radius:18px;background:#fff;overflow:hidden;box-shadow:0 10px 28px rgba(0,35,70,.08)}
-.caseHead{background:var(--navy);color:#fff;font-size:clamp(24px,1.75vw,36px);font-weight:900;line-height:1.05;padding:.78rem 1rem}
-.caseBody{padding:1rem 1.1rem;font-size:clamp(19px,1.32vw,27px);line-height:1.22;font-weight:780;color:var(--ink)}
-.caseBody strong{color:var(--navy)}
-
-.signal{border-left:10px solid var(--orange);background:#fff8f4;border-radius:14px;padding:.85rem 1rem;font-size:clamp(18px,1.22vw,25px);line-height:1.18;font-weight:820;color:var(--ink)}
-
-.right{display:grid;grid-template-rows:auto 1fr;gap:.8rem;min-height:0}
-.title2{font-size:clamp(25px,1.75vw,36px);font-weight:900;color:var(--navy);margin:0}
-.steps{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:.75rem;min-height:0}
-.step{border:3px solid var(--line);border-radius:16px;background:var(--soft);padding:.8rem .9rem;display:grid;grid-template-columns:auto 1fr;gap:.65rem;align-content:start;min-height:0}
-.num{width:42px;height:42px;border-radius:50%;background:var(--cyan);display:grid;place-items:center;color:#003b70;font-size:clamp(20px,1.38vw,28px);font-weight:900;flex:none}
-.step h3{margin:0 0 .25rem 0;font-size:clamp(18px,1.25vw,25px);line-height:1.05;font-weight:900;color:var(--navy)}
-.step p{margin:0;font-size:clamp(15px,1.0vw,20px);line-height:1.16;font-weight:760;color:var(--ink)}
-.launch{position:absolute;left:6%;right:6%;bottom:2.2%;display:flex;justify-content:space-between;align-items:center;border-top:2px solid var(--line);padding-top:.45rem}
-.launchText{font-size:clamp(15px,1.05vw,21px);font-weight:900;color:var(--navy)}
-.badge{background:var(--orange);color:#fff;border-radius:999px;padding:.55rem 1.15rem;font-size:clamp(16px,1.1vw,22px);font-weight:900;text-decoration:none;display:inline-block}
+h1{margin:0;color:var(--navy);font-size:clamp(54px,5.3vw,100px);line-height:.96;letter-spacing:-.05em;font-weight:900}
+.subtitle{font-size:clamp(22px,1.6vw,32px);margin-top:.85rem;color:#2f5f88;font-weight:850}
+.main{position:absolute;left:6%;right:6%;top:35%;bottom:9%;display:grid;grid-template-columns:42% 58%;gap:1.2rem;align-items:stretch}
+.left{border-left:12px solid var(--orange);border-radius:20px;background:#fff8f4;padding:1.2rem 1.35rem;display:flex;flex-direction:column;justify-content:center;box-shadow:0 10px 28px rgba(0,35,70,.08)}
+.kicker{font-size:clamp(18px,1.25vw,25px);font-weight:900;color:var(--orange);text-transform:uppercase;letter-spacing:.04em;margin-bottom:.5rem}
+.left p{margin:0;font-size:clamp(25px,1.85vw,38px);line-height:1.15;font-weight:900;color:var(--ink)}
+.flow{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:.8rem}
+.step{border:3px solid var(--line);border-radius:17px;background:var(--soft);padding:.9rem .95rem;position:relative;min-height:0}
+.step::before{content:attr(data-n);position:absolute;right:.72rem;top:.58rem;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--cyan);color:var(--navy);font-size:clamp(18px,1.2vw,24px);font-weight:900}
+.step h2{margin:0 2.6rem .35rem 0;font-size:clamp(19px,1.38vw,28px);line-height:1.04;font-weight:900;color:var(--navy)}
+.step p{margin:0;font-size:clamp(14px,1.02vw,20px);line-height:1.17;font-weight:760;color:var(--ink)}
+.footer{position:absolute;left:6%;right:6%;bottom:2.3%;border-top:2px solid var(--line);padding-top:.5rem;font-size:clamp(15px,1.05vw,21px);font-weight:900;color:var(--navy);display:flex;justify-content:space-between;align-items:center}
+.badge{background:var(--navy);color:#fff;border-radius:999px;padding:.5rem 1rem;font-size:clamp(14px,1vw,20px);font-weight:900}
 </style>
 </head>
 <body>
 <main class="stage">
-<section aria-label="Transition to Oracle Audit negotiation game" class="slide">
+<section aria-label="Source-to-Contract transition slide" class="slide">
 <div class="corner"></div>
-<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
-<div class="header">
-<div class="session"><span class="dot"></span><span>Session 5 Source-to-Contract</span></div>
-<h1>Game #2</h1>
-<div class="subtitle">Oracle Audit</div>
-</div>
-<div class="main">
+<img alt="CIPS logo" class="logo" src="../assets/cips-logo.png"/>
+<header class="header">
+<div class="session"><span class="dot"></span> Session 5</div>
+<h1>Source-to-Contract</h1>
+<div class="subtitle">From IT demand to supplier award and contract protection</div>
+</header>
+<section class="main">
 <div class="left">
-<section class="caseBox">
-<div class="caseHead">Case setup</div>
-<div class="caseBody">
-          You are the <strong>customer negotiation team</strong>. Your task is to contain audit exposure, protect operational continuity, and reduce future dependency risk.
-        </div>
+<div class="kicker">Section 5</div>
+<p>How procurement converts complex IT needs into a sourcing strategy, negotiation position and executable contract.</p>
+</div>
+<div aria-label="Session 5 topics" class="flow">
+<div class="step" data-n="1"><h2>Understand demand</h2><p>Business need, IT context, asset baseline and commercial exposure.</p></div>
+<div class="step" data-n="2"><h2>Shape strategy</h2><p>Kraljic position, sourcing value levers and market options.</p></div>
+<div class="step" data-n="3"><h2>Manage information gaps</h2><p>Licensing, consumption, supplier economics and risk signals.</p></div>
+<div class="step" data-n="4"><h2>Negotiate value</h2><p>Distributive and integrative moves matched to the category situation.</p></div>
+<div class="step" data-n="5"><h2>Design contracts</h2><p>Formal terms, relational governance and incomplete-contract safeguards.</p></div>
+<div class="step" data-n="6"><h2>Protect execution</h2><p>Service levels, data, continuity, change, compliance and exit rights.</p></div>
+</div>
 </section>
-<div class="signal">
-        Expect pressure around compliance claims, audit expansion, formal notices, settlement options, and continuity risk.
-      </div>
-</div>
-<div class="right">
-<h2 class="title2">How to play</h2>
-<div class="steps">
-<div class="step">
-<div class="num">1</div>
-<div><h3>Read the audit brief</h3><p>Review exposure, continuity constraints, supplier claims, and available customer levers.</p></div>
-</div>
-<div class="step">
-<div class="num">2</div>
-<div><h3>Control escalation</h3><p>Decide when to contest, settle, delay, or move the discussion into formal dispute territory.</p></div>
-</div>
-<div class="step">
-<div class="num">3</div>
-<div><h3>Watch active effects</h3><p>Supplier moves can expand audit scope, create legal urgency, or narrow commercial options.</p></div>
-</div>
-<div class="step">
-<div class="num">4</div>
-<div><h3>Choose the endgame</h3><p>Balance liability, service continuity, dependency reduction, and learning for future contracts.</p></div>
-</div>
-</div>
-</div>
-</div>
-<div class="launch">
-<div class="launchText">Open the Oracle Audit negotiation simulator and enter your Student ID if score recording is required.</div>
-<a class="badge" href="https://www.goodspending.com/it-procurement-negotiation-simulator" rel="noopener" target="_blank">Start Game</a>
-</div>
+<div class="footer"><span>Technology / IT Procurement Foundations</span><span class="badge">Next: ITAM as procurement intelligence</span></div>
 </section>
 </main>
 <script id="itpf-deck-bridge">

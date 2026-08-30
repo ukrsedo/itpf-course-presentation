@@ -1,132 +1,103 @@
 <!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Slide 71 — Sourcing Value Levers</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Slide 71 — Case #5 Transition</title>
 <style>
-:root{--navy:#003b70;--cyan:#12bddf;--orange:#ff5a00;--ink:#173f66;--line:#c7d9ea;--soft:#f7fbff;--pale:#eef8fc;--green:#eef8f1;--amber:#fff6e8;--purple:#f4f0ff;--bluep:#eef7ff;--red:#fff1f1}
+:root {
+  --navy:#003b70;
+  --cyan:#12bddf;
+  --orange:#ff5a00;
+  --ink:#173f66;
+  --line:#c7d9ea;
+  --soft:#f7fbff;
+  --green:#2f9e5a;
+}
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--navy)}
 .stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
 .slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
-.corner{position:absolute;right:0;top:0;width:25%;height:42%;background:var(--cyan);clip-path:polygon(100% 0,100% 100%,0 0);opacity:.95}
-.logo{position:absolute;right:4.1%;top:3.8%;width:9.6%;height:auto;z-index:5}
-.header{position:absolute;left:5.4%;top:4.6%;right:18%;z-index:3}
-.session{font-size:clamp(15px,1vw,20px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.5rem;margin-bottom:.42rem;font-weight:850}
-.dot{width:12px;height:12px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
-h1{margin:0;color:var(--navy);font-size:clamp(40px,3.2vw,60px);line-height:.98;letter-spacing:-.04em;font-weight:950}
-.subtitle{font-size:clamp(15px,1.02vw,20px);font-weight:820;color:#456d90;margin-top:.45rem}
-.tabs{position:absolute;left:5.4%;top:16.6%;display:flex;gap:.65rem;z-index:6}
-.tab{border:2px solid var(--cyan);background:#fff;color:var(--navy);border-radius:999px;padding:.5rem 1rem;font-size:clamp(15px,1.05vw,20px);font-weight:950;cursor:pointer;box-shadow:0 7px 18px rgba(0,59,112,.08)}
-.tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
-.panel{display:none}.panel.active{display:block}
-.main{position:absolute;left:5.4%;right:5.4%;top:22.8%;bottom:13.6%;display:grid;grid-template-columns:repeat(6,1fr);gap:.5rem;align-items:stretch}
-.col{border:3px solid var(--line);border-radius:18px;background:var(--soft);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 8px 20px rgba(0,35,70,.055)}
-.col:nth-child(1){background:#f4fbff} .col:nth-child(2){background:#fff8ef} .col:nth-child(3){background:#f3fbf5} .col:nth-child(4){background:#f6f1ff} .col:nth-child(5){background:#fff3f3} .col:nth-child(6){background:#f2f8ff}
-.col h2{margin:0;padding:.58rem .48rem .42rem;background:var(--navy);color:#fff;font-size:clamp(20px,1.38vw,28px);line-height:.94;font-weight:950;text-align:center;letter-spacing:-.02em;min-height:3.05rem;display:grid;place-items:center}
-.col ul{list-style:none;margin:0;padding:.52rem .58rem .45rem;display:flex;flex-direction:column;gap:.24rem;flex:1}
-.col li{position:relative;font-size:clamp(15px,1.05vw,20px);line-height:1.07;font-weight:850;color:var(--ink);padding-left:.72rem}
-.col li:before{content:'';position:absolute;left:0;top:.42em;width:.35rem;height:.35rem;border-radius:50%;background:var(--orange)}
-.process{position:absolute;left:5.4%;right:5.4%;bottom:7%;display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem}
-.step{position:relative;border:2px solid var(--cyan);background:#f8fdff;border-radius:14px;padding:.5rem .5rem;text-align:center;font-size:clamp(13px,.92vw,17px);line-height:1.04;font-weight:900;color:var(--navy);min-height:2.85rem;display:grid;place-items:center}
-.step:not(:last-child):after{content:'›';position:absolute;right:-.43rem;top:50%;transform:translateY(-50%);font-size:2rem;line-height:1;color:var(--orange);font-weight:950;z-index:4}
-.exercise{position:absolute;left:5.4%;right:5.4%;top:24%;bottom:7.6%;display:grid;grid-template-columns:.92fr 1.08fr;gap:1rem;align-items:stretch}
-.exercise .brief,.exercise .output{border:3px solid var(--line);border-radius:22px;background:#f8fdff;padding:1rem 1.05rem;box-shadow:0 9px 24px rgba(0,35,70,.06);min-height:0}
-.exercise h2{margin:0 0 .55rem;color:var(--navy);font-size:clamp(25px,1.75vw,34px);line-height:1;font-weight:950;letter-spacing:-.02em}
-.exercise p,.exercise li{font-size:clamp(18px,1.22vw,23px);line-height:1.13;font-weight:850;color:var(--ink);margin:0}
-.exercise ul{margin:.35rem 0 0;padding-left:1.15rem;display:grid;gap:.4rem}
-.exercise .scenario{border-left:8px solid var(--orange);background:#fff7ed;border-radius:16px;padding:.7rem .82rem;margin:.7rem 0}
-.chips{display:flex;flex-wrap:wrap;gap:.42rem;margin-top:.55rem}
-.chip{border:2px solid var(--cyan);background:#fff;color:var(--navy);border-radius:999px;padding:.42rem .62rem;font-size:clamp(14px,.98vw,18px);line-height:1;font-weight:950;cursor:grab;box-shadow:0 5px 12px rgba(0,59,112,.08);user-select:none}
-.chip:active{cursor:grabbing}.chip.selected{background:var(--navy);color:#fff;border-color:var(--navy)}
-.dropgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:.58rem;height:calc(100% - 3.2rem)}
-.dropbox{border:3px dashed #9fc6df;background:#fff;border-radius:18px;padding:.55rem;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;min-height:0}
-.dropbox h3{margin:0 0 .35rem;color:var(--navy);font-size:clamp(17px,1.12vw,22px);line-height:1;font-weight:950}
-.dropbox .answer{width:100%;min-height:2.25rem;border-radius:12px;background:#eef8fc;display:grid;place-items:center;padding:.35rem;color:#426988;font-size:clamp(14px,.95vw,18px);line-height:1.05;font-weight:900}
-.dropbox.filled{border-style:solid;border-color:var(--orange)}
-.reset{margin-top:.55rem;border:0;border-radius:999px;background:var(--orange);color:#fff;padding:.48rem .75rem;font-size:clamp(14px,.95vw,18px);font-weight:950;cursor:pointer}
-.callout{position:absolute;left:5.4%;right:5.4%;bottom:2.1%;display:flex;justify-content:space-between;align-items:center;gap:1rem;border-top:2px solid var(--line);padding-top:.42rem}
-.callout span:first-child{font-size:clamp(13px,.9vw,17px);font-weight:850;color:#426988}
-.badge{background:var(--orange);color:white;border-radius:999px;padding:.42rem .75rem;font-size:clamp(12px,.86vw,16px);font-weight:950;white-space:nowrap}
+.logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:5}
+.logoText{position:absolute;right:4.3%;top:4%;font-size:30px;font-weight:900;color:var(--navy);z-index:5}
+.corner{position:absolute;right:0;top:0;width:28%;height:50%;background:var(--cyan);clip-path:polygon(100% 0,100% 100%,0 0);opacity:.95}
+
+.header{position:absolute;left:6%;top:5.3%;right:17%}
+.session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.35rem}
+.dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
+h1{margin:0;color:var(--navy);font-size:clamp(40px,3.85vw,72px);line-height:1.00;letter-spacing:-.035em;font-weight:900}
+.subtitle{font-size:clamp(21px,1.5vw,31px);margin-top:.55rem;color:#2f5f88;font-weight:850}
+
+.main{position:absolute;left:6%;right:6%;top:31%;bottom:7%;display:grid;grid-template-columns:43% 57%;gap:1.1rem;min-height:0}
+.caseBox{border:4px solid var(--navy);border-radius:18px;background:#fff;overflow:hidden;box-shadow:0 10px 28px rgba(0,35,70,.08)}
+.caseHead{background:var(--navy);color:#fff;font-size:clamp(25px,1.8vw,37px);font-weight:900;line-height:1.05;padding:.82rem 1.05rem}
+.caseBody{padding:1.05rem 1.15rem;font-size:clamp(19px,1.34vw,27px);line-height:1.22;font-weight:780;color:var(--ink)}
+.caseBody strong{color:var(--navy)}
+.signal{margin-top:.9rem;border-left:10px solid var(--orange);background:#fff8f4;border-radius:14px;padding:.85rem 1rem;font-size:clamp(17px,1.18vw,24px);line-height:1.18;font-weight:820;color:var(--ink)}
+
+.right{display:grid;grid-template-rows:auto 1fr;gap:.8rem;min-height:0}
+.title2{font-size:clamp(24px,1.7vw,35px);font-weight:900;color:var(--navy);margin:0}
+.steps{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:.75rem;min-height:0}
+.step{border:3px solid var(--line);border-radius:16px;background:var(--soft);padding:.82rem .9rem;display:grid;grid-template-columns:auto 1fr;gap:.65rem;align-content:start;min-height:0}
+.num{width:42px;height:42px;border-radius:50%;background:var(--cyan);display:grid;place-items:center;color:#003b70;font-size:clamp(20px,1.38vw,28px);font-weight:900;flex:none}
+.step h3{margin:0 0 .25rem 0;font-size:clamp(18px,1.22vw,24px);line-height:1.05;font-weight:900;color:var(--navy)}
+.step p{margin:0;font-size:clamp(14px,.98vw,19px);line-height:1.16;font-weight:760;color:var(--ink)}
+
+.launch{position:absolute;left:6%;right:6%;bottom:2.2%;display:flex;justify-content:space-between;align-items:center;border-top:2px solid var(--line);padding-top:.45rem}
+.launchText{font-size:clamp(15px,1.05vw,21px);font-weight:900;color:var(--navy)}
+.badge{background:var(--orange);color:#fff;border-radius:999px;padding:.55rem 1.15rem;font-size:clamp(16px,1.1vw,22px);font-weight:900;text-decoration:none;display:inline-block}
 </style>
 </head>
 <body>
 <main class="stage">
-<section class="slide" aria-label="Sourcing Value Levers slide">
-  <div class="corner"></div>
-  
-  <header class="header">
-    <div class="session"><span class="dot"></span> Session 5 · Source-to-Contract</div>
-    <h1>Sourcing Value Levers</h1>
-    <div class="subtitle">Use the sourcing process to identify, combine and execute commercial levers — not just run a tender.</div>
-  </header>
-  <div class="tabs" role="tablist"><button class="tab active" data-panel="levers" type="button">Value levers</button><button class="tab" data-panel="exercise" type="button">Exercise</button></div>
-  <section class="panel active" id="levers">
-  <section class="main">
-    <article class="col"><h2>Comply<br>Levers</h2><ul><li>Spend governance</li><li>Policy compliance</li><li>Contract compliance</li><li>Initiate a sourcing project</li></ul></article>
-    <article class="col"><h2>Demand<br>Levers</h2><ul><li>Eliminate demand</li><li>Review quantity</li><li>Reduce frequency</li><li>Standardize specs</li><li>Reduce portfolio</li><li>Consider alternatives</li><li>Encourage reuse</li></ul></article>
-    <article class="col"><h2>Source<br>Levers</h2><ul><li>Type of sourcing event</li><li>Cycle time</li><li>Prioritize projects</li><li>Buying channels</li><li>Source from OEM</li><li>Risk allocation</li><li>Payment terms</li></ul></article>
-    <article class="col"><h2>Fulfil<br>Levers</h2><ul><li>Bundle/unbundle</li><li>Supplier rationalization</li><li>Volume or time commitment</li><li>Pricing mechanism</li><li>Performance or benefit incentive</li><li>Repair and replacement</li><li>Transaction cost</li></ul></article>
-    <article class="col"><h2>Manage<br>Levers</h2><ul><li>Demand / supply balancing</li><li>Ordering</li><li>Physical delivery</li><li>Storage and distribution</li><li>Additional benefits: revenue, marketing, etc.</li></ul></article>
-    <article class="col"><h2>Process<br>Levers</h2><ul><li>P2P control</li><li>Variations</li><li>Risk</li><li>Performance</li><li>Value delivery</li></ul></article>
-  </section>
-  <section class="process" aria-label="sourcing process">
-    <div class="step">Identify business needs and study the market</div>
-    <div class="step">Specify requirements</div>
-    <div class="step">Define a sourcing strategy</div>
-    <div class="step">Select a supplier and award a contract</div>
-    <div class="step">Manage a contract and supplier relationship</div>
-  </section>
-  <div class="callout"><span>Group discussion: which value levers applied in corporate mobile communication contract negotiations?</span><span class="badge">Sourcing value levers</span></div>
-  </section>
-  <section class="panel" id="exercise">
-    <div class="exercise">
-      <article class="brief"><h2>Individual exercise: solve one sourcing problem</h2><p>Same problem for everyone: corporate mobile communication renewal.</p><div class="scenario"><p><strong>Facts:</strong> 1,200 SIMs; 18% inactive; roaming cost spikes; departments order outside the contract; supplier asks for an 8% price increase; SLA ownership is unclear.</p></div><p><strong>Task:</strong> build a 3-lever sourcing response. Drag one lever into each box. On touch screens, tap a lever, then tap a box.</p><div class="chips" aria-label="value lever choices">
-        <span class="chip" draggable="true">Eliminate inactive SIMs</span><span class="chip" draggable="true">Roaming price cap</span><span class="chip" draggable="true">Contracted buying channel</span><span class="chip" draggable="true">SLA ownership</span><span class="chip" draggable="true">Volume commitment</span><span class="chip" draggable="true">Benchmark rates</span><span class="chip" draggable="true">Policy compliance</span><span class="chip" draggable="true">P2P control</span><span class="chip" draggable="true">Supplier rationalization</span>
-      </div><button class="reset" type="button">Reset</button></article>
-      <article class="output"><h2>Your answer</h2><div class="dropgrid">
-        <div class="dropbox" data-target="Demand"><h3>1 · Demand lever</h3><div class="answer">reduce waste</div></div>
-        <div class="dropbox" data-target="Commercial"><h3>2 · Commercial lever</h3><div class="answer">control price</div></div>
-        <div class="dropbox" data-target="Governance"><h3>3 · Governance lever</h3><div class="answer">stop leakage</div></div>
-        <div class="dropbox" data-target="Action"><h3>Negotiation ask</h3><div class="answer">what will you ask for?</div></div>
-        <div class="dropbox" data-target="Metric"><h3>Value metric</h3><div class="answer">how value is proven?</div></div>
-        <div class="dropbox" data-target="Risk"><h3>Risk check</h3><div class="answer">what can go wrong?</div></div>
-      </div></article>
-    </div>
-    <div class="callout"><span>Objective: not “lower price”; combine demand, commercial and governance levers into one negotiation strategy.</span><span class="badge">5 min · Individual</span></div>
-  </section>
-<script>
-document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{
- document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
- document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
- btn.classList.add('active');
- document.getElementById(btn.dataset.panel).classList.add('active');
-}));
-let selectedLever='';
-document.querySelectorAll('.chip').forEach(chip=>{
- chip.addEventListener('dragstart',e=>e.dataTransfer.setData('text/plain',chip.textContent.trim()));
- chip.addEventListener('click',()=>{
-  selectedLever=chip.textContent.trim();
-  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('selected'));
-  chip.classList.add('selected');
- });
-});
-document.querySelectorAll('.dropbox').forEach(box=>{
- box.addEventListener('dragover',e=>e.preventDefault());
- box.addEventListener('drop',e=>{e.preventDefault();fillBox(box,e.dataTransfer.getData('text/plain'))});
- box.addEventListener('click',()=>{if(selectedLever)fillBox(box,selectedLever)});
-});
-function fillBox(box,text){
- box.querySelector('.answer').textContent=text;
- box.classList.add('filled');
- document.querySelectorAll('.chip').forEach(c=>c.classList.remove('selected'));
- selectedLever='';
-}
-document.querySelector('.reset')?.addEventListener('click',()=>{
- document.querySelectorAll('.dropbox').forEach(box=>{box.classList.remove('filled');box.querySelector('.answer').textContent=box.dataset.target==='Action'?'what will you ask for?':box.dataset.target==='Metric'?'how value is proven?':box.dataset.target==='Risk'?'what can go wrong?':box.dataset.target==='Demand'?'reduce waste':box.dataset.target==='Commercial'?'control price':box.dataset.target==='Governance'?'stop leakage':'drop here'});
-});
-</script>
+<section aria-label="Transition to Case 5" class="slide">
+<div class="corner"></div>
+<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<div class="header">
+<div class="session"><span class="dot"></span><span>Session 5 Source-to-Contract</span></div>
+<h1>Case #5</h1>
+<div class="subtitle">SAP / Oracle License Disputes</div>
+</div>
+<div class="main">
+<div>
+<section class="caseBox">
+<div class="caseHead">Case setup</div>
+<div class="caseBody">
+          Two enterprise software disputes expose how <strong>license definitions, indirect access, integrations and audits</strong> can reshape the commercial position after implementation.
+        </div>
+</section>
+<div class="signal">
+        The case tests whether procurement can convert ITAM evidence into a defensible negotiation and risk-control strategy.
+      </div>
+</div>
+<div class="right">
+<h2 class="title2">Your case focus</h2>
+<div class="steps">
+<div class="step">
+<div class="num">1</div>
+<div><h3>License scope</h3><p>Map named users, indirect access, integration use and deployed environments before accepting exposure.</p></div>
+</div>
+<div class="step">
+<div class="num">2</div>
+<div><h3>Audit leverage</h3><p>Separate contractual rights from vendor pressure, termination threats and commercial narratives.</p></div>
+</div>
+<div class="step">
+<div class="num">3</div>
+<div><h3>Usage evidence</h3><p>Use ITAM, architecture and transaction data to challenge assumptions and quantify risk.</p></div>
+</div>
+<div class="step">
+<div class="num">4</div>
+<div><h3>Negotiation strategy</h3><p>Decide when to settle, contest liability, redesign architecture or reduce dependency.</p></div>
+</div>
+</div>
+</div>
+</div>
+<div class="launch">
+<div class="launchText">Open Case #5 when instructed by the trainer.</div>
+<a class="badge" href="https://www.goodspending.com/techology-it-procurement-foundations-cips-skills/case-studies" rel="noopener" target="_blank">Open Case</a>
+</div>
 </section>
 </main>
 <script id="itpf-deck-bridge">

@@ -1,101 +1,107 @@
 <!doctype html>
-<!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>Slide 83 — Case #7 Transition</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Slide 83 — AI Procurement Contracts</title>
 <style>
-:root {
-  --navy:#003b70;
-  --cyan:#12bddf;
-  --orange:#ff5a00;
-  --ink:#173f66;
-  --line:#c7d9ea;
-  --soft:#f7fbff;
-  --green:#2f9e5a;
-}
+:root{--navy:#003b70;--cyan:#12bddf;--orange:#ff5a00;--ink:#173f66;--line:#c7d9ea;--soft:#f7fbff;--pale:#eef8fc;--green:#16885a;--red:#b84545}
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--navy)}
 .stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
 .slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
-.logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:5}
-.logoText{position:absolute;right:4.3%;top:4%;font-size:30px;font-weight:900;color:var(--navy);z-index:5}
-.corner{position:absolute;right:0;top:0;width:28%;height:50%;background:var(--cyan);clip-path:polygon(100% 0,100% 100%,0 0);opacity:.95}
-
-.header{position:absolute;left:6%;top:5.3%;right:17%}
-.session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.35rem}
-.dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
-h1{margin:0;color:var(--navy);font-size:clamp(40px,3.85vw,72px);line-height:1.00;letter-spacing:-.035em;font-weight:900}
-.subtitle{font-size:clamp(18px,1.32vw,27px);line-height:1.08;margin-top:.5rem;color:#2f5f88;font-weight:850;max-width:92%}
-
-.main{position:absolute;left:6%;right:6%;top:31%;bottom:7%;display:grid;grid-template-columns:43% 57%;gap:1.1rem;min-height:0}
-.caseBox{border:4px solid var(--navy);border-radius:18px;background:#fff;overflow:hidden;box-shadow:0 10px 28px rgba(0,35,70,.08)}
-.caseHead{background:var(--navy);color:#fff;font-size:clamp(25px,1.8vw,37px);font-weight:900;line-height:1.05;padding:.82rem 1.05rem}
-.caseBody{padding:1.05rem 1.15rem;font-size:clamp(19px,1.34vw,27px);line-height:1.22;font-weight:780;color:var(--ink)}
-.caseBody strong{color:var(--navy)}
-.signal{margin-top:.9rem;border-left:10px solid var(--orange);background:#fff8f4;border-radius:14px;padding:.85rem 1rem;font-size:clamp(17px,1.18vw,24px);line-height:1.18;font-weight:820;color:var(--ink)}
-
-.right{display:grid;grid-template-rows:auto 1fr;gap:.8rem;min-height:0}
-.title2{font-size:clamp(24px,1.7vw,35px);font-weight:900;color:var(--navy);margin:0}
-.steps{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:.75rem;min-height:0}
-.step{border:3px solid var(--line);border-radius:16px;background:var(--soft);padding:.82rem .9rem;display:grid;grid-template-columns:auto 1fr;gap:.65rem;align-content:start;min-height:0}
-.num{width:42px;height:42px;border-radius:50%;background:var(--cyan);display:grid;place-items:center;color:#003b70;font-size:clamp(20px,1.38vw,28px);font-weight:900;flex:none}
-.step h3{margin:0 0 .25rem 0;font-size:clamp(18px,1.22vw,24px);line-height:1.05;font-weight:900;color:var(--navy)}
-.step p{margin:0;font-size:clamp(14px,.98vw,19px);line-height:1.16;font-weight:760;color:var(--ink)}
-
-.launch{position:absolute;left:6%;right:6%;bottom:2.2%;display:flex;justify-content:space-between;align-items:center;border-top:2px solid var(--line);padding-top:.45rem}
-.launchText{font-size:clamp(15px,1.05vw,21px);font-weight:900;color:var(--navy)}
-.badge{background:var(--orange);color:#fff;border-radius:999px;padding:.55rem 1.15rem;font-size:clamp(16px,1.1vw,22px);font-weight:900;text-decoration:none;display:inline-block}
+.corner{position:absolute;right:0;top:0;width:25%;height:42%;background:var(--cyan);clip-path:polygon(100% 0,100% 100%,0 0);opacity:.95}
+.logo{position:absolute;right:4.1%;top:3.8%;width:9.6%;height:auto;z-index:5}
+.header{position:absolute;left:5.2%;top:4.4%;right:22%;z-index:3}
+.session{font-size:clamp(15px,1vw,20px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.5rem;margin-bottom:.35rem;font-weight:850}
+.dot{width:12px;height:12px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
+h1{margin:0;color:var(--navy);font-size:clamp(31px,2.36vw,46px);line-height:1.02;letter-spacing:-.03em;font-weight:950}
+.tabs{position:absolute;left:5.2%;right:5.2%;top:18.3%;height:7.2%;display:grid;grid-template-columns:repeat(3,1fr);gap:.62rem;z-index:4}
+.tab{border:2px solid var(--line);background:#fff;color:var(--navy);border-radius:13px;padding:.5rem .65rem;font-size:clamp(15px,1vw,20px);font-weight:900;cursor:pointer;box-shadow:0 4px 10px rgba(0,35,70,.06)}
+.tab[aria-selected="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.panel{position:absolute;left:5.2%;right:5.2%;top:27%;bottom:7.2%;display:none}
+.panel.active{display:grid}
+.grid{height:100%;display:grid;grid-template-columns:repeat(2,1fr);gap:.72rem}
+.card{border:2px solid var(--line);border-radius:16px;background:var(--soft);padding:.82rem .9rem;display:grid;grid-template-columns:auto 1fr;gap:.68rem;align-content:start;box-shadow:0 5px 16px rgba(0,35,70,.055)}
+.num{width:2rem;height:2rem;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:#fff;font-size:clamp(13px,.9vw,17px);font-weight:950;flex:none}
+.card h2{margin:.05rem 0 .22rem;font-size:clamp(18px,1.22vw,24px);line-height:1.05;color:var(--navy);font-weight:950}
+.card p{margin:0;font-size:clamp(14px,.94vw,18px);line-height:1.19;color:var(--ink);font-weight:760}
+.card strong{color:var(--navy)}
+.callout{grid-column:1/-1;border-left:8px solid var(--orange);background:#fff7f0;border-radius:14px;padding:.64rem .85rem;font-size:clamp(14px,.95vw,18px);line-height:1.18;color:var(--ink);font-weight:820}
+.callout strong{color:var(--navy)}
+.panel[data-panel="performance"] .grid{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,1fr)}
+.panel[data-panel="risk"] .grid{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,1fr)}
+.footer{position:absolute;left:5.2%;right:5.2%;bottom:1.4%;font-size:clamp(9px,.68vw,13px);font-weight:700;color:#7892aa}
+@media(max-width:900px){.card{padding:.66rem}.card p{line-height:1.12}.tabs{gap:.35rem}.tab{padding:.35rem}}
 </style>
 </head>
 <body>
 <main class="stage">
-<section aria-label="Transition to Case 7" class="slide">
+<section class="slide" aria-label="AI procurement contracts">
 <div class="corner"></div>
-<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<img alt="CIPS" class="logo" src="../assets/cips-logo.png">
 <div class="header">
-<div class="session"><span class="dot"></span><span>Session 5 Source-to-Contract</span></div>
-<h1>Case #7</h1>
-<div class="subtitle">The National Programme for IT in the NHS</div>
+  <div class="session"><span class="dot"></span><span>Session 5 Source-to-Contract</span></div>
+  <h1>AI Procurement Contracts</h1>
 </div>
-<div class="main">
-<div>
-<section class="caseBox">
-<div class="caseHead">Case setup</div>
-<div class="caseBody">The NHS launched one of the world’s largest civilian IT programmes to transform patient records, appointments and prescriptions. An unrealistic timetable, fragmented delivery model and weak commercial control contributed to escalating cost, delay and eventual programme failure.</div>
+
+<div class="tabs" role="tablist" aria-label="AI contract topics">
+  <button class="tab" role="tab" aria-selected="true" data-target="data">1. Data and IP</button>
+  <button class="tab" role="tab" aria-selected="false" data-target="performance">2. Performance and Change</button>
+  <button class="tab" role="tab" aria-selected="false" data-target="risk">3. Risk, Liability and Exit</button>
+</div>
+
+<section class="panel active" data-panel="data" role="tabpanel">
+  <div class="grid">
+    <article class="card"><span class="num">1</span><div><h2>Licensing scope and definitions</h2><p>Define exactly what is licensed: <strong>models, APIs, datasets, inputs, outputs and any fine-tuned artefacts</strong>.</p></div></article>
+    <article class="card"><span class="num">2</span><div><h2>Vendor data-use rights</h2><p>Restrict the supplier from using buyer inputs, outputs or metadata for <strong>training, analytics or other customers</strong> without explicit consent.</p></div></article>
+    <article class="card"><span class="num">3</span><div><h2>Confidentiality and data governance</h2><p>Specify data location, retention, deletion, access controls, sub-processors and treatment of proprietary or sensitive information.</p></div></article>
+    <article class="card"><span class="num">4</span><div><h2>Ownership and permitted use</h2><p>Clarify ownership and permitted use of <strong>inputs, outputs, prompts, embeddings, configurations and generated content</strong>.</p></div></article>
+    <article class="card"><span class="num">5</span><div><h2>IP infringement and indemnity</h2><p>Allocate risk for claims arising from training data, model operation or generated outputs; define warranties, filters and defence obligations.</p></div></article>
+    <div class="callout"><strong>Buyer question:</strong> What data or intellectual property could the supplier reuse, retain or expose after the contract ends?</div>
+  </div>
 </section>
-<div class="signal">The initial £2.3 billion estimate increased to £6.2 billion, the timetable expanded from under three years to ten, and major suppliers struggled with incomplete scope, unsuitable systems and limited clinical buy-in.</div>
-</div>
-<div class="right">
-<h2 class="title2">What to assess</h2>
-<div class="steps">
-<div class="step">
-<div class="num">1</div>
-<div><h3>Programme design</h3><p>Was the delivery model realistic for a programme of this scale and complexity?</p></div>
-</div>
-<div class="step">
-<div class="num">2</div>
-<div><h3>Specification and contracting</h3><p>How did the compressed procurement timetable and immature specification affect supplier commitments?</p></div>
-</div>
-<div class="step">
-<div class="num">3</div>
-<div><h3>Commercial governance</h3><p>How should scope, cost, delivery milestones and supplier dependencies have been governed?</p></div>
-</div>
-<div class="step">
-<div class="num">4</div>
-<div><h3>Stakeholder adoption</h3><p>How should clinicians and operational users have been involved to secure adoption and value?</p></div>
-</div>
-</div>
-</div>
-</div>
-<div class="launch">
-<div class="launchText">Open Case #7 when instructed by the trainer.</div>
-<a class="badge" href="https://www.goodspending.com/techology-it-procurement-foundations-cips-skills/case-studies" rel="noopener" target="_blank">Open Case</a>
-</div>
+
+<section class="panel" data-panel="performance" role="tabpanel">
+  <div class="grid">
+    <article class="card"><span class="num">1</span><div><h2>Service levels</h2><p>Define measurable commitments for <strong>availability, latency, throughput, support and recovery</strong>.</p></div></article>
+    <article class="card"><span class="num">2</span><div><h2>Accuracy and quality</h2><p>Use agreed benchmarks, test cases and acceptance criteria where output quality is material to the use case.</p></div></article>
+    <article class="card"><span class="num">3</span><div><h2>Warranties and disclaimers</h2><p>Separate normal AI limitations from explicit performance promises. Avoid relying on general marketing claims.</p></div></article>
+    <article class="card"><span class="num">4</span><div><h2>Change control and versioning</h2><p>Require notice, testing rights and remediation for material changes to models, APIs, safety controls or functionality.</p></div></article>
+    <article class="card"><span class="num">5</span><div><h2>Validation and audit rights</h2><p>Preserve the buyer’s ability to test outputs, inspect relevant evidence and verify performance against the agreed method.</p></div></article>
+    <article class="card"><span class="num">6</span><div><h2>Corrective action</h2><p>Define service credits, retraining, reconfiguration, rollback, replacement or termination when performance repeatedly fails.</p></div></article>
+    <div class="callout"><strong>Important:</strong> “Hallucination” or accuracy SLAs are only workable when the contract defines the use case, test set, sampling method, tolerance and validation owner.</div>
+  </div>
+</section>
+
+<section class="panel" data-panel="risk" role="tabpanel">
+  <div class="grid">
+    <article class="card"><span class="num">1</span><div><h2>Security and monitoring</h2><p>Set requirements for access control, incident response, logging, model abuse prevention and monitoring of material risks.</p></div></article>
+    <article class="card"><span class="num">2</span><div><h2>Compliance and permitted uses</h2><p>Allocate responsibility for privacy, sector regulation, export controls, records management and prohibited applications.</p></div></article>
+    <article class="card"><span class="num">3</span><div><h2>Liability and indemnification</h2><p>Set meaningful caps and exceptions for data breaches, confidentiality failures, IP claims and regulatory exposure.</p></div></article>
+    <article class="card"><span class="num">4</span><div><h2>Insurance</h2><p>Require suitable coverage for cyber, professional liability and relevant legal or regulatory claims where available.</p></div></article>
+    <article class="card"><span class="num">5</span><div><h2>Portability and exit</h2><p>Secure retrieval of data and artefacts, transition support, deletion confirmation and continuity during migration.</p></div></article>
+    <article class="card"><span class="num">6</span><div><h2>Termination and disputes</h2><p>Define exit triggers for repeated performance failure, security incidents, legal claims or material unilateral changes.</p></div></article>
+    <div class="callout"><strong>Core lesson:</strong> AI contracting is not a separate legal universe; it extends established controls for data, service performance, change, liability and exit to model-specific risks.</div>
+  </div>
+</section>
+
+<div class="footer">© CIPS. Contract design must reflect the use case, data sensitivity, operational dependence and ability to validate AI performance.</div>
 </section>
 </main>
+<script>
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  var panels=[].slice.call(document.querySelectorAll('.panel'));
+  tabs.forEach(function(tab){
+    tab.addEventListener('click',function(){
+      var target=tab.getAttribute('data-target');
+      tabs.forEach(function(t){t.setAttribute('aria-selected',String(t===tab));});
+      panels.forEach(function(p){p.classList.toggle('active',p.getAttribute('data-panel')===target);});
+    });
+  });
+})();
+</script>
 <script id="itpf-deck-bridge">
 (function(){
   function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }

@@ -5,417 +5,285 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>ITPF — Slide 40 — Delivery Models</title>
+<title>ITPF — Slide 38 — Cloud Services</title>
 <style>
-:root{
+:root {
   --navy:#003b70;
   --cyan:#12bddf;
   --orange:#ff5a00;
-  --green:#2f9e5a;
   --purple:#6b5fb5;
-  --line:#c8d8e8;
-  --soft:#f6fbff;
+  --green:#3aa25a;
   --ink:#173f66;
-  --bg:#dfe5eb;
+  --line:#c7d9ea;
+  --soft:#f7fbff;
+  --red:#c93333;
 }
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);font-family:Arial,Helvetica,sans-serif;color:var(--navy)}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--navy)}
 .stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
 .slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
-.logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:6}
-.header{position:absolute;left:6%;top:5.4%;right:17%;z-index:5}
+.logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:5}
+.header{position:absolute;left:6%;top:5.4%;right:17%}
 .session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.24rem}
 .dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
-h1{margin:0;color:var(--navy);font-size:clamp(30px,2.65vw,50px);line-height:1.03;letter-spacing:-.02em;font-weight:900}
-.subtitle{font-size:clamp(15px,1.0vw,21px);margin-top:.28rem;color:#2f5f88;font-weight:760;line-height:1.12}
+h1{margin:0;color:var(--navy);font-size:clamp(32px,2.9vw,56px);line-height:1.03;letter-spacing:-.02em;font-weight:900}
+.subtitle{font-size:clamp(17px,1.2vw,24px);margin-top:.28rem;color:#2f5f88;font-weight:750}
 
-.tabs{position:absolute;left:4.3%;right:4.3%;top:20.6%;display:flex;gap:.55rem;z-index:10}
-.tabBtn{
-  border:2px solid var(--navy);background:#fff;color:var(--navy);font-weight:900;
-  font-size:clamp(14px,.94vw,18px);line-height:1;padding:.52rem .86rem;border-radius:10px;cursor:pointer
-}
-.tabBtn.active{background:var(--navy);color:#fff}
+.tabs{position:absolute;left:6%;right:6%;top:18.4%;display:flex;gap:.85rem}
+.tab{border:3px solid var(--navy);background:#fff;color:var(--navy);font-size:clamp(20px,1.45vw,30px);font-weight:900;padding:.50rem 1rem;cursor:pointer}
+.tab.active{background:var(--navy);color:#fff}
+.panel{position:absolute;left:4.3%;right:4.3%;top:26.8%;bottom:3.5%;display:none}
+.panel.active{display:block}
 
-.content{position:absolute;left:4.3%;right:4.3%;top:26.2%;bottom:4.0%;min-height:0}
-.panelView{display:none;height:100%}
-.panelView.active{display:block}
+.boxTitle{margin:0;background:var(--navy);color:#fff;font-size:clamp(21px,1.48vw,31px);line-height:1.04;padding:.58rem .78rem;font-weight:900}
+.overview{height:100%;display:grid;grid-template-columns:42% 58%;gap:.9rem;min-height:0}
 
-.grid2{height:100%;display:grid;grid-template-columns:58% 42%;gap:.75rem;min-height:0}
-.panel{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-height:0;overflow:hidden}
-.panel h2{margin:0;background:var(--navy);color:#fff;font-size:clamp(19px,1.32vw,26px);line-height:1.02;padding:.5rem .68rem;font-weight:900}
-.panel.alt{border-color:var(--cyan)}
-.panel.alt h2{background:var(--cyan);color:#08374f}
+.visualBox,.detailBox{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.detailBox{border-color:var(--cyan)}
+.detailBox .boxTitle{background:var(--cyan)}
 
-.modelsGrid{flex:1;min-height:0;padding:.56rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:.46rem}
-.model{border:3px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;min-height:0;background:#fff}
-.modelHead{padding:.48rem .4rem;color:#fff;text-align:center;font-weight:900;font-size:clamp(19px,1.28vw,27px);line-height:1.02}
-.waterfall .modelHead{background:var(--navy)}
-.incremental .modelHead{background:var(--orange)}
-.agile .modelHead{background:var(--green)}
-.modelBody{padding:.48rem;display:grid;grid-template-rows:auto auto 1fr auto;gap:.34rem;flex:1;min-height:0}
-.tag{font-size:clamp(12px,.82vw,15px);line-height:1.05;font-weight:850;color:#456887;text-align:center}
-.track{display:grid;gap:.20rem}
-.step{border-radius:7px;padding:.28rem .34rem;text-align:center;color:#fff;font-size:clamp(11px,.77vw,14px);line-height:1.02;font-weight:850}
-.waterfall .step{background:#37648e}
-.incremental .step{background:#ff8a45}
-.agile .step{background:#59b877}
-.flowArrow{text-align:center;font-size:clamp(11px,.76vw,14px);line-height:1;color:#6c89a3;font-weight:900}
-.valueZone{display:grid;align-content:end;gap:.18rem;min-height:0}
-.valueLabel{font-size:clamp(11px,.76vw,14px);line-height:1.02;font-weight:900;color:var(--ink);text-align:center}
-.valueBars{height:86px;border:2px solid var(--line);border-radius:8px;padding:.28rem;display:grid;grid-template-columns:repeat(5,1fr);gap:.18rem;align-items:end;background:var(--soft)}
-.bar{border-radius:4px 4px 0 0}
-.waterfall .bar{background:#37648e}
-.incremental .bar{background:#ff8a45}
-.agile .bar{background:#59b877}
-.note{border-top:2px solid var(--line);padding-top:.26rem;font-size:clamp(11px,.78vw,14px);line-height:1.05;font-weight:770;color:var(--ink)}
+.visualBody{flex:1;min-height:0;padding:.75rem;display:grid;grid-template-rows:auto 1fr auto;gap:.55rem}
+.stackLegend{display:grid;grid-template-columns:1fr 1fr;gap:.45rem;font-size:clamp(14px,.95vw,18px);font-weight:800;color:var(--ink)}
+.stackLegend div{border:2px solid var(--line);border-radius:8px;padding:.30rem .45rem;background:#f8fbfe;text-align:center}
+.stackWrap{position:relative;display:grid;place-items:center;min-height:0}
+.pyramid{width:88%;height:100%;display:grid;grid-template-rows:26% 30% 36%;gap:.6rem;align-content:center}
+.tier{display:grid;place-items:center;text-align:center;color:#fff;font-weight:900;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,.10);padding:.45rem .6rem;position:relative}
+.tier strong{display:block;font-size:clamp(22px,1.55vw,32px);line-height:1.02}
+.tier span{display:block;font-size:clamp(14px,.95vw,18px);line-height:1.08;font-weight:800;margin-top:.18rem}
+.saas{background:var(--orange);width:54%;justify-self:center}
+.paas{background:var(--purple);width:74%;justify-self:center}
+.iaas{background:var(--cyan);width:94%;justify-self:center;color:#08374f}
+.arrowDown{position:absolute;left:101%;top:50%;transform:translateY(-50%);font-size:clamp(20px,1.5vw,30px);font-weight:900;color:#5b7894}
+.stackNote{font-size:clamp(14px,.95vw,18px);line-height:1.08;font-weight:850;color:var(--ink);text-align:center;border-top:2px solid var(--line);padding-top:.45rem}
 
-.compareBody{flex:1;min-height:0;padding:.5rem;display:grid;grid-template-rows:auto 1fr auto;gap:.34rem}
-.compareTable{display:grid;grid-template-columns:28% 24% 24% 24%;border:2px solid var(--line);min-height:0}
-.cell{border-right:2px solid var(--line);border-bottom:2px solid var(--line);padding:.34rem .34rem;font-size:clamp(11px,.77vw,14px);line-height:1.04;font-weight:780;color:var(--ink);display:flex;align-items:center;justify-content:center;text-align:center}
-.cell.head{font-size:clamp(14px,.96vw,19px);font-weight:900;color:#fff}
-.cell.rowhead{justify-content:flex-start;text-align:left;font-weight:900;color:var(--navy);background:#f8fbfe}
-.cell.head.wf{background:var(--navy)}
-.cell.head.inc{background:var(--orange)}
-.cell.head.ag{background:var(--green)}
-.compareTable .cell:nth-child(4n){border-right:none}
-.legend{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.34rem}
-.legendCard{border:2px solid var(--line);border-radius:9px;padding:.36rem .45rem;background:#fff}
-.legendCard strong{display:block;font-size:clamp(13px,.9vw,18px);line-height:1.03;color:var(--navy);margin-bottom:.1rem}
-.legendCard span{display:block;font-size:clamp(11px,.76vw,14px);line-height:1.06;font-weight:770;color:var(--ink)}
-.footerNote{font-size:clamp(12px,.84vw,15px);line-height:1.1;font-weight:850;color:#315b7e;border-top:2px solid var(--line);padding-top:.26rem}
+.detailBody{flex:1;min-height:0;padding:.68rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:.55rem}
+.model{border:3px solid var(--line);border-radius:10px;display:flex;flex-direction:column;overflow:hidden;background:#fff;min-width:0}
+.model h3{margin:0;color:#fff;text-align:center;font-size:clamp(22px,1.55vw,32px);line-height:1.03;font-weight:900;padding:.54rem .45rem}
+.model.saas h3{background:var(--orange)} .model.paas h3{background:var(--purple)} .model.iaas h3{background:var(--cyan);color:#08374f}
+.modelBody{padding:.60rem .62rem;display:grid;gap:.45rem;align-content:start;font-size:clamp(14px,.95vw,18px);line-height:1.10;font-weight:770;color:var(--ink)}
+.label{font-size:clamp(17px,1.15vw,22px);font-weight:900;color:var(--navy)}
+.examples{border-top:2px solid var(--line);padding-top:.35rem}
+.examples strong{display:block;color:var(--navy);font-size:clamp(15px,1vw,19px)}
 
-.commWrap{height:100%;display:grid;grid-template-columns:53% 47%;gap:.75rem;min-height:0}
-.cardsGrid{flex:1;min-height:0;padding:.56rem;display:grid;grid-template-columns:1fr;grid-template-rows:1fr 1fr 1fr;gap:.44rem}
-.commCard{border:3px solid var(--line);border-left-width:10px;border-radius:10px;background:#fff;padding:.5rem .58rem;display:grid;grid-template-columns:18% 41% 41%;gap:.48rem;align-items:start;min-height:0}
-.commCard.waterfall{border-left-color:var(--navy)}
-.commCard.incremental{border-left-color:var(--orange)}
-.commCard.agile{border-left-color:var(--green)}
-.modelLabel{font-size:clamp(20px,1.35vw,28px);line-height:1.02;font-weight:900;color:var(--navy)}
-.smallHead{font-size:clamp(13px,.95vw,18px);line-height:1.04;font-weight:900;color:#2f5f88;margin-bottom:.14rem}
-.smallText{font-size:clamp(12px,.88vw,16px);line-height:1.12;font-weight:770;color:var(--ink)}
-.sideBody{flex:1;min-height:0;padding:.56rem;display:grid;grid-template-rows:auto auto 1fr auto;gap:.42rem}
-.table2{display:grid;grid-template-columns:34% 66%;border:2px solid var(--line)}
-.table2 .r{border-right:2px solid var(--line);border-bottom:2px solid var(--line);padding:.38rem .42rem;font-size:clamp(12px,.86vw,15px);line-height:1.1;font-weight:770;color:var(--ink)}
-.table2 .r:nth-child(2n){border-right:none}
-.table2 .hd{font-weight:900;color:#fff;background:var(--navy);font-size:clamp(14px,1vw,18px)}
-.bullets{border:2px solid var(--line);border-radius:10px;padding:.42rem .56rem;background:#fbfdff}
-.bullets ul{margin:.08rem 0 0 .92rem;padding:0}
-.bullets li{font-size:clamp(12px,.84vw,15px);line-height:1.11;font-weight:770;color:var(--ink);margin:.14rem 0}
-.emphasis{border-top:2px solid var(--line);padding-top:.28rem;font-size:clamp(12px,.84vw,15px);line-height:1.1;font-weight:850;color:#315b7e}
+.exercise{height:100%;display:grid;grid-template-rows:auto 1fr auto;gap:.65rem}
+.question{font-size:clamp(23px,1.65vw,34px);line-height:1.08;font-weight:900;color:var(--navy);text-align:center}
+.exerciseGrid{display:grid;grid-template-columns:46% 54%;gap:.85rem;min-height:0}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;min-height:0}
+.card{border:3px solid var(--line);border-radius:10px;background:#fff;padding:.58rem .62rem;display:flex;flex-direction:column;justify-content:center;cursor:pointer;min-height:0}
+.card strong{font-size:clamp(17px,1.15vw,23px);line-height:1.05;color:var(--navy);margin-bottom:.20rem}
+.card span{font-size:clamp(13px,.9vw,18px);line-height:1.08;font-weight:760;color:var(--ink)}
+.card.selected{border-color:var(--navy);background:#eef8fb}
+.dropZoneWrap{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.6rem;min-height:0}
+.zone{border:4px dashed var(--line);border-radius:12px;background:#fff;display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.zone h3{margin:0;color:#fff;text-align:center;font-size:clamp(22px,1.55vw,32px);font-weight:900;padding:.55rem}
+.zone[data-zone="SaaS"] h3{background:var(--orange)} .zone[data-zone="PaaS"] h3{background:var(--purple)} .zone[data-zone="IaaS"] h3{background:var(--cyan);color:#08374f}
+.zoneBody{padding:.55rem;display:flex;flex-direction:column;gap:.38rem;flex:1;min-height:0}
+.answer{border:2px solid var(--line);border-radius:8px;background:#f7fbff;padding:.45rem .50rem;font-size:clamp(13px,.9vw,17px);line-height:1.08;font-weight:820;color:var(--ink)}
+.answer.correct{border-color:#16824a;background:#eefaf3;color:#0d6739}
+.answer.wrong{border-color:var(--red);background:#fff0f0;color:#9b1d1d}
+.answer .explain{display:block;font-size:clamp(11px,.78vw,15px);font-weight:800;margin-top:.15rem}
+.feedback{min-height:36px;text-align:center;font-size:clamp(17px,1.15vw,23px);font-weight:900;color:var(--navy)}
+.actions{display:flex;justify-content:center;gap:.65rem;align-items:center}
+.btn{border:0;border-radius:999px;background:var(--navy);color:#fff;font-size:clamp(16px,1.05vw,21px);font-weight:900;padding:.55rem 1rem;cursor:pointer}
+.btn.secondary{background:#607b91}
 
-.triWrap{height:100%;display:grid;grid-template-columns:48% 52%;gap:.75rem;min-height:0}
-.triPanelBody{flex:1;min-height:0;padding:.56rem;display:grid;grid-template-rows:1fr auto;gap:.42rem}
-.triangleBox{border:2px solid var(--line);border-radius:10px;background:#fbfdff;position:relative;min-height:0;overflow:hidden}
-.triangleSvg{width:100%;height:100%}
-.triLabel{font-size:18px;font-weight:900;fill:#003b70}
-.triText{font-size:13px;font-weight:700;fill:#173f66}
-.triSide{display:grid;grid-template-rows:auto 1fr auto;gap:.46rem;padding:.56rem;min-height:0}
-.infoCard{border:2px solid var(--line);border-radius:10px;background:#fff;padding:.56rem .64rem;display:grid;align-content:center;min-height:0}
-.infoCard strong{display:block;font-size:clamp(13px,.9vw,18px);line-height:1.03;color:var(--navy);margin-bottom:.12rem}
-.infoCard span{display:block;font-size:clamp(12px,.84vw,15px);line-height:1.1;font-weight:770;color:var(--ink)}
-.miniTable{display:grid;grid-template-columns:32% 22.7% 22.7% 22.6%;border:2px solid var(--line)}
-.miniTable div{border-right:2px solid var(--line);border-bottom:2px solid var(--line);padding:.36rem;font-size:clamp(12px,.84vw,15px);line-height:1.08;font-weight:770;color:var(--ink);text-align:center;display:flex;align-items:center;justify-content:center}
-.infoPair{display:grid;grid-template-rows:1fr 1fr;gap:.46rem;min-height:0}
-.miniTable div:nth-child(4n){border-right:none}
-.miniTable .head{background:var(--navy);color:#fff;font-weight:900;font-size:clamp(13px,.9vw,17px)}
-.miniTable .rowh{background:#f8fbfe;font-weight:900;color:var(--navy);justify-content:flex-start;text-align:left}
-.triCall{fill:#fff;stroke:#8cb1cf;stroke-width:2.5}
+.note{position:absolute;left:4.3%;right:4.3%;bottom:1.4%;border-top:2px solid var(--line);padding-top:.30rem;display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center;background:#fff}
+.noteText{font-size:clamp(12px,.85vw,16px);line-height:1.08;font-weight:850;color:#315b7e}
+.footer{font-size:clamp(12px,.85vw,18px);color:#168cff}
+
+.responsibilityLayout{height:100%;display:grid;grid-template-columns:62% 38%;gap:.85rem;min-height:0}
+.responsibilityBox,.explainBox{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.explainBox{border-color:var(--cyan)}
+.explainBox .boxTitle{background:var(--cyan)}
+.respTable{flex:1;min-height:0;padding:.65rem;display:grid;grid-template-columns:16% 38% 46%;grid-template-rows:auto repeat(3,1fr);gap:.42rem}
+.colHead{display:grid;place-items:center;text-align:center;color:#fff;font-size:clamp(18px,1.25vw,26px);line-height:1.05;font-weight:900;border-radius:8px;padding:.45rem}
+.colHead.customer{background:var(--navy)}
+.colHead.provider{background:var(--orange)}
+.serviceName{display:grid;place-items:center;text-align:center;color:#fff;font-size:clamp(24px,1.7vw,36px);line-height:1;font-weight:900;border-radius:10px}
+.saasName{background:var(--orange)}
+.paasName{background:var(--purple)}
+.iaasName{background:var(--cyan);color:#08374f}
+.managed{border:3px solid var(--line);border-radius:10px;padding:.45rem;display:grid;grid-template-columns:1fr 1fr;gap:.30rem;align-content:start;overflow:hidden}
+.managed div{border-radius:6px;padding:.26rem .36rem;font-size:clamp(12px,.86vw,17px);line-height:1.04;font-weight:850;text-align:center}
+.customerSide{background:#f7fbff;border-color:var(--navy)}
+.customerSide div{background:#e8f1f8;color:var(--navy)}
+.providerSide{background:#fff8f4;border-color:var(--orange)}
+.providerSide div{background:#ffe3d2;color:#7a2a00}
+.muted div{background:#f0f3f6;color:#315b7e}
+.explainGrid{flex:1;min-height:0;padding:.70rem;display:grid;grid-template-rows:1fr 1fr 1fr;gap:.55rem}
+.explainCard{border:3px solid var(--line);border-left-width:10px;border-radius:10px;padding:.65rem .75rem;display:grid;align-content:center;gap:.18rem;background:#fff}
+.explainCard strong{font-size:clamp(22px,1.55vw,32px);line-height:1;color:var(--navy)}
+.explainCard span{font-size:clamp(15px,1.02vw,20px);line-height:1.10;font-weight:760;color:var(--ink)}
+.explainCard em{font-size:clamp(13px,.90vw,17px);line-height:1.08;font-weight:800;color:#496987}
+.saasCard{border-left-color:var(--orange)}
+.paasCard{border-left-color:var(--purple)}
+.iaasCard{border-left-color:var(--cyan)}
 
 </style>
 </head>
 <body>
 <main class="stage">
-<section aria-label="Delivery models" class="slide">
+<section aria-label="Cloud Services" class="slide">
 <img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
 <div class="header">
 <div class="session"><span class="dot"></span><span>Session 3 Cloud Computing</span></div>
-<h1>Waterfall, Incremental and Agile Delivery Models</h1>
-<div class="subtitle">Waterfall delivers value only at cutover, incremental delivers in staged releases, and agile delivers in short iterations with frequent feedback and reprioritisation.</div>
+<h1>Cloud Services</h1>
+<div class="subtitle">Use the responsibility model to distinguish what the provider manages and what the customer still controls.</div>
 </div>
 <div class="tabs">
-<button class="tabBtn active" data-tab="overview">Delivery models</button>
-<button class="tabBtn" data-tab="commercial">Commercial and contracting implications</button>
-<button class="tabBtn" data-tab="triangle">Iron Triangle</button>
+<button class="tab active" data-panel="overview" type="button">Cloud services</button>
+<button class="tab" data-panel="exercise" type="button">Exercise</button>
 </div>
-<div class="content">
-<div class="panelView active" id="overview">
-<div class="grid2">
-<section class="panel">
-<h2>Delivery logic</h2>
-<div class="modelsGrid">
-<div class="model waterfall">
-<div class="modelHead">Waterfall</div>
-<div class="modelBody">
-<div class="tag">Linear sequence with one major release</div>
-<div class="track">
-<div class="step">Plan</div><div class="flowArrow">↓</div>
-<div class="step">Define</div><div class="flowArrow">↓</div>
-<div class="step">Build</div><div class="flowArrow">↓</div>
-<div class="step">Test</div><div class="flowArrow">↓</div>
-<div class="step">Run / Cutover</div>
+<div class="panel active" id="overview">
+<div class="overview responsibilityLayout">
+<section class="responsibilityBox">
+<h2 class="boxTitle">IaaS / PaaS / SaaS responsibility model</h2>
+<div class="respTable">
+<div class="corner"></div>
+<div class="colHead customer">Customer manages</div>
+<div class="colHead provider">Provider manages</div>
+<div class="serviceName saasName">SaaS</div>
+<div class="managed customerSide muted">
+<div>Data</div>
+<div>User access</div>
+<div>Configuration</div>
 </div>
-<div class="valueZone">
-<div class="valueLabel">Value created over time</div>
-<div class="valueBars">
-<div class="bar" style="height:0%"></div>
-<div class="bar" style="height:0%"></div>
-<div class="bar" style="height:0%"></div>
-<div class="bar" style="height:0%"></div>
-<div class="bar" style="height:88%"></div>
+<div class="managed providerSide">
+<div>Applications</div>
+<div>Runtime</div>
+<div>Middleware</div>
+<div>Operating system</div>
+<div>Virtualization</div>
+<div>Servers</div>
+<div>Storage</div>
+<div>Networking</div>
 </div>
+<div class="serviceName paasName">PaaS</div>
+<div class="managed customerSide">
+<div>Applications</div>
+<div>Data</div>
+<div>User access</div>
 </div>
-<div class="note">Best when scope is stable, requirements are clear, and change is limited.</div>
+<div class="managed providerSide">
+<div>Runtime</div>
+<div>Middleware</div>
+<div>Operating system</div>
+<div>Virtualization</div>
+<div>Servers</div>
+<div>Storage</div>
+<div>Networking</div>
 </div>
+<div class="serviceName iaasName">IaaS</div>
+<div class="managed customerSide">
+<div>Applications</div>
+<div>Data</div>
+<div>Runtime</div>
+<div>Middleware</div>
+<div>Operating system</div>
 </div>
-<div class="model incremental">
-<div class="modelHead">Incremental</div>
-<div class="modelBody">
-<div class="tag">Phased releases of usable functionality</div>
-<div class="track">
-<div class="step">Plan + Define</div><div class="flowArrow">↓</div>
-<div class="step">Release 1</div><div class="flowArrow">↓</div>
-<div class="step">Release 2</div><div class="flowArrow">↓</div>
-<div class="step">Release 3</div><div class="flowArrow">↓</div>
-<div class="step">Run</div>
-</div>
-<div class="valueZone">
-<div class="valueLabel">Value created over time</div>
-<div class="valueBars">
-<div class="bar" style="height:22%"></div>
-<div class="bar" style="height:40%"></div>
-<div class="bar" style="height:56%"></div>
-<div class="bar" style="height:72%"></div>
-<div class="bar" style="height:88%"></div>
-</div>
-</div>
-<div class="note">Best when features can be prioritised and released in stages.</div>
-</div>
-</div>
-<div class="model agile">
-<div class="modelHead">Agile</div>
-<div class="modelBody">
-<div class="tag">Short sprints with continuous feedback</div>
-<div class="track">
-<div class="step">Sprint 1</div><div class="flowArrow">↓</div>
-<div class="step">Sprint 2</div><div class="flowArrow">↓</div>
-<div class="step">Sprint 3</div><div class="flowArrow">↓</div>
-<div class="step">Sprint 4</div><div class="flowArrow">↓</div>
-<div class="step">Sprint 5</div>
-</div>
-<div class="valueZone">
-<div class="valueLabel">Value created over time</div>
-<div class="valueBars">
-<div class="bar" style="height:26%"></div>
-<div class="bar" style="height:46%"></div>
-<div class="bar" style="height:64%"></div>
-<div class="bar" style="height:78%"></div>
-<div class="bar" style="height:90%"></div>
-</div>
-</div>
-<div class="note">Best when requirements evolve and user feedback matters.</div>
-</div>
+<div class="managed providerSide">
+<div>Virtualization</div>
+<div>Servers</div>
+<div>Storage</div>
+<div>Networking</div>
 </div>
 </div>
 </section>
-<section class="panel alt">
-<h2>Key differences</h2>
-<div class="compareBody">
-<div class="compareTable">
-<div class="cell rowhead"></div>
-<div class="cell head wf">Waterfall</div>
-<div class="cell head inc">Incremental</div>
-<div class="cell head ag">Agile</div>
-<div class="cell rowhead">Planning</div>
-<div class="cell">Up front and detailed</div>
-<div class="cell">Up front, then refined per release</div>
-<div class="cell">Iterative and reprioritised</div>
-<div class="cell rowhead">Scope change</div>
-<div class="cell">Difficult and expensive</div>
-<div class="cell">Manageable between releases</div>
-<div class="cell">Expected and built into the method</div>
-<div class="cell rowhead">Delivery cadence</div>
-<div class="cell">One major go-live</div>
-<div class="cell">Several staged go-lives</div>
-<div class="cell">Frequent sprint outputs</div>
-<div class="cell rowhead">User feedback</div>
-<div class="cell">Late</div>
-<div class="cell">After each release</div>
-<div class="cell">Continuous</div>
-<div class="cell rowhead">Typical fit</div>
-<div class="cell">Stable / regulated delivery</div>
-<div class="cell">Phased transformation</div>
-<div class="cell">Innovation / uncertain scope</div>
-</div>
-<div class="legend">
-<div class="legendCard">
-<strong>Waterfall</strong>
-<span>Most predictable, but slow learning and low flexibility after commitment.</span>
-</div>
-<div class="legendCard">
-<strong>Incremental</strong>
-<span>Earlier partial value and better control than a single big-bang go-live.</span>
-</div>
-<div class="legendCard">
-<strong>Agile</strong>
-<span>Fast feedback and adaptation, but stronger governance is required.</span>
-</div>
-</div>
-<div class="footerNote">Agile is both iterative and incremental: each sprint delivers a usable increment and refines the solution through repeated feedback cycles.</div>
+<section class="explainBox">
+<h2 class="boxTitle">How to read it</h2>
+<div class="explainGrid">
+<div class="explainCard saasCard"><strong>SaaS</strong><span>Provider manages the full technology stack and delivers a finished application.</span><em>Examples: Salesforce Sales Cloud, Workday HCM</em></div>
+<div class="explainCard paasCard"><strong>PaaS</strong><span>Provider manages the platform; the buyer manages application logic and data.</span><em>Examples: Salesforce Force.com, Google App Engine</em></div>
+<div class="explainCard iaasCard"><strong>IaaS</strong><span>Provider manages infrastructure; the buyer manages operating system, middleware, runtime, apps and data.</span><em>Examples: Microsoft Azure VM, Amazon S3</em></div>
 </div>
 </section>
 </div>
 </div>
-<div class="panelView" id="commercial">
-<div class="commWrap">
-<section class="panel">
-<h2>Commercial model by delivery approach</h2>
-<div class="cardsGrid">
-<div class="commCard waterfall">
-<div class="modelLabel">Waterfall</div>
-<div>
-<div class="smallHead">Commercial structure</div>
-<div class="smallText">Usually fixed price or milestone-based, with a defined scope baseline and formal change requests.</div>
+<div class="panel" id="exercise">
+<div class="exercise">
+<div class="question">Select a service, then click the correct cloud-service type.</div>
+<div class="exerciseGrid">
+<div class="cards">
+<button class="card" data-answer="SaaS" data-explain="Salesforce Sales Cloud is a hosted cloud application." data-service="Salesforce Sales Cloud"><strong>Salesforce Sales Cloud</strong><span>CRM application</span></button>
+<button class="card" data-answer="PaaS" data-explain="Force.com is an application development platform." data-service="Salesforce Force.com"><strong>Salesforce Force.com</strong><span>App development platform</span></button>
+<button class="card" data-answer="IaaS" data-explain="Azure Virtual Machines provide compute infrastructure." data-service="Microsoft Azure VM"><strong>Microsoft Azure VM</strong><span>Virtual machine</span></button>
+<button class="card" data-answer="IaaS" data-explain="Amazon S3 is cloud storage infrastructure." data-service="Amazon S3"><strong>Amazon S3</strong><span>Object storage</span></button>
+<button class="card" data-answer="PaaS" data-explain="App Engine is an application-hosting platform." data-service="Google App Engine"><strong>Google App Engine</strong><span>Application hosting</span></button>
+<button class="card" data-answer="SaaS" data-explain="Workday HCM is a hosted business application." data-service="Workday HCM"><strong>Workday HCM</strong><span>HR application</span></button>
 </div>
-<div>
-<div class="smallHead">Contracting focus</div>
-<div class="smallText">Detailed SOW, milestone payments, final acceptance testing, warranty terms, and tight change control.</div>
-</div>
-</div>
-<div class="commCard incremental">
-<div class="modelLabel">Incremental</div>
-<div>
-<div class="smallHead">Commercial structure</div>
-<div class="smallText">Phased pricing by release, work package or tranche, with optionality for later stages.</div>
-</div>
-<div>
-<div class="smallHead">Contracting focus</div>
-<div class="smallText">Release-based acceptance criteria, stage gates, phased renew/stop decisions, and pricing tied to delivered functionality.</div>
+<div class="dropZoneWrap">
+<div class="zone" data-zone="SaaS"><h3>SaaS</h3><div class="zoneBody"></div></div>
+<div class="zone" data-zone="PaaS"><h3>PaaS</h3><div class="zoneBody"></div></div>
+<div class="zone" data-zone="IaaS"><h3>IaaS</h3><div class="zoneBody"></div></div>
 </div>
 </div>
-<div class="commCard agile">
-<div class="modelLabel">Agile</div>
-<div>
-<div class="smallHead">Commercial structure</div>
-<div class="smallText">Often time-and-materials, sprint capacity, product team subscription, or capped T&amp;M with backlog prioritisation.</div>
-</div>
-<div>
-<div class="smallHead">Contracting focus</div>
-<div class="smallText">Team composition, backlog ownership, sprint review rights, governance cadence, and exit flexibility.</div>
+<div class="actions">
+<button class="btn secondary" id="reset" type="button">Reset</button>
+<div class="feedback" id="feedback">Map all six services.</div>
 </div>
 </div>
 </div>
-</section>
-<section class="panel alt">
-<h2>What procurement should negotiate</h2>
-<div class="sideBody">
-<div class="table2">
-<div class="r hd">Area</div><div class="r hd">Negotiation implication</div>
-<div class="r"><strong>Pricing basis</strong></div><div class="r">Use fixed price for stable scope, phased pricing for incremental releases, and capacity-based pricing for agile teams.</div>
-<div class="r"><strong>Acceptance</strong></div><div class="r">Waterfall needs detailed final acceptance; incremental needs release-by-release acceptance; agile needs sprint review and definition-of-done governance.</div>
-<div class="r"><strong>Change control</strong></div><div class="r">The more change is expected, the less useful rigid CR mechanics become. Agile contracts need backlog and prioritisation rules.</div>
-<div class="r"><strong>Risk allocation</strong></div><div class="r">In waterfall, suppliers can carry more schedule/scope risk. In agile, risk shifts toward buyer governance, prioritisation and decision speed.</div>
-</div>
-<div class="bullets">
-<ul>
-<li><strong>Waterfall:</strong> negotiate milestones, deliverables, warranties, defect correction periods and remedies for late cutover.</li>
-<li><strong>Incremental:</strong> negotiate stage gates, rollback rights, options to pause after a release and transparent pricing for future increments.</li>
-<li><strong>Agile:</strong> negotiate named roles, team continuity, backlog ownership, reporting cadence, sprint demos and termination support.</li>
-</ul>
-</div>
-<div class="emphasis">Bottom line: the contract should not fight the delivery model. An agile project wrapped in a rigid waterfall contract will create governance friction and commercial disputes.</div>
-</div>
-</section>
-</div>
-</div>
-<div class="panelView" id="triangle">
-<div class="triWrap">
-<section class="panel">
-<h2>Iron Triangle</h2>
-<div class="triPanelBody">
-<div class="triangleBox">
-<svg class="triangleSvg" preserveaspectratio="xMidYMid meet" viewbox="0 0 640 420">
-<polygon fill="#f7fbff" points="320,54 108,348 532,348" stroke="#003b70" stroke-width="5"></polygon>
-<circle cx="320" cy="54" fill="#003b70" r="32"></circle>
-<text fill="#fff" font-size="20" font-weight="900" text-anchor="middle" x="320" y="61">SCOPE</text>
-<circle cx="108" cy="348" fill="#ff5a00" r="32"></circle>
-<text fill="#fff" font-size="20" font-weight="900" text-anchor="middle" x="108" y="355">TIME</text>
-<circle cx="532" cy="348" fill="#2f9e5a" r="32"></circle>
-<text fill="#fff" font-size="20" font-weight="900" text-anchor="middle" x="532" y="355">COST</text>
-<circle cx="320" cy="224" fill="#12bddf" r="70" stroke="#003b70" stroke-width="4"></circle>
-<text fill="#003b70" font-size="25" font-weight="900" text-anchor="middle" x="320" y="213">QUALITY</text>
-<text fill="#003b70" font-size="15" font-weight="700" text-anchor="middle" x="320" y="238">Trade-offs are</text>
-<text fill="#003b70" font-size="15" font-weight="700" text-anchor="middle" x="320" y="257">always connected.</text>
-<rect class="triCall" height="66" rx="12" width="284" x="178" y="88"></rect>
-<text class="triText" font-weight="900" text-anchor="middle" x="320" y="109">Waterfall fixes scope.</text>
-<text class="triText" text-anchor="middle" x="320" y="128">Changes usually move</text>
-<text class="triText" text-anchor="middle" x="320" y="146">time, cost or both.</text>
-<rect class="triCall" height="50" rx="12" width="184" x="128" y="286"></rect>
-<text class="triText" font-weight="900" text-anchor="middle" x="220" y="306">Agile fixes time</text>
-<text class="triText" text-anchor="middle" x="220" y="324">through sprint cadence.</text>
-<rect class="triCall" height="50" rx="12" width="184" x="328" y="286"></rect>
-<text class="triText" font-weight="900" text-anchor="middle" x="420" y="306">Agile fixes cost</text>
-<text class="triText" text-anchor="middle" x="420" y="324">through team capacity.</text>
-<rect class="triCall" height="44" rx="12" width="204" x="218" y="352"></rect>
-<text class="triText" font-weight="900" text-anchor="middle" x="320" y="370">Scope flexes</text>
-<text class="triText" text-anchor="middle" x="320" y="388">via backlog priority.</text>
-</svg>
-</div>
-<div class="footerNote">Core lesson: project constraints are interdependent. Delivery method changes how the trade-offs are managed, but the trade-offs do not disappear.</div>
-</div>
-</section>
-<section class="panel alt">
-<h2>Implications for delivery models</h2>
-<div class="triSide">
-<div class="miniTable">
-<div class="head"></div>
-<div class="head">Waterfall</div>
-<div class="head">Incremental</div>
-<div class="head">Agile</div>
-<div class="rowh">Usually fixed</div>
-<div><strong>Scope</strong></div>
-<div><strong>Release scope</strong></div>
-<div><strong>Time + cost</strong></div>
-<div class="rowh">Usually flexible</div>
-<div>Time and cost</div>
-<div>Later phases / sequencing</div>
-<div>Backlog scope and feature priority</div>
-<div class="rowh">Commercial anchor</div>
-<div>Deliverables / milestones</div>
-<div>Release-by-release delivery</div>
-<div>Team capacity / sprint cadence</div>
-<div class="rowh">Main risk</div>
-<div>Late learning and expensive change</div>
-<div>Coordination across releases</div>
-<div>Weak governance or unclear product ownership</div>
-</div>
-<div class="infoPair">
-<div class="infoCard">
-<strong>Waterfall</strong>
-<span>Usually fixes <strong>scope</strong>. Any material change moves time, cost or both. Contract focus: defined deliverables, milestones and change control.</span>
-</div>
-<div class="infoCard">
-<strong>Agile</strong>
-<span>Usually fixes <strong>time</strong> and <strong>cost</strong> through sprint cadence and team capacity. Scope flexes through backlog reprioritisation.</span>
-</div>
-</div>
-<div class="emphasis">Executive rule: decide early what is truly fixed — scope, time or cost — then align the delivery model, the contract structure and the governance model to that choice.</div>
-</div>
-</section>
-</div>
-</div>
+<div class="note">
+<div class="noteText">Improvement opportunity: the next logical enrichment is a shared-responsibility slide, because buyers often classify cloud correctly but still miss support, security and data-management boundaries.</div>
+<div class="footer">©</div>
 </div>
 </section>
 </main>
 <script>
-const btns = document.querySelectorAll('.tabBtn');
-const views = document.querySelectorAll('.panelView');
-btns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    btns.forEach(b => b.classList.remove('active'));
-    views.forEach(v => v.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(btn.dataset.tab).classList.add('active');
+document.querySelectorAll('.tab').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(btn.dataset.panel).classList.add('active');
+}));
+
+let selected = null;
+const cards = Array.from(document.querySelectorAll('.card'));
+const zones = Array.from(document.querySelectorAll('.zone'));
+const feedback = document.getElementById('feedback');
+
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    if (card.disabled) return;
+    cards.forEach(c => c.classList.remove('selected'));
+    selected = card;
+    card.classList.add('selected');
+    feedback.textContent = `Selected: ${card.dataset.service}`;
   });
+});
+
+zones.forEach(zone => {
+  zone.addEventListener('click', () => {
+    if (!selected) {
+      feedback.textContent = 'Select a service first.';
+      return;
+    }
+    const correct = selected.dataset.answer === zone.dataset.zone;
+    const div = document.createElement('div');
+    div.className = 'answer ' + (correct ? 'correct' : 'wrong');
+    div.innerHTML = `${selected.dataset.service}<span class="explain">${correct ? 'Correct.' : 'Wrong. ' + selected.dataset.explain}</span>`;
+    zone.querySelector('.zoneBody').appendChild(div);
+    selected.disabled = true;
+    selected.classList.remove('selected');
+    selected = null;
+
+    const done = cards.filter(c => c.disabled).length;
+    const wrong = document.querySelectorAll('.answer.wrong').length;
+    if (done < cards.length) {
+      feedback.textContent = `${done} / ${cards.length} mapped.`;
+    } else if (wrong === 0) {
+      feedback.textContent = 'All correct.';
+    } else {
+      feedback.textContent = `${wrong} wrong mapping${wrong === 1 ? '' : 's'}. Review the red explanations.`;
+    }
+  });
+});
+
+document.getElementById('reset').addEventListener('click', () => {
+  selected = null;
+  cards.forEach(c => { c.disabled = false; c.classList.remove('selected'); });
+  document.querySelectorAll('.zoneBody').forEach(z => z.replaceChildren());
+  feedback.textContent = 'Map all six services.';
 });
 </script>
 <script id="itpf-deck-bridge">

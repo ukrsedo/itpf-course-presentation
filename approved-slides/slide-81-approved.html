@@ -1,99 +1,72 @@
 <!doctype html>
-<!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>Slide 81 — Case #6 Transition</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Slide 81 — Vendor and Client Expectations Under a Relational Contract</title>
 <style>
-:root {
-  --navy:#003b70;
-  --cyan:#12bddf;
-  --orange:#ff5a00;
-  --ink:#173f66;
-  --line:#c7d9ea;
-  --soft:#f7fbff;
-  --green:#2f9e5a;
-}
+:root{--navy:#003b70;--cyan:#12bddf;--orange:#ff5a00;--ink:#173f66;--line:#c7d9ea;--soft:#f7fbff;--pale:#eef8fc;--blueSoft:#eaf4fb;--green:#16885a}
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--navy)}
 .stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
 .slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
-.logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:5}
-.logoText{position:absolute;right:4.3%;top:4%;font-size:30px;font-weight:900;color:var(--navy);z-index:5}
-.corner{position:absolute;right:0;top:0;width:28%;height:50%;background:var(--cyan);clip-path:polygon(100% 0,100% 100%,0 0);opacity:.95}
-
-.header{position:absolute;left:6%;top:5.3%;right:17%}
-.session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.35rem}
-.dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
-h1{margin:0;color:var(--navy);font-size:clamp(40px,3.85vw,72px);line-height:1.00;letter-spacing:-.035em;font-weight:900}
-.subtitle{font-size:clamp(18px,1.32vw,27px);line-height:1.08;margin-top:.5rem;color:#2f5f88;font-weight:850;max-width:92%}
-
-.main{position:absolute;left:6%;right:6%;top:31%;bottom:7%;display:grid;grid-template-columns:43% 57%;gap:1.1rem;min-height:0}
-.caseBox{border:4px solid var(--navy);border-radius:18px;background:#fff;overflow:hidden;box-shadow:0 10px 28px rgba(0,35,70,.08)}
-.caseHead{background:var(--navy);color:#fff;font-size:clamp(25px,1.8vw,37px);font-weight:900;line-height:1.05;padding:.82rem 1.05rem}
-.caseBody{padding:1.05rem 1.15rem;font-size:clamp(19px,1.34vw,27px);line-height:1.22;font-weight:780;color:var(--ink)}
-.caseBody strong{color:var(--navy)}
-.signal{margin-top:.9rem;border-left:10px solid var(--orange);background:#fff8f4;border-radius:14px;padding:.85rem 1rem;font-size:clamp(17px,1.18vw,24px);line-height:1.18;font-weight:820;color:var(--ink)}
-
-.right{display:grid;grid-template-rows:auto 1fr;gap:.8rem;min-height:0}
-.title2{font-size:clamp(24px,1.7vw,35px);font-weight:900;color:var(--navy);margin:0}
-.steps{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:.75rem;min-height:0}
-.step{border:3px solid var(--line);border-radius:16px;background:var(--soft);padding:.82rem .9rem;display:grid;grid-template-columns:auto 1fr;gap:.65rem;align-content:start;min-height:0}
-.num{width:42px;height:42px;border-radius:50%;background:var(--cyan);display:grid;place-items:center;color:#003b70;font-size:clamp(20px,1.38vw,28px);font-weight:900;flex:none}
-.step h3{margin:0 0 .25rem 0;font-size:clamp(18px,1.22vw,24px);line-height:1.05;font-weight:900;color:var(--navy)}
-.step p{margin:0;font-size:clamp(14px,.98vw,19px);line-height:1.16;font-weight:760;color:var(--ink)}
-
-.launch{position:absolute;left:6%;right:6%;bottom:2.2%;display:flex;justify-content:space-between;align-items:center;border-top:2px solid var(--line);padding-top:.45rem}
-.launchText{font-size:clamp(15px,1.05vw,21px);font-weight:900;color:var(--navy)}
-.badge{background:var(--orange);color:#fff;border-radius:999px;padding:.55rem 1.15rem;font-size:clamp(16px,1.1vw,22px);font-weight:900;text-decoration:none;display:inline-block}
+.corner{position:absolute;right:0;top:0;width:25%;height:42%;background:var(--cyan);clip-path:polygon(100% 0,100% 100%,0 0);opacity:.95}
+.logo{position:absolute;right:4.1%;top:3.8%;width:9.6%;height:auto;z-index:5}
+.header{position:absolute;left:5.2%;top:4.4%;right:22%;z-index:3}
+.session{font-size:clamp(15px,1vw,20px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem;font-weight:850}
+.dot{width:12px;height:12px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
+h1{margin:0;color:var(--navy);font-size:clamp(31px,2.36vw,46px);line-height:1.02;letter-spacing:-.03em;font-weight:950}
+.content{position:absolute;left:5.2%;right:5.2%;top:18.7%;bottom:7.7%;display:grid;grid-template-rows:1fr auto;gap:.72rem}
+.tableWrap{border:3px solid var(--line);border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 8px 24px rgba(0,35,70,.07)}
+table{width:100%;height:100%;border-collapse:collapse;table-layout:fixed}
+thead th{padding:.72rem 1rem;font-size:clamp(19px,1.25vw,25px);line-height:1.06;font-weight:950;color:#fff;text-align:left}
+thead th:first-child{background:var(--navy)}
+thead th:last-child{background:#0b6da6}
+thead th+th{border-left:3px solid #fff}
+tbody tr:nth-child(odd){background:#fff}
+tbody tr:nth-child(even){background:var(--soft)}
+tbody td{padding:.43rem 1rem;font-size:clamp(16px,1.05vw,20px);line-height:1.13;color:var(--ink);font-weight:800;vertical-align:middle;border-top:2px solid #dbe8f2}
+tbody td+td{border-left:3px solid var(--line)}
+.pair{display:flex;align-items:center;gap:.58rem}
+.icon{width:1.42rem;height:1.42rem;border-radius:50%;display:grid;place-items:center;background:var(--blueSoft);color:var(--navy);font-size:clamp(12px,.8vw,16px);font-weight:950;flex:none}
+.empty{color:#8da2b6;font-style:italic;font-weight:700}
+.lesson{border-left:8px solid var(--orange);background:#fff7f0;border-radius:14px;padding:.66rem .86rem;font-size:clamp(16px,1.04vw,20px);line-height:1.19;color:var(--ink);font-weight:840}
+.lesson strong{color:var(--navy)}
+.footer{position:absolute;left:5.2%;right:5.2%;bottom:1.4%;font-size:clamp(9px,.68vw,13px);font-weight:700;color:#7892aa}
 </style>
 </head>
 <body>
 <main class="stage">
-<section aria-label="Transition to Case 6" class="slide">
+<section class="slide" aria-label="Vendor and client expectations under a relational contract">
 <div class="corner"></div>
-<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<img alt="CIPS" class="logo" src="../assets/cips-logo.png">
 <div class="header">
-<div class="session"><span class="dot"></span><span>Session 5 Source-to-Contract</span></div>
-<h1>Case #6</h1>
-<div class="subtitle">The dispute between IBM and the State of Indiana (2006-2012)</div>
+  <div class="session"><span class="dot"></span><span>Session 5 Source-to-Contract</span></div>
+  <h1>Vendor and Client Expectations Under a Relational Contract</h1>
 </div>
-<div class="main">
-<div>
-<section class="caseBox">
-<div class="caseHead">Case setup</div>
-<div class="caseBody">The State of Indiana signed a 10-year, $1.37 billion contract with IBM to modernize its welfare system. The project faced <strong>delivery delays, technical problems, budget pressure, and changing requirements</strong>, before the contract was terminated in 2009 and the dispute escalated.</div>
-</section>
-<div class="signal">IBM blamed changing requirements and lack of cooperation; Indiana alleged failure to deliver and misrepresentation of capability.</div>
+<div class="content">
+  <div class="tableWrap">
+    <table aria-label="Comparison of vendor and client expectations">
+      <thead>
+        <tr><th>Vendor expectations</th><th>Client expectations</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><div class="pair"><span class="icon">1</span><span>Project specification</span></div></td><td><div class="pair"><span class="icon">1</span><span>Project scoping</span></div></td></tr>
+        <tr><td><div class="pair"><span class="icon">2</span><span>Fair compensation</span></div></td><td><div class="pair"><span class="icon">2</span><span>Role clarity</span></div></td></tr>
+        <tr><td><div class="pair"><span class="icon">3</span><span>Accurate payment</span></div></td><td><div class="pair"><span class="icon">3</span><span>Price transparency</span></div></td></tr>
+        <tr><td><div class="pair"><span class="icon">4</span><span>Client staffing and turnover</span></div></td><td><div class="pair"><span class="icon">4</span><span>Vendor staffing and turnover</span></div></td></tr>
+        <tr><td><div class="pair"><span class="icon">5</span><span>Knowledge transfer</span></div></td><td><div class="pair"><span class="icon">5</span><span>Knowledge transfer</span></div></td></tr>
+        <tr><td><div class="pair"><span class="icon">6</span><span>Client leadership</span></div></td><td><div class="pair"><span class="icon">6</span><span>Vendor initiative</span></div></td></tr>
+        <tr><td><div class="pair"><span class="icon">7</span><span>Relationship building</span></div></td><td><div class="pair"><span class="icon">7</span><span>Relationship building</span></div></td></tr>
+        <tr><td><div class="pair"><span class="icon">8</span><span>Client responsiveness</span></div></td><td><div class="pair"><span class="icon">8</span><span>Vendor responsiveness</span></div></td></tr>
+        <tr><td><div class="pair"><span class="icon">9</span><span>Project monitoring</span></div></td><td><div class="pair"><span class="icon">9</span><span>Project feedback</span></div></td></tr>
+        <tr><td><div class="pair"><span class="icon">10</span><span class="empty">No direct equivalent</span></div></td><td><div class="pair"><span class="icon">10</span><span>Soft deliverables</span></div></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="lesson"><strong>Core lesson:</strong> relational contracts depend on operational and behavioural expectations that cannot be fully captured in formal clauses alone.</div>
 </div>
-<div class="right">
-<h2 class="title2">What to assess</h2>
-<div class="steps">
-<div class="step">
-<div class="num">1</div>
-<div><h3>Supplier selection</h3><p>Were IBM’s delivery capabilities adequately tested before award?</p></div>
-</div>
-<div class="step">
-<div class="num">2</div>
-<div><h3>Contract completeness</h3><p>Were obligations, acceptance criteria, and remedies sufficiently clear?</p></div>
-</div>
-<div class="step">
-<div class="num">3</div>
-<div><h3>Change governance</h3><p>How should changing requirements, scope, and responsibility have been controlled?</p></div>
-</div>
-<div class="step">
-<div class="num">4</div>
-<div><h3>Relationship failure</h3><p>What governance could have prevented escalation, termination, and litigation?</p></div>
-</div>
-</div>
-</div>
-</div>
-<div class="launch">
-<div class="launchText">Open Case #6 when instructed by the trainer.</div>
-<a class="badge" href="https://www.goodspending.com/techology-it-procurement-foundations-cips-skills/case-studies" rel="noopener" target="_blank">Open Case</a>
-</div>
+<div class="footer">© CIPS. Relational contracting combines formal terms with trust, reciprocity, communication and adaptive governance.</div>
 </section>
 </main>
 <script id="itpf-deck-bridge">

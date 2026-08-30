@@ -1,93 +1,68 @@
 <!doctype html>
-<!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>ITPF — Slide 38 — Case 3 Transition</title>
+<title>ITPF — Slide 36 — AI-enabled sourcing risk</title>
 <style>
-:root {
-  --navy:#003b70;
-  --cyan:#12bddf;
-  --orange:#ff5a00;
-  --purple:#6b5fb5;
-  --green:#3aa25a;
-  --ink:#173f66;
-  --line:#c7d9ea;
-  --soft:#f7fbff;
-}
+:root{--navy:#003b70;--cyan:#12bddf;--orange:#ff5a00;--ink:#173f66;--line:#c7d9ea;--soft:#f7fbff;--warn:#fff7f1}
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--navy)}
 .stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
 .slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
 .logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:5}
-.header{position:absolute;left:6%;top:7%;right:18%}
-.session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.42rem}
+.header{position:absolute;left:6%;top:5.4%;right:17%}
+.session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.24rem}
 .dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
-.kicker{color:var(--orange);font-size:clamp(16px,1.15vw,24px);font-weight:900;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
-h1{margin:0;color:var(--navy);font-size:clamp(42px,4.1vw,76px);line-height:1.02;letter-spacing:-.03em;font-weight:900}
-.subtitle{font-size:clamp(21px,1.55vw,31px);margin-top:.55rem;color:#2f5f88;font-weight:800;line-height:1.15}
-
-.main{position:absolute;left:6%;right:6%;top:35%;bottom:12%;display:grid;grid-template-columns:1.04fr .96fr;gap:1.25rem;align-items:stretch}
-.panel{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-width:0}
-.panel h2{margin:0;background:var(--navy);color:#fff;font-size:clamp(26px,2vw,40px);line-height:1.04;padding:.85rem 1rem;font-weight:900}
-.body{padding:1.0rem 1.1rem;font-size:clamp(20px,1.38vw,28px);line-height:1.18;font-weight:760;color:var(--ink);display:grid;gap:.72rem}
-.body div{border-bottom:1px solid var(--line);padding-bottom:.52rem}
-.body div:last-child{border-bottom:0}
-
-.choiceMap{border:3px solid var(--orange);background:#fff8f4;display:flex;flex-direction:column;min-width:0}
-.choiceMap h2{margin:0;background:var(--orange);color:#fff;font-size:clamp(26px,2vw,40px);line-height:1.04;padding:.85rem 1rem;font-weight:900}
-.mapBody{flex:1;display:grid;grid-template-rows:auto 1fr auto;gap:.65rem;padding:1rem}
-.flow{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:.65rem}
-.box{border:3px solid var(--line);background:#fff;border-radius:10px;padding:.75rem .85rem;text-align:center}
-.box strong{display:block;font-size:clamp(23px,1.6vw,34px);color:var(--navy);line-height:1.05}
-.box span{display:block;font-size:clamp(16px,1.05vw,21px);font-weight:800;color:var(--ink);margin-top:.2rem}
-.arrow{font-size:clamp(32px,2.5vw,52px);font-weight:900;color:var(--orange)}
-.tradeoff{border-left:8px solid var(--purple);background:#fff;padding:.75rem .9rem;font-size:clamp(18px,1.25vw,25px);line-height:1.15;font-weight:850;color:var(--ink)}
-.btn{justify-self:center;display:inline-block;background:var(--orange);color:#fff;text-decoration:none;border-radius:999px;padding:.78rem 1.35rem;font-size:clamp(21px,1.55vw,31px);font-weight:900;box-shadow:0 10px 24px rgba(255,90,0,.22)}
-.url{text-align:center;color:var(--navy);font-size:clamp(12px,.82vw,16px);line-height:1.1;font-weight:800;word-break:break-word;margin-top:.45rem}
-
-.rule{position:absolute;left:6%;right:6%;bottom:5.1%;height:3px;background:linear-gradient(90deg,var(--cyan),var(--orange));border-radius:3px}
-.footer{position:absolute;left:4.9%;bottom:2.8%;font-size:clamp(14px,1vw,22px);color:#168cff}
+h1{margin:0;color:var(--navy);font-size:clamp(31px,2.75vw,54px);line-height:1.03;letter-spacing:-.02em;font-weight:900}
+.subtitle{font-size:clamp(17px,1.2vw,24px);margin-top:.28rem;color:#2f5f88;font-weight:750}
+.content{position:absolute;left:4.2%;right:4.2%;top:22.5%;bottom:7%;display:grid;grid-template-columns:1fr 1fr;gap:1rem;min-height:0}
+.panel{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-width:0;overflow:hidden}
+.panel h2{margin:0;background:var(--navy);color:#fff;font-size:clamp(22px,1.55vw,32px);line-height:1.04;padding:.58rem .78rem;font-weight:900}
+.panel.controls{border-color:var(--orange)}
+.panel.controls h2{background:var(--orange)}
+.stack{padding:.72rem .78rem;display:grid;grid-template-rows:repeat(5,1fr);gap:.48rem;flex:1;min-height:0}
+.card{border:2px solid var(--line);border-left:8px solid var(--cyan);border-radius:8px;background:var(--soft);padding:.48rem .62rem;display:flex;flex-direction:column;justify-content:center;min-height:0}
+.card.risk{border-left-color:var(--orange);background:var(--warn)}
+.card strong{display:block;font-size:clamp(17px,1.13vw,23px);line-height:1.03;color:var(--navy);margin-bottom:.16rem}
+.card span{display:block;font-size:clamp(14px,.96vw,19px);line-height:1.10;font-weight:740;color:var(--ink)}
+.bottomBar{position:absolute;left:4.2%;right:4.2%;bottom:2.3%;border-top:2px solid var(--line);padding-top:.38rem;background:#fff}
+.takeaway{font-size:clamp(15px,1vw,20px);line-height:1.08;font-weight:900;color:var(--navy);text-align:center}
+.footer{position:absolute;left:4.9%;bottom:.7%;font-size:clamp(12px,.85vw,18px);color:#168cff}
 </style>
 </head>
 <body>
 <main class="stage">
-<section aria-label="Case 3 transition" class="slide">
+<section aria-label="AI-enabled sourcing risk and procurement controls" class="slide">
 <img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
 <div class="header">
 <div class="session"><span class="dot"></span><span>Session 3 Cloud Computing</span></div>
-<div class="kicker">Case 3</div>
-<h1>Cloud Repatriation</h1>
-<div class="subtitle">Public cloud to private infrastructure: cost recognition, control and scalability trade-offs.</div>
+<h1>AI-Enabled Sourcing Risk</h1>
+<div class="subtitle">AI can accelerate analysis and communication, but it also creates new evidence, governance and accountability risks.</div>
 </div>
-<div class="main">
+<div class="content">
 <section class="panel">
-<h2>What to assess</h2>
-<div class="body">
-<div>Identify what changed in the cloud-service and deployment model.</div>
-<div>Explain the shift from operating expenditure to capital expenditure.</div>
-<div>Test whether greater control justifies reduced public-cloud elasticity.</div>
+<h2>Where procurement is exposed</h2>
+<div class="stack">
+<div class="card risk"><strong>Unsupported claims</strong><span>AI may produce plausible but false facts, benchmarks, supplier comparisons or contract interpretations.</span></div>
+<div class="card risk"><strong>Supplier-generated content</strong><span>Proposals, references and technical statements may be AI-assisted, making authorship and validation less transparent.</span></div>
+<div class="card risk"><strong>Hidden limitations</strong><span>Models may use incomplete, outdated or biased information without clearly showing what is missing.</span></div>
+<div class="card risk"><strong>Confidentiality leakage</strong><span>Tender data, prices, evaluation notes or personal information may enter tools outside approved controls.</span></div>
+<div class="card risk"><strong>Inconsistent evaluation</strong><span>Automated scoring can reproduce bias or apply criteria unevenly when prompts, data or model versions change.</span></div>
 </div>
 </section>
-<section class="choiceMap">
-<h2>Open Case 3</h2>
-<div class="mapBody">
-<div class="flow">
-<div class="box"><strong>Public cloud</strong><span>OPEX · scalability</span></div>
-<div class="arrow">→</div>
-<div class="box"><strong>Private cloud</strong><span>CAPEX · control</span></div>
-</div>
-<div class="tradeoff">Core question: is the move a sourcing advantage, an accounting shift, or both?</div>
-<div>
-<a class="btn" href="https://www.goodspending.com/techology-it-procurement-foundations-cips-skills/case-studies" rel="noopener" target="_blank">Open Case</a>
-<div class="url">https://www.goodspending.com/techology-it-procurement-foundations-cips-skills/case-studies</div>
-</div>
+<section class="panel controls">
+<h2>Procurement controls</h2>
+<div class="stack">
+<div class="card"><strong>Validate evidence</strong><span>Require named sources, direct links, dates and verification before using AI-supported claims in decisions.</span></div>
+<div class="card"><strong>Assign accountability</strong><span>Keep a named human owner for supplier evaluation, recommendations and external communication.</span></div>
+<div class="card"><strong>Control data</strong><span>Define which procurement information may enter AI tools and use only approved environments.</span></div>
+<div class="card"><strong>Audit the process</strong><span>Retain prompts, outputs, model versions, scoring logic and decision records for material sourcing events.</span></div>
+<div class="card"><strong>Contract for transparency</strong><span>Set supplier obligations for AI-use disclosure, data handling, correction, monitoring and liability.</span></div>
 </div>
 </section>
 </div>
-<div class="rule"></div>
+<div class="bottomBar"><div class="takeaway">Use AI to support procurement judgement—not to replace evidence, governance or accountable decision-making.</div></div>
 <div class="footer">©</div>
 </section>
 </main>

@@ -5,12 +5,13 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>ITPF — Slide 22 Draft — Hybrid Sourcing Strategy</title>
+<title>ITPF — Slide 21 Draft — Pace Layer Model</title>
 <style>
 :root {
   --navy:#003b70;
   --cyan:#12bddf;
   --orange:#ff5a00;
+  --blue:#2d8cff;
   --ink:#003b70;
   --line:#c7d9ea;
   --soft:#f7fbff;
@@ -20,80 +21,166 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;fon
 .stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
 .slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
 .logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:5}
-.header{position:absolute;left:6%;top:6.8%;right:18%}
-.session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.42rem}
+.header{position:absolute;left:6%;top:7%;right:18%}
+.session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.45rem}
 .dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
-h1{margin:0;color:var(--navy);font-size:clamp(36px,3.05vw,60px);line-height:1.03;letter-spacing:-.02em;font-weight:900}
-.subtitle{font-size:clamp(20px,1.38vw,28px);margin-top:.42rem;color:#2f5f88;font-weight:700}
-
-.columns{position:absolute;left:6%;right:6%;top:26%;bottom:10%;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+h1{margin:0;color:var(--navy);font-size:clamp(34px,2.95vw,56px);line-height:1.03;letter-spacing:-.02em;font-weight:800}
+.subtitle{font-size:clamp(18px,1.25vw,26px);margin-top:.42rem;color:#2f5f88;font-weight:700}
+.tabs{position:absolute;left:6%;right:6%;top:21%;display:flex;gap:.85rem}
+.tab{border:3px solid var(--navy);background:#fff;color:var(--navy);font-size:clamp(20px,1.45vw,30px);font-weight:800;padding:.58rem 1rem;cursor:pointer}
+.tab.active{background:var(--navy);color:#fff}
+.panel{position:absolute;left:6%;right:6%;top:30%;bottom:8%;display:none}
+.panel.active{display:block}
+.layers{height:100%;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
 .card{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-width:0}
-.card.run{border-color:var(--navy)}
+.card.innovation{border-color:var(--orange)}
 .card.diff{border-color:var(--cyan)}
-.card.innov{border-color:var(--orange)}
-.card h2{margin:0;color:#fff;font-size:clamp(28px,2.1vw,41px);line-height:1.04;padding:.78rem .95rem;font-weight:900}
-.run h2{background:var(--navy)}
+.card.record{border-color:var(--navy)}
+.card h2{margin:0;color:#fff;font-size:clamp(25px,1.95vw,38px);line-height:1.04;padding:.8rem .95rem;font-weight:900}
+.innovation h2{background:var(--orange)}
 .diff h2{background:var(--cyan)}
-.innov h2{background:var(--orange)}
-.body{padding:.76rem .82rem .82rem;display:grid;gap:.36rem;font-size:clamp(17px,1.18vw,23px);line-height:1.12;font-weight:700;color:#244d72}
-.item{border-bottom:1px solid var(--line);padding-bottom:.38rem}
-.item:last-child{border-bottom:0}
-.label{display:block;font-size:clamp(13px,.92vw,18px);line-height:1.05;text-transform:uppercase;letter-spacing:.035em;color:var(--navy);font-weight:900;margin-bottom:.16rem}
-.badge{margin-top:.18rem;border:2px solid currentColor;color:var(--navy);font-weight:900;text-align:center;padding:.38rem .45rem;font-size:clamp(18px,1.25vw,24px);line-height:1.05}
-.connect{position:absolute;left:6%;right:6%;bottom:4.6%;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;text-align:center;font-size:clamp(16px,1.12vw,21px);line-height:1.1;font-weight:900;color:var(--navy)}
-.connect div{border-top:2px solid var(--line);padding-top:.45rem}
-.footer{position:absolute;left:4.9%;bottom:3.1%;font-size:clamp(14px,1vw,22px);color:#168cff}
+.record h2{background:var(--navy)}
+.body{padding:.95rem 1rem;display:flex;flex-direction:column;gap:.65rem;font-size:clamp(18px,1.28vw,25px);line-height:1.18;font-weight:700;color:#244d72}
+.body div{border-bottom:1px solid var(--line);padding-bottom:.48rem}
+.body div:last-child{border-bottom:0}
+.examples{margin-top:auto;border-top:2px solid var(--line);padding-top:.65rem;color:var(--navy);font-size:clamp(17px,1.18vw,23px);line-height:1.15;font-weight:900}
+
+.exercise{height:100%;display:grid;grid-template-rows:auto 1fr;gap:.7rem}
+.feedback{position:static;font-size:clamp(15px,1.05vw,20px);line-height:1.12;color:#244d72;font-weight:800;text-align:center;padding:.3rem 0 .15rem;background:transparent}
+.exerciseGrid{display:grid;grid-template-columns:32% 68%;gap:1rem;min-height:0}
+.scenarioList{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-width:0}
+.scenarioHead{background:var(--navy);color:#fff;font-size:clamp(21px,1.55vw,31px);font-weight:800;line-height:1.05;padding:.72rem .9rem}
+.scenarios{padding:.75rem;display:grid;gap:.5rem;overflow:hidden}
+.scenario{border:2px solid var(--line);background:#fff;color:var(--navy);font-size:clamp(14px,1vw,19px);line-height:1.12;font-weight:800;text-align:left;padding:.5rem .6rem;cursor:pointer}
+.scenario.active{border-color:var(--orange);background:#fff5ef}
+.buckets{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;min-width:0}
+.bucket{border:3px solid var(--navy);display:flex;flex-direction:column;min-width:0;background:#fff;cursor:pointer}
+.bucket h3{margin:0;color:#fff;font-size:clamp(20px,1.5vw,30px);padding:.62rem .7rem;line-height:1.05}
+.bucket.record{border-color:var(--navy)}.bucket.record h3{background:var(--navy)}
+.bucket.diff{border-color:var(--cyan)}.bucket.diff h3{background:var(--cyan)}
+.bucket.innovation{border-color:var(--orange)}.bucket.innovation h3{background:var(--orange)}
+.drop{flex:1;padding:.55rem;display:flex;flex-direction:column;gap:.42rem}
+.answer{border:2px solid var(--line);background:#f7fbff;padding:.42rem;font-size:clamp(13px,.9vw,17px);line-height:1.08;font-weight:700}
+.answer.correct{border-color:#11844f;background:#edf9f2;color:#075f38}
+.answer.wrong{border-color:#d42f2f;background:#fff0f0;color:#a50f0f}
+.answer small{display:block;margin-top:.22rem;font-size:clamp(11px,.72vw,14px);line-height:1.05;font-weight:800}
+.footer{position:absolute;left:4.9%;bottom:3.2%;font-size:clamp(14px,1vw,22px);color:#168cff}
 </style>
 </head>
 <body>
 <main class="stage">
-<section aria-label="Hybrid Sourcing Strategy" class="slide">
+<section aria-label="Pace Layer Model" class="slide">
 <img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
 <div class="header">
 <div class="session"><span class="dot"></span><span>Session 1 Setting the Scene</span></div>
-<h1>Hybrid Sourcing Strategy</h1>
-<div class="subtitle">Align sourcing mode with system pace and buying situation</div>
+<h1>Pace Layer Model</h1>
+<div class="subtitle">Stewart Brand 1994 · Gartner 2010</div>
 </div>
-<div class="columns">
-<div class="card run">
-<h2>Run</h2>
+<div class="tabs">
+<button class="tab active" data-panel="framework" type="button">Framework</button>
+<button class="tab" data-panel="exercise" type="button">Exercise</button>
+</div>
+<div class="panel active" id="framework">
+<div class="layers">
+<div class="card record">
+<h2>Systems of Record</h2>
 <div class="body">
-<div class="item"><span class="label">Requirement</span>Recurring long-term requirements</div>
-<div class="item"><span class="label">Solution type</span>Standardized solutions (COTS) with long lifecycle: 7–10 years</div>
-<div class="item"><span class="label">Priority</span>Reliability, security and compatibility</div>
-<div class="item"><span class="label">Market</span>Established supply base with clear leaders</div>
-<div class="badge">Systems of Record<br/>+ Straight Rebuy</div>
+<div>Core business processes</div>
+<div>Reliability</div>
+<div>Efficiency</div>
+<div>Compliance</div>
+<div class="examples">Examples: ERP, HRMS</div>
 </div>
 </div>
 <div class="card diff">
-<h2>Differentiate</h2>
+<h2>Systems of Differentiation</h2>
 <div class="body">
-<div class="item"><span class="label">Requirement</span>Continuous process improvement and reconfiguration</div>
-<div class="item"><span class="label">Solution type</span>Best-of-breed solutions with unique customizations</div>
-<div class="item"><span class="label">Lifecycle</span>Medium lifecycle: 2–5 years</div>
-<div class="item"><span class="label">Purpose</span>Respond to changing business and customer demand</div>
-<div class="badge">Systems of Differentiation<br/>+ Modified Rebuy</div>
+<div>Unique processes</div>
+<div>Current competitive advantage</div>
+<div>Business-specific configuration</div>
+<div>Faster change than core systems</div>
+<div class="examples">Examples: CRM, asset management, RPA / IPA</div>
 </div>
 </div>
-<div class="card innov">
-<h2>Innovate</h2>
+<div class="card innovation">
+<h2>Systems of Innovation</h2>
 <div class="body">
-<div class="item"><span class="label">Requirement</span>Ad-hoc requirements addressing emerging opportunities</div>
-<div class="item"><span class="label">Response</span>Dynamic response and experimentation</div>
-<div class="item"><span class="label">Lifecycle</span>Short lifecycle: 3–12 months</div>
-<div class="item"><span class="label">Market</span>Fragmented supply base with no best-of-breed</div>
-<div class="badge">Systems of Innovation<br/>+ New Task</div>
+<div>New processes</div>
+<div>Customer-facing</div>
+<div>New competitive advantage</div>
+<div>Experimentation and learning</div>
+<div class="examples">Examples: Agentic AI, Augmented Reality, Big Data</div>
 </div>
 </div>
 </div>
-<div class="connect">
-<div>Exploit stable capability</div>
-<div>Improve current advantage</div>
-<div>Explore future advantage</div>
+</div>
+<div class="panel" id="exercise">
+<div class="exercise">
+<div class="feedback">Select a system example and place it in the correct pace layer. Wrong answers are marked in red and corrected immediately.</div>
+<div class="exerciseGrid">
+<div class="scenarioList">
+<div class="scenarioHead">Select a system</div>
+<div class="scenarios">
+<button class="scenario" data-answer="record" data-text="ERP finance core" type="button">ERP finance core</button>
+<button class="scenario" data-answer="record" data-text="Payroll / HRMS" type="button">Payroll / HRMS</button>
+<button class="scenario" data-answer="diff" data-text="CRM configured for sales process" type="button">CRM configured for sales process</button>
+<button class="scenario" data-answer="diff" data-text="Asset management workflow" type="button">Asset management workflow</button>
+<button class="scenario" data-answer="innovation" data-text="Agentic AI sourcing assistant" type="button">Agentic AI sourcing assistant</button>
+<button class="scenario" data-answer="innovation" data-text="Augmented reality support pilot" type="button">Augmented reality support pilot</button>
+<button class="scenario" data-answer="diff" data-text="RPA invoice exception handling" type="button">RPA invoice exception handling</button>
+<button class="scenario" data-answer="innovation" data-text="Big-data demand sensing prototype" type="button">Big-data demand sensing prototype</button>
+</div>
+</div>
+<div class="buckets">
+<div class="bucket record" data-bucket="record"><h3>Systems of Record</h3><div class="drop"></div></div>
+<div class="bucket diff" data-bucket="diff"><h3>Systems of Differentiation</h3><div class="drop"></div></div>
+<div class="bucket innovation" data-bucket="innovation"><h3>Systems of Innovation</h3><div class="drop"></div></div>
+</div>
+</div>
+</div>
 </div>
 <div class="footer">©</div>
 </section>
 </main>
+<script>
+document.querySelectorAll('.tab').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(btn.dataset.panel).classList.add('active');
+}));
+
+const labels = {
+  record: 'Systems of Record',
+  diff: 'Systems of Differentiation',
+  innovation: 'Systems of Innovation'
+};
+
+let selected = null;
+document.querySelectorAll('.scenario').forEach(s => s.addEventListener('click', () => {
+  document.querySelectorAll('.scenario').forEach(x => x.classList.remove('active'));
+  selected = s;
+  s.classList.add('active');
+}));
+
+document.querySelectorAll('.bucket').forEach(bucket => bucket.addEventListener('click', () => {
+  if (!selected) return;
+  const chosen = bucket.dataset.bucket;
+  const correct = selected.dataset.answer;
+  const item = document.createElement('div');
+  item.className = 'answer ' + (chosen === correct ? 'correct' : 'wrong');
+
+  if (chosen === correct) {
+    item.innerHTML = selected.dataset.text + '<small>Correct</small>';
+  } else {
+    item.innerHTML = selected.dataset.text + '<small>Wrong. Correct: ' + labels[correct] + '</small>';
+  }
+
+  bucket.querySelector('.drop').appendChild(item);
+  selected.remove();
+  selected = null;
+}));
+</script>
 <script id="itpf-deck-bridge">
 (function(){
   function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
