@@ -1,0 +1,53 @@
+name: Audit slide map
+on:
+  push:
+    paths:
+      - '.github/workflows/audit-slide-map.yml'
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Build content map
+        run: |
+          python - <<'PY'
+          import re,hashlib,subprocess
+          from pathlib import Path
+          OLD='eac38a740479c1ca49e4cdcfa4c73ad321486448'
+          def fingerprint(text):
+              m=re.search(r'data:image/(?:png|jpeg);base64,([^"\']+)',text)
+              if m:
+                  return 'img:'+hashlib.sha256(m.group(1).encode()).hexdigest()[:16]
+              # normalize slide numbers and whitespace for HTML-only slides
+              t=re.sub(r'Slide\s+\d+','Slide #',text)
+              t=re.sub(r'itpf-slide-\d+','itpf-slide-#',t)
+              return 'html:'+hashlib.sha256(t.encode()).hexdigest()[:16]
+          old={}
+          for n in range(1,85):
+              try:
+                  txt=subprocess.check_output(['git','show',f'{OLD}:approved-slides/slide-{n:02d}-approved.html']).decode('utf-8','ignore')
+              except subprocess.CalledProcessError:
+                  continue
+              old.setdefault(fingerprint(txt),[]).append(n)
+          lines=[]
+          for n in range(45,88):
+              p=Path(f'approved-slides/slide-{n:02d}-approved.html')
+              txt=p.read_text(errors='ignore') if p.exists() else ''
+              fp=fingerprint(txt)
+              title=''
+              m=re.search(r'<title>(.*?)</title>',txt,re.S)
+              if m:title=re.sub(r'\s+',' ',m.group(1)).strip()
+              lines.append(f'{n:02d}\t{fp}\told={old.get(fp,[])}\ttitle={title}\tsize={len(txt)}')
+          Path('audit-map.txt').write_text('\n'.join(lines)+'\n')
+          PY
+      - name: Commit audit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add audit-map.txt
+          git commit -m "Add temporary slide mapping audit"
+          git push
