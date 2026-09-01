@@ -1,0 +1,113 @@
+name: Finalize 87 slide map
+on:
+  push:
+    paths:
+      - '.github/workflows/finalize-87-slide-map.yml'
+permissions:
+  contents: write
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Restore missing unique slides
+        run: |
+          git show eac38a740479c1ca49e4cdcfa4c73ad321486448:approved-slides/slide-50-approved.html > approved-slides/slide-54-approved.html
+          git show eac38a740479c1ca49e4cdcfa4c73ad321486448:approved-slides/slide-52-approved.html > approved-slides/slide-55-approved.html
+          python - <<'PY'
+          from pathlib import Path
+          for src,dst in [(50,54),(52,55)]:
+              p=Path(f'approved-slides/slide-{dst:02d}-approved.html')
+              s=p.read_text()
+              s=s.replace(f'<title>Slide {src}</title>',f'<title>Slide {dst}</title>')
+              s=s.replace(f'<title>Slide {src} - ',f'<title>Slide {dst} - ')
+              s=s.replace(f'<title>Slide {src} — ',f'<title>Slide {dst} — ')
+              s=s.replace(f'aria-label="Slide {src}"',f'aria-label="Slide {dst}"')
+              p.write_text(s)
+          PY
+      - name: Correct deck titles
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          titles={
+            45:'SaaS License Metrics',
+            46:'License Mix and Usage Metrics',
+            47:'SaaS License Scope Analysis',
+            48:'Vertical vs. Horizontal SaaS: Depth over Breadth',
+            49:'SaaS/AI Commercial Strategies and Industry Trends',
+            51:'2025 FY Atlassian Financial Results',
+            52:'Map pricing-model characteristics to the best-fit model',
+            53:'Token Waste — Class Discussion',
+            54:'SaaS Market Challenges and Trends',
+            55:'The “SAApocalypse”',
+            56:'2024–2026 SaaS Commercial Strategy',
+            57:'Game #1',
+            58:'AI-Enabled Sourcing Risk',
+            59:'Software Maintenance and Support',
+            60:'Essential Cloud TCO Elements',
+            61:'Quiz #1',
+            62:'Sourcing of IT Services',
+            63:'Types of IT Outsourcing Services',
+            64:'IT Service Sourcing Strategy',
+            65:'Outsourcing Strategy',
+            66:'Map SaaS service lifecycle activities to delivery models',
+            67:'IT Resource Optimisation Across the Project Portfolio',
+            68:'Case #4',
+            69:'Source-to-Contract',
+            70:'ISO 19770-1:2017 Framework of ITAM Processes',
+            71:'Case #5',
+            72:'Game #2',
+            73:'Kraljic Matrix',
+            74:'Sourcing Value Levers',
+            75:'Information Asymmetry in Procurement',
+            76:'Principal–Agent Problem: Aligning Incentives',
+            77:'Information Asymmetry of SaaS Negotiations',
+            78:'Types of Negotiation',
+            79:'Incomplete Contracts and the Hold-up Problem',
+            80:'Formal and Relational Contracts',
+            81:'Vendor and Client Expectations Under a Relational Contract',
+            82:'IT Procurement Contracts',
+            83:'AI Procurement Contracts',
+            84:'Case #6',
+            85:'ACV vs. TCV in SaaS Contracts',
+            86:'Case #7',
+            87:'Quiz #2'
+          }
+          p=Path('index.html'); s=p.read_text()
+          for n,title in titles.items():
+              pat=rf'(\{{"n":{n},"title":")[^"]*(","src":"approved-slides/slide-{n:02d}-approved\.html"\}})'
+              s,c=re.subn(pat,lambda m:m.group(1)+title+m.group(2),s)
+              if c!=1: raise RuntimeError(f'index title patch failed {n}: {c}')
+          p.write_text(s)
+          p=Path('slide-index.html'); s=p.read_text()
+          for n,title in titles.items():
+              pat=rf'(<a class="slide" href="approved-slides/slide-{n:02d}-approved\.html"><span class="num">{n:02d}</span><span class="t">).*?(</span></a>)'
+              s,c=re.subn(pat,lambda m:m.group(1)+title+m.group(2),s)
+              if c!=1: raise RuntimeError(f'slide-index title patch failed {n}: {c}')
+          p.write_text(s)
+          PY
+      - name: Validate unique sequence
+        run: |
+          python - <<'PY'
+          import re,hashlib
+          from pathlib import Path
+          def fp(n):
+              s=Path(f'approved-slides/slide-{n:02d}-approved.html').read_text(errors='ignore')
+              m=re.search(r'data:image/(?:png|jpeg);base64,([^"\']+)',s)
+              return hashlib.sha256((m.group(1) if m else s).encode()).hexdigest()
+          assert all(Path(f'approved-slides/slide-{n:02d}-approved.html').stat().st_size>1000 for n in range(1,88))
+          assert len({fp(n) for n in [53,54,55,56,57]})==5, 'Slides 53-57 still contain duplicates'
+          idx=Path('index.html').read_text()
+          for text in ['SaaS Market Challenges and Trends','The “SAApocalypse”','2024–2026 SaaS Commercial Strategy','Game #1']:
+              assert text in idx, text
+          PY
+      - name: Commit final map
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add approved-slides/slide-54-approved.html approved-slides/slide-55-approved.html index.html slide-index.html
+          git commit -m "Finalize unique 87-slide sequence and titles"
+          git push
