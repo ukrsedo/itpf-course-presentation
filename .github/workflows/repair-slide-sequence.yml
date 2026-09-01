@@ -1,0 +1,81 @@
+name: Repair slide sequence
+on:
+  push:
+    paths:
+      - '.github/workflows/repair-slide-sequence.yml'
+permissions:
+  contents: write
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Restore slides 54 and 55 from authoritative 84-slide source
+        run: |
+          git show eac38a740479c1ca49e4cdcfa4c73ad321486448:approved-slides/slide-52-approved.html > approved-slides/slide-54-approved.html
+          git show eac38a740479c1ca49e4cdcfa4c73ad321486448:approved-slides/slide-53-approved.html > approved-slides/slide-55-approved.html
+          python - <<'PY'
+          from pathlib import Path
+          for src,dst in [(52,54),(53,55)]:
+              p=Path(f'approved-slides/slide-{dst:02d}-approved.html')
+              s=p.read_text()
+              s=s.replace(f'<title>Slide {src}</title>',f'<title>Slide {dst}</title>')
+              s=s.replace(f'<title>Slide {src} - ',f'<title>Slide {dst} - ')
+              s=s.replace(f'<title>Slide {src} — ',f'<title>Slide {dst} — ')
+              s=s.replace(f'aria-label="Slide {src}"',f'aria-label="Slide {dst}"')
+              p.write_text(s)
+          PY
+      - name: Repair dropdown and slide index titles
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          titles={
+            45:'SaaS License Metrics',
+            46:'License Mix and Usage Metrics',
+            47:'SaaS License Scope Analysis',
+            48:'Vertical vs. Horizontal SaaS: Depth over Breadth',
+            49:'SaaS/AI Commercial Strategies and Industry Trends',
+            51:'2025 FY Atlassian Financial Results',
+            54:'The “SAApocalypse”',
+            55:'2024–2026 SaaS Commercial Strategy',
+            57:'AI Adoption Evidence — G2 & Forrester',
+            60:'Essential Cloud TCO Elements',
+            62:'Sourcing of IT Services',
+            64:'IT Service Sourcing Strategy',
+            65:'Outsourcing Strategy',
+            67:'IT Resource Optimisation Across the Project Portfolio',
+            75:'Information Asymmetry in Procurement',
+            77:'Information Asymmetry of SaaS Negotiations'
+          }
+          p=Path('index.html'); s=p.read_text()
+          for n,title in titles.items():
+              pat=rf'(\{{"n":{n},"title":")[^"]*(","src":"approved-slides/slide-{n:02d}-approved\.html"\}})'
+              s,c=re.subn(pat,lambda m:m.group(1)+title+m.group(2),s)
+              if c!=1: raise RuntimeError(f'index title patch failed for {n}: {c}')
+          p.write_text(s)
+
+          p=Path('slide-index.html'); s=p.read_text()
+          for n,title in titles.items():
+              pat=rf'(<a class="slide" href="approved-slides/slide-{n:02d}-approved\.html"><span class="num">{n:02d}</span><span class="t">).*?(</span></a>)'
+              s,c=re.subn(pat,lambda m:m.group(1)+title+m.group(2),s)
+              if c!=1: raise RuntimeError(f'slide-index title patch failed for {n}: {c}')
+          p.write_text(s)
+          PY
+      - name: Validate restored files
+        run: |
+          test -s approved-slides/slide-54-approved.html
+          test -s approved-slides/slide-55-approved.html
+          grep -q 'SAApocalypse' approved-slides/slide-54-approved.html || grep -q 'data:image' approved-slides/slide-54-approved.html
+          grep -q 'data:image' approved-slides/slide-55-approved.html
+          grep -q 'The “SAApocalypse”' index.html
+          grep -q '2024–2026 SaaS Commercial Strategy' index.html
+      - name: Commit repair
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add approved-slides/slide-54-approved.html approved-slides/slide-55-approved.html index.html slide-index.html
+          git commit -m "Repair slides 54-55 and deck titles"
+          git push
