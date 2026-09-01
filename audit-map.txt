@@ -1,0 +1,43 @@
+45	html:8b4acb66a7209508	old=[42]	title=Slide 45 - SaaS License Metrics	size=5808
+46	img:2f9f8d7220782ed8	old=[43]	title=Slide 46	size=625151
+47	img:dcd40769114abd88	old=[44]	title=Slide 47	size=517871
+48	img:ecdc1e8700807b1c	old=[45]	title=Slide 48	size=741851
+49	img:070f4aff7a4b3c3b	old=[46]	title=Slide 49	size=142359
+50	html:4d777f21600be0e2	old=[]	title=Slide 50 — Technology Procurement Framework — AI	size=5907
+51	img:0d35a950a2182aea	old=[48]	title=Slide 51	size=512251
+52	img:ba910c4fd8d928c7	old=[49]	title=Slide 52 - Pricing Models	size=729821
+53	html:735341d30bca6de4	old=[]	title=Slide 53 — Token Waste Exercise	size=5319
+54	img:4082ce27e760d52c	old=[52]	title=Slide 54	size=1896007
+55	img:dfb3ba5dc49ef667	old=[53]	title=Slide 55	size=1586931
+56	img:dfb3ba5dc49ef667	old=[53]	title=Slide 56	size=1586931
+57	html:0e45d6755add885f	old=[54]	title=Slide 57 — SAP Negotiation Game	size=6663
+58	img:c83143e5458907ef	old=[55]	title=Slide 58	size=312895
+59	html:951f73feb9d88a29	old=[56]	title=ITPF — Slide 56 — Software Maintenance and Support	size=12271
+60	img:8c2b11bae73e178e	old=[57]	title=Slide 60	size=213539
+61	html:780d8bc7fe2ccdb8	old=[58]	title=Slide 61 — Quiz #1 Day 1	size=6571
+62	img:007c7176befaff9a	old=[59]	title=Slide 62	size=2464454
+63	img:07b66116ef9e8135	old=[60]	title=Slide 63 — Types of IT Outsourcing Services	size=408021
+64	img:7b9dc1f899da2a25	old=[61]	title=Slide 64	size=331530
+65	img:0be6a2731b0d3b36	old=[62]	title=Slide 65	size=325086
+66	img:f5a5f681709ad4c7	old=[63]	title=Slide 66 — Delivery Model Mapping Exercise	size=181834
+67	img:40ced6d5d100d773	old=[64]	title=Slide 67	size=185550
+68	html:1b04443a5bd11e3d	old=[65]	title=Slide 68 — Case #4 Transition	size=6590
+69	html:da6590ccc1eb6dab	old=[66]	title=Slide 69 — Source-to-Contract	size=5847
+70	html:d32e9e319f2f0cc2	old=[67]	title=Slide 70 — ISO 19770-1:2017 Framework of ITAM Processes	size=8204
+71	html:c29fc979946f5924	old=[68]	title=Slide 71 — Case #5 Transition	size=6690
+72	html:bc701a0f36cbe5c4	old=[69]	title=Slide 72 — Oracle Audit Negotiation Game	size=6762
+73	html:7ae0159cee470e05	old=[70]	title=Slide 73 — Kraljic Matrix	size=8739
+74	html:c5496bc35a4f0639	old=[71]	title=Slide 74 — Sourcing Value Levers	size=14012
+75	img:0242204e909ac200	old=[72]	title=Slide 75 — snapshot from source deck	size=443170
+76	html:16bb2546c24c8bd1	old=[73]	title=Slide 76 — Principal-Agent Problem and Incentive Alignment	size=10043
+77	img:220835b6a47f39e6	old=[74]	title=Slide 77 — snapshot from source deck	size=263238
+78	img:ab3c4a883b8fc6d1	old=[75]	title=Slide 78 — Types of Negotiation	size=361091
+79	html:8928c09668e02e7e	old=[76]	title=Slide 79 — Incomplete Contracts and Hold-up Problem	size=14124
+80	html:039917859500bc7d	old=[77]	title=Slide 80 — Formal and Relational Contracts	size=1949
+81	html:627f03b90fffcee5	old=[78]	title=Slide 81 — Vendor and Client Expectations Under a Relational Contract	size=7115
+82	html:fdba4781be668da6	old=[79]	title=Slide 82 — IT Procurement Contracts	size=9506
+83	html:544f2cb086177dcb	old=[80]	title=Slide 83 — AI Procurement Contracts	size=10756
+84	html:0c5a32625a7de05e	old=[81]	title=Slide 84 — Case #6 Transition	size=6774
+85	html:636f7f0b6c89709c	old=[82]	title=Slide 85 — ACV vs TCV in SaaS	size=10374
+86	html:d39bd054caa02b64	old=[83]	title=Slide 86 — Case #7 Transition	size=6905
+87	html:023e24a53488c8ec	old=[84]	title=Slide 87 — Quiz #2 Day 2	size=6537
