@@ -1,0 +1,34 @@
+name: Fix Case 3 label
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-case3-label.yml'
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fix slide 40 labels
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          for name in ['index.html','slide-index.html']:
+              p=Path(name)
+              s=p.read_text()
+              s=s.replace('"n":40,"title":"Case #2"','"n":40,"title":"Case #3"')
+              s=s.replace('<span class="num">40</span><span class="t">Case #2</span>','<span class="num">40</span><span class="t">Case #3</span>')
+              p.write_text(s)
+          PY
+      - name: Validate
+        run: |
+          grep -F '"n":40,"title":"Case #3"' index.html
+          grep -F '<span class="num">40</span><span class="t">Case #3</span>' slide-index.html
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html slide-index.html
+          git commit -m 'Correct slide 40 label to Case #3'
+          git push
