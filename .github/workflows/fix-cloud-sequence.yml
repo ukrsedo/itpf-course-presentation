@@ -16,12 +16,10 @@ jobs:
           from pathlib import Path
           import re
 
-          # Remove the duplicate physical slide 38. AI-Enabled Sourcing Risk remains at 58.
           p38 = Path('approved-slides/slide-38-approved.html')
           if p38.exists():
               p38.unlink()
 
-          # Correct Case #2 internal labels without changing its descriptive content.
           p41 = Path('approved-slides/slide-41-approved.html')
           s41 = p41.read_text()
           s41 = s41.replace('<div class="kicker">Case 3</div>', '<div class="kicker">Case #2</div>')
@@ -29,7 +27,6 @@ jobs:
           s41 = s41.replace('aria-label="Case 3 transition"', 'aria-label="Case #2 transition"')
           p41.write_text(s41)
 
-          # Main presentation index: remove n=38 only; preserve logical slide numbers 39 onward.
           p = Path('index.html')
           s = p.read_text()
           s = s.replace('IT Procurement Foundations — 87-slide presentation', 'IT Procurement Foundations — 86-slide presentation')
@@ -39,6 +36,8 @@ jobs:
               '"n":39,"title":"Cloud Services"': '"n":39,"title":"Cloud Deployment Models"',
               '"n":40,"title":"Cloud Repatriation"': '"n":40,"title":"Cloud Services"',
               '"n":41,"title":"Buy or Build?"': '"n":41,"title":"Case #2"',
+              '"n":43,"title":"Waterfall, Incremental and Agile Delivery Models"': '"n":43,"title":"Buy or Build?"',
+              '"n":44,"title":"SaaS License Metrics"': '"n":44,"title":"Waterfall, Incremental and Agile Delivery Models"',
           }
           for old,new in replacements.items():
               if old not in s:
@@ -46,7 +45,6 @@ jobs:
               s = s.replace(old,new,1)
           p.write_text(s)
 
-          # Static slide index: remove slide 38 card and correct 39-41 labels/count.
           p = Path('slide-index.html')
           s = p.read_text()
           s = s.replace('ITPF 87-slide index', 'ITPF 86-slide index')
@@ -56,6 +54,8 @@ jobs:
               '<span class="num">39</span><span class="t">Cloud Services</span>': '<span class="num">39</span><span class="t">Cloud Deployment Models</span>',
               '<span class="num">40</span><span class="t">Cloud Repatriation</span>': '<span class="num">40</span><span class="t">Cloud Services</span>',
               '<span class="num">41</span><span class="t">Buy or Build?</span>': '<span class="num">41</span><span class="t">Case #2</span>',
+              '<span class="num">43</span><span class="t">Waterfall, Incremental and Agile Delivery Models</span>': '<span class="num">43</span><span class="t">Buy or Build?</span>',
+              '<span class="num">44</span><span class="t">SaaS License Metrics</span>': '<span class="num">44</span><span class="t">Waterfall, Incremental and Agile Delivery Models</span>',
           }
           for old,new in replacements.items():
               if old not in s:
@@ -71,6 +71,8 @@ jobs:
           grep -F '"n":41,"title":"Case #2"' index.html
           grep -F '"n":42,"title":"Technology Procurement Framework — SaaS"' index.html
           grep -F '"n":43,"title":"Buy or Build?"' index.html
+          grep -F '"n":44,"title":"Waterfall, Incremental and Agile Delivery Models"' index.html
+          grep -F '"n":45,"title":"SaaS License Metrics"' index.html
           grep -F '<div class="kicker">Case #2</div>' approved-slides/slide-41-approved.html
           grep -F '<h2>Open Case #2</h2>' approved-slides/slide-41-approved.html
           test "$(grep -o '"n":[0-9]\+' index.html | wc -l)" -eq 86
