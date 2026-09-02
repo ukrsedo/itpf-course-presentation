@@ -1,0 +1,56 @@
+name: Patch slide 7 and 17
+on:
+  push:
+    paths:
+      - '.github/workflows/patch-slide7-17.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply targeted changes
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          p7 = Path('approved-slides/slide-07-approved.html')
+          s7 = p7.read_text()
+          old_metric = '#waste .metric{font-size:clamp(17px,1.45vw,28px);line-height:1.06;margin-bottom:3.6%;letter-spacing:-.015em}'
+          new_metric = '#waste .metric{font-size:clamp(calc(17px + 4pt),calc(1.45vw + 4pt),calc(28px + 4pt));line-height:1.06;margin-bottom:3.6%;letter-spacing:-.015em}'
+          old_text = '#waste .text{font-size:clamp(13px,1.02vw,18px);line-height:1.18;font-weight:700}'
+          new_text = '#waste .text{font-size:clamp(calc(13px + 2pt),calc(1.02vw + 2pt),calc(18px + 2pt));line-height:1.18;font-weight:700}'
+          if old_metric not in s7 or old_text not in s7:
+              raise SystemExit('Slide 7 target CSS not found')
+          s7 = s7.replace(old_metric, new_metric, 1).replace(old_text, new_text, 1)
+          p7.write_text(s7)
+
+          p17 = Path('approved-slides/slide-17-approved.html')
+          s17 = p17.read_text()
+          old_css = '.footer{position:absolute;left:4.9%;bottom:4.4%;font-size:clamp(15px,1.05vw,24px);color:#168cff}'
+          new_css = old_css + '\n.source{position:absolute;right:4.9%;bottom:4.15%;max-width:65%;font-size:clamp(9px,.62vw,12px);line-height:1.15;text-align:right;color:#60758a}.source a{color:#168cff;text-decoration:none}.source a:hover{text-decoration:underline}'
+          if old_css not in s17:
+              raise SystemExit('Slide 17 footer CSS target not found')
+          s17 = s17.replace(old_css, new_css, 1)
+          old_html = '<div class="footer">©</div>'
+          new_html = '<div class="footer">©</div>\n<div class="source">Source: <a href="https://www.pcmag.com/news/gartners-cio-agenda-and-ceo-perspective-for-2019" target="_blank" rel="noopener">PCMag — Gartner\'s CIO Agenda and CEO Perspective for 2019</a></div>'
+          if old_html not in s17:
+              raise SystemExit('Slide 17 footer HTML target not found')
+          s17 = s17.replace(old_html, new_html, 1)
+          p17.write_text(s17)
+          PY
+      - name: Validate changes
+        run: |
+          grep -F 'calc(17px + 4pt)' approved-slides/slide-07-approved.html
+          grep -F 'calc(13px + 2pt)' approved-slides/slide-07-approved.html
+          grep -F 'https://www.pcmag.com/news/gartners-cio-agenda-and-ceo-perspective-for-2019' approved-slides/slide-17-approved.html
+          test "$(grep -o 'calc(17px + 4pt)' approved-slides/slide-07-approved.html | wc -l)" -eq 1
+          test "$(grep -o 'calc(13px + 2pt)' approved-slides/slide-07-approved.html | wc -l)" -eq 1
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add approved-slides/slide-07-approved.html approved-slides/slide-17-approved.html
+          git commit -m 'Update slide 7 typography and slide 17 source'
+          git push
