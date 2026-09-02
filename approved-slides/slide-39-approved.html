@@ -5,17 +5,18 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>ITPF — Slide 37 v6 — Cloud Deployment Models</title>
+<title>ITPF — Slide 38 — Cloud Services</title>
 <style>
 :root {
   --navy:#003b70;
   --cyan:#12bddf;
   --orange:#ff5a00;
-  --green:#3aa25a;
   --purple:#6b5fb5;
+  --green:#3aa25a;
   --ink:#173f66;
   --line:#c7d9ea;
   --soft:#f7fbff;
+  --red:#c93333;
 }
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--navy)}
@@ -28,131 +29,263 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;fon
 h1{margin:0;color:var(--navy);font-size:clamp(32px,2.9vw,56px);line-height:1.03;letter-spacing:-.02em;font-weight:900}
 .subtitle{font-size:clamp(17px,1.2vw,24px);margin-top:.28rem;color:#2f5f88;font-weight:750}
 
-.content{position:absolute;left:4.3%;right:4.3%;top:20.2%;bottom:4.4%;display:grid;grid-template-columns:29% 71%;gap:.85rem;min-height:0}
-.boxTitle{margin:0;background:var(--navy);color:#fff;font-size:clamp(20px,1.42vw,30px);line-height:1.04;padding:.54rem .72rem;font-weight:900}
-.diagram{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-height:0;overflow:hidden}
-.diagramBody{flex:1;min-height:0;display:grid;grid-template-rows:repeat(4,1fr);gap:.34rem;padding:.48rem}
-.deployCard{border:3px solid var(--line);border-radius:9px;background:#fff;display:grid;grid-template-columns:31% 39% 30%;gap:.34rem;align-items:center;padding:.32rem .40rem;min-height:0}
-.deployCard h3{margin:0;font-size:clamp(15px,1.02vw,20px);line-height:1.04;font-weight:900;color:var(--navy)}
-.infra{border:3px solid var(--navy);background:#eef8fb;border-radius:8px;min-height:44px;display:grid;place-items:center;text-align:center;font-size:clamp(12px,.82vw,16px);line-height:1.04;font-weight:900;color:var(--navy);padding:.15rem}
-.customerWrap{display:flex;justify-content:center;align-items:center;gap:.22rem;flex-wrap:wrap}
-.customer{min-width:62px;height:24px;border-radius:999px;background:var(--orange);color:#fff;display:grid;place-items:center;font-size:clamp(10px,.68vw,13px);font-weight:900;padding:0 .35rem}
-.link{font-size:clamp(13px,.90vw,18px);font-weight:900;color:var(--purple)}
-.community{border-color:var(--green);background:#f8fff5} .community h3{color:var(--green)} .community .infra{border-color:var(--green);background:#f1faee}
-.public{border-color:var(--orange)} .public .infra{border-color:var(--orange);background:#fff7f1}
-.hybrid{border-color:var(--purple);background:#fbfaff} .hybrid h3{color:var(--purple)} .hybrid .infra{border-color:var(--purple);background:#f5f3fb}
+.tabs{position:absolute;left:6%;right:6%;top:18.4%;display:flex;gap:.85rem}
+.tab{border:3px solid var(--navy);background:#fff;color:var(--navy);font-size:clamp(20px,1.45vw,30px);font-weight:900;padding:.50rem 1rem;cursor:pointer}
+.tab.active{background:var(--navy);color:#fff}
+.panel{position:absolute;left:4.3%;right:4.3%;top:26.8%;bottom:3.5%;display:none}
+.panel.active{display:block}
 
-.right{border:3px solid var(--cyan);background:#fff;display:flex;flex-direction:column;min-height:0;overflow:hidden}
-.right .boxTitle{background:var(--cyan)}
-.grid{flex:1;min-height:0;padding:.55rem;display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(2,1fr);gap:.52rem}
-.model{border:3px solid var(--line);border-radius:10px;display:flex;flex-direction:column;min-width:0;overflow:hidden;background:#fff}
-.model h3{margin:0;color:#fff;text-align:center;font-size:clamp(22px,1.55vw,31px);line-height:1.03;font-weight:900;padding:.46rem .40rem}
-.private h3{background:var(--navy)} .communityDef h3{background:var(--green)} .hybridDef h3{background:var(--purple)} .publicDef h3{background:var(--orange)}
-.model .body{padding:.46rem .50rem;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto repeat(3,1fr);gap:.30rem .38rem;flex:1;min-height:0}
-.def{font-size:clamp(14px,.98vw,19px);line-height:1.08;font-weight:760;color:var(--ink);padding-bottom:.20rem;border-bottom:2px solid var(--line);grid-column:1 / -1}
-.dimension{border-radius:7px;background:#f7fbff;padding:.30rem .34rem;display:flex;flex-direction:column;justify-content:center;min-height:0}
-.dimension b{font-size:clamp(14px,.98vw,19px);line-height:1.03;color:var(--navy);margin-bottom:.10rem}
-.dimension span{font-size:clamp(13px,.90vw,17px);line-height:1.12;font-weight:760;color:#315b7e}
-.private .dimension{border-left:4px solid var(--navy)}
-.communityDef .dimension{border-left:4px solid var(--green)}
-.hybridDef .dimension{border-left:4px solid var(--purple)}
-.publicDef .dimension{border-left:4px solid var(--orange)}
-.note{position:absolute;left:4.3%;right:4.3%;bottom:1.5%;border-top:2px solid var(--line);padding-top:.32rem;display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center;background:#fff}
+.boxTitle{margin:0;background:var(--navy);color:#fff;font-size:clamp(21px,1.48vw,31px);line-height:1.04;padding:.58rem .78rem;font-weight:900}
+.overview{height:100%;display:grid;grid-template-columns:42% 58%;gap:.9rem;min-height:0}
+
+.visualBox,.detailBox{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.detailBox{border-color:var(--cyan)}
+.detailBox .boxTitle{background:var(--cyan)}
+
+.visualBody{flex:1;min-height:0;padding:.75rem;display:grid;grid-template-rows:auto 1fr auto;gap:.55rem}
+.stackLegend{display:grid;grid-template-columns:1fr 1fr;gap:.45rem;font-size:clamp(14px,.95vw,18px);font-weight:800;color:var(--ink)}
+.stackLegend div{border:2px solid var(--line);border-radius:8px;padding:.30rem .45rem;background:#f8fbfe;text-align:center}
+.stackWrap{position:relative;display:grid;place-items:center;min-height:0}
+.pyramid{width:88%;height:100%;display:grid;grid-template-rows:26% 30% 36%;gap:.6rem;align-content:center}
+.tier{display:grid;place-items:center;text-align:center;color:#fff;font-weight:900;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,.10);padding:.45rem .6rem;position:relative}
+.tier strong{display:block;font-size:clamp(22px,1.55vw,32px);line-height:1.02}
+.tier span{display:block;font-size:clamp(14px,.95vw,18px);line-height:1.08;font-weight:800;margin-top:.18rem}
+.saas{background:var(--orange);width:54%;justify-self:center}
+.paas{background:var(--purple);width:74%;justify-self:center}
+.iaas{background:var(--cyan);width:94%;justify-self:center;color:#08374f}
+.arrowDown{position:absolute;left:101%;top:50%;transform:translateY(-50%);font-size:clamp(20px,1.5vw,30px);font-weight:900;color:#5b7894}
+.stackNote{font-size:clamp(14px,.95vw,18px);line-height:1.08;font-weight:850;color:var(--ink);text-align:center;border-top:2px solid var(--line);padding-top:.45rem}
+
+.detailBody{flex:1;min-height:0;padding:.68rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:.55rem}
+.model{border:3px solid var(--line);border-radius:10px;display:flex;flex-direction:column;overflow:hidden;background:#fff;min-width:0}
+.model h3{margin:0;color:#fff;text-align:center;font-size:clamp(22px,1.55vw,32px);line-height:1.03;font-weight:900;padding:.54rem .45rem}
+.model.saas h3{background:var(--orange)} .model.paas h3{background:var(--purple)} .model.iaas h3{background:var(--cyan);color:#08374f}
+.modelBody{padding:.60rem .62rem;display:grid;gap:.45rem;align-content:start;font-size:clamp(14px,.95vw,18px);line-height:1.10;font-weight:770;color:var(--ink)}
+.label{font-size:clamp(17px,1.15vw,22px);font-weight:900;color:var(--navy)}
+.examples{border-top:2px solid var(--line);padding-top:.35rem}
+.examples strong{display:block;color:var(--navy);font-size:clamp(15px,1vw,19px)}
+
+.exercise{height:100%;display:grid;grid-template-rows:auto 1fr auto;gap:.65rem}
+.question{font-size:clamp(23px,1.65vw,34px);line-height:1.08;font-weight:900;color:var(--navy);text-align:center}
+.exerciseGrid{display:grid;grid-template-columns:46% 54%;gap:.85rem;min-height:0}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;min-height:0}
+.card{border:3px solid var(--line);border-radius:10px;background:#fff;padding:.58rem .62rem;display:flex;flex-direction:column;justify-content:center;cursor:pointer;min-height:0}
+.card strong{font-size:clamp(17px,1.15vw,23px);line-height:1.05;color:var(--navy);margin-bottom:.20rem}
+.card span{font-size:clamp(13px,.9vw,18px);line-height:1.08;font-weight:760;color:var(--ink)}
+.card.selected{border-color:var(--navy);background:#eef8fb}
+.dropZoneWrap{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.6rem;min-height:0}
+.zone{border:4px dashed var(--line);border-radius:12px;background:#fff;display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.zone h3{margin:0;color:#fff;text-align:center;font-size:clamp(22px,1.55vw,32px);font-weight:900;padding:.55rem}
+.zone[data-zone="SaaS"] h3{background:var(--orange)} .zone[data-zone="PaaS"] h3{background:var(--purple)} .zone[data-zone="IaaS"] h3{background:var(--cyan);color:#08374f}
+.zoneBody{padding:.55rem;display:flex;flex-direction:column;gap:.38rem;flex:1;min-height:0}
+.answer{border:2px solid var(--line);border-radius:8px;background:#f7fbff;padding:.45rem .50rem;font-size:clamp(13px,.9vw,17px);line-height:1.08;font-weight:820;color:var(--ink)}
+.answer.correct{border-color:#16824a;background:#eefaf3;color:#0d6739}
+.answer.wrong{border-color:var(--red);background:#fff0f0;color:#9b1d1d}
+.answer .explain{display:block;font-size:clamp(11px,.78vw,15px);font-weight:800;margin-top:.15rem}
+.feedback{min-height:36px;text-align:center;font-size:clamp(17px,1.15vw,23px);font-weight:900;color:var(--navy)}
+.actions{display:flex;justify-content:center;gap:.65rem;align-items:center}
+.btn{border:0;border-radius:999px;background:var(--navy);color:#fff;font-size:clamp(16px,1.05vw,21px);font-weight:900;padding:.55rem 1rem;cursor:pointer}
+.btn.secondary{background:#607b91}
+
+.note{position:absolute;left:4.3%;right:4.3%;bottom:1.4%;border-top:2px solid var(--line);padding-top:.30rem;display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center;background:#fff}
 .noteText{font-size:clamp(12px,.85vw,16px);line-height:1.08;font-weight:850;color:#315b7e}
 .footer{font-size:clamp(12px,.85vw,18px);color:#168cff}
+
+.responsibilityLayout{height:100%;display:grid;grid-template-columns:62% 38%;gap:.85rem;min-height:0}
+.responsibilityBox,.explainBox{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.explainBox{border-color:var(--cyan)}
+.explainBox .boxTitle{background:var(--cyan)}
+.respTable{flex:1;min-height:0;padding:.65rem;display:grid;grid-template-columns:16% 38% 46%;grid-template-rows:auto repeat(3,1fr);gap:.42rem}
+.colHead{display:grid;place-items:center;text-align:center;color:#fff;font-size:clamp(18px,1.25vw,26px);line-height:1.05;font-weight:900;border-radius:8px;padding:.45rem}
+.colHead.customer{background:var(--navy)}
+.colHead.provider{background:var(--orange)}
+.serviceName{display:grid;place-items:center;text-align:center;color:#fff;font-size:clamp(24px,1.7vw,36px);line-height:1;font-weight:900;border-radius:10px}
+.saasName{background:var(--orange)}
+.paasName{background:var(--purple)}
+.iaasName{background:var(--cyan);color:#08374f}
+.managed{border:3px solid var(--line);border-radius:10px;padding:.45rem;display:grid;grid-template-columns:1fr 1fr;gap:.30rem;align-content:start;overflow:hidden}
+.managed div{border-radius:6px;padding:.26rem .36rem;font-size:clamp(12px,.86vw,17px);line-height:1.04;font-weight:850;text-align:center}
+.customerSide{background:#f7fbff;border-color:var(--navy)}
+.customerSide div{background:#e8f1f8;color:var(--navy)}
+.providerSide{background:#fff8f4;border-color:var(--orange)}
+.providerSide div{background:#ffe3d2;color:#7a2a00}
+.muted div{background:#f0f3f6;color:#315b7e}
+.explainGrid{flex:1;min-height:0;padding:.70rem;display:grid;grid-template-rows:1fr 1fr 1fr;gap:.55rem}
+.explainCard{border:3px solid var(--line);border-left-width:10px;border-radius:10px;padding:.65rem .75rem;display:grid;align-content:center;gap:.18rem;background:#fff}
+.explainCard strong{font-size:clamp(22px,1.55vw,32px);line-height:1;color:var(--navy)}
+.explainCard span{font-size:clamp(15px,1.02vw,20px);line-height:1.10;font-weight:760;color:var(--ink)}
+.explainCard em{font-size:clamp(13px,.90vw,17px);line-height:1.08;font-weight:800;color:#496987}
+.saasCard{border-left-color:var(--orange)}
+.paasCard{border-left-color:var(--purple)}
+.iaasCard{border-left-color:var(--cyan)}
+
 </style>
 </head>
 <body>
 <main class="stage">
-<section aria-label="Cloud Deployment Models" class="slide">
+<section aria-label="Cloud Services" class="slide">
 <img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
 <div class="header">
 <div class="session"><span class="dot"></span><span>Session 3 Cloud Computing</span></div>
-<h1>Cloud Deployment Models</h1>
-<div class="subtitle">Public, private, community and hybrid cloud choices change control, scalability and cost base.</div>
+<h1>Cloud Services</h1>
+<div class="subtitle">Use the responsibility model to distinguish what the provider manages and what the customer still controls.</div>
 </div>
-<div class="content">
-<section class="diagram">
-<h2 class="boxTitle">Deployment view</h2>
-<div class="diagramBody">
-<div class="deployCard">
-<h3>Private cloud</h3>
-<div class="infra">Dedicated<br/>environment</div>
-<div class="customerWrap"><div class="customer">Customer</div></div>
+<div class="tabs">
+<button class="tab active" data-panel="overview" type="button">Cloud services</button>
+<button class="tab" data-panel="exercise" type="button">Exercise</button>
 </div>
-<div class="deployCard community">
-<h3>Community cloud</h3>
-<div class="infra">Shared by related<br/>organisations</div>
-<div class="customerWrap"><div class="customer">Customer</div><div class="customer">Customer</div></div>
+<div class="panel active" id="overview">
+<div class="overview responsibilityLayout">
+<section class="responsibilityBox">
+<h2 class="boxTitle">IaaS / PaaS / SaaS responsibility model</h2>
+<div class="respTable">
+<div class="corner"></div>
+<div class="colHead customer">Customer manages</div>
+<div class="colHead provider">Provider manages</div>
+<div class="serviceName saasName">SaaS</div>
+<div class="managed customerSide muted">
+<div>Data</div>
+<div>User access</div>
+<div>Configuration</div>
 </div>
-<div class="deployCard hybrid">
-<h3>Hybrid cloud</h3>
-<div class="infra">Private + public<br/>connected</div>
-<div class="customerWrap"><div class="customer">Customer</div><span class="link">↔</span></div>
+<div class="managed providerSide">
+<div>Applications</div>
+<div>Runtime</div>
+<div>Middleware</div>
+<div>Operating system</div>
+<div>Virtualization</div>
+<div>Servers</div>
+<div>Storage</div>
+<div>Networking</div>
 </div>
-<div class="deployCard public">
-<h3>Public cloud</h3>
-<div class="infra">Shared provider<br/>environment</div>
-<div class="customerWrap"><div class="customer">Customer</div><div class="customer">Customer</div></div>
+<div class="serviceName paasName">PaaS</div>
+<div class="managed customerSide">
+<div>Applications</div>
+<div>Data</div>
+<div>User access</div>
 </div>
+<div class="managed providerSide">
+<div>Runtime</div>
+<div>Middleware</div>
+<div>Operating system</div>
+<div>Virtualization</div>
+<div>Servers</div>
+<div>Storage</div>
+<div>Networking</div>
 </div>
-</section>
-<section class="right">
-<h2 class="boxTitle">Qualitative sourcing comparison</h2>
-<div class="grid">
-<div class="model private">
-<h3>Private</h3>
-<div class="body">
-<div class="def">Dedicated to one organisation and tailored to its operating and control requirements.</div>
-<div class="dimension"><b>Relative cost</b><span>High: dedicated capacity and operating capability.</span></div>
-<div class="dimension"><b>Control</b><span>Very high: architecture, access and governance can be customised.</span></div>
-<div class="dimension"><b>Scalability</b><span>Moderate: constrained by owned or reserved capacity.</span></div>
-<div class="dimension"><b>Security / compliance</b><span>Strongest custom control, but the organisation carries more responsibility.</span></div>
-<div class="dimension"><b>Integration complexity</b><span>Medium to high, especially with legacy environments.</span></div>
+<div class="serviceName iaasName">IaaS</div>
+<div class="managed customerSide">
+<div>Applications</div>
+<div>Data</div>
+<div>Runtime</div>
+<div>Middleware</div>
+<div>Operating system</div>
 </div>
-</div>
-<div class="model communityDef">
-<h3>Community</h3>
-<div class="body">
-<div class="def">Shared by organisations with common mission, policy, security or regulatory requirements.</div>
-<div class="dimension"><b>Relative cost</b><span>Medium to high, with infrastructure and governance costs shared.</span></div>
-<div class="dimension"><b>Control</b><span>High, but decisions require shared governance.</span></div>
-<div class="dimension"><b>Scalability</b><span>Moderate: larger than a single private cloud but limited to the community.</span></div>
-<div class="dimension"><b>Security / compliance</b><span>Designed around common sector or regulatory controls.</span></div>
-<div class="dimension"><b>Integration complexity</b><span>High where multiple organisations and standards must align.</span></div>
-</div>
-</div>
-<div class="model hybridDef">
-<h3>Hybrid</h3>
-<div class="body">
-<div class="def">Connects private or on-premises environments with public cloud services.</div>
-<div class="dimension"><b>Relative cost</b><span>Medium to high because several environments must be operated.</span></div>
-<div class="dimension"><b>Control</b><span>High for sensitive workloads; lower in public components.</span></div>
-<div class="dimension"><b>Scalability</b><span>High when public cloud is used for variable demand.</span></div>
-<div class="dimension"><b>Security / compliance</b><span>Supports workload segregation, but controls must remain consistent.</span></div>
-<div class="dimension"><b>Integration complexity</b><span>Highest: identity, data, networking and governance must work across environments.</span></div>
-</div>
-</div>
-<div class="model publicDef">
-<h3>Public</h3>
-<div class="body">
-<div class="def">Provider-owned, multi-tenant infrastructure offered to customers as standardised services.</div>
-<div class="dimension"><b>Relative cost</b><span>Low entry cost, but total spend varies with usage and configuration.</span></div>
-<div class="dimension"><b>Control</b><span>Lower: customers operate within the provider's service model.</span></div>
-<div class="dimension"><b>Scalability</b><span>Very high: resources can be provisioned rapidly.</span></div>
-<div class="dimension"><b>Security / compliance</b><span>Strong standard controls under a shared-responsibility model.</span></div>
-<div class="dimension"><b>Integration complexity</b><span>Low to medium for cloud-native use; higher when connected to legacy systems.</span></div>
-</div>
+<div class="managed providerSide">
+<div>Virtualization</div>
+<div>Servers</div>
+<div>Storage</div>
+<div>Networking</div>
 </div>
 </div>
 </section>
+<section class="explainBox">
+<h2 class="boxTitle">How to read it</h2>
+<div class="explainGrid">
+<div class="explainCard saasCard"><strong>SaaS</strong><span>Provider manages the full technology stack and delivers a finished application.</span><em>Examples: Salesforce Sales Cloud, Workday HCM</em></div>
+<div class="explainCard paasCard"><strong>PaaS</strong><span>Provider manages the platform; the buyer manages application logic and data.</span><em>Examples: Salesforce Force.com, Google App Engine</em></div>
+<div class="explainCard iaasCard"><strong>IaaS</strong><span>Provider manages infrastructure; the buyer manages operating system, middleware, runtime, apps and data.</span><em>Examples: Microsoft Azure VM, Amazon S3</em></div>
+</div>
+</section>
+</div>
+</div>
+<div class="panel" id="exercise">
+<div class="exercise">
+<div class="question">Select a service, then click the correct cloud-service type.</div>
+<div class="exerciseGrid">
+<div class="cards">
+<button class="card" data-answer="SaaS" data-explain="Salesforce Sales Cloud is a hosted cloud application." data-service="Salesforce Sales Cloud"><strong>Salesforce Sales Cloud</strong><span>CRM application</span></button>
+<button class="card" data-answer="PaaS" data-explain="Force.com is an application development platform." data-service="Salesforce Force.com"><strong>Salesforce Force.com</strong><span>App development platform</span></button>
+<button class="card" data-answer="IaaS" data-explain="Azure Virtual Machines provide compute infrastructure." data-service="Microsoft Azure VM"><strong>Microsoft Azure VM</strong><span>Virtual machine</span></button>
+<button class="card" data-answer="IaaS" data-explain="Amazon S3 is cloud storage infrastructure." data-service="Amazon S3"><strong>Amazon S3</strong><span>Object storage</span></button>
+<button class="card" data-answer="PaaS" data-explain="App Engine is an application-hosting platform." data-service="Google App Engine"><strong>Google App Engine</strong><span>Application hosting</span></button>
+<button class="card" data-answer="SaaS" data-explain="Workday HCM is a hosted business application." data-service="Workday HCM"><strong>Workday HCM</strong><span>HR application</span></button>
+</div>
+<div class="dropZoneWrap">
+<div class="zone" data-zone="SaaS"><h3>SaaS</h3><div class="zoneBody"></div></div>
+<div class="zone" data-zone="PaaS"><h3>PaaS</h3><div class="zoneBody"></div></div>
+<div class="zone" data-zone="IaaS"><h3>IaaS</h3><div class="zoneBody"></div></div>
+</div>
+</div>
+<div class="actions">
+<button class="btn secondary" id="reset" type="button">Reset</button>
+<div class="feedback" id="feedback">Map all six services.</div>
+</div>
+</div>
 </div>
 <div class="note">
-<div class="noteText">No model is universally cheaper or safer. The result depends on workload design, utilisation, data sensitivity, internal capability and contractual terms.</div>
+<div class="noteText">Improvement opportunity: the next logical enrichment is a shared-responsibility slide, because buyers often classify cloud correctly but still miss support, security and data-management boundaries.</div>
 <div class="footer">©</div>
 </div>
 </section>
 </main>
+<script>
+document.querySelectorAll('.tab').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(btn.dataset.panel).classList.add('active');
+}));
+
+let selected = null;
+const cards = Array.from(document.querySelectorAll('.card'));
+const zones = Array.from(document.querySelectorAll('.zone'));
+const feedback = document.getElementById('feedback');
+
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    if (card.disabled) return;
+    cards.forEach(c => c.classList.remove('selected'));
+    selected = card;
+    card.classList.add('selected');
+    feedback.textContent = `Selected: ${card.dataset.service}`;
+  });
+});
+
+zones.forEach(zone => {
+  zone.addEventListener('click', () => {
+    if (!selected) {
+      feedback.textContent = 'Select a service first.';
+      return;
+    }
+    const correct = selected.dataset.answer === zone.dataset.zone;
+    const div = document.createElement('div');
+    div.className = 'answer ' + (correct ? 'correct' : 'wrong');
+    div.innerHTML = `${selected.dataset.service}<span class="explain">${correct ? 'Correct.' : 'Wrong. ' + selected.dataset.explain}</span>`;
+    zone.querySelector('.zoneBody').appendChild(div);
+    selected.disabled = true;
+    selected.classList.remove('selected');
+    selected = null;
+
+    const done = cards.filter(c => c.disabled).length;
+    const wrong = document.querySelectorAll('.answer.wrong').length;
+    if (done < cards.length) {
+      feedback.textContent = `${done} / ${cards.length} mapped.`;
+    } else if (wrong === 0) {
+      feedback.textContent = 'All correct.';
+    } else {
+      feedback.textContent = `${wrong} wrong mapping${wrong === 1 ? '' : 's'}. Review the red explanations.`;
+    }
+  });
+});
+
+document.getElementById('reset').addEventListener('click', () => {
+  selected = null;
+  cards.forEach(c => { c.disabled = false; c.classList.remove('selected'); });
+  document.querySelectorAll('.zoneBody').forEach(z => z.replaceChildren());
+  feedback.textContent = 'Map all six services.';
+});
+</script>
 <script id="itpf-deck-bridge">
 (function(){
   function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }

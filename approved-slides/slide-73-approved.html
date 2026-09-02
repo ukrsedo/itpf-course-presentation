@@ -1,13 +1,11 @@
 <!doctype html>
-<!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>Slide 73 — Kraljic Matrix</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Slide 74 — Sourcing Value Levers</title>
 <style>
-:root {--navy:#003b70;--cyan:#12bddf;--orange:#ff5a00;--ink:#173f66;--line:#c7d9ea;--soft:#f7fbff;--pale:#eef8fc;--green:#edf8f2;--amber:#fff8ec;--red:#fff2f2;--bluep:#eef7ff;}
+:root{--navy:#003b70;--cyan:#12bddf;--orange:#ff5a00;--ink:#173f66;--line:#c7d9ea;--soft:#f7fbff;--pale:#eef8fc;--green:#eef8f1;--amber:#fff6e8;--purple:#f4f0ff;--bluep:#eef7ff;--red:#fff1f1}
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--navy)}
 .stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
@@ -17,70 +15,118 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;fon
 .header{position:absolute;left:5.4%;top:4.6%;right:18%;z-index:3}
 .session{font-size:clamp(15px,1vw,20px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.5rem;margin-bottom:.42rem;font-weight:850}
 .dot{width:12px;height:12px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
-h1{margin:0;color:var(--navy);font-size:clamp(34px,3vw,56px);line-height:1.02;letter-spacing:-.035em;font-weight:950}
-.source{font-size:clamp(12px,.82vw,16px);font-weight:800;color:#507495;margin-top:.36rem}
-.main{position:absolute;left:5.4%;right:5.4%;top:20%;bottom:13%;display:grid;grid-template-columns:56% 40%;gap:1.15rem;align-items:stretch}
-.matrixWrap{position:relative;padding-left:3rem;padding-bottom:2.6rem}
-.axisY{position:absolute;left:.2rem;top:8%;bottom:14%;writing-mode:vertical-rl;transform:rotate(180deg);font-size:clamp(12px,.92vw,18px);font-weight:900;color:#2f5f88;text-align:center}
-.axisX{position:absolute;left:4.2rem;right:.3rem;bottom:.2rem;text-align:center;font-size:clamp(12px,.92vw,18px);font-weight:900;color:#2f5f88}
-.lowY,.highY,.lowX,.highX{position:absolute;font-size:clamp(11px,.78vw,15px);font-weight:900;color:#6989a5}
-.highY{left:1.5rem;top:.3rem} .lowY{left:1.55rem;bottom:2.9rem} .lowX{left:4.1rem;bottom:1.2rem} .highX{right:.2rem;bottom:1.2rem}
-.matrix{height:100%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;border:4px solid var(--navy);border-radius:22px;overflow:hidden;box-shadow:0 12px 30px rgba(0,59,112,.10)}
-.quad{padding:.82rem .86rem;border:2px solid #fff;display:flex;flex-direction:column;justify-content:space-between}
-.qTitle{font-size:clamp(22px,1.52vw,31px);line-height:1.0;font-weight:950;letter-spacing:-.025em;color:var(--navy);margin-bottom:.32rem}
-.qSub{font-size:clamp(14px,.95vw,18px);font-weight:880;color:#3b6386;margin-bottom:.35rem}
-ul{margin:.2rem 0 0 1rem;padding:0}
-li{font-size:clamp(15px,1.02vw,19px);line-height:1.08;font-weight:820;color:var(--ink);margin:.14rem 0}
-.strategic{background:var(--red)} .bottleneck{background:var(--amber)} .leverage{background:var(--bluep)} .noncritical{background:var(--green)}
-.card{border:3px solid var(--line);border-radius:20px;background:var(--soft);padding:1rem 1.05rem;box-shadow:0 8px 22px rgba(0,35,70,.06)}
-.card h2{margin:0 0 .75rem 0;font-size:clamp(22px,1.55vw,32px);line-height:1.05;font-weight:950;color:var(--navy)}
-.card p{margin:.5rem 0;font-size:clamp(15px,1.02vw,20px);line-height:1.2;font-weight:780;color:var(--ink)}
-.rule{display:grid;grid-template-columns:1.8rem 1fr;gap:.65rem;align-items:start;margin:.7rem 0}
-.num{width:1.8rem;height:1.8rem;border-radius:999px;background:var(--orange);color:#fff;display:grid;place-items:center;font-weight:950;font-size:clamp(13px,.9vw,18px)}
-.rule strong{display:block;font-size:clamp(15px,1.03vw,20px);line-height:1.08;color:var(--navy);font-weight:950;margin-bottom:.15rem}
-.rule span{font-size:clamp(12px,.88vw,17px);line-height:1.15;color:var(--ink);font-weight:760}
-.tabbar{position:absolute;left:5.4%;right:5.4%;bottom:5.1%;display:flex;align-items:center;justify-content:space-between;gap:1rem;border-top:2px solid var(--line);padding-top:.62rem}
-.tabText{font-size:clamp(14px,1vw,20px);font-weight:900;color:var(--navy)}
-.demoTab{display:inline-flex;align-items:center;gap:.55rem;background:var(--orange);color:#fff;text-decoration:none;border-radius:999px;padding:.58rem 1rem;font-size:clamp(13px,.95vw,18px);font-weight:950;white-space:nowrap;box-shadow:0 8px 20px rgba(255,90,0,.22)}
-.demoTab:after{content:'↗';font-size:1.05em;font-weight:950}
-.footer{position:absolute;left:5.4%;right:5.4%;bottom:2%;font-size:clamp(10px,.72vw,14px);font-weight:700;color:#7892aa}
+h1{margin:0;color:var(--navy);font-size:clamp(40px,3.2vw,60px);line-height:.98;letter-spacing:-.04em;font-weight:950}
+.subtitle{font-size:clamp(15px,1.02vw,20px);font-weight:820;color:#456d90;margin-top:.45rem}
+.tabs{position:absolute;left:5.4%;top:16.6%;display:flex;gap:.65rem;z-index:6}
+.tab{border:2px solid var(--cyan);background:#fff;color:var(--navy);border-radius:999px;padding:.5rem 1rem;font-size:clamp(15px,1.05vw,20px);font-weight:950;cursor:pointer;box-shadow:0 7px 18px rgba(0,59,112,.08)}
+.tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.panel{display:none}.panel.active{display:block}
+.main{position:absolute;left:5.4%;right:5.4%;top:22.8%;bottom:13.6%;display:grid;grid-template-columns:repeat(6,1fr);gap:.5rem;align-items:stretch}
+.col{border:3px solid var(--line);border-radius:18px;background:var(--soft);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 8px 20px rgba(0,35,70,.055)}
+.col:nth-child(1){background:#f4fbff} .col:nth-child(2){background:#fff8ef} .col:nth-child(3){background:#f3fbf5} .col:nth-child(4){background:#f6f1ff} .col:nth-child(5){background:#fff3f3} .col:nth-child(6){background:#f2f8ff}
+.col h2{margin:0;padding:.58rem .48rem .42rem;background:var(--navy);color:#fff;font-size:clamp(20px,1.38vw,28px);line-height:.94;font-weight:950;text-align:center;letter-spacing:-.02em;min-height:3.05rem;display:grid;place-items:center}
+.col ul{list-style:none;margin:0;padding:.52rem .58rem .45rem;display:flex;flex-direction:column;gap:.24rem;flex:1}
+.col li{position:relative;font-size:clamp(15px,1.05vw,20px);line-height:1.07;font-weight:850;color:var(--ink);padding-left:.72rem}
+.col li:before{content:'';position:absolute;left:0;top:.42em;width:.35rem;height:.35rem;border-radius:50%;background:var(--orange)}
+.process{position:absolute;left:5.4%;right:5.4%;bottom:7%;display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem}
+.step{position:relative;border:2px solid var(--cyan);background:#f8fdff;border-radius:14px;padding:.5rem .5rem;text-align:center;font-size:clamp(13px,.92vw,17px);line-height:1.04;font-weight:900;color:var(--navy);min-height:2.85rem;display:grid;place-items:center}
+.step:not(:last-child):after{content:'›';position:absolute;right:-.43rem;top:50%;transform:translateY(-50%);font-size:2rem;line-height:1;color:var(--orange);font-weight:950;z-index:4}
+.exercise{position:absolute;left:5.4%;right:5.4%;top:24%;bottom:7.6%;display:grid;grid-template-columns:.92fr 1.08fr;gap:1rem;align-items:stretch}
+.exercise .brief,.exercise .output{border:3px solid var(--line);border-radius:22px;background:#f8fdff;padding:1rem 1.05rem;box-shadow:0 9px 24px rgba(0,35,70,.06);min-height:0}
+.exercise h2{margin:0 0 .55rem;color:var(--navy);font-size:clamp(25px,1.75vw,34px);line-height:1;font-weight:950;letter-spacing:-.02em}
+.exercise p,.exercise li{font-size:clamp(18px,1.22vw,23px);line-height:1.13;font-weight:850;color:var(--ink);margin:0}
+.exercise ul{margin:.35rem 0 0;padding-left:1.15rem;display:grid;gap:.4rem}
+.exercise .scenario{border-left:8px solid var(--orange);background:#fff7ed;border-radius:16px;padding:.7rem .82rem;margin:.7rem 0}
+.chips{display:flex;flex-wrap:wrap;gap:.42rem;margin-top:.55rem}
+.chip{border:2px solid var(--cyan);background:#fff;color:var(--navy);border-radius:999px;padding:.42rem .62rem;font-size:clamp(14px,.98vw,18px);line-height:1;font-weight:950;cursor:grab;box-shadow:0 5px 12px rgba(0,59,112,.08);user-select:none}
+.chip:active{cursor:grabbing}.chip.selected{background:var(--navy);color:#fff;border-color:var(--navy)}
+.dropgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:.58rem;height:calc(100% - 3.2rem)}
+.dropbox{border:3px dashed #9fc6df;background:#fff;border-radius:18px;padding:.55rem;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;min-height:0}
+.dropbox h3{margin:0 0 .35rem;color:var(--navy);font-size:clamp(17px,1.12vw,22px);line-height:1;font-weight:950}
+.dropbox .answer{width:100%;min-height:2.25rem;border-radius:12px;background:#eef8fc;display:grid;place-items:center;padding:.35rem;color:#426988;font-size:clamp(14px,.95vw,18px);line-height:1.05;font-weight:900}
+.dropbox.filled{border-style:solid;border-color:var(--orange)}
+.reset{margin-top:.55rem;border:0;border-radius:999px;background:var(--orange);color:#fff;padding:.48rem .75rem;font-size:clamp(14px,.95vw,18px);font-weight:950;cursor:pointer}
+.callout{position:absolute;left:5.4%;right:5.4%;bottom:2.1%;display:flex;justify-content:space-between;align-items:center;gap:1rem;border-top:2px solid var(--line);padding-top:.42rem}
+.callout span:first-child{font-size:clamp(13px,.9vw,17px);font-weight:850;color:#426988}
+.badge{background:var(--orange);color:white;border-radius:999px;padding:.42rem .75rem;font-size:clamp(12px,.86vw,16px);font-weight:950;white-space:nowrap}
 </style>
 </head>
 <body>
 <main class="stage">
-<section aria-label="Kraljic Matrix slide" class="slide">
-<div class="corner"></div>
-<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
-<div class="header">
-<div class="session"><span class="dot"></span><span>Session 5 Source-to-Contract</span></div>
-<h1>Kraljic Matrix</h1>
-<div class="source">Source: HBR “Purchasing Must Become Supply Management”, P. Kraljic (1983)</div>
-</div>
-<div class="main">
-<div class="matrixWrap">
-<div class="highY">High</div><div class="lowY">Low</div><div class="lowX">Low</div><div class="highX">High</div>
-<div class="axisY">Importance of purchasing</div>
-<div class="axisX">Complexity of the supply market</div>
-<div class="matrix">
-<section class="quad leverage"><div><div class="qTitle">Leverage items</div><div class="qSub">Material management</div><ul><li>Leverage market power</li><li>Targeted pricing strategies</li><li>Negotiate actively</li><li>Supplier-managed inventories</li></ul></div></section>
-<section class="quad strategic"><div><div class="qTitle">Strategic items</div><div class="qSub">Supply management</div><ul><li>Long-term partnership</li><li>Common planning, forecasting, and replenishment</li><li>Performance incentives</li><li>Consider “Make-Buy”</li></ul></div></section>
-<section class="quad noncritical"><div><div class="qTitle">Non-critical items</div><div class="qSub">Purchasing management</div><ul><li>Standardize</li><li>Consolidate</li><li>Decentralize</li><li>Make sourcing process more efficient</li><li>Preferred suppliers</li></ul></div></section>
-<section class="quad bottleneck"><div><div class="qTitle">Bottleneck items</div><div class="qSub">Sourcing management</div><ul><li>Seek new suppliers</li><li>Re-engineer to substitute or eliminate</li><li>Longer-term engagement</li><li>Manage supply risks</li></ul></div></section>
-</div>
-</div>
-<aside class="card">
-<h2>How to read it</h2>
-<p>The matrix links sourcing strategy to two questions: business importance and supply-market complexity.</p>
-<div class="rule"><div class="num">1</div><div><strong>Profit impact</strong><span>Cost, value contribution, business criticality, and operational exposure.</span></div></div>
-<div class="rule"><div class="num">2</div><div><strong>Supply risk</strong><span>Scarcity, switching barriers, technology pace, logistics complexity, and supplier power.</span></div></div>
-<div class="rule"><div class="num">3</div><div><strong>Sourcing response</strong><span>Efficiency, market leverage, risk protection, or strategic partnership.</span></div></div>
-</aside>
-</div>
-<div class="tabbar">
-<div class="tabText">Interactive exercise: classify IT categories and compare the AI-generated sourcing recommendation.</div>
-<a class="demoTab" href="https://www.goodspending.com/kraljic-matrix-demo" rel="noopener" target="_blank">Kraljic Matrix Demo</a>
-</div>
-<div class="footer">© CIPS. Course slide adapted for classroom discussion.</div>
+<section class="slide" aria-label="Sourcing Value Levers slide">
+  <div class="corner"></div>
+  
+  <header class="header">
+    <div class="session"><span class="dot"></span> Session 5 · Source-to-Contract</div>
+    <h1>Sourcing Value Levers</h1>
+    <div class="subtitle">Use the sourcing process to identify, combine and execute commercial levers — not just run a tender.</div>
+  </header>
+  <div class="tabs" role="tablist"><button class="tab active" data-panel="levers" type="button">Value levers</button><button class="tab" data-panel="exercise" type="button">Exercise</button></div>
+  <section class="panel active" id="levers">
+  <section class="main">
+    <article class="col"><h2>Comply<br>Levers</h2><ul><li>Spend governance</li><li>Policy compliance</li><li>Contract compliance</li><li>Initiate a sourcing project</li></ul></article>
+    <article class="col"><h2>Demand<br>Levers</h2><ul><li>Eliminate demand</li><li>Review quantity</li><li>Reduce frequency</li><li>Standardize specs</li><li>Reduce portfolio</li><li>Consider alternatives</li><li>Encourage reuse</li></ul></article>
+    <article class="col"><h2>Source<br>Levers</h2><ul><li>Type of sourcing event</li><li>Cycle time</li><li>Prioritize projects</li><li>Buying channels</li><li>Source from OEM</li><li>Risk allocation</li><li>Payment terms</li></ul></article>
+    <article class="col"><h2>Fulfil<br>Levers</h2><ul><li>Bundle/unbundle</li><li>Supplier rationalization</li><li>Volume or time commitment</li><li>Pricing mechanism</li><li>Performance or benefit incentive</li><li>Repair and replacement</li><li>Transaction cost</li></ul></article>
+    <article class="col"><h2>Manage<br>Levers</h2><ul><li>Demand / supply balancing</li><li>Ordering</li><li>Physical delivery</li><li>Storage and distribution</li><li>Additional benefits: revenue, marketing, etc.</li></ul></article>
+    <article class="col"><h2>Process<br>Levers</h2><ul><li>P2P control</li><li>Variations</li><li>Risk</li><li>Performance</li><li>Value delivery</li></ul></article>
+  </section>
+  <section class="process" aria-label="sourcing process">
+    <div class="step">Identify business needs and study the market</div>
+    <div class="step">Specify requirements</div>
+    <div class="step">Define a sourcing strategy</div>
+    <div class="step">Select a supplier and award a contract</div>
+    <div class="step">Manage a contract and supplier relationship</div>
+  </section>
+  <div class="callout"><span>Group discussion: which value levers applied in corporate mobile communication contract negotiations?</span><span class="badge">Sourcing value levers</span></div>
+  </section>
+  <section class="panel" id="exercise">
+    <div class="exercise">
+      <article class="brief"><h2>Individual exercise: solve one sourcing problem</h2><p>Same problem for everyone: corporate mobile communication renewal.</p><div class="scenario"><p><strong>Facts:</strong> 1,200 SIMs; 18% inactive; roaming cost spikes; departments order outside the contract; supplier asks for an 8% price increase; SLA ownership is unclear.</p></div><p><strong>Task:</strong> build a 3-lever sourcing response. Drag one lever into each box. On touch screens, tap a lever, then tap a box.</p><div class="chips" aria-label="value lever choices">
+        <span class="chip" draggable="true">Eliminate inactive SIMs</span><span class="chip" draggable="true">Roaming price cap</span><span class="chip" draggable="true">Contracted buying channel</span><span class="chip" draggable="true">SLA ownership</span><span class="chip" draggable="true">Volume commitment</span><span class="chip" draggable="true">Benchmark rates</span><span class="chip" draggable="true">Policy compliance</span><span class="chip" draggable="true">P2P control</span><span class="chip" draggable="true">Supplier rationalization</span>
+      </div><button class="reset" type="button">Reset</button></article>
+      <article class="output"><h2>Your answer</h2><div class="dropgrid">
+        <div class="dropbox" data-target="Demand"><h3>1 · Demand lever</h3><div class="answer">reduce waste</div></div>
+        <div class="dropbox" data-target="Commercial"><h3>2 · Commercial lever</h3><div class="answer">control price</div></div>
+        <div class="dropbox" data-target="Governance"><h3>3 · Governance lever</h3><div class="answer">stop leakage</div></div>
+        <div class="dropbox" data-target="Action"><h3>Negotiation ask</h3><div class="answer">what will you ask for?</div></div>
+        <div class="dropbox" data-target="Metric"><h3>Value metric</h3><div class="answer">how value is proven?</div></div>
+        <div class="dropbox" data-target="Risk"><h3>Risk check</h3><div class="answer">what can go wrong?</div></div>
+      </div></article>
+    </div>
+    <div class="callout"><span>Objective: not “lower price”; combine demand, commercial and governance levers into one negotiation strategy.</span><span class="badge">5 min · Individual</span></div>
+  </section>
+<script>
+document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+ document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+ btn.classList.add('active');
+ document.getElementById(btn.dataset.panel).classList.add('active');
+}));
+let selectedLever='';
+document.querySelectorAll('.chip').forEach(chip=>{
+ chip.addEventListener('dragstart',e=>e.dataTransfer.setData('text/plain',chip.textContent.trim()));
+ chip.addEventListener('click',()=>{
+  selectedLever=chip.textContent.trim();
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('selected'));
+  chip.classList.add('selected');
+ });
+});
+document.querySelectorAll('.dropbox').forEach(box=>{
+ box.addEventListener('dragover',e=>e.preventDefault());
+ box.addEventListener('drop',e=>{e.preventDefault();fillBox(box,e.dataTransfer.getData('text/plain'))});
+ box.addEventListener('click',()=>{if(selectedLever)fillBox(box,selectedLever)});
+});
+function fillBox(box,text){
+ box.querySelector('.answer').textContent=text;
+ box.classList.add('filled');
+ document.querySelectorAll('.chip').forEach(c=>c.classList.remove('selected'));
+ selectedLever='';
+}
+document.querySelector('.reset')?.addEventListener('click',()=>{
+ document.querySelectorAll('.dropbox').forEach(box=>{box.classList.remove('filled');box.querySelector('.answer').textContent=box.dataset.target==='Action'?'what will you ask for?':box.dataset.target==='Metric'?'how value is proven?':box.dataset.target==='Risk'?'what can go wrong?':box.dataset.target==='Demand'?'reduce waste':box.dataset.target==='Commercial'?'control price':box.dataset.target==='Governance'?'stop leakage':'drop here'});
+});
+</script>
 </section>
 </main>
 <script id="itpf-deck-bridge">

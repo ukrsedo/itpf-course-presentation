@@ -5,97 +5,103 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>Slide 84 — Case #6 Transition</title>
+<title>Slide 85 — ACV vs TCV in SaaS</title>
 <style>
-:root {
-  --navy:#003b70;
-  --cyan:#12bddf;
-  --orange:#ff5a00;
-  --ink:#173f66;
-  --line:#c7d9ea;
-  --soft:#f7fbff;
-  --green:#2f9e5a;
-}
+:root{--navy:#003b70;--cyan:#12bddf;--orange:#ff5a00;--ink:#173f66;--line:#c7d9ea;--soft:#f7fbff;--green:#2f9e5a}
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--navy)}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
 .stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
 .slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
 .logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:5}
-.logoText{position:absolute;right:4.3%;top:4%;font-size:30px;font-weight:900;color:var(--navy);z-index:5}
-.corner{position:absolute;right:0;top:0;width:28%;height:50%;background:var(--cyan);clip-path:polygon(100% 0,100% 100%,0 0);opacity:.95}
-
-.header{position:absolute;left:6%;top:5.3%;right:17%}
+.header{position:absolute;left:6%;top:5.5%;right:17%}
 .session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.35rem}
 .dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
-h1{margin:0;color:var(--navy);font-size:clamp(40px,3.85vw,72px);line-height:1.00;letter-spacing:-.035em;font-weight:900}
-.subtitle{font-size:clamp(18px,1.32vw,27px);line-height:1.08;margin-top:.5rem;color:#2f5f88;font-weight:850;max-width:92%}
-
-.main{position:absolute;left:6%;right:6%;top:31%;bottom:7%;display:grid;grid-template-columns:43% 57%;gap:1.1rem;min-height:0}
-.caseBox{border:4px solid var(--navy);border-radius:18px;background:#fff;overflow:hidden;box-shadow:0 10px 28px rgba(0,35,70,.08)}
-.caseHead{background:var(--navy);color:#fff;font-size:clamp(25px,1.8vw,37px);font-weight:900;line-height:1.05;padding:.82rem 1.05rem}
-.caseBody{padding:1.05rem 1.15rem;font-size:clamp(19px,1.34vw,27px);line-height:1.22;font-weight:780;color:var(--ink)}
-.caseBody strong{color:var(--navy)}
-.signal{margin-top:.9rem;border-left:10px solid var(--orange);background:#fff8f4;border-radius:14px;padding:.85rem 1rem;font-size:clamp(17px,1.18vw,24px);line-height:1.18;font-weight:820;color:var(--ink)}
-
-.right{display:grid;grid-template-rows:auto 1fr;gap:.8rem;min-height:0}
-.title2{font-size:clamp(24px,1.7vw,35px);font-weight:900;color:var(--navy);margin:0}
-.steps{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:.75rem;min-height:0}
-.step{border:3px solid var(--line);border-radius:16px;background:var(--soft);padding:.82rem .9rem;display:grid;grid-template-columns:auto 1fr;gap:.65rem;align-content:start;min-height:0}
-.num{width:42px;height:42px;border-radius:50%;background:var(--cyan);display:grid;place-items:center;color:#003b70;font-size:clamp(20px,1.38vw,28px);font-weight:900;flex:none}
-.step h3{margin:0 0 .25rem 0;font-size:clamp(18px,1.22vw,24px);line-height:1.05;font-weight:900;color:var(--navy)}
-.step p{margin:0;font-size:clamp(14px,.98vw,19px);line-height:1.16;font-weight:760;color:var(--ink)}
-
-.launch{position:absolute;left:6%;right:6%;bottom:2.2%;display:flex;justify-content:space-between;align-items:center;border-top:2px solid var(--line);padding-top:.45rem}
-.launchText{font-size:clamp(15px,1.05vw,21px);font-weight:900;color:var(--navy)}
-.badge{background:var(--orange);color:#fff;border-radius:999px;padding:.55rem 1.15rem;font-size:clamp(16px,1.1vw,22px);font-weight:900;text-decoration:none;display:inline-block}
+h1{margin:0;color:var(--navy);font-size:clamp(35px,3vw,58px);line-height:1.02;letter-spacing:-.025em;font-weight:900}
+.subtitle{font-size:clamp(17px,1.18vw,24px);margin-top:.38rem;color:#2f5f88;font-weight:700}
+.tabs{position:absolute;left:6%;right:6%;top:21%;display:flex;gap:.85rem}
+.tab{border:3px solid var(--navy);background:#fff;color:var(--navy);font-size:clamp(19px,1.35vw,28px);font-weight:900;padding:.55rem 1rem;cursor:pointer}
+.tab.active{background:var(--navy);color:#fff}
+.panel{position:absolute;left:6%;right:6%;top:30%;bottom:8%;display:none;min-height:0}
+.panel.active{display:block}
+.defgrid{height:100%;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.card{border:3px solid var(--navy);border-radius:14px;background:#fff;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.card.acv{border-color:var(--cyan)}
+.card.tcv{border-color:var(--orange)}
+.cardHead{padding:.72rem .95rem;color:#fff;font-size:clamp(26px,1.9vw,38px);line-height:1;font-weight:900}
+.acv .cardHead{background:var(--cyan);color:var(--navy)}
+.tcv .cardHead{background:var(--orange)}
+.cardBody{padding:.85rem .95rem;display:grid;gap:.55rem;font-size:clamp(16px,1.08vw,22px);line-height:1.14;font-weight:720}
+.formula{border:2px solid var(--line);background:var(--soft);padding:.55rem .7rem;font-size:clamp(18px,1.25vw,25px);font-weight:900;color:var(--navy);text-align:center}
+.rows{display:grid;gap:.33rem}
+.row{display:grid;grid-template-columns:35% 65%;gap:.45rem;border-bottom:1px solid var(--line);padding-bottom:.28rem}
+.row:last-child{border-bottom:0}
+.label{font-weight:900;color:var(--navy)}
+.example{margin-top:auto;border-left:8px solid var(--green);background:#eef8f2;padding:.58rem .7rem;font-size:clamp(15px,1vw,20px);font-weight:800;line-height:1.12}
+.discuss{height:100%;display:grid;grid-template-columns:58% 42%;gap:1rem}
+.reasons{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.reason{border:3px solid var(--line);border-radius:14px;background:var(--soft);padding:.72rem .78rem;display:grid;grid-template-columns:auto 1fr;gap:.55rem;align-content:start}
+.num{width:37px;height:37px;border-radius:50%;background:var(--cyan);color:var(--navy);display:grid;place-items:center;font-size:clamp(18px,1.2vw,24px);font-weight:900}
+.reason h3{margin:0 0 .2rem;font-size:clamp(17px,1.15vw,23px);line-height:1.04;color:var(--navy)}
+.reason p{margin:0;font-size:clamp(14px,.93vw,18px);line-height:1.12;font-weight:720}
+.questionBox{border:4px solid var(--navy);border-radius:16px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.questionHead{background:var(--navy);color:#fff;padding:.75rem .9rem;font-size:clamp(22px,1.55vw,31px);font-weight:900}
+.questionBody{padding:.85rem .95rem;font-size:clamp(16px,1.06vw,21px);line-height:1.18;font-weight:760;display:grid;gap:.6rem}
+.prompt{border-left:8px solid var(--orange);background:#fff7f2;padding:.58rem .68rem}
+.takeaway{margin-top:auto;border-top:2px solid var(--line);padding-top:.55rem;color:var(--navy);font-weight:900}
+.footer{position:absolute;left:6%;right:6%;bottom:2.7%;display:flex;justify-content:space-between;font-size:clamp(12px,.82vw,16px);color:#52708d}
 </style>
 </head>
 <body>
-<main class="stage">
-<section aria-label="Transition to Case 6" class="slide">
-<div class="corner"></div>
+<main class="stage"><section aria-label="ACV and TCV in SaaS" class="slide">
 <img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
-<div class="header">
-<div class="session"><span class="dot"></span><span>Session 5 Source-to-Contract</span></div>
-<h1>Case #6</h1>
-<div class="subtitle">The dispute between IBM and the State of Indiana (2006-2012)</div>
-</div>
-<div class="main">
-<div>
-<section class="caseBox">
-<div class="caseHead">Case setup</div>
-<div class="caseBody">The State of Indiana signed a 10-year, $1.37 billion contract with IBM to modernize its welfare system. The project faced <strong>delivery delays, technical problems, budget pressure, and changing requirements</strong>, before the contract was terminated in 2009 and the dispute escalated.</div>
-</section>
-<div class="signal">IBM blamed changing requirements and lack of cooperation; Indiana alleged failure to deliver and misrepresentation of capability.</div>
-</div>
-<div class="right">
-<h2 class="title2">What to assess</h2>
-<div class="steps">
-<div class="step">
-<div class="num">1</div>
-<div><h3>Supplier selection</h3><p>Were IBM’s delivery capabilities adequately tested before award?</p></div>
-</div>
-<div class="step">
-<div class="num">2</div>
-<div><h3>Contract completeness</h3><p>Were obligations, acceptance criteria, and remedies sufficiently clear?</p></div>
-</div>
-<div class="step">
-<div class="num">3</div>
-<div><h3>Change governance</h3><p>How should changing requirements, scope, and responsibility have been controlled?</p></div>
-</div>
-<div class="step">
-<div class="num">4</div>
-<div><h3>Relationship failure</h3><p>What governance could have prevented escalation, termination, and litigation?</p></div>
+<div class="header"><div class="session"><span class="dot"></span><span>Session 5 Source-to-Contract</span></div><h1>ACV vs. TCV in SaaS Contracts</h1><div class="subtitle">TCV shows the full commitment; ACV is that value averaged across the contract years</div></div>
+<div class="tabs" role="tablist"><button class="tab active" data-panel="intro" type="button">ACV and TCV</button><button class="tab" data-panel="discussion" type="button">Why SaaS vendors use ACV</button></div>
+<div class="panel active" id="intro">
+<div class="defgrid">
+<article class="card acv"><div class="cardHead">ACV — Annual Contract Value</div><div class="cardBody">
+<div>The total contract value averaged over the committed contract years.</div>
+<div class="formula">ACV = TCV ÷ contract term in years</div>
+<div class="rows"><div class="row"><div class="label">Time horizon</div><div>One average contract year</div></div><div class="row"><div class="label">Best for</div><div>Comparing contracts with different durations and setting annual sales targets</div></div><div class="row"><div class="label">Shows</div><div>Average annual contract value</div></div><div class="row"><div class="label">Does not show</div><div>Total commitment or when payments occur</div></div></div>
+<div class="example">Example: £300,000 TCV over 3 years → ACV = £100,000.</div>
+</div></article>
+<article class="card tcv"><div class="cardHead">TCV — Total Contract Value</div><div class="cardBody">
+<div>The total value of the contract over its full committed term.</div>
+<div class="formula">TCV = total committed contract charges</div>
+<div class="rows"><div class="row"><div class="label">Time horizon</div><div>Full contract term</div></div><div class="row"><div class="label">Best for</div><div>Approvals, total spend exposure and understanding the full commitment</div></div><div class="row"><div class="label">Shows</div><div>Total nominal contract value</div></div><div class="row"><div class="label">Does not show</div><div>Annualised value or the time value of money</div></div></div>
+<div class="example">Example: a 3-year contract worth £300,000 → TCV = £300,000.</div>
+</div></article>
 </div>
 </div>
+<div class="panel" id="discussion">
+<div class="discuss">
+<div class="reasons">
+<div class="reason"><div class="num">1</div><div><h3>Comparable deal size</h3><p>ACV places one-, three- and five-year contracts on the same annual basis.</p></div></div>
+<div class="reason"><div class="num">2</div><div><h3>Recurring and consumption economics</h3><p>ACV became prominent through recurring subscription economics and is increasingly used to normalise consumption-based contracts.</p></div></div>
+<div class="reason"><div class="num">3</div><div><h3>Annual revenue management</h3><p>ACV supports recurring-revenue reporting, annual sales targets, renewals and account planning.</p></div></div>
+<div class="reason"><div class="num">4</div><div><h3>Less distortion from term length</h3><p>TCV can appear larger simply because the contract lasts longer; ACV isolates the annual average.</p></div></div>
+<div class="reason"><div class="num">5</div><div><h3>Growth and account quality</h3><p>Higher ACV can signal stronger pricing, expansion or larger annual customer value.</p></div></div>
+<div class="reason"><div class="num">6</div><div><h3>Buyer risk</h3><p>ACV can make a large multi-year exposure look smaller, so procurement must still distinguish committed TCV from forecast TCV.</p></div></div>
+</div>
+<aside class="questionBox"><div class="questionHead">Why ACV follows the SaaS model</div><div class="questionBody">
+<div class="prompt"><strong>ACV became prominent through recurring subscription economics and is increasingly used to normalise consumption-based contracts.</strong></div>
+<div class="prompt"><strong>Committed TCV</strong> is the fixed multi-year obligation already accepted by the buyer.</div>
+<div class="prompt"><strong>Forecast TCV</strong> estimates total spend where users, transactions, storage, compute or API consumption can vary.</div>
+<div class="prompt"><strong>ACV</strong> provides the annualised view used for comparison, revenue planning, renewals and account management.</div>
+<div class="takeaway">Procurement should review ACV together with committed or forecast TCV. NPV remains a separate calculation based on payment timing.</div>
+</div></aside>
 </div>
 </div>
-<div class="launch">
-<div class="launchText">Open Case #6 when instructed by the trainer.</div>
-<a class="badge" href="https://www.goodspending.com/techology-it-procurement-foundations-cips-skills/case-studies" rel="noopener" target="_blank">Open Case</a>
-</div>
-</section>
-</main>
+<div class="footer"><span>Source: Stripe, “Annual contract value vs. total contract value” (updated 15 January 2026)</span><span>©</span></div>
+</section></main>
+<script>
+const tabs=document.querySelectorAll('.tab');
+tabs.forEach(btn=>btn.addEventListener('click',()=>{
+  tabs.forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(btn.dataset.panel).classList.add('active');
+}));
+</script>
 <script id="itpf-deck-bridge">
 (function(){
   function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
@@ -119,5 +125,4 @@ h1{margin:0;color:var(--navy);font-size:clamp(40px,3.85vw,72px);line-height:1.00
   },true);
 })();
 </script>
-</body>
-</html>
+</body></html>

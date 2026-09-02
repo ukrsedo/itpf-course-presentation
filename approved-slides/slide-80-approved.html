@@ -3,20 +3,71 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Slide 80 — Formal and Relational Contracts</title>
+<title>Slide 81 — Vendor and Client Expectations Under a Relational Contract</title>
 <style>
+:root{--navy:#003b70;--cyan:#12bddf;--orange:#ff5a00;--ink:#173f66;--line:#c7d9ea;--soft:#f7fbff;--pale:#eef8fc;--blueSoft:#eaf4fb;--green:#16885a}
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--navy)}
 .stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
 .slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
-.slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;display:block}
+.corner{position:absolute;right:0;top:0;width:25%;height:42%;background:var(--cyan);clip-path:polygon(100% 0,100% 100%,0 0);opacity:.95}
+.logo{position:absolute;right:4.1%;top:3.8%;width:9.6%;height:auto;z-index:5}
+.header{position:absolute;left:5.2%;top:4.4%;right:22%;z-index:3}
+.session{font-size:clamp(15px,1vw,20px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem;font-weight:850}
+.dot{width:12px;height:12px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
+h1{margin:0;color:var(--navy);font-size:clamp(31px,2.36vw,46px);line-height:1.02;letter-spacing:-.03em;font-weight:950}
+.content{position:absolute;left:5.2%;right:5.2%;top:18.7%;bottom:7.7%;display:grid;grid-template-rows:1fr auto;gap:.72rem}
+.tableWrap{border:3px solid var(--line);border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 8px 24px rgba(0,35,70,.07)}
+table{width:100%;height:100%;border-collapse:collapse;table-layout:fixed}
+thead th{padding:.72rem 1rem;font-size:clamp(19px,1.25vw,25px);line-height:1.06;font-weight:950;color:#fff;text-align:left}
+thead th:first-child{background:var(--navy)}
+thead th:last-child{background:#0b6da6}
+thead th+th{border-left:3px solid #fff}
+tbody tr:nth-child(odd){background:#fff}
+tbody tr:nth-child(even){background:var(--soft)}
+tbody td{padding:.43rem 1rem;font-size:clamp(16px,1.05vw,20px);line-height:1.13;color:var(--ink);font-weight:800;vertical-align:middle;border-top:2px solid #dbe8f2}
+tbody td+td{border-left:3px solid var(--line)}
+.pair{display:flex;align-items:center;gap:.58rem}
+.icon{width:1.42rem;height:1.42rem;border-radius:50%;display:grid;place-items:center;background:var(--blueSoft);color:var(--navy);font-size:clamp(12px,.8vw,16px);font-weight:950;flex:none}
+.empty{color:#8da2b6;font-style:italic;font-weight:700}
+.lesson{border-left:8px solid var(--orange);background:#fff7f0;border-radius:14px;padding:.66rem .86rem;font-size:clamp(16px,1.04vw,20px);line-height:1.19;color:var(--ink);font-weight:840}
+.lesson strong{color:var(--navy)}
+.footer{position:absolute;left:5.2%;right:5.2%;bottom:1.4%;font-size:clamp(9px,.68vw,13px);font-weight:700;color:#7892aa}
 </style>
 </head>
 <body>
 <main class="stage">
-  <section class="slide" aria-label="Formal and Relational Contracts">
-    <img src="../assets/source-slide-23.png" alt="Formal and Relational Contracts">
-  </section>
+<section class="slide" aria-label="Vendor and client expectations under a relational contract">
+<div class="corner"></div>
+<img alt="CIPS" class="logo" src="../assets/cips-logo.png">
+<div class="header">
+  <div class="session"><span class="dot"></span><span>Session 5 Source-to-Contract</span></div>
+  <h1>Vendor and Client Expectations Under a Relational Contract</h1>
+</div>
+<div class="content">
+  <div class="tableWrap">
+    <table aria-label="Comparison of vendor and client expectations">
+      <thead>
+        <tr><th>Vendor expectations</th><th>Client expectations</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><div class="pair"><span class="icon">1</span><span>Project specification</span></div></td><td><div class="pair"><span class="icon">1</span><span>Project scoping</span></div></td></tr>
+        <tr><td><div class="pair"><span class="icon">2</span><span>Fair compensation</span></div></td><td><div class="pair"><span class="icon">2</span><span>Role clarity</span></div></td></tr>
+        <tr><td><div class="pair"><span class="icon">3</span><span>Accurate payment</span></div></td><td><div class="pair"><span class="icon">3</span><span>Price transparency</span></div></td></tr>
+        <tr><td><div class="pair"><span class="icon">4</span><span>Client staffing and turnover</span></div></td><td><div class="pair"><span class="icon">4</span><span>Vendor staffing and turnover</span></div></td></tr>
+        <tr><td><div class="pair"><span class="icon">5</span><span>Knowledge transfer</span></div></td><td><div class="pair"><span class="icon">5</span><span>Knowledge transfer</span></div></td></tr>
+        <tr><td><div class="pair"><span class="icon">6</span><span>Client leadership</span></div></td><td><div class="pair"><span class="icon">6</span><span>Vendor initiative</span></div></td></tr>
+        <tr><td><div class="pair"><span class="icon">7</span><span>Relationship building</span></div></td><td><div class="pair"><span class="icon">7</span><span>Relationship building</span></div></td></tr>
+        <tr><td><div class="pair"><span class="icon">8</span><span>Client responsiveness</span></div></td><td><div class="pair"><span class="icon">8</span><span>Vendor responsiveness</span></div></td></tr>
+        <tr><td><div class="pair"><span class="icon">9</span><span>Project monitoring</span></div></td><td><div class="pair"><span class="icon">9</span><span>Project feedback</span></div></td></tr>
+        <tr><td><div class="pair"><span class="icon">10</span><span class="empty">No direct equivalent</span></div></td><td><div class="pair"><span class="icon">10</span><span>Soft deliverables</span></div></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="lesson"><strong>Core lesson:</strong> relational contracts depend on operational and behavioural expectations that cannot be fully captured in formal clauses alone.</div>
+</div>
+<div class="footer">© CIPS. Relational contracting combines formal terms with trust, reciprocity, communication and adaptive governance.</div>
+</section>
 </main>
 <script id="itpf-deck-bridge">
 (function(){
