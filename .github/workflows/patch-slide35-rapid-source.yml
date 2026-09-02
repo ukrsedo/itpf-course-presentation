@@ -1,0 +1,38 @@
+name: Patch slide 35 rapid elasticity source
+on:
+  push:
+    paths:
+      - '.github/workflows/patch-slide35-rapid-source.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update Rapid Elasticity source only
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('approved-slides/slide-35-approved.html')
+          s = p.read_text()
+          old = '<div class="source">Source: <a href="https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-145.pdf" target="_blank" rel="noopener">NIST SP 800-145 — The NIST Definition of Cloud Computing</a></div>'
+          new = '<div class="source">Source: <a href="https://csrc.nist.gov/glossary/term/rapid_elasticity" target="_blank" rel="noopener">NIST CSRC — Rapid Elasticity</a></div>'
+          if s.count(old) != 2:
+              raise SystemExit(f'Expected 2 existing NIST SP source blocks, found {s.count(old)}')
+          first = s.find(old)
+          second = s.find(old, first + len(old))
+          s = s[:second] + new + s[second + len(old):]
+          p.write_text(s)
+          PY
+      - name: Validate
+        run: |
+          test "$(grep -o 'https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-145.pdf' approved-slides/slide-35-approved.html | wc -l)" -eq 1
+          test "$(grep -o 'https://csrc.nist.gov/glossary/term/rapid_elasticity' approved-slides/slide-35-approved.html | wc -l)" -eq 1
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add approved-slides/slide-35-approved.html
+          git commit -m 'Use dedicated NIST rapid elasticity source on slide 35'
+          git push
