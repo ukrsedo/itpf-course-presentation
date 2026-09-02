@@ -1,0 +1,127 @@
+name: Renumber slides 38-86
+on:
+  push:
+    paths:
+      - '.github/workflows/renumber-slides-38-86.yml'
+permissions:
+  contents: write
+jobs:
+  renumber:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Renumber physical slide files and indexes
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re, json
+
+          slides_dir = Path('approved-slides')
+
+          # Current deck has 1-37, then 39-87. Close the gap by shifting 39-87 down by one.
+          for old in range(39, 88):
+              new = old - 1
+              src = slides_dir / f'slide-{old:02d}-approved.html'
+              dst = slides_dir / f'slide-{new:02d}-approved.html'
+              if not src.exists():
+                  raise SystemExit(f'Missing source slide: {src}')
+              if dst.exists():
+                  raise SystemExit(f'Target already exists before move: {dst}')
+              src.rename(dst)
+
+              # Update explicit visible slide-number badges where present.
+              s = dst.read_text()
+              s = re.sub(
+                  rf'(<div\s+class=["\']slidenum["\']>\s*){old}(\s*</div>)',
+                  rf'\g<1>{new}\g<2>', s
+              )
+              dst.write_text(s)
+
+          # Renumber main presentation index objects and file paths.
+          p = Path('index.html')
+          s = p.read_text()
+          m = re.search(r'const slides=(\[.*?\]);', s, re.S)
+          if not m:
+              raise SystemExit('Could not locate slides array in index.html')
+          data = json.loads(m.group(1))
+          if len(data) != 86:
+              raise SystemExit(f'Expected 86 slide entries, found {len(data)}')
+          for item in data:
+              n = int(item['n'])
+              if n >= 39:
+                  item['n'] = n - 1
+                  item['src'] = re.sub(
+                      rf'slide-{n:02d}-approved\.html$',
+                      f'slide-{n-1:02d}-approved.html',
+                      item['src']
+                  )
+          nums = [int(x['n']) for x in data]
+          if nums != list(range(1, 87)):
+              raise SystemExit(f'Index numbers are not contiguous 1-86: {nums[:45]} ...')
+          replacement = 'const slides=' + json.dumps(data, ensure_ascii=False, separators=(',', ':')) + ';'
+          s = s[:m.start()] + replacement + s[m.end():]
+          p.write_text(s)
+
+          # Renumber static slide index cards and hrefs.
+          p = Path('slide-index.html')
+          s = p.read_text()
+          anchor_re = re.compile(
+              r'(<a class="slide" href="approved-slides/slide-)(\d{2})(-approved\.html"><span class="num">)(\d{2})(</span>)'
+          )
+          seen = []
+          def repl(m):
+              file_n = int(m.group(2))
+              label_n = int(m.group(4))
+              if file_n != label_n:
+                  raise SystemExit(f'Static index mismatch before renumber: {file_n} vs {label_n}')
+              n = file_n - 1 if file_n >= 39 else file_n
+              seen.append(n)
+              return f'{m.group(1)}{n:02d}{m.group(3)}{n:02d}{m.group(5)}'
+          s = anchor_re.sub(repl, s)
+          if seen != list(range(1, 87)):
+              raise SystemExit(f'Static index numbers are not contiguous 1-86: {seen[:45]} ...')
+          p.write_text(s)
+          PY
+      - name: Validate contiguous 86-slide deck
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re, json
+
+          files = sorted(Path('approved-slides').glob('slide-*-approved.html'))
+          nums = sorted(int(re.search(r'slide-(\d+)-approved', f.name).group(1)) for f in files)
+          if nums != list(range(1,87)):
+              raise SystemExit(f'Physical slide files not contiguous 1-86: {nums}')
+
+          s = Path('index.html').read_text()
+          data = json.loads(re.search(r'const slides=(\[.*?\]);', s, re.S).group(1))
+          if [x['n'] for x in data] != list(range(1,87)):
+              raise SystemExit('Main index numbers are not contiguous 1-86')
+          expected_paths = [f'approved-slides/slide-{n:02d}-approved.html' for n in range(1,87)]
+          if [x['src'] for x in data] != expected_paths:
+              raise SystemExit('Main index file paths do not match 1-86 physical files')
+
+          # Key sequence after closing the old 38 gap.
+          expected = {
+              38: 'Cloud Deployment Models',
+              39: 'Cloud Services',
+              40: 'Case #2',
+              41: 'Technology Procurement Framework — SaaS',
+              42: 'Buy or Build?',
+              43: 'Waterfall, Incremental and Agile Delivery Models',
+              44: 'SaaS License Metrics',
+              57: 'AI-Enabled Sourcing Risk',
+              86: 'Quiz #2',
+          }
+          by_n = {x['n']: x['title'] for x in data}
+          for n,title in expected.items():
+              if by_n.get(n) != title:
+                  raise SystemExit(f'Slide {n}: expected {title!r}, found {by_n.get(n)!r}')
+          PY
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Renumber slide files contiguously from 38 to 86'
+          git push
