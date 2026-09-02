@@ -1,0 +1,43 @@
+name: Make slide 35 source clickable
+on:
+  push:
+    paths:
+      - '.github/workflows/make-slide35-source-clickable.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch slide 35
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('approved-slides/slide-35-approved.html')
+          s=p.read_text()
+          url='https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-145.pdf'
+          old=f'<div class="source">Source: {url}</div>'
+          new=f'<div class="source">Source: <a href="{url}" target="_blank" rel="noopener">NIST SP 800-145 — The NIST Definition of Cloud Computing</a></div>'
+          count=s.count(old)
+          if count != 2:
+              raise SystemExit(f'Expected 2 source lines, found {count}')
+          s=s.replace(old,new)
+          css='.source{margin-top:auto;border-top:2px solid var(--line);padding:.42rem .65rem;font-size:clamp(12px,.82vw,16px);line-height:1.08;color:#3d6381;font-weight:800;word-break:break-word}'
+          css_new=css+'.source a{color:#168cff;text-decoration:underline;text-underline-offset:2px}'
+          if css not in s:
+              raise SystemExit('Source CSS not found')
+          s=s.replace(css,css_new,1)
+          p.write_text(s)
+          PY
+      - name: Validate
+        run: |
+          test "$(grep -o 'href="https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-145.pdf"' approved-slides/slide-35-approved.html | wc -l)" -eq 2
+          grep -F '.source a{color:#168cff' approved-slides/slide-35-approved.html
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add approved-slides/slide-35-approved.html
+          git commit -m 'Make slide 35 NIST sources clickable'
+          git push
