@@ -109,6 +109,19 @@ const assistantTitle=document.getElementById('assistantTitle');
 const assistantBody=document.getElementById('assistantBody');
 const ASSISTANT_ENDPOINT='https://itpf-course-assistant.ukrsedo-e2e.workers.dev/explain-slide';
 const explanationCache=new Map();
+const explanationOverrides=new Map([
+  [10,`This slide separates different causes of Microsoft software cost growth using a common pre-July Microsoft 365 E3 baseline of $864,000: 2,000 users × $36 × 12 months.
+
+The first tab shows the pricing bridge. Microsoft increased the E3 list price from $36 to $39 per user per month effective 1 July 2026. That adds $72,000 annually, or 8.3% price and packaging inflation. The additional AI, automation, analytics and consumption requirements add $217,800, or 25.2% scope-expansion inflation. Together they increase the annual specification to $1,153,800. The total increase is $289,800, or 33.5% overall software inflation against the same $864,000 baseline.
+
+The Enterprise Agreement pricing change is a separate exposure. From 1 November 2025, Microsoft standardised affected online-service pricing across EA and MPSA Levels A to D. A customer that previously received an automatic volume-level discount may therefore face both loss of that discount and the 1 July 2026 list-price increase. This example does not include the lost EA discount because it uses the old $36 list price rather than a customer's former net EA price. Procurement should calculate that effect separately from the actual contracted baseline.
+
+The second tab sets out the management response: control demand, allocate licences by role, use included entitlements before buying add-ons, monitor adoption and impose consumption limits.
+
+The optional scenario keeps the post-July core licence cost at $936,000 but redistributes users across Business Premium, E3, E5 and E7. E7 includes Microsoft 365 Copilot, while E5 and E7 include Power BI Pro. Removing 50 separate Copilot licences saves $18,000 and removing 20 separate Power BI Pro licences saves $2,400. Confirmed annual avoidance is therefore $20,400. This reduces the full cost to $1,133,400 and overall inflation from 33.5% to 31.2%.
+
+Power Automate creates a conditional opportunity. If the Microsoft 365 rights included for all 150 E5 and E7 users meet their requirements, removing 150 Power Automate Premium licences saves another $27,000: 150 × $15 × 12. Total potential avoidance becomes $47,400, annual cost falls to $1,106,400 and overall inflation falls to 28.1%. Validate entitlement limits, role eligibility, actual usage and contracted net prices before treating these savings as committed.`]
+]);
 let assistantRequestController=null;
 let current=0;
 slides.forEach((s,i)=>{const o=document.createElement('option');o.value=i;o.textContent=String(s.n).padStart(2,'0')+' — '+s.title;picker.appendChild(o)});
@@ -140,6 +153,11 @@ function showAssistantError(message){
 async function explainCurrentSlide(){
   const slide=slides[current];
   setAssistantOpen(true);
+  if(explanationOverrides.has(slide.n)){
+    assistantTitle.textContent='Slide '+slide.n+' — '+slide.title.replace(/^ITPF\s*[—-]\s*Slide\s*\d+\s*[—-]?\s*/i,'').replace(/^Slide\s*\d+\s*[—-]?\s*/i,'');
+    showAssistantExplanation(explanationOverrides.get(slide.n));
+    return;
+  }
   if(explanationCache.has(slide.n)){
     assistantTitle.textContent='Slide '+slide.n+' — '+slide.title.replace(/^ITPF\s*[—-]\s*Slide\s*\d+\s*[—-]?\s*/i,'').replace(/^Slide\s*\d+\s*[—-]?\s*/i,'');
     showAssistantExplanation(explanationCache.get(slide.n));
