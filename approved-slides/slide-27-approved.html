@@ -105,46 +105,31 @@ h1{margin:0;color:var(--navy);font-size:clamp(31px,2.7vw,52px);line-height:1.03;
 <div class="centerWrap"><div class="centerCard">
 <div class="centerTitle">ITIL service lifecycle</div>
 <div class="svgWrap">
-<svg aria-label="ITIL service lifecycle diagram" height="100%" viewbox="0 0 760 560" width="100%">
-<defs>
-<marker id="loopArrow" markerheight="18" markerunits="userSpaceOnUse" markerwidth="18" orient="auto" refx="14" refy="9">
-<path d="M0,0 L18,9 L0,18 z" fill="#7e93a4"></path>
-</marker>
-<filter height="140%" id="shadow" width="140%" x="-20%" y="-20%">
-<fedropshadow dx="0" dy="3" flood-color="#003b70" flood-opacity=".10" stddeviation="4"></fedropshadow>
-</filter>
-</defs>
-<!-- Clear outer lifecycle loop -->
-<path d="M218,122 C292,54 468,54 542,122" fill="none" marker-end="url(#loopArrow)" stroke="#7e93a4" stroke-linecap="round" stroke-width="12"></path>
-<path d="M608,194 C652,257 652,323 608,386" fill="none" marker-end="url(#loopArrow)" stroke="#7e93a4" stroke-linecap="round" stroke-width="12"></path>
-<path d="M542,438 C468,506 292,506 218,438" fill="none" marker-end="url(#loopArrow)" stroke="#7e93a4" stroke-linecap="round" stroke-width="12"></path>
-<path d="M152,386 C108,323 108,257 152,194" fill="none" marker-end="url(#loopArrow)" stroke="#7e93a4" stroke-linecap="round" stroke-width="12"></path>
-<g filter="url(#shadow)">
-<rect fill="#12bddf" height="88" rx="22" ry="22" stroke="#003b70" stroke-width="4" width="304" x="228" y="98"></rect>
-<text fill="#ffffff" font-size="30" font-weight="900" text-anchor="middle" x="380" y="133">Service Design</text>
-<text fill="#ffffff" font-size="17" font-weight="800" text-anchor="middle" x="380" y="160">Translate requirements into</text>
-<text fill="#ffffff" font-size="17" font-weight="800" text-anchor="middle" x="380" y="181">service solutions</text>
-<rect fill="#6b5fb5" height="132" rx="22" ry="22" stroke="#003b70" stroke-width="4" width="140" x="542" y="212"></rect>
-<text fill="#ffffff" font-size="24" font-weight="900" text-anchor="middle" x="612" y="246">Service</text>
-<text fill="#ffffff" font-size="24" font-weight="900" text-anchor="middle" x="612" y="273">Transition</text>
-<text fill="#ffffff" font-size="15" font-weight="800" text-anchor="middle" x="612" y="300">Build, test and</text>
-<text fill="#ffffff" font-size="15" font-weight="800" text-anchor="middle" x="612" y="320">deploy changes</text>
-<rect fill="#3aa25a" height="88" rx="22" ry="22" stroke="#003b70" stroke-width="4" width="304" x="228" y="374"></rect>
-<text fill="#ffffff" font-size="29" font-weight="900" text-anchor="middle" x="380" y="409">Service Operation</text>
-<text fill="#ffffff" font-size="17" font-weight="800" text-anchor="middle" x="380" y="436">Run and support</text>
-<text fill="#ffffff" font-size="17" font-weight="800" text-anchor="middle" x="380" y="457">live services</text>
-<rect fill="#003b70" height="132" rx="22" ry="22" stroke="#003b70" stroke-width="4" width="140" x="78" y="212"></rect>
-<text fill="#ffffff" font-size="21" font-weight="900" text-anchor="middle" x="148" y="244">Continual</text>
-<text fill="#ffffff" font-size="21" font-weight="900" text-anchor="middle" x="148" y="268">Service</text>
-<text fill="#ffffff" font-size="21" font-weight="900" text-anchor="middle" x="148" y="292">Improvement</text>
-<text fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle" x="148" y="316">Measure, learn</text>
-<text fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle" x="148" y="335">and optimize</text>
-<circle cx="380" cy="278" fill="#ff5a00" r="94" stroke="#003b70" stroke-width="5"></circle>
-<text fill="#ffffff" font-size="29" font-weight="900" text-anchor="middle" x="380" y="252">Service</text>
-<text fill="#ffffff" font-size="29" font-weight="900" text-anchor="middle" x="380" y="284">Strategy</text>
-<text fill="#ffffff" font-size="15" font-weight="800" text-anchor="middle" x="380" y="311">Define value, demand</text>
-<text fill="#ffffff" font-size="15" font-weight="800" text-anchor="middle" x="380" y="331">and sourcing direction</text>
-</g>
+<svg aria-label="ITIL service lifecycle diagram" height="100%" viewBox="0 0 760 560" width="100%">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#003b70" flood-opacity=".12"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <circle cx="380" cy="285" r="238" fill="#eef6fb" stroke="#003b70" stroke-width="7"/>
+    <circle cx="380" cy="285" r="190" fill="#ffffff" stroke="#12bddf" stroke-width="54"/>
+    <circle cx="380" cy="285" r="132" fill="#ffffff" stroke="#6b5fb5" stroke-width="50"/>
+    <circle cx="380" cy="285" r="79" fill="#3aa25a" stroke="#003b70" stroke-width="4"/>
+    <circle cx="380" cy="285" r="53" fill="#ff5a00" stroke="#003b70" stroke-width="4"/>
+  </g>
+  <rect x="238" y="35" width="284" height="42" rx="21" fill="#003b70"/>
+  <text x="380" y="63" fill="#ffffff" font-size="22" font-weight="900" text-anchor="middle">Continual Service Improvement</text>
+  <rect x="289" y="91" width="182" height="38" rx="19" fill="#12bddf"/>
+  <text x="380" y="117" fill="#003b70" font-size="22" font-weight="900" text-anchor="middle">Service Design</text>
+  <rect x="282" y="158" width="196" height="38" rx="19" fill="#6b5fb5"/>
+  <text x="380" y="184" fill="#ffffff" font-size="21" font-weight="900" text-anchor="middle">Service Transition</text>
+  <text x="380" y="225" fill="#ffffff" font-size="19" font-weight="900" text-anchor="middle">Service Operation</text>
+  <text x="380" y="279" fill="#ffffff" font-size="20" font-weight="900" text-anchor="middle">Service</text>
+  <text x="380" y="304" fill="#ffffff" font-size="20" font-weight="900" text-anchor="middle">Strategy</text>
+  <text x="380" y="416" fill="#003b70" font-size="17" font-weight="800" text-anchor="middle">Each lifecycle stage is governed and improved as part of one service</text>
+  <path d="M184 426 C124 372 111 284 145 212" fill="none" stroke="#003b70" stroke-width="8" stroke-linecap="round"/>
+  <path d="M576 426 C636 372 649 284 615 212" fill="none" stroke="#003b70" stroke-width="8" stroke-linecap="round"/>
 </svg>
 </div>
 <div class="caption">Business requirements feed Service Strategy, which then sets policies, constraints and service level expectations before Service Design begins.</div>
