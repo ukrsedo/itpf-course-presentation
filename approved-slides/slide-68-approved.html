@@ -31,7 +31,10 @@ h1{margin:0;color:var(--navy);font-size:clamp(54px,5.3vw,100px);line-height:.96;
 .step h2{margin:0 2.6rem .35rem 0;font-size:clamp(19px,1.38vw,28px);line-height:1.04;font-weight:900;color:var(--navy)}
 .step p{margin:0;font-size:clamp(14px,1.02vw,20px);line-height:1.17;font-weight:760;color:var(--ink)}
 .footer{position:absolute;left:6%;right:6%;bottom:2.3%;border-top:2px solid var(--line);padding-top:.5rem;font-size:clamp(15px,1.05vw,21px);font-weight:900;color:var(--navy);display:flex;justify-content:space-between;align-items:center}
-.badge{background:var(--navy);color:#fff;border-radius:999px;padding:.5rem 1rem;font-size:clamp(14px,1vw,20px);font-weight:900}
+.left p{font-size:clamp(22px,1.6vw,32px)}
+.activity-note{margin-top:1rem;font-size:clamp(16px,1.1vw,21px);line-height:1.18;font-weight:850;color:var(--orange)}
+.badge{background:var(--navy);color:#fff;border-radius:999px;padding:.5rem 1rem;font-size:clamp(14px,1vw,20px);font-weight:900;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:42px}
+.badge:hover,.badge:focus-visible{background:#005899;outline:3px solid var(--orange);outline-offset:2px}
 </style>
 </head>
 <body>
@@ -48,6 +51,7 @@ h1{margin:0;color:var(--navy);font-size:clamp(54px,5.3vw,100px);line-height:.96;
 <div class="left">
 <div class="kicker">Section 5</div>
 <p>How procurement converts complex IT needs into a sourcing strategy, negotiation position and executable contract.</p>
+<div class="activity-note">First activity: check whether the demand is ready to source.</div>
 </div>
 <div aria-label="Session 5 topics" class="flow">
 <div class="step" data-n="1"><h2>Understand demand</h2><p>Business need, IT context, asset baseline and commercial exposure.</p></div>
@@ -58,7 +62,7 @@ h1{margin:0;color:var(--navy);font-size:clamp(54px,5.3vw,100px);line-height:.96;
 <div class="step" data-n="6"><h2>Protect execution</h2><p>Service levels, data, continuity, change, compliance and exit rights.</p></div>
 </div>
 </section>
-<div class="footer"><span>Technology / IT Procurement Foundations</span><span class="badge">Next: ITAM as procurement intelligence</span></div>
+<div class="footer"><span>Technology / IT Procurement Foundations</span><a class="badge" href="https://www.goodspending.com/my-courses/sourcing-readiness-checklist" target="_blank" rel="noopener noreferrer" aria-label="Open the sourcing readiness checklist in a new tab">Open readiness checklist</a></div>
 </section>
 </main>
 <script id="itpf-deck-bridge">
