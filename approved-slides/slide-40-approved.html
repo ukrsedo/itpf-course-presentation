@@ -1,82 +1,12 @@
-<!doctype html>
-<!DOCTYPE html>
-
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>ITPF — Slide 40 — Case 3</title>
-<style>
-:root{
-  --navy:#002b52;
-  --blue:#0078e8;
-  --light:#eef6ff;
-  --border:#b9d7f2;
-  --magenta:#b00067;
-  --ink:#17324d;
-}
-*{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;overflow:hidden}
-.stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
-.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:white;overflow:hidden;box-shadow:0 18px 60px rgba(0,25,55,.18)}
-.logo{position:absolute;right:4%;top:4.2%;width:10.4%;height:auto}
-.header{position:absolute;left:6.2%;top:7%;width:70%}
-.kicker{color:var(--magenta);font-size:clamp(13px,1vw,18px);font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.8%}
-h1{margin:0;color:var(--navy);font-size:clamp(36px,4.3vw,68px);line-height:1.04;font-weight:800;letter-spacing:-.025em}
-.card{position:absolute;left:6.2%;top:32%;width:58%;min-height:36%;background:var(--light);border:2px solid var(--border);border-radius:22px;padding:3.1% 3.4%;box-shadow:0 12px 32px rgba(0,43,82,.10)}
-.card h2{margin:0 0 2.2%;color:var(--navy);font-size:clamp(24px,2.2vw,36px);line-height:1.1}
-.card p{margin:0;color:var(--ink);font-size:clamp(20px,1.55vw,29px);line-height:1.35;font-weight:650}
-.actions{position:absolute;right:6.2%;top:36%;width:25%;display:flex;flex-direction:column;gap:18px}
-.btn{display:block;text-align:center;text-decoration:none;background:var(--navy);color:white;border-radius:18px;padding:22px 22px;font-size:clamp(20px,1.65vw,30px);font-weight:800;box-shadow:0 14px 30px rgba(0,43,82,.24);transition:transform .15s, box-shadow .15s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 18px 38px rgba(0,43,82,.3)}
-.secondary{background:white;color:var(--navy);border:2px solid var(--border);box-shadow:none;font-size:clamp(15px,1.05vw,20px);padding:15px 18px}
-.note{position:absolute;left:6.2%;bottom:8%;width:86%;color:#47647e;font-size:clamp(15px,1.05vw,20px);line-height:1.35}
-.rule{position:absolute;left:6.2%;right:6.2%;bottom:5.2%;height:3px;background:linear-gradient(90deg,var(--blue),var(--magenta));border-radius:3px}
-@media (max-width:800px){.card{width:66%;top:31%}.actions{right:5%;width:23%}.btn{padding:16px 12px}}
-</style>
-</head>
-<body>
-<div class="stage">
-<section aria-label="Case 3 transition slide" class="slide">
-<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
-<div class="header">
-<div class="kicker">Session 1 · Case assessment</div>
-<h1>Case 3 — Dropbox Strategic Shift from AWS</h1>
-</div>
-<div class="card">
-<h2>Open the case assessment portal</h2>
-<p>Review Case 3, submit your answer in the assessment portal, then return to the course presentation when completed.</p>
-</div>
-<div class="actions">
-<a class="btn" href="https://www.goodspending.com/techology-it-procurement-foundations-cips-skills/case-studies" rel="noopener" target="_blank">Open Case 3</a>
-<a class="btn secondary" href="javascript:history.back()">Return to course</a>
-</div>
-<div class="note">The case portal remains the single source of truth. This slide only routes students to the assessment activity.</div>
-<div class="rule"></div>
-</section>
-</div>
-<script id="itpf-deck-bridge">
-(function(){
-  function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
-  window.addEventListener('keydown',function(e){
-    var t=e.target, tag=(t&&t.tagName||'').toLowerCase();
-    if(tag==='input'||tag==='textarea'||tag==='select'||(t&&t.isContentEditable)) return;
-    var action=null;
-    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') action='next';
-    else if(e.key==='ArrowLeft'||e.key==='PageUp') action='prev';
-    else if(e.key==='Home') action='first';
-    else if(e.key==='End') action='last';
-    if(action){ e.preventDefault(); e.stopPropagation(); send(action); }
-  },true);
-  document.addEventListener('click',function(e){
-    var b=e.target&&e.target.closest?e.target.closest('button'):null;
-    if(!b) return;
-    var label=(b.textContent||'').trim().toLowerCase();
-    if(label==='full screen'||label==='fullscreen'||label==='⛶'){
-      e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
-    }
-  },true);
-})();
-</script>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Slide 40 — Technology Procurement Framework — SaaS</title><style>
+:root{--navy:#003b70;--cyan:#12bddf;--orange:#ff5a00;--ink:#173f66;--muted:#5f7892;--line:#c7d9ea;--soft:#f7fbff;--soft2:#eef7fd;--warn:#fff7f1}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
+.stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto}.header{position:absolute;left:6%;top:5.2%;right:17%}.session{font-size:clamp(14px,1.0vw,21px);display:flex;align-items:center;gap:.55rem;color:var(--navy);margin-bottom:.28rem}.dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;flex:none}h1{margin:0;color:var(--navy);font-size:clamp(34px,2.75vw,54px);line-height:1.03;letter-spacing:-.02em;font-weight:900}.subtitle{font-size:clamp(17px,1.18vw,23px);margin-top:.35rem;color:#2f5f88;font-weight:700}
+.framework{position:absolute;left:5.7%;right:5.7%;top:23.0%;bottom:9.3%}.stageband{display:grid;grid-template-columns:2fr 1fr;gap:.7rem;height:7.5%;margin-bottom:.7rem}.demandBand,.commercialBand{display:flex;align-items:center;justify-content:center;font-weight:900;letter-spacing:.045em;font-size:clamp(16px,1.08vw,22px);text-transform:uppercase;border-radius:9px}.demandBand{background:var(--navy);color:#fff}.commercialBand{background:var(--orange);color:#fff}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;height:83%}.col{border:3px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;display:flex;flex-direction:column;min-width:0}.col:nth-child(1),.col:nth-child(2){border-color:#91b3ce}.col:nth-child(3){border-color:#f1b18d}.colHead{padding:.52rem .7rem;color:#fff;font-weight:900;font-size:clamp(21px,1.52vw,30px);line-height:1.05}.col:nth-child(1) .colHead{background:var(--cyan)}.col:nth-child(2) .colHead{background:var(--navy)}.col:nth-child(3) .colHead{background:var(--orange)}.q{padding:.44rem .72rem .38rem;font-size:clamp(16px,1.08vw,21px);line-height:1.10;font-weight:800;color:var(--navy);background:var(--soft2);min-height:14%;display:flex;align-items:center}.col:nth-child(3) .q{background:var(--warn)}
+ul{margin:.48rem .72rem .25rem 1.35rem;padding:0;flex:1}li{font-size:clamp(15px,1.02vw,19.5px);line-height:1.13;margin:0 0 .38rem 0;color:var(--ink)}li::marker{color:var(--cyan)}.col:nth-child(3) li::marker{color:var(--orange)}
+.toolkit{margin:.12rem .68rem .52rem;padding:.42rem .54rem;border-top:2px solid var(--line);font-size:clamp(13.5px,.90vw,17px);line-height:1.10;font-weight:800;color:#2f5f88;min-height:18%}.generic .toolkit{background:var(--soft);border:1px solid var(--line);border-radius:7px;margin:.12rem .68rem .62rem;display:flex;align-items:center}.generic .col:nth-child(3) .toolkit{background:var(--warn);border-color:#f1c6ae}
+.flow{position:absolute;left:5.7%;right:5.7%;bottom:4.1%;height:5.2%;display:flex;align-items:center;justify-content:center;font-size:clamp(16px,1.10vw,22px);font-weight:900;color:var(--navy)}.flow b{color:var(--orange)}
+.arrow{display:inline-block;margin:0 .65rem;color:var(--orange);font-size:1.35em;line-height:1}.slidenum{position:absolute;right:4.6%;bottom:3.2%;font-size:clamp(13px,.8vw,17px);font-weight:800;color:#8ba0b3}
+</style></head><body><main class="stage"><section class="slide "><img class="logo" src="../assets/cips-logo.png" alt="CIPS"><div class="header"><div class="session"><span class="dot"></span><span>Session 3 Cloud Computing</span></div><h1>Technology Procurement Framework — SaaS</h1><div class="subtitle">SaaS cost control starts with licence demand—not with renewal negotiation.</div></div><div class="framework"><div class="stageband"><div class="demandBand">Demand Management</div><div class="commercialBand">Commercial Negotiation</div></div><div class="cols"><section class="col"><div class="colHead">Cost Management</div><div class="q">Know what is licensed and actually used</div><ul><li>Inventory applications, licences, tiers, add-ons and contract owners</li><li>Compare assigned, active and genuinely required users</li><li>Track spend per application, business unit and user</li><li>Monitor renewal dates, utilisation and tier distribution</li></ul><div class="toolkit">Toolkit: licence inventory • usage analytics • renewal calendar • ownership / spend reports</div></section><section class="col"><div class="colHead">Cost Optimization</div><div class="q">Remove excess licence demand</div><ul><li>Reclaim inactive or duplicate licences</li><li>Downgrade users who do not need premium tiers</li><li>Eliminate overlapping applications and unused add-ons</li><li>Right-size renewal quantities to expected demand</li></ul><div class="toolkit">Toolkit: reclaim • downgrade • consolidate • decommission • right-size seats</div></section><section class="col"><div class="colHead">Commercial Levers</div><div class="q">Negotiate the optimized licence base</div><ul><li>Volume bands, ramp schedules and price protection</li><li>Renewal caps and protection against automatic uplifts</li><li>True-down, transfer and reallocation rights</li><li>Discount coverage for future modules; support, services, exit and data portability</li></ul><div class="toolkit">Toolkit: volume tiers • true-down • renewal caps • future modules • exit / portability</div></section></div></div><div class="flow">A discount on unused licences is still wasted money.</div><div class="slidenum">40</div></section></main></body></html>
