@@ -24,7 +24,7 @@ ul{margin:0;padding-left:1.25em}li{font-size:clamp(15px,1.08vw,18.5px);line-heig
 .rule{position:absolute;left:0;bottom:0;width:100%;height:8px;background:linear-gradient(90deg,var(--navy) 0 32%,var(--cyan) 32% 100%)}
 .controls{position:absolute;right:1.7%;bottom:1.6%;opacity:.15;transition:.2s}.slide:hover .controls{opacity:.85}button{border:1px solid #c8d3df;background:#fff;color:var(--navy);border-radius:6px;padding:8px 12px;font-weight:700;cursor:pointer}
 </style></head><body><div class="stage"><section aria-label="Course agenda" class="slide">
-<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/><div class="kicker">Introduction</div><h1>Agenda</h1>
+<img data-itpf-cips-logo alt="CIPS" class="logo" src="../assets/cips-logo.png"/><div class="kicker">Introduction</div><h1>Agenda</h1>
 <div class="agenda">
 <article class="card active s1"><div class="current">Current session</div><div class="day">Day 1 – Session 1</div><div class="topic">Setting the Scene</div><ul><li>SaaS Market Overview and Sourcing Trends</li><li>Transformation of IT</li><li>Adaptive Sourcing</li><li>Hybrid Category Strategy</li></ul></article>
 <article class="card s2"><div class="day">Day 1 – Session 2</div><div class="topic">Integrated Procurement Planning</div><ul><li>ITIL Service Lifecycle</li><li>Project management and strategic sourcing cycle</li><li>TCO of a technology service</li><li>Integrated sourcing project plan</li></ul></article>
@@ -54,6 +54,20 @@ ul{margin:0;padding-left:1.25em}li{font-size:clamp(15px,1.08vw,18.5px);line-heig
       e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
     }
   },true);
+})();
+</script>
+<style>html.itpf-cips-hidden img[data-itpf-cips-logo]{visibility:hidden!important}</style>
+<script id="itpf-cips-visibility">
+(function(){
+ function apply(visible){
+  document.documentElement.classList.toggle('itpf-cips-hidden',!visible);
+  document.querySelectorAll('img[data-itpf-cips-free]').forEach(function(img){
+   if(!img.dataset.itpfCipsOriginal)img.dataset.itpfCipsOriginal=img.getAttribute('src');
+   img.src=visible?img.dataset.itpfCipsOriginal:img.dataset.itpfCipsFree;
+  });
+ }
+ try{apply(localStorage.getItem('itpf.cipsLogo.visible')!=='false')}catch(e){}
+ window.addEventListener('message',function(e){if(e.source===window.parent&&e.data&&e.data.type==='ITPF_CIPS_VISIBILITY')apply(e.data.visible===true)});
 })();
 </script>
 </body></html>

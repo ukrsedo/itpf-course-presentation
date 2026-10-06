@@ -52,7 +52,7 @@ addEventListener('resize',fit);addEventListener('DOMContentLoaded',fit);
 </script>
 </head>
 <body><main class="stage"><section aria-label="IT Procurement Contracts" class="slide"><div class="canvas">
-<div class="header-dot"></div><div class="session">Session 5 Source-to-Contract</div><img alt="CIPS" class="logo" src="../assets/cips-logo.png"/><h1>IT Procurement Contracts</h1>
+<div class="header-dot"></div><div class="session">Session 5 Source-to-Contract</div><img data-itpf-cips-logo alt="CIPS" class="logo" src="../assets/cips-logo.png"/><h1>IT Procurement Contracts</h1>
 <section aria-label="Typical IT Contract lifecycle" class="left">
 <div class="typical">Typical IT Contract</div><div class="dash"></div>
 <div class="stage-title foundation">Foundation</div><div class="stage-title change">Change</div><div class="stage-title governance">Governance</div>
@@ -102,6 +102,20 @@ addEventListener('resize',fit);addEventListener('DOMContentLoaded',fit);
       e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
     }
   },true);
+})();
+</script>
+<style>html.itpf-cips-hidden img[data-itpf-cips-logo]{visibility:hidden!important}</style>
+<script id="itpf-cips-visibility">
+(function(){
+ function apply(visible){
+  document.documentElement.classList.toggle('itpf-cips-hidden',!visible);
+  document.querySelectorAll('img[data-itpf-cips-free]').forEach(function(img){
+   if(!img.dataset.itpfCipsOriginal)img.dataset.itpfCipsOriginal=img.getAttribute('src');
+   img.src=visible?img.dataset.itpfCipsOriginal:img.dataset.itpfCipsFree;
+  });
+ }
+ try{apply(localStorage.getItem('itpf.cipsLogo.visible')!=='false')}catch(e){}
+ window.addEventListener('message',function(e){if(e.source===window.parent&&e.data&&e.data.type==='ITPF_CIPS_VISIBILITY')apply(e.data.visible===true)});
 })();
 </script>
 </body></html>

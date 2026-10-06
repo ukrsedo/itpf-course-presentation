@@ -25,7 +25,7 @@ li::marker{color:var(--magenta)}
 .copy{position:absolute;left:2.3%;bottom:1.8%;font-size:clamp(10px,.75vw,13px);color:#7a8795}
 @media(max-aspect-ratio:4/3){.grid{grid-template-columns:1fr;top:23%;bottom:12%;overflow:auto}.card{min-height:230px}.slide{height:100%;width:auto}}
 </style></head><body><main class="stage"><section aria-label="3 Key Themes Shaping IT Procurement" class="slide">
-<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<img data-itpf-cips-logo alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
 <div class="header"><div class="kicker">Session 1 · Setting the Scene</div><h1>3 Key Themes Shaping IT Procurement <span style="white-space:nowrap">(2025–2027)</span></h1><div class="sub">From SaaS market evidence to procurement implications</div></div>
 <div class="grid">
 <article class="card"><div class="top"><div class="num">1</div><h2>SaaS Cost Management and Optimization</h2></div><ul><li>SaaS waste — shelfware, redundant apps and multichannel spend — remains material, while AI-driven consumption-based models emerge and dominate the market.</li><li>Shadow IT and decentralised IT demand undermine control, while Shadow IT shifts towards vibe coding.</li><li>Massive digital investments require strict ROI discipline.</li></ul></article>
@@ -55,6 +55,20 @@ li::marker{color:var(--magenta)}
       e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
     }
   },true);
+})();
+</script>
+<style>html.itpf-cips-hidden img[data-itpf-cips-logo]{visibility:hidden!important}</style>
+<script id="itpf-cips-visibility">
+(function(){
+ function apply(visible){
+  document.documentElement.classList.toggle('itpf-cips-hidden',!visible);
+  document.querySelectorAll('img[data-itpf-cips-free]').forEach(function(img){
+   if(!img.dataset.itpfCipsOriginal)img.dataset.itpfCipsOriginal=img.getAttribute('src');
+   img.src=visible?img.dataset.itpfCipsOriginal:img.dataset.itpfCipsFree;
+  });
+ }
+ try{apply(localStorage.getItem('itpf.cipsLogo.visible')!=='false')}catch(e){}
+ window.addEventListener('message',function(e){if(e.source===window.parent&&e.data&&e.data.type==='ITPF_CIPS_VISIBILITY')apply(e.data.visible===true)});
 })();
 </script>
 </body></html>

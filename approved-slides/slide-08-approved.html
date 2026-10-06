@@ -28,7 +28,7 @@ h2{margin:0;color:var(--navy);font-size:clamp(25px,2.15vw,40px);line-height:1.05
 .rule{position:absolute;left:0;bottom:0;width:100%;height:8px;background:linear-gradient(90deg,var(--navy) 0 32%,var(--cyan) 32% 100%);z-index:3}
 .controls{position:absolute;right:1.7%;bottom:1.6%;opacity:.15;transition:.2s;z-index:4}.slide:hover .controls{opacity:.85}button{border:1px solid #c8d3df;background:#fff;color:var(--navy);border-radius:6px;padding:8px 12px;font-weight:700;cursor:pointer}
 </style></head><body><div class="stage"><section aria-label="Slide 8: Software Inflation and Shelfware definitions" class="slide">
-<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<img data-itpf-cips-logo alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
 <div class="header"><div class="kicker">Session 1 · Setting the Scene</div><h1>Software Inflation and Shelfware</h1></div>
 <div class="cards">
 <article class="card"><div class="label"><div class="icon">↑</div><h2>Software Inflation</h2></div><p>The progressive growth of an organization’s software estate—in terms of applications, subscriptions, licenses, and consumption-based services—leading to rising costs, increasing complexity, and diminishing cost efficiency.</p></article>
@@ -58,6 +58,20 @@ h2{margin:0;color:var(--navy);font-size:clamp(25px,2.15vw,40px);line-height:1.05
       e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
     }
   },true);
+})();
+</script>
+<style>html.itpf-cips-hidden img[data-itpf-cips-logo]{visibility:hidden!important}</style>
+<script id="itpf-cips-visibility">
+(function(){
+ function apply(visible){
+  document.documentElement.classList.toggle('itpf-cips-hidden',!visible);
+  document.querySelectorAll('img[data-itpf-cips-free]').forEach(function(img){
+   if(!img.dataset.itpfCipsOriginal)img.dataset.itpfCipsOriginal=img.getAttribute('src');
+   img.src=visible?img.dataset.itpfCipsOriginal:img.dataset.itpfCipsFree;
+  });
+ }
+ try{apply(localStorage.getItem('itpf.cipsLogo.visible')!=='false')}catch(e){}
+ window.addEventListener('message',function(e){if(e.source===window.parent&&e.data&&e.data.type==='ITPF_CIPS_VISIBILITY')apply(e.data.visible===true)});
 })();
 </script>
 </body></html>

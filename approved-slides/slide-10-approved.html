@@ -20,7 +20,7 @@ table.cost{border-collapse:collapse;width:100%;height:100%;table-layout:fixed;co
 </style>
 </head>
 <body><div class="stage"><section aria-label="Slide 10: Software Inflation — Microsoft AI Licensing" class="slide">
-<img alt="CIPS logo" class="logo" src="../assets/cips-logo.png"/>
+<img data-itpf-cips-logo alt="CIPS logo" class="logo" src="../assets/cips-logo.png"/>
 <div class="header"><div class="kicker">Session 1 · Setting the Scene</div><h1>Software Inflation: Microsoft AI Licensing</h1></div>
 <div class="tabs" role="tablist"><button class="tab active" data-panel="spec" type="button">1. Post-July specification</button><button class="tab" data-panel="mitigate" type="button">2. How to mitigate inflation</button><button class="tab" data-panel="scenario" type="button">3. Optional licence mix</button></div>
 <section class="panel active" id="spec">
@@ -115,6 +115,20 @@ tabs.forEach(t=>t.addEventListener('click',()=>{tabs.forEach(x=>x.classList.togg
     if(!b) return;
     e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
   },true);
+})();
+</script>
+<style>html.itpf-cips-hidden img[data-itpf-cips-logo]{visibility:hidden!important}</style>
+<script id="itpf-cips-visibility">
+(function(){
+ function apply(visible){
+  document.documentElement.classList.toggle('itpf-cips-hidden',!visible);
+  document.querySelectorAll('img[data-itpf-cips-free]').forEach(function(img){
+   if(!img.dataset.itpfCipsOriginal)img.dataset.itpfCipsOriginal=img.getAttribute('src');
+   img.src=visible?img.dataset.itpfCipsOriginal:img.dataset.itpfCipsFree;
+  });
+ }
+ try{apply(localStorage.getItem('itpf.cipsLogo.visible')!=='false')}catch(e){}
+ window.addEventListener('message',function(e){if(e.source===window.parent&&e.data&&e.data.type==='ITPF_CIPS_VISIBILITY')apply(e.data.visible===true)});
 })();
 </script>
 </body></html>

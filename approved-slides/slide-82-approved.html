@@ -38,7 +38,7 @@ h1{margin:0;color:var(--navy);font-size:clamp(36px,4.3vw,68px);line-height:1.04;
 <body>
 <div class="stage">
 <section aria-label="Case 6 transition slide" class="slide">
-<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<img data-itpf-cips-logo alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
 <div class="header">
 <div class="kicker">Session 1 · Case assessment</div>
 <h1>Case 6 — IBM and the State of Indiana</h1>
@@ -76,6 +76,20 @@ h1{margin:0;color:var(--navy);font-size:clamp(36px,4.3vw,68px);line-height:1.04;
       e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
     }
   },true);
+})();
+</script>
+<style>html.itpf-cips-hidden img[data-itpf-cips-logo]{visibility:hidden!important}</style>
+<script id="itpf-cips-visibility">
+(function(){
+ function apply(visible){
+  document.documentElement.classList.toggle('itpf-cips-hidden',!visible);
+  document.querySelectorAll('img[data-itpf-cips-free]').forEach(function(img){
+   if(!img.dataset.itpfCipsOriginal)img.dataset.itpfCipsOriginal=img.getAttribute('src');
+   img.src=visible?img.dataset.itpfCipsOriginal:img.dataset.itpfCipsFree;
+  });
+ }
+ try{apply(localStorage.getItem('itpf.cipsLogo.visible')!=='false')}catch(e){}
+ window.addEventListener('message',function(e){if(e.source===window.parent&&e.data&&e.data.type==='ITPF_CIPS_VISIBILITY')apply(e.data.visible===true)});
 })();
 </script>
 </body>

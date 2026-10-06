@@ -28,7 +28,7 @@ h1{margin:0;color:var(--navy);font-size:clamp(31px,3vw,54px);line-height:1.02;le
 .copy{position:absolute;left:2.3%;bottom:1.8%;font-size:clamp(10px,.75vw,13px);color:#7a8795}
 @media(max-aspect-ratio:4/3){.grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(6,1fr);top:22%;bottom:14%;overflow:auto}.trend{min-height:110px}.slide{height:100%;width:auto}}
 </style></head><body><main class="stage"><section aria-label="Modern Trends in Sourcing Practices" class="slide">
-<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<img data-itpf-cips-logo alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
 <div class="header"><div class="kicker">Session 1 · Setting the Scene</div><h1>Modern Trends in Sourcing Practices</h1><div class="sub">Twelve shifts from traditional purchasing to strategic, value-focused sourcing</div></div>
 <div class="grid"><article class="trend"><div class="num">1</div><div class="from">From Ad-hoc and reactive sourcing</div><div class="arrow">→</div><div class="to">Systematic and proactive sourcing</div></article>
 <article class="trend"><div class="num">2</div><div class="from">From Cost-focused sourcing</div><div class="arrow">→</div><div class="to">Value-focused sourcing</div></article>
@@ -66,6 +66,20 @@ h1{margin:0;color:var(--navy);font-size:clamp(31px,3vw,54px);line-height:1.02;le
       e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
     }
   },true);
+})();
+</script>
+<style>html.itpf-cips-hidden img[data-itpf-cips-logo]{visibility:hidden!important}</style>
+<script id="itpf-cips-visibility">
+(function(){
+ function apply(visible){
+  document.documentElement.classList.toggle('itpf-cips-hidden',!visible);
+  document.querySelectorAll('img[data-itpf-cips-free]').forEach(function(img){
+   if(!img.dataset.itpfCipsOriginal)img.dataset.itpfCipsOriginal=img.getAttribute('src');
+   img.src=visible?img.dataset.itpfCipsOriginal:img.dataset.itpfCipsFree;
+  });
+ }
+ try{apply(localStorage.getItem('itpf.cipsLogo.visible')!=='false')}catch(e){}
+ window.addEventListener('message',function(e){if(e.source===window.parent&&e.data&&e.data.type==='ITPF_CIPS_VISIBILITY')apply(e.data.visible===true)});
 })();
 </script>
 </body></html>

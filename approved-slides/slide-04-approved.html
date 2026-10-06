@@ -41,7 +41,7 @@ li{border-left:4px solid var(--blue);background:#f6f9fb;padding:12px 14px;border
 </head>
 <body>
 <main aria-label="Slide 4: Course expectations" class="slide">
-<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<img data-itpf-cips-logo alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
 <div class="eyebrow">COURSE INTRODUCTION</div>
 <h1>What are your expectations of this course?</h1>
 <p class="subtitle">Add one expectation. Submitted responses are shared live across all devices and expire after the class session.</p>
@@ -192,6 +192,20 @@ window.addEventListener('beforeunload',()=>{if(refreshTimer) clearInterval(refre
       e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
     }
   },true);
+})();
+</script>
+<style>html.itpf-cips-hidden img[data-itpf-cips-logo]{visibility:hidden!important}</style>
+<script id="itpf-cips-visibility">
+(function(){
+ function apply(visible){
+  document.documentElement.classList.toggle('itpf-cips-hidden',!visible);
+  document.querySelectorAll('img[data-itpf-cips-free]').forEach(function(img){
+   if(!img.dataset.itpfCipsOriginal)img.dataset.itpfCipsOriginal=img.getAttribute('src');
+   img.src=visible?img.dataset.itpfCipsOriginal:img.dataset.itpfCipsFree;
+  });
+ }
+ try{apply(localStorage.getItem('itpf.cipsLogo.visible')!=='false')}catch(e){}
+ window.addEventListener('message',function(e){if(e.source===window.parent&&e.data&&e.data.type==='ITPF_CIPS_VISIBILITY')apply(e.data.visible===true)});
 })();
 </script>
 </body>

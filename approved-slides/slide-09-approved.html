@@ -14,7 +14,7 @@
 .footer{position:absolute;left:5.2%;right:5.2%;bottom:2.0%;display:flex;justify-content:space-between;color:#607588;font-size:clamp(11px,.75vw,14px);z-index:3}.rule{position:absolute;left:0;bottom:0;width:100%;height:8px;background:linear-gradient(90deg,var(--navy) 0 32%,var(--cyan) 32% 100%);z-index:3}.controls{position:absolute;right:1.7%;bottom:1.5%;opacity:.15;transition:.2s;z-index:4}.slide:hover .controls{opacity:.85}.controls button{border:1px solid #c8d3df;background:#fff;color:var(--navy);border-radius:6px;padding:8px 12px;font-weight:700;cursor:pointer}
 .modal{display:none;position:absolute;inset:0;background:rgba(0,31,61,.68);z-index:20;place-items:center}.modal.open{display:grid}.modal-card{width:78%;max-height:75%;overflow:auto;background:#fff;border-radius:16px;padding:2.5% 3%;box-shadow:0 18px 50px rgba(0,0,0,.3)}.modal-card h2{margin:0 0 12px;color:var(--navy);font-size:clamp(25px,1.8vw,34px)}.modal-card ul{margin:0;padding-left:24px}.modal-card li{margin:8px 0;color:var(--ink);font-size:clamp(15px,1vw,19px);line-height:1.25}.modal-card a{color:var(--navy);font-weight:700}.close{float:right;border:0;background:var(--navy);color:#fff;border-radius:8px;padding:8px 13px;font-weight:800;cursor:pointer}
 </style></head><body><div class="stage"><section aria-label="Slide 9: Software Inflation Drivers" class="slide">
-<img alt="CIPS logo" class="logo" src="../assets/cips-logo.png"/>
+<img data-itpf-cips-logo alt="CIPS logo" class="logo" src="../assets/cips-logo.png"/>
 <div class="header"><div class="kicker">Session 1 · Setting the Scene</div><h1>Software Inflation Drivers</h1></div>
 <div class="tabs" role="tablist"><button class="tab active" data-panel="core" type="button">1. Core cost drivers</button><button class="tab" data-panel="effects" type="button">2. Additional effects</button><button class="tab" data-panel="diagnostic" type="button">3. Diagnose examples</button></div>
 <section class="panel active" id="core">
@@ -89,6 +89,20 @@ const modal=document.getElementById('sourcesModal');document.getElementById('sou
     if(!b) return;
     e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
   },true);
+})();
+</script>
+<style>html.itpf-cips-hidden img[data-itpf-cips-logo]{visibility:hidden!important}</style>
+<script id="itpf-cips-visibility">
+(function(){
+ function apply(visible){
+  document.documentElement.classList.toggle('itpf-cips-hidden',!visible);
+  document.querySelectorAll('img[data-itpf-cips-free]').forEach(function(img){
+   if(!img.dataset.itpfCipsOriginal)img.dataset.itpfCipsOriginal=img.getAttribute('src');
+   img.src=visible?img.dataset.itpfCipsOriginal:img.dataset.itpfCipsFree;
+  });
+ }
+ try{apply(localStorage.getItem('itpf.cipsLogo.visible')!=='false')}catch(e){}
+ window.addEventListener('message',function(e){if(e.source===window.parent&&e.data&&e.data.type==='ITPF_CIPS_VISIBILITY')apply(e.data.visible===true)});
 })();
 </script>
 </body></html>

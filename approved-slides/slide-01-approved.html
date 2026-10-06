@@ -41,7 +41,7 @@ button{border:1px solid #c8d3df;background:white;color:var(--navy);border-radius
 <body>
 <div class="stage">
 <section aria-label="Technology IT Procurement Foundations title slide" class="slide">
-<img alt="CIPS logo" class="logo" src="../assets/cips-logo.png"/>
+<img data-itpf-cips-logo alt="CIPS logo" class="logo" src="../assets/cips-logo.png"/>
 <div class="content">
 <h1>Technology (IT) Procurement<br/>Foundations</h1>
 <div class="subtitle">CIPS Skills Training</div>
@@ -72,6 +72,20 @@ button{border:1px solid #c8d3df;background:white;color:var(--navy);border-radius
       e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
     }
   },true);
+})();
+</script>
+<style>html.itpf-cips-hidden img[data-itpf-cips-logo]{visibility:hidden!important}</style>
+<script id="itpf-cips-visibility">
+(function(){
+ function apply(visible){
+  document.documentElement.classList.toggle('itpf-cips-hidden',!visible);
+  document.querySelectorAll('img[data-itpf-cips-free]').forEach(function(img){
+   if(!img.dataset.itpfCipsOriginal)img.dataset.itpfCipsOriginal=img.getAttribute('src');
+   img.src=visible?img.dataset.itpfCipsOriginal:img.dataset.itpfCipsFree;
+  });
+ }
+ try{apply(localStorage.getItem('itpf.cipsLogo.visible')!=='false')}catch(e){}
+ window.addEventListener('message',function(e){if(e.source===window.parent&&e.data&&e.data.type==='ITPF_CIPS_VISIBILITY')apply(e.data.visible===true)});
 })();
 </script>
 </body>

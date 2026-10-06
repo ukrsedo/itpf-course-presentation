@@ -67,7 +67,7 @@ h1{margin:0;color:var(--navy);font-size:clamp(34px,3vw,54px);line-height:1.02;le
 </head>
 <body>
 <main class="stage"><section aria-label="Reliability versus Agility" class="slide">
-<img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<img data-itpf-cips-logo alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
 <div class="header"><div class="session"><span class="dot"></span><span>Session 1 Setting the Scene</span></div><h1>Reliability vs Agility</h1><div class="subtitle">Bimodal operations: plan-driven stability and iterative change</div></div>
 <div class="tabs" role="tablist"><button class="tab active" data-panel="modes" type="button">Operating modes</button><button class="tab" data-panel="activity" type="button">Activity</button></div>
 <div class="panel active" id="modes"><div class="modeGrid"><div class="mode rel"><div class="modeHead">Reliability<div class="modeSub">Plan-driven</div></div><div class="modeBody"><div>Stable regulated mission environment</div><div>Well-defined requirements based on established technology</div><div>Established and diverse supply base</div><div>Homogeneous stakeholders</div><div>Formal documented relationships</div><div>Cost and reliability predominance, low risk appetite</div></div></div><div class="mode ag">
@@ -132,6 +132,20 @@ document.querySelectorAll('.bucket').forEach(bucket=>bucket.addEventListener('cl
       e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
     }
   },true);
+})();
+</script>
+<style>html.itpf-cips-hidden img[data-itpf-cips-logo]{visibility:hidden!important}</style>
+<script id="itpf-cips-visibility">
+(function(){
+ function apply(visible){
+  document.documentElement.classList.toggle('itpf-cips-hidden',!visible);
+  document.querySelectorAll('img[data-itpf-cips-free]').forEach(function(img){
+   if(!img.dataset.itpfCipsOriginal)img.dataset.itpfCipsOriginal=img.getAttribute('src');
+   img.src=visible?img.dataset.itpfCipsOriginal:img.dataset.itpfCipsFree;
+  });
+ }
+ try{apply(localStorage.getItem('itpf.cipsLogo.visible')!=='false')}catch(e){}
+ window.addEventListener('message',function(e){if(e.source===window.parent&&e.data&&e.data.type==='ITPF_CIPS_VISIBILITY')apply(e.data.visible===true)});
 })();
 </script>
 </body></html>

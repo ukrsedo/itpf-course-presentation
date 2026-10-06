@@ -5,8 +5,22 @@
 :root{--navy:#003b70;--cyan:#00b7e5;--muted:#607588;--paper:#fff;--soft:#eef8fd}
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif}.stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:radial-gradient(circle at 83% 24%,rgba(0,183,229,.15) 0 16%,transparent 17%),linear-gradient(135deg,#fff 0 63%,var(--soft) 63% 100%);box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}.logo{position:absolute;right:5.2%;top:5.4%;width:10.5%;height:auto;z-index:3}.cloud{position:absolute;right:7%;top:12%;color:rgba(0,183,229,.18);font-size:clamp(130px,22vw,330px);line-height:1;user-select:none}.content{position:absolute;left:7.4%;top:25%;width:68%;z-index:2}.kicker{display:flex;align-items:center;gap:12px;color:var(--navy);font-size:clamp(18px,1.25vw,24px);font-weight:800;letter-spacing:.04em;text-transform:uppercase}.kicker:before{content:"";width:13px;height:13px;border:5px solid var(--cyan);border-radius:50%}h1{margin:3.5% 0 2.2%;color:var(--navy);font-size:clamp(58px,6.5vw,108px);line-height:.98;letter-spacing:-.04em}.subtitle{max-width:76%;color:var(--muted);font-size:clamp(22px,1.65vw,31px);line-height:1.25;font-weight:700}.footer{position:absolute;left:7.4%;right:7.4%;bottom:4.2%;display:flex;justify-content:space-between;color:var(--muted);font-size:clamp(12px,.78vw,15px)}.rule{position:absolute;left:0;bottom:0;width:100%;height:8px;background:linear-gradient(90deg,var(--navy) 0 32%,var(--cyan) 32% 100%)}.controls{position:absolute;right:1.7%;bottom:1.6%;opacity:.15;transition:.2s}.slide:hover .controls{opacity:.85}.controls button{border:1px solid #c8d3df;background:#fff;color:var(--navy);border-radius:6px;padding:8px 12px;font-weight:700;cursor:pointer}
 </style></head><body><main class="stage"><section class="slide" aria-label="Cloud Computing">
-<img class="logo" src="../assets/cips-logo.png" alt="CIPS"><div class="cloud" aria-hidden="true">☁</div><div class="content"><div class="kicker">Session 3</div><h1>Cloud Computing</h1><div class="subtitle">Service models, deployment options and commercial implications</div></div><div class="footer"><span>Technology (IT) Procurement Foundations</span><span>33</span></div><div class="rule"></div><div class="controls"><button onclick="parent.postMessage({type:'ITPF_DECK_NAV',action:'fullscreen'},'*')">Full screen</button></div>
+<img data-itpf-cips-logo class="logo" src="../assets/cips-logo.png" alt="CIPS"><div class="cloud" aria-hidden="true">☁</div><div class="content"><div class="kicker">Session 3</div><h1>Cloud Computing</h1><div class="subtitle">Service models, deployment options and commercial implications</div></div><div class="footer"><span>Technology (IT) Procurement Foundations</span><span>33</span></div><div class="rule"></div><div class="controls"><button onclick="parent.postMessage({type:'ITPF_DECK_NAV',action:'fullscreen'},'*')">Full screen</button></div>
 </section></main>
 <script id="itpf-deck-bridge">
 (function(){function send(action){if(window.parent!==window)window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*')}window.addEventListener('keydown',function(e){var t=e.target,tag=(t&&t.tagName||'').toLowerCase();if(tag==='input'||tag==='textarea'||tag==='select'||(t&&t.isContentEditable))return;var action=null;if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ')action='next';else if(e.key==='ArrowLeft'||e.key==='PageUp')action='prev';else if(e.key==='Home')action='first';else if(e.key==='End')action='last';if(action){e.preventDefault();e.stopPropagation();send(action)}},true);document.addEventListener('click',function(e){var b=e.target&&e.target.closest?e.target.closest('button'):null;if(!b)return;var label=(b.textContent||'').trim().toLowerCase();if(label==='full screen'||label==='fullscreen'||label==='⛶'){e.preventDefault();e.stopImmediatePropagation();send('fullscreen')}},true)})();
-</script></body></html>
+</script><style>html.itpf-cips-hidden img[data-itpf-cips-logo]{visibility:hidden!important}</style>
+<script id="itpf-cips-visibility">
+(function(){
+ function apply(visible){
+  document.documentElement.classList.toggle('itpf-cips-hidden',!visible);
+  document.querySelectorAll('img[data-itpf-cips-free]').forEach(function(img){
+   if(!img.dataset.itpfCipsOriginal)img.dataset.itpfCipsOriginal=img.getAttribute('src');
+   img.src=visible?img.dataset.itpfCipsOriginal:img.dataset.itpfCipsFree;
+  });
+ }
+ try{apply(localStorage.getItem('itpf.cipsLogo.visible')!=='false')}catch(e){}
+ window.addEventListener('message',function(e){if(e.source===window.parent&&e.data&&e.data.type==='ITPF_CIPS_VISIBILITY')apply(e.data.visible===true)});
+})();
+</script>
+</body></html>

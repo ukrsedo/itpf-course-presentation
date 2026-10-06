@@ -21,7 +21,7 @@ h1{margin:0;color:var(--navy);font-size:clamp(46px,4.2vw,82px);line-height:.98;l
 .footer{position:absolute;left:4.9%;bottom:3.1%;font-size:clamp(14px,1vw,22px);color:#168cff}
 </style></head>
 <body><main class="stage"><section aria-label="Integrated Procurement Planning" class="slide">
-<div class="band"></div><div class="accent"></div><img alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<div class="band"></div><div class="accent"></div><img data-itpf-cips-logo alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
 <div class="big">Integrated Procurement Planning</div>
 <div class="section">Section 2<br/>Aligning procurement activities with the IT Service Lifecycle</div>
 <div class="content"><div class="session">Session 2</div><h1>Integrated Procurement Planning</h1><div class="sub">Procurement activities must be aligned with the IT Service Lifecycle.</div><div class="statement">We move from sourcing strategy into integrated delivery planning, where procurement, project management and service lifecycle decisions connect.</div></div>
@@ -47,6 +47,20 @@ h1{margin:0;color:var(--navy);font-size:clamp(46px,4.2vw,82px);line-height:.98;l
       e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
     }
   },true);
+})();
+</script>
+<style>html.itpf-cips-hidden img[data-itpf-cips-logo]{visibility:hidden!important}</style>
+<script id="itpf-cips-visibility">
+(function(){
+ function apply(visible){
+  document.documentElement.classList.toggle('itpf-cips-hidden',!visible);
+  document.querySelectorAll('img[data-itpf-cips-free]').forEach(function(img){
+   if(!img.dataset.itpfCipsOriginal)img.dataset.itpfCipsOriginal=img.getAttribute('src');
+   img.src=visible?img.dataset.itpfCipsOriginal:img.dataset.itpfCipsFree;
+  });
+ }
+ try{apply(localStorage.getItem('itpf.cipsLogo.visible')!=='false')}catch(e){}
+ window.addEventListener('message',function(e){if(e.source===window.parent&&e.data&&e.data.type==='ITPF_CIPS_VISIBILITY')apply(e.data.visible===true)});
 })();
 </script>
 </body></html>
