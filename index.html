@@ -67,7 +67,7 @@ html:-webkit-full-screen body{grid-template-rows:minmax(0,1fr)}
   <span class="hint">Arrow keys / Page Up / Page Down</span>
   <span class="counter" id="counter">1 / 86</span>
   <button id="assistantOpen" class="assistant-button" type="button" title="Explain the current slide">Explain this slide</button>
-  <button id="cipsToggle" type="button" aria-pressed="true" title="Show or hide the CIPS logo throughout the presentation">LOGO OFF</button>
+  <button id="cipsToggle" type="button" aria-pressed="true" title="Show or hide the CIPS logo throughout the presentation">LOGO ON</button>
   <button id="full" type="button" title="Full screen">⛶</button>
 </nav>
 <main class="framewrap">
@@ -75,7 +75,7 @@ html:-webkit-full-screen body{grid-template-rows:minmax(0,1fr)}
   <div class="toast" id="toast"></div>
   <div class="fullscreen-nav" aria-label="Fullscreen slide navigation">
     <button id="fsPrev" type="button" title="Previous slide">←</button>
-    <button id="fsCipsToggle" type="button" aria-pressed="true" title="Show or hide the CIPS logo throughout the presentation">LOGO OFF</button>
+    <button id="fsCipsToggle" type="button" aria-pressed="true" title="Show or hide the CIPS logo throughout the presentation">LOGO ON</button>
     <span class="fullscreen-counter" id="fsCounter">1 / 86</span>
     <button id="fsNext" type="button" title="Next slide">→</button>
     <button id="fsAssistantOpen" class="assistant-button" type="button" title="Explain the current slide">Explain this slide</button>
@@ -100,7 +100,7 @@ let cipsLogoVisible=true;
 try{cipsLogoVisible=localStorage.getItem('itpf.cipsLogo.visible')!=='false'}catch(e){}
 const cipsButtons=[document.getElementById('cipsToggle'),document.getElementById('fsCipsToggle')];
 function applyCipsLogoVisibility(){
- cipsButtons.forEach(button=>{button.textContent=cipsLogoVisible?'LOGO OFF':'LOGO ON';button.setAttribute('aria-pressed',String(cipsLogoVisible))});
+ cipsButtons.forEach(button=>{button.textContent=cipsLogoVisible?'LOGO ON':'LOGO OFF';button.setAttribute('aria-pressed',String(cipsLogoVisible))});
  if(frame.contentWindow)frame.contentWindow.postMessage({type:'ITPF_CIPS_VISIBILITY',visible:cipsLogoVisible},'*');
 }
 cipsButtons.forEach(button=>button.addEventListener('click',()=>{
