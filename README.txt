@@ -17,3 +17,6 @@ Final remap
 40 = former slide 41, Technology Procurement Framework — SaaS
 41 = former slide 42, Make or Buy?
 42–85 = former slides 43–86
+
+6 October 2026: CIPS logo toggle
+Use CIPS logo: On/Off in the toolbar or fullscreen navigation. Applies across all slides and tabs. The browser remembers the choice when storage is available. Replace index.html, approved-slides and assets together.
