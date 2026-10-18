@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>ITPF - Slide 41 - Make or Buy and TCE</title>
+<title>ITPF - Slide 41 - Make or Buy, TCE and PRT</title>
 <style>
 :root {
   --navy:#003b70;
@@ -71,6 +71,26 @@ h1{margin:0;color:var(--navy);font-size:clamp(34px,3vw,58px);line-height:1.03;le
 
 .transaction-block,.governance-block{margin-top:12px}.cost-table{width:100%;border-collapse:collapse;table-layout:fixed;margin-bottom:10px}.cost-table th,.cost-table td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}.cost-table thead th{background:var(--navy);color:white}.cost-table th:first-child{width:25%}.cost-table tbody th{background:var(--soft)}.small-label{font-size:.9em;font-weight:normal}.cost-point{margin:0!important}.spectrum-title{text-align:center;color:#b00068;font-size:1.15em;font-weight:900;margin:0 0 3px 25%}.spectrum-controls{display:grid;grid-template-columns:25% repeat(3,1fr);text-align:center;color:#b00068;font-weight:900;border-top:4px solid var(--cyan);padding-top:4px;margin:0 0 8px}.governance-table{width:100%;border-collapse:collapse;table-layout:fixed}.governance-table th,.governance-table td{border:2px solid var(--navy);padding:8px 11px;text-align:left}.governance-table thead th{font-size:1.08em;vertical-align:top}.governance-table thead th:first-child{width:25%}.governance-table tbody th{font-weight:700}.governance-table .hybrid{background:#fff600}.product-spectrum{display:grid;grid-template-columns:25% repeat(3,1fr);text-align:center;color:#b00068;font-weight:900;border-bottom:4px solid var(--cyan);padding-bottom:5px;margin:8px 0 0}.product-title{text-align:center;color:#b00068;font-size:1.1em;font-weight:900;margin:3px 0 0 25%}.governance-block .authors{font-size:.85em;color:#315b7e;margin-top:8px}.case-body{margin-top:18px;padding:24px;text-align:center}.case-body p{font-size:1.1em}.case-link{display:inline-block;background:var(--navy);color:white!important;text-decoration:none;padding:14px 20px;border-radius:6px;font-weight:bold}.case-hint{margin-top:14px!important}.tce{font-size:clamp(16px,1.05vw,21px)}
 @media(max-width:800px){.governance-grid{grid-template-columns:1fr}.cost-table{font-size:16px}.cost-table th,.cost-table td{padding:6px}.tabs button{font-size:15px}}
+
+/* Slide 41: PRT explanation within the existing tab structure. */
+.prt{font-size:clamp(17px,1.2vw,24px);line-height:1.22}
+.prt h2{font-size:clamp(22px,1.65vw,32px);margin:0 0 8px}
+.prt-intro{max-width:98%;margin-bottom:12px!important}
+.prt-table{width:100%;border-collapse:collapse;table-layout:fixed;margin:10px 0 12px}
+.prt-table th,.prt-table td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+.prt-table thead{background:var(--navy);color:#fff}
+.prt-table th:first-child{width:21%}
+.prt-table tbody th{background:var(--soft)}
+.prt-example{border-left:5px solid var(--cyan);padding:6px 0 3px 14px}
+.prt-example h3{font-size:1.06em;margin:0 0 8px}
+.prt-example p{margin-bottom:8px}
+.prt-takeaway{margin-top:10px!important;font-weight:700}
+.prt-scope{font-size:.86em;color:#315b7e;margin:8px 0!important}
+.prt-source{font-size:.78em;color:#315b7e}
+.prt-notes{margin-top:9px;font-size:.86em;border-top:1px solid var(--line);padding-top:6px}
+.prt-notes summary{cursor:pointer;font-weight:700}
+.prt-notes p{margin-top:8px}
+@media(max-width:800px){.prt{font-size:17px}.prt-table{font-size:16px}.prt-table th,.prt-table td{padding:7px}.prt-table th:first-child{width:22%}.prt h2{font-size:23px}}
 </style>
 </head>
 <body>
@@ -85,7 +105,8 @@ h1{margin:0;color:var(--navy);font-size:clamp(34px,3vw,58px);line-height:1.03;le
 <nav class="tabs" role="tablist" aria-label="Decision perspectives">
 <button id="solution-tab" role="tab" aria-selected="true" aria-controls="solution-panel" tabindex="0">1. Make or buy</button>
 <button id="tce-tab" role="tab" aria-selected="false" aria-controls="tce-panel" tabindex="-1">2. Transaction Cost Economics</button>
-<button id="dropbox-tab" role="tab" aria-selected="false" aria-controls="dropbox-panel" tabindex="-1">3. Dropbox case</button>
+<button id="prt-tab" role="tab" aria-selected="false" aria-controls="prt-panel" tabindex="-1">3. Ownership &amp; PRT</button>
+<button id="dropbox-tab" role="tab" aria-selected="false" aria-controls="dropbox-panel" tabindex="-1">4. Dropbox case</button>
 </nav>
 <div class="content" id="solution-panel" role="tabpanel" aria-labelledby="solution-tab">
 <section class="choice">
@@ -168,6 +189,25 @@ h1{margin:0;color:var(--navy);font-size:clamp(34px,3vw,58px);line-height:1.03;le
 <p class="authors"><strong>Authors:</strong> Ronald Coase and Oliver Williamson. <strong>References:</strong> <a href="https://www.nobelprize.org/prizes/economic-sciences/1991/coase/lecture/" target="_blank" rel="noopener">Coase, The Nature of the Firm</a> · <a href="https://www.nobelprize.org/uploads/2018/06/williamson_lecture.pdf" target="_blank" rel="noopener">Williamson, Transaction Cost Economics</a> · <a href="https://www.coase.org/publications/2022menardshirleyadvancedintrotonie.pdf" target="_blank" rel="noopener">Search, bargaining and enforcement costs</a> · <a href="https://www.investopedia.com/terms/t/transactioncosts.asp" target="_blank" rel="noopener">Transaction costs overview</a></p>
 </section>
 </section>
+
+<section class="tce prt" id="prt-panel" role="tabpanel" aria-labelledby="prt-tab" hidden>
+<h2>Property Rights Theory: who should own what?</h2>
+<p class="prt-intro">Ownership affects what each party expects to gain from additional effort. This can change how much each invests in learning or improvement.</p>
+<table class="prt-table"><thead><tr><th>Procurement application</th><th>Transaction Cost Economics (TCE)</th><th>Property Rights Theory (PRT)</th></tr></thead><tbody>
+<tr><th>Decision to examine</th><td><strong>Make or buy?</strong><br>Keep SAP support internally or outsource it?</td><td><strong>Who owns the support tools?</strong><br>Customer, supplier, or different owners for different assets?</td></tr>
+<tr><th>Reasoning</th><td>Compare the costs of coordinating, adapting and safeguarding the work under each arrangement.</td><td>Compare how ownership encourages each party to invest in improvements that a contract cannot fully prescribe.</td></tr>
+</tbody></table>
+<div class="prt-example">
+<h3>Illustrative example: automation for outsourced SAP support</h3>
+<p><strong>Supplier owns reusable automation:</strong> selling or using it elsewhere can reward further development. Agree the customer's usage and continuity rights.</p>
+<p><strong>Customer owns bespoke automation:</strong> control can support further customer investment. Consider how to fund and reward the supplier's additional development effort.</p>
+</div>
+<p class="prt-takeaway"><strong>Discussion:</strong> would demanding exclusive customer ownership encourage or discourage the improvements you want?</p>
+<p class="prt-scope">These are practical applications. Both theories also explain integration and firm boundaries. PRT does not automatically favour customer ownership.</p>
+<p class="prt-source">PRT: Grossman &amp; Hart (1986), Hart &amp; Moore (1990). <a href="https://www.nobelprize.org/uploads/2018/06/hart-lecture.pdf" target="_blank" rel="noopener">Hart's explanation</a></p>
+<details class="prt-notes"><summary>Theory note for discussion</summary><p>Williamson's TCE uses bounded rationality and possible opportunism. Standard Grossman–Hart–Moore PRT can assume fully rational parties. Its key limitation is that important investments cannot be verified and enforced through a contract. Ownership allocates residual control rights over assets: decisions the contract has not already settled. Those rights affect bargaining alternatives and investment incentives. Strengthening one party's incentives can weaken the other's. Reuse alone does not establish the best ownership arrangement.</p></details>
+</section>
+
 <section class="tce" id="dropbox-panel" role="tabpanel" aria-labelledby="dropbox-tab" hidden>
 <div class="tce-intro"><h2>Case 3 — Dropbox Strategic Shift from AWS</h2><p>Open the existing case assessment, answer its complete question set, and then return to the course presentation.</p></div>
 <div class="tce-block case-body"><h2>Dropbox case assessment</h2>
@@ -183,7 +223,7 @@ h1{margin:0;color:var(--navy);font-size:clamp(34px,3vw,58px);line-height:1.03;le
 <script>
 (function(){
  const tabs=Array.from(document.querySelectorAll('[role="tab"]'));
- function activate(tab){tabs.forEach(t=>{const active=t===tab;t.setAttribute('aria-selected',String(active));t.tabIndex=active?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=!active;});document.querySelector('.noteText').textContent=tab.id==='tce-tab'?'Use the table to connect transaction characteristics with market, hybrid or hierarchy governance.':tab.id==='dropbox-tab'?'Complete the existing Dropbox case assessment in the case portal.':'Discussion: define the activity before selecting make, buy or alliance.';}
+ function activate(tab){tabs.forEach(t=>{const active=t===tab;t.setAttribute('aria-selected',String(active));t.tabIndex=active?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=!active;});document.querySelector('.noteText').textContent=tab.id==='tce-tab'?'Use the table to connect transaction characteristics with market, hybrid or hierarchy governance.':tab.id==='prt-tab'?'Ownership changes investment incentives. Compare the effects on both parties.':tab.id==='dropbox-tab'?'Complete the existing Dropbox case assessment in the case portal.':'Discussion: define the activity before selecting make, buy or alliance.';}
  tabs.forEach((tab,i)=>{tab.addEventListener('click',()=>activate(tab));tab.addEventListener('keydown',e=>{let next;if(e.key==='ArrowRight')next=(i+1)%tabs.length;else if(e.key==='ArrowLeft')next=(i+tabs.length-1)%tabs.length;else if(e.key==='Home')next=0;else if(e.key==='End')next=tabs.length-1;else return;e.preventDefault();e.stopPropagation();activate(tabs[next]);tabs[next].focus();});});
 })();
 </script>
