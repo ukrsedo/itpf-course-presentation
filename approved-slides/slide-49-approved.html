@@ -36,10 +36,18 @@ h1{margin:0;color:var(--navy);font-size:clamp(28px,3.15vw,55px);line-height:1.05
 .example{border-left:5px solid var(--magenta);padding:6px 12px;color:var(--ink);font-size:clamp(14px,1.2vw,20px);line-height:1.25}
 .outcome-sources{position:absolute;left:5.2%;bottom:3%;display:none;color:var(--muted);font-size:clamp(12px,1.02vw,18px)}
 .outcome-sources a{color:var(--navy);font-weight:700;text-underline-offset:3px}
+
+.comparison-panel{position:absolute;left:5.2%;right:5.2%;top:29%;bottom:10%;display:none;grid-template-rows:auto 1fr auto;gap:12px}
+.comparison-table{width:100%;height:100%;border-collapse:collapse;table-layout:fixed;color:var(--ink);font-size:clamp(16px,1.2vw,20px);line-height:1.2}
+.comparison-table th,.comparison-table td{border:1.5px solid var(--navy);padding:9px 12px;vertical-align:middle;text-align:left}
+.comparison-table thead th{background:var(--navy);color:#fff;font-size:clamp(17px,1.4vw,23px)}
+.comparison-table tbody th{background:#f3f8fc;color:var(--navy);font-weight:700}
+.comparison-sources{position:absolute;left:5.2%;bottom:3%;display:none;color:var(--muted);font-size:clamp(12px,1.02vw,18px)}
+.comparison-sources a{color:var(--navy);font-weight:700;text-underline-offset:3px}
 </style></head><body><main class="stage"><section class="slide" aria-label="Slide 49: Software Buying in 2026: G2 Findings">
 <img data-itpf-cips-logo class="logo" alt="CIPS" src="../assets/cips-logo.png">
 <header class="header"><div class="kicker">G2 Buyer Behavior Report · July 2026</div><h1>Software Buying in 2026</h1><p class="subtitle">The Evaluation Maze: discovery accelerates, evaluation takes longer</p></header>
-<nav class="tabs" role="tablist" aria-label="G2 findings and pricing"><button class="tab active" id="tab-findings" role="tab" aria-selected="true" aria-controls="g2-findings" data-panel="findings">G2 findings</button><button class="tab" id="tab-outcomes" role="tab" aria-selected="false" aria-controls="outcome-panel" data-panel="outcomes">Outcome-based pricing</button></nav>
+<nav class="tabs" role="tablist" aria-label="G2 findings and pricing"><button class="tab active" id="tab-findings" role="tab" aria-selected="true" aria-controls="g2-findings" data-panel="findings">G2 findings</button><button class="tab" id="tab-outcomes" role="tab" aria-selected="false" aria-controls="outcome-panel" data-panel="outcomes">Outcome-based pricing</button><button class="tab" id="tab-comparison" role="tab" aria-selected="false" aria-controls="comparison-panel" data-panel="comparison">Outcome vs value</button></nav>
 <div class="findings" id="g2-findings" role="tabpanel"><article class="card"><div class="metric">82%</div><h2>AI-assisted discovery</h2><p>Sourced software recommendations from AI chatbots during the previous 24 months.</p></article>
 <article class="card"><div class="metric">39% / 50%</div><h2>Security delays</h2><p>Cited IT security review as a purchasing delay: 39% overall, 50% among enterprise buyers.</p></article>
 <article class="card"><div class="metric">31% → 46%</div><h2>Finance involvement</h2><p>Finance involvement in software decisions increased over one year.</p></article>
@@ -60,6 +68,19 @@ h1{margin:0;color:var(--navy);font-size:clamp(28px,3.15vw,55px);line-height:1.05
 <div class="example"><strong>Support example:</strong> agree payment for a verified resolution without human intervention, after the agreed observation window. Charging for an AI reply alone measures activity.</div>
 </section>
 <div class="outcome-sources">Sources: <a href="https://www.zendesk.com/blog/ai/agentic-ai/outcome-based-pricing/" target="_blank" rel="noopener noreferrer">Zendesk</a> · <a href="https://www.thesaascfo.com/how-to-build-outcome-based-pricing/" target="_blank" rel="noopener noreferrer">The SaaS CFO</a></div>
+<section class="comparison-panel" id="comparison-panel" role="tabpanel" aria-labelledby="tab-comparison">
+<div class="definition"><strong>Value-based pricing sets the price using customer value.</strong> Outcome-based pricing ties the charge to a defined, verified result. The two approaches can be combined.</div>
+<table class="comparison-table" aria-label="Value-based versus outcome-based pricing"><colgroup><col style="width:18%"><col style="width:41%"><col style="width:41%"></colgroup>
+<thead><tr><th scope="col">Difference</th><th scope="col">Value-based pricing</th><th scope="col">Outcome-based pricing</th></tr></thead>
+<tbody>
+<tr><th scope="row">Main question</th><td>What is the solution worth to this customer?</td><td>What completed result qualifies for payment?</td></tr>
+<tr><th scope="row">Billing</th><td>A fixed subscription can apply even if expected benefits do not materialise.</td><td>The outcome-linked fee follows verified success. Base fees and minimum commitments may also apply.</td></tr>
+<tr><th scope="row">Buyer’s evidence</th><td>Benefit assumptions, alternatives and willingness to pay underpin the price negotiation.</td><td>Success criteria, attribution, measurement windows and event records underpin invoice verification.</td></tr>
+<tr><th scope="row">Support example<br><small>Illustrative</small></th><td>An annual subscription negotiated using the expected value of lower support costs.</td><td>A fee for each verified resolution, subject to agreed quality rules and exclusions.</td></tr>
+</tbody></table>
+<div class="example"><strong>They can coexist:</strong> set the rate per successful resolution using the customer’s expected benefit, then bill only for qualifying resolutions. A value-based price alone does not guarantee achieved results.</div>
+</section>
+<div class="comparison-sources">Sources: <a href="https://stripe.com/resources/more/cost-based-and-value-based-pricing" target="_blank" rel="noopener noreferrer">Stripe</a> · <a href="https://www.zendesk.com/blog/ai/agentic-ai/outcome-based-pricing/" target="_blank" rel="noopener noreferrer">Zendesk</a> · <a href="https://www.thesaascfo.com/how-to-build-outcome-based-pricing/" target="_blank" rel="noopener noreferrer">The SaaS CFO</a></div>
 <div class="footerline"></div></section></main>
 <script id="itpf-deck-bridge">
 (function(){
@@ -101,11 +122,12 @@ h1{margin:0;color:var(--navy);font-size:clamp(28px,3.15vw,55px);line-height:1.05
 
 <script id="g2-pricing-tabs">
 (function(){
- const buttons=[...document.querySelectorAll('.tab')], findings=document.getElementById('g2-findings'), outcomes=document.getElementById('outcome-panel');
- function select(which){const isOutcomes=which==='outcomes';
-  findings.style.display=isOutcomes?'none':'grid'; outcomes.style.display=isOutcomes?'grid':'none';
-  document.querySelectorAll('.g2-only').forEach(e=>e.style.display=isOutcomes?'none':'');
-  document.querySelector('.outcome-sources').style.display=isOutcomes?'block':'none';
+ const buttons=[...document.querySelectorAll('.tab')], panels={findings:document.getElementById('g2-findings'),outcomes:document.getElementById('outcome-panel'),comparison:document.getElementById('comparison-panel')};
+ function select(which){
+  Object.entries(panels).forEach(([name,panel])=>panel.style.display=name===which?'grid':'none');
+  document.querySelectorAll('.g2-only').forEach(e=>e.style.display=which==='findings'?'':'none');
+  document.querySelector('.outcome-sources').style.display=which==='outcomes'?'block':'none';
+  document.querySelector('.comparison-sources').style.display=which==='comparison'?'block':'none';
   buttons.forEach(b=>{const active=b.dataset.panel===which;b.classList.toggle('active',active);b.setAttribute('aria-selected',String(active))});
  }
  buttons.forEach(b=>b.addEventListener('click',()=>select(b.dataset.panel)));
