@@ -1,22 +1,6 @@
-IT PROCUREMENT FOUNDATIONS — 85-SLIDE HTML DECK
-30 September 2026
-
-Key changes
-- Former slide 40, the standalone Dropbox case router, moved into the third tab of the former slide 42.
-- The former slide 42 adds Make or Buy, Transaction Cost Economics and the Dropbox case tab.
-- Former slides 41–86 now use slide numbers 40–85.
-- The deck registry, slide index and Course Assistant map use the same 85-slide sequence.
-
-Deployment
-- Replace index.html, slide-index.html and the entire approved-slides folder.
-- Keep the supplied assets folder.
-- Deploy itpf-course-assistant-worker.js separately to the existing Course Assistant Worker.
-
-Final remap
-1–39 = unchanged
-40 = former slide 41, Technology Procurement Framework — SaaS
-41 = former slide 42, Make or Buy?
-42–85 = former slides 43–86
-
-6 October 2026: CIPS logo toggle
-Use CIPS logo: On/Off in the toolbar or fullscreen navigation. Applies across all slides and tabs. The browser remembers the choice when storage is available. Replace index.html, approved-slides and assets together.
+IT Procurement Foundations — 80-slide web deck
+Updated 20 October 2026. Removed former slides 17, 28, 33, 58 and 63 and renumbered all remaining slides 1–80.
+Current key slides: 38 Make or Buy/PRT; 46 G2 findings and outcome/value-based pricing; 49 AI framework; 50 SaaS & AI benchmarks and Atlassian FY2026.
+The presentation detects the assistant's numbering version and retains compatibility until the updated assistant worker is deployed.
+Deploy itpf-course-assistant-worker.js to itpf-course-assistant. Deploy course-refresher/worker.js to itpf-course-refresher. Preserve existing secrets and bindings.
+Course resources embed source: course-resources.html, updated to 80 slides.

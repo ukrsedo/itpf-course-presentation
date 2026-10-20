@@ -1,31 +1,175 @@
 <!doctype html>
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>ITPF — Slide 26 Draft — Integrated Procurement Planning</title>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Slide 26 — Business-driven ITIL® Service Lifecycle</title>
 <style>
-:root{--navy:#003b70;--cyan:#12bddf;--orange:#ff5a00;--ink:#003b70;--line:#c7d9ea;--soft:#f7fbff}
-*{box-sizing:border-box} html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
+:root {
+  --navy:#003b70;
+  --cyan:#12bddf;
+  --orange:#ff5a00;
+  --green:#3aa25a;
+  --purple:#6b5fb5;
+  --ink:#003b70;
+  --line:#c7d9ea;
+  --soft:#f7fbff;
+  --grey:#93adbf;
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
 .stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
 .slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
 .logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:5}
-.band{position:absolute;left:0;top:0;bottom:0;width:36%;background:var(--navy)}
-.accent{position:absolute;left:36%;top:0;bottom:0;width:1.4%;background:var(--cyan)}
-.content{position:absolute;left:42%;right:7%;top:18%;bottom:14%;display:flex;flex-direction:column;justify-content:center}
-.session{font-size:clamp(23px,1.7vw,34px);line-height:1.1;color:var(--orange);font-weight:900;margin-bottom:1.1rem}
-h1{margin:0;color:var(--navy);font-size:clamp(46px,4.2vw,82px);line-height:.98;letter-spacing:-.035em;font-weight:900}
-.sub{margin:1.1rem 0 0;color:#2f5f88;font-size:clamp(22px,1.65vw,34px);line-height:1.15;font-weight:800;max-width:92%}
-.statement{margin-top:2rem;border-left:7px solid var(--cyan);padding:1rem 1.2rem;background:#f7fbff;color:#244d72;font-size:clamp(22px,1.55vw,32px);line-height:1.18;font-weight:800}
-.big{position:absolute;left:6%;top:19%;right:69%;color:#fff;font-size:clamp(34px,2.9vw,56px);line-height:1.08;font-weight:900}
-.section{position:absolute;left:6%;bottom:10%;right:69%;color:#fff;font-size:clamp(18px,1.3vw,26px);line-height:1.2;font-weight:800;opacity:.95}
-.footer{position:absolute;left:4.9%;bottom:3.1%;font-size:clamp(14px,1vw,22px);color:#168cff}
-</style></head>
-<body><main class="stage"><section aria-label="Integrated Procurement Planning" class="slide">
-<div class="band"></div><div class="accent"></div><img data-itpf-cips-logo alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
-<div class="big">Integrated Procurement Planning</div>
-<div class="section">Section 2<br/>Aligning procurement activities with the IT Service Lifecycle</div>
-<div class="content"><div class="session">Session 2</div><h1>Integrated Procurement Planning</h1><div class="sub">Procurement activities must be aligned with the IT Service Lifecycle.</div><div class="statement">We move from sourcing strategy into integrated delivery planning, where procurement, project management and service lifecycle decisions connect.</div></div>
-<div class="footer">©</div></section></main>
+.header{position:absolute;left:5.6%;top:6.1%;right:17%}
+.session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.34rem}
+.dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
+h1{margin:0;color:var(--navy);font-size:clamp(31px,2.7vw,52px);line-height:1.03;letter-spacing:-.02em;font-weight:900}
+.subtitle{font-size:clamp(17px,1.18vw,24px);margin-top:.36rem;color:#2f5f88;font-weight:700}
+
+.canvas{position:absolute;left:4.8%;right:4.8%;top:22.7%;bottom:15.0%;display:grid;grid-template-columns:27% 46% 27%;gap:1.7rem;align-items:stretch}
+.sideStack{display:grid;gap:.7rem;height:100%}
+.leftStack{grid-template-rows:.72fr .88fr 1.04fr}
+.rightStack{grid-template-rows:.9fr 1.1fr}
+.box{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-width:0;border-radius:8px;overflow:hidden}
+.box h2{margin:0;background:var(--navy);color:#fff;font-size:clamp(20px,1.42vw,29px);line-height:1.04;padding:.62rem .8rem;font-weight:900}
+.body{padding:.56rem .70rem .62rem;display:grid;gap:.22rem;font-size:clamp(13px,.89vw,17px);line-height:1.08;font-weight:760;color:#244d72}
+.body div{padding-bottom:.23rem}
+.smallTag{margin-top:auto;border-top:2px solid var(--line);padding:.34rem .62rem .40rem;color:#24547e;font-weight:900;font-size:clamp(12px,.82vw,16px);line-height:1.06;background:#f8fbfe}
+
+
+.centerWrap{position:relative;display:flex;align-items:center;justify-content:center}
+
+
+
+
+
+
+
+.centerCard{position:relative;border:3px solid var(--cyan);background:linear-gradient(180deg,#fbfdff,#f5fbff);width:100%;height:100%;border-radius:10px;padding:.9rem .9rem .75rem;display:flex;flex-direction:column}
+.centerTitle{font-size:clamp(19px,1.34vw,27px);font-weight:900;color:var(--navy);text-align:center;line-height:1.08;margin-bottom:.36rem}
+.svgWrap{flex:1;min-height:0;display:grid;place-items:center}
+.caption{border-top:2px solid var(--line);padding-top:.38rem;text-align:center;font-size:clamp(13px,.9vw,17px);font-weight:820;color:#335f86;line-height:1.1}
+
+
+
+
+
+
+
+
+.procCallout{position:absolute;left:5.8%;right:5.8%;bottom:3.4%;border-top:2px solid var(--line);padding-top:.42rem;text-align:center;font-size:clamp(13px,.92vw,18px);font-weight:860;color:#244d72;line-height:1.10}
+.footer{position:absolute;left:4.9%;bottom:2.4%;font-size:clamp(14px,1vw,22px);color:#168cff}
+</style>
+</head>
+<body>
+<main class="stage">
+<section aria-label="Business-driven ITIL Service Lifecycle" class="slide">
+<img data-itpf-cips-logo alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<div class="header">
+<div class="session"><span class="dot"></span><span>Session 2 Integrated Procurement Planning</span></div>
+<h1>Business-driven ITIL® Service Lifecycle</h1>
+<div class="subtitle">Procurement supports a service lifecycle, not a one-off technical purchase.</div>
+</div>
+<div class="canvas">
+<div class="sideStack leftStack">
+<div class="box">
+<h2>Business input</h2>
+<div class="body">
+<div>Business and customer requirements</div>
+</div>
+<div class="smallTag">Starts Service Strategy</div>
+</div>
+<div class="box">
+<h2>Strategic input</h2>
+<div class="body">
+<div>Strategies and policies</div>
+<div>Resources and constraints</div>
+<div>Service level expectations</div>
+</div>
+<div class="smallTag">Defines the strategic service direction</div>
+</div>
+<div class="box">
+<h2>Design outputs</h2>
+<div class="body">
+<div>Solution designs</div>
+<div>Architectures and standards</div>
+<div>Service Design Packages</div>
+<div>Tested solution plans</div>
+</div>
+<div class="smallTag">Moves into Service Transition and delivery</div>
+</div>
+</div>
+<div class="centerWrap"><div class="centerCard">
+<div class="centerTitle">ITIL service lifecycle</div>
+<div class="svgWrap">
+<svg aria-label="ITIL service lifecycle diagram" height="100%" viewBox="0 0 700 700" width="100%">
+  <defs>
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#003b70" flood-opacity=".18"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)" stroke="#ffffff" stroke-width="9" stroke-linejoin="round">
+    <path d="M 365.0 64.4 A 286 286 0 0 1 589.9 194.2 L 617.0 247.5 L 482.5 263.9 A 158 158 0 0 0 358.3 192.2 Z" fill="#79d653"/>
+    <path d="M 626.3 276.0 A 286 286 0 0 1 572.3 530.0 L 530.0 572.3 L 472.8 449.4 A 158 158 0 0 0 502.6 309.1 Z" fill="#16a9e5"/>
+    <path d="M 505.8 589.9 A 286 286 0 0 1 247.5 617.0 L 194.2 589.9 L 293.4 497.5 A 158 158 0 0 0 436.1 482.5 Z" fill="#ee873c"/>
+    <path d="M 170.0 572.3 A 286 286 0 0 1 64.4 335.0 L 73.7 276.0 L 192.2 341.7 A 158 158 0 0 0 250.6 472.8 Z" fill="#ff2638"/>
+    <path d="M 83.0 247.5 A 286 286 0 0 1 276.0 73.7 L 335.0 64.4 L 309.1 197.4 A 158 158 0 0 0 202.5 293.4 Z" fill="#ffd000"/>
+  </g>
+  <circle cx="350" cy="350" r="151" fill="#ffffff" stroke="#e5edf4" stroke-width="5"/>
+  <g fill="#101820" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">
+    <text x="468" y="174" font-size="23" transform="rotate(36 468 174)">
+      <tspan x="468" dy="0">Service</tspan><tspan x="468" dy="27">Strategy</tspan>
+    </text>
+    <text x="548" y="393" font-size="23" transform="rotate(-72 548 393)">
+      <tspan x="548" dy="0">Service</tspan><tspan x="548" dy="27">Design</tspan>
+    </text>
+    <text x="350" y="564" font-size="23">Service Transition</text>
+    <g transform="translate(145 414) rotate(72)">
+      <text x="0" y="-14" font-size="23">Service</text><text x="0" y="14" font-size="23">Operation</text>
+    </g>
+    <text x="217" y="155" font-size="21" transform="rotate(-36 217 155)">
+      <tspan x="217" dy="0">Continual</tspan><tspan x="217" dy="25">Service</tspan><tspan x="217" dy="25">Improvement</tspan>
+    </text>
+  </g>
+  <g fill="#003b70" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <text x="350" y="326" font-size="49" font-weight="800">ITIL</text>
+    <text x="350" y="373" font-size="28" font-weight="700">Service Lifecycle</text>
+    <text x="350" y="408" font-size="28" font-weight="700">Stages</text>
+  </g>
+</svg>
+</div>
+<div class="caption">Business requirements feed Service Strategy, which then sets policies, constraints and service level expectations before Service Design begins.</div>
+</div>
+</div>
+<div class="sideStack rightStack">
+<div class="box">
+<h2>Operational output</h2>
+<div class="body">
+<div>Operational services</div>
+<div>Transition plans</div>
+<div>Knowledge updated</div>
+<div>Service catalogue and portfolio</div>
+</div>
+<div class="smallTag">Produced mainly by Operation and Transition</div>
+</div>
+<div class="box">
+<h2>Procurement implication</h2>
+<div class="body">
+<div>Source integrated services, not isolated buys</div>
+<div>Plan for implementation and operation</div>
+<div>Include improvement actions and lifecycle cost</div>
+<div>Example: Printing-as-a-Service</div>
+</div>
+<div class="smallTag">Sourcing decisions affect the full lifecycle</div>
+</div>
+</div>
+</div>
+<div class="footer">©</div>
+</section>
+</main>
 <script id="itpf-deck-bridge">
 (function(){
   function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
@@ -63,4 +207,5 @@ h1{margin:0;color:var(--navy);font-size:clamp(46px,4.2vw,82px);line-height:.98;l
  window.addEventListener('message',function(e){if(e.source===window.parent&&e.data&&e.data.type==='ITPF_CIPS_VISIBILITY')apply(e.data.visible===true)});
 })();
 </script>
-</body></html>
+</body>
+</html>

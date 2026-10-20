@@ -1,111 +1,15 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ITPF — Slide 49 — Software Buying in 2026: G2 Findings</title>
-<style>
-:root{--navy:#003b70;--cyan:#00b7e5;--magenta:#c00067;--ink:#173a59;--muted:#60758a}
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif}
-.stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
-.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
-.logo{position:absolute;right:4.1%;top:3.6%;width:10.3%;height:auto;z-index:5}
-.header{position:absolute;left:5.2%;top:4.5%;right:17%}
-.kicker{color:var(--magenta);font-size:clamp(12px,.95vw,17px);font-weight:800;letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px}
-h1{margin:0;color:var(--navy);font-size:clamp(28px,3.15vw,55px);line-height:1.05;letter-spacing:-.025em}
-.subtitle{margin:10px 0 0;color:var(--muted);font-size:clamp(14px,1.2vw,21px);font-weight:600}
-.findings{position:absolute;left:5.2%;right:5.2%;top:25%;bottom:22%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:13px}
-.card{border:2px solid var(--navy);border-top:6px solid var(--navy);border-radius:12px;background:#fff;padding:17px 19px;box-shadow:0 4px 12px rgba(0,59,112,.08)}
-.metric{color:var(--navy);font-size:clamp(28px,2.7vw,46px);font-weight:900;line-height:1;letter-spacing:-.025em;margin:0 0 9px}
-.card h2{margin:0 0 7px;color:var(--navy);font-size:clamp(16px,1.42vw,24px);line-height:1.1}
-.card p{margin:0;color:var(--ink);font-size:clamp(14px,1.2vw,20px);line-height:1.25;font-weight:600}
-.implication{position:absolute;left:5.2%;right:5.2%;bottom:12.5%;border-left:5px solid var(--magenta);padding:8px 13px;color:var(--ink);font-size:clamp(15px,1.32vw,23px);line-height:1.25}
-.scope{position:absolute;left:5.2%;right:5.2%;bottom:6.9%;margin:0;color:var(--muted);font-size:clamp(12px,1.02vw,18px);line-height:1.2}
-.source{position:absolute;left:5.2%;bottom:2.7%;color:var(--navy);font-size:clamp(12px,1.02vw,18px);font-weight:700;text-underline-offset:3px}
-.footerline{position:absolute;left:0;right:0;bottom:0;height:7px;background:linear-gradient(90deg,var(--navy) 0 33%,var(--cyan) 33% 100%)}
-
-.tabs{position:absolute;left:5.2%;right:5.2%;top:21%;display:flex;gap:10px}
-.tab{border:1px solid #b8c8d6;background:#fff;color:var(--navy);padding:7px 20px;border-radius:8px;font:700 clamp(14px,1.2vw,20px) Arial;cursor:pointer}
-.tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
-.findings{top:28.5%;bottom:20%;gap:12px}
-.findings .card{padding:14px 17px}
-.implication{bottom:11.8%}
-.outcome-panel{position:absolute;left:5.2%;right:5.2%;top:29%;bottom:10%;display:none;grid-template-rows:auto 1fr auto;gap:12px}
-.definition{color:var(--ink);font-size:clamp(16px,1.35vw,23px);line-height:1.25;padding:0 0 5px}
-.controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:12px}
-.controls .card{padding:13px 17px}
-.controls h2{font-size:clamp(17px,1.4vw,24px);margin-bottom:7px}
-.controls p{font-size:clamp(14px,1.2vw,20px);line-height:1.25}
-.example{border-left:5px solid var(--magenta);padding:6px 12px;color:var(--ink);font-size:clamp(14px,1.2vw,20px);line-height:1.25}
-.outcome-sources{position:absolute;left:5.2%;bottom:3%;display:none;color:var(--muted);font-size:clamp(12px,1.02vw,18px)}
-.outcome-sources a{color:var(--navy);font-weight:700;text-underline-offset:3px}
-
-.comparison-panel{position:absolute;left:5.2%;right:5.2%;top:29%;bottom:10%;display:none;grid-template-rows:auto 1fr auto;gap:12px}
-.comparison-table{width:100%;height:100%;border-collapse:collapse;table-layout:fixed;color:var(--ink);font-size:clamp(16px,1.2vw,20px);line-height:1.2}
-.comparison-table th,.comparison-table td{border:1.5px solid var(--navy);padding:9px 12px;vertical-align:middle;text-align:left}
-.comparison-table thead th{background:var(--navy);color:#fff;font-size:clamp(17px,1.4vw,23px)}
-.comparison-table tbody th{background:#f3f8fc;color:var(--navy);font-weight:700}
-.comparison-sources{position:absolute;left:5.2%;bottom:3%;display:none;color:var(--muted);font-size:clamp(12px,1.02vw,18px)}
-.comparison-sources a{color:var(--navy);font-weight:700;text-underline-offset:3px}
-</style></head><body><main class="stage"><section class="slide" aria-label="Slide 49: Software Buying in 2026: G2 Findings">
-<img data-itpf-cips-logo class="logo" alt="CIPS" src="../assets/cips-logo.png">
-<header class="header"><div class="kicker">G2 Buyer Behavior Report · July 2026</div><h1>Software Buying in 2026</h1><p class="subtitle">The Evaluation Maze: discovery accelerates, evaluation takes longer</p></header>
-<nav class="tabs" role="tablist" aria-label="G2 findings and pricing"><button class="tab active" id="tab-findings" role="tab" aria-selected="true" aria-controls="g2-findings" data-panel="findings">G2 findings</button><button class="tab" id="tab-outcomes" role="tab" aria-selected="false" aria-controls="outcome-panel" data-panel="outcomes">Outcome-based pricing</button><button class="tab" id="tab-comparison" role="tab" aria-selected="false" aria-controls="comparison-panel" data-panel="comparison">Value-based pricing</button></nav>
-<div class="findings" id="g2-findings" role="tabpanel"><article class="card"><div class="metric">82%</div><h2>AI-assisted discovery</h2><p>Sourced software recommendations from AI chatbots during the previous 24 months.</p></article>
-<article class="card"><div class="metric">39% / 50%</div><h2>Security delays</h2><p>Cited IT security review as a purchasing delay: 39% overall, 50% among enterprise buyers.</p></article>
-<article class="card"><div class="metric">31% → 46%</div><h2>Finance involvement</h2><p>Finance involvement in software decisions increased over one year.</p></article>
-<article class="card"><div class="metric">70%</div><h2>Shorter contracts</h2><p>Said the pace of AI innovation was pushing them toward shorter contracts.</p></article>
-<article class="card"><div class="metric">11% → 23%</div><h2>Outcome-based pricing</h2><p>Preference for outcome-based pricing more than doubled since 2025.</p></article>
-<article class="card"><div class="metric">9% / 2%</div><h2>Agent purchasing authority</h2><p>Comfortable with agent purchases: 9% within approved guardrails, 2% without pre-approval.</p></article></div>
-<div class="implication g2-only"><strong>Procurement implication:</strong> validate shortlists early, involve security and finance, and control variable spending.</div>
-<p class="scope g2-only">Survey of 1,000+ software buyers, plus 50+ sales and marketing interviews. Figures describe survey respondents.</p>
-<a class="source g2-only" href="https://company.g2.com/news/buyer-behavior-2026" target="_blank" rel="noopener noreferrer">Source: G2, 2026 Buyer Behavior Report findings · 22 July 2026</a>
-<section class="outcome-panel" id="outcome-panel" role="tabpanel" aria-labelledby="tab-outcomes">
-<div class="definition"><strong>Payment follows a verified customer result.</strong> API calls, messages and tokens measure consumption. A resolved issue or an accepted qualified lead can be an outcome.</div>
-<div class="controls">
-<article class="card"><h2>1. Define what earns payment</h2><p>Agree the result, quality threshold, baseline and exclusions. Specify treatment of failures, human handoffs, duplicates and reopened cases.</p></article>
-<article class="card"><h2>2. Prove the outcome occurred</h2><p>Agree the system of record, attribution and verification window. Give the buyer access to the evidence behind each billable event.</p></article>
-<article class="card"><h2>3. Set the full commercial model</h2><p>Assess the rate per result, platform and onboarding fees, minimum commitments and caps. If credits are used, make their monetary value explicit.</p></article>
-<article class="card"><h2>4. Control bills and disputes</h2><p>Require spend alerts, overage rules and invoice reconciliation. Agree correction or reversal of disputed outcomes, and what happens when a cap is reached.</p></article>
-</div>
-<div class="example"><strong>Support example:</strong> agree payment for a verified resolution without human intervention, after the agreed observation window. Charging for an AI reply alone measures activity.</div>
-</section>
-<div class="outcome-sources">Sources: <a href="https://www.zendesk.com/blog/ai/agentic-ai/outcome-based-pricing/" target="_blank" rel="noopener noreferrer">Zendesk</a> · <a href="https://www.thesaascfo.com/how-to-build-outcome-based-pricing/" target="_blank" rel="noopener noreferrer">The SaaS CFO</a></div>
-<section class="comparison-panel" id="comparison-panel" role="tabpanel" aria-labelledby="tab-comparison">
-<div class="definition"><strong>Outcome-based pricing is a subset of value-based pricing.</strong> The broader principle links price to customer value. The outcome-based form makes the outcome-linked charge conditional on a defined, verified result.</div>
-<table class="comparison-table" aria-label="Value-based pricing and its outcome-based form"><colgroup><col style="width:18%"><col style="width:41%"><col style="width:41%"></colgroup>
-<thead><tr><th scope="col">Aspect</th><th scope="col">Value-based pricing<br>Broader principle</th><th scope="col">Outcome-based pricing<br>Specific form</th></tr></thead>
-<tbody>
-<tr><th scope="row">Pricing logic</th><td>Set the price using the value the customer expects or perceives.</td><td>Link the outcome fee to a measurable result the customer receives.</td></tr>
-<tr><th scope="row">Billing</th><td>May use subscriptions, outcome fees or other structures. Payment need not depend on realised results.</td><td>The outcome-linked fee follows verified success. Base fees and minimum commitments may also apply.</td></tr>
-<tr><th scope="row">Buyer’s evidence</th><td>Value drivers, benefit assumptions, alternatives and willingness to pay support the price.</td><td>Success criteria, attribution, measurement windows and event records support the outcome charge.</td></tr>
-<tr><th scope="row">Support example<br><small>Illustrative</small></th><td>A subscription priced using expected support savings is one possible value-based structure.</td><td>A fee for each verified resolution applies the value-based principle through a defined success event.</td></tr>
-</tbody></table>
-<div class="example"><strong>The distinction:</strong> value-based pricing does not necessarily make payment conditional on achieved outcomes. Outcome-based pricing adds that condition to the outcome-linked fee.</div>
-</section>
-<div class="comparison-sources">Sources: <a href="https://stripe.com/resources/more/cost-based-and-value-based-pricing" target="_blank" rel="noopener noreferrer">Stripe</a> · <a href="https://www.zendesk.com/blog/ai/agentic-ai/outcome-based-pricing/" target="_blank" rel="noopener noreferrer">Zendesk</a> · <a href="https://www.thesaascfo.com/how-to-build-outcome-based-pricing/" target="_blank" rel="noopener noreferrer">The SaaS CFO</a></div>
-<div class="footerline"></div></section></main>
-<script id="itpf-deck-bridge">
-(function(){
-  function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
-  window.addEventListener('keydown',function(e){
-    var t=e.target, tag=(t&&t.tagName||'').toLowerCase();
-    if(tag==='input'||tag==='textarea'||tag==='select'||(t&&t.isContentEditable)) return;
-    var action=null;
-    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') action='next';
-    else if(e.key==='ArrowLeft'||e.key==='PageUp') action='prev';
-    else if(e.key==='Home') action='first';
-    else if(e.key==='End') action='last';
-    if(action){ e.preventDefault(); e.stopPropagation(); send(action); }
-  },true);
-  document.addEventListener('click',function(e){
-    var b=e.target&&e.target.closest?e.target.closest('button'):null;
-    if(!b) return;
-    var label=(b.textContent||'').trim().toLowerCase();
-    if(label==='full screen'||label==='fullscreen'||label==='⛶'){
-      e.preventDefault(); e.stopImmediatePropagation(); send('fullscreen');
-    }
-  },true);
-})();
-</script>
-<style>html.itpf-cips-hidden img[data-itpf-cips-logo]{visibility:hidden!important}</style>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Slide 49 — Technology Procurement Framework — AI</title><style>
+:root{--navy:#003b70;--cyan:#12bddf;--orange:#ff5a00;--ink:#173f66;--muted:#5f7892;--line:#c7d9ea;--soft:#f7fbff;--soft2:#eef7fd;--warn:#fff7f1}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
+.stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto}.header{position:absolute;left:6%;top:5.2%;right:17%}.session{font-size:clamp(14px,1.0vw,21px);display:flex;align-items:center;gap:.55rem;color:var(--navy);margin-bottom:.28rem}.dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;flex:none}h1{margin:0;color:var(--navy);font-size:clamp(34px,2.75vw,54px);line-height:1.03;letter-spacing:-.02em;font-weight:900}.subtitle{font-size:clamp(17px,1.18vw,23px);margin-top:.35rem;color:#2f5f88;font-weight:700}
+.framework{position:absolute;left:5.7%;right:5.7%;top:23.0%;bottom:9.3%}.stageband{display:grid;grid-template-columns:2fr 1fr;gap:.7rem;height:7.5%;margin-bottom:.7rem}.demandBand,.commercialBand{display:flex;align-items:center;justify-content:center;font-weight:900;letter-spacing:.045em;font-size:clamp(16px,1.08vw,22px);text-transform:uppercase;border-radius:9px}.demandBand{background:var(--navy);color:#fff}.commercialBand{background:var(--orange);color:#fff}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;height:83%}.col{border:3px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;display:flex;flex-direction:column;min-width:0}.col:nth-child(1),.col:nth-child(2){border-color:#91b3ce}.col:nth-child(3){border-color:#f1b18d}.colHead{padding:.52rem .7rem;color:#fff;font-weight:900;font-size:clamp(21px,1.52vw,30px);line-height:1.05}.col:nth-child(1) .colHead{background:var(--cyan)}.col:nth-child(2) .colHead{background:var(--navy)}.col:nth-child(3) .colHead{background:var(--orange)}.q{padding:.44rem .72rem .38rem;font-size:clamp(16px,1.08vw,21px);line-height:1.10;font-weight:800;color:var(--navy);background:var(--soft2);min-height:14%;display:flex;align-items:center}.col:nth-child(3) .q{background:var(--warn)}
+ul{margin:.48rem .72rem .25rem 1.35rem;padding:0;flex:1}li{font-size:clamp(15px,1.02vw,19.5px);line-height:1.13;margin:0 0 .38rem 0;color:var(--ink)}li::marker{color:var(--cyan)}.col:nth-child(3) li::marker{color:var(--orange)}
+.toolkit{margin:.12rem .68rem .52rem;padding:.42rem .54rem;border-top:2px solid var(--line);font-size:clamp(13.5px,.90vw,17px);line-height:1.10;font-weight:800;color:#2f5f88;min-height:18%}.generic .toolkit{background:var(--soft);border:1px solid var(--line);border-radius:7px;margin:.12rem .68rem .62rem;display:flex;align-items:center}.generic .col:nth-child(3) .toolkit{background:var(--warn);border-color:#f1c6ae}
+.flow{position:absolute;left:5.7%;right:5.7%;bottom:4.1%;height:5.2%;display:flex;align-items:center;justify-content:center;font-size:clamp(16px,1.10vw,22px);font-weight:900;color:var(--navy)}.flow b{color:var(--orange)}
+.arrow{display:inline-block;margin:0 .65rem;color:var(--orange);font-size:1.35em;line-height:1}.slidenum{position:absolute;right:4.6%;bottom:3.2%;font-size:clamp(13px,.8vw,17px);font-weight:800;color:#8ba0b3}
+</style></head><body><main class="stage"><section class="slide "><img data-itpf-cips-logo class="logo" src="../assets/cips-logo.png" alt="CIPS"><div class="header"><div class="session"><span class="dot"></span><span>Session 4 Emerging Technology & AI</span></div><h1>Technology Procurement Framework — AI</h1><div class="subtitle">AI demand can grow quickly because both usage and unit economics are variable.</div></div><div class="framework"><div class="stageband"><div class="demandBand">Demand Management</div><div class="commercialBand">Commercial Negotiation</div></div><div class="cols"><section class="col"><div class="colHead">Cost Management</div><div class="q">Make AI demand visible and attributable</div><ul><li>Inventory use cases, users, models and workload owners</li><li>Track token, request, compute and storage consumption</li><li>Set quotas, approval thresholds, budgets and alerts</li><li>Allocate cost through team-level showback or chargeback</li></ul><div class="toolkit">Toolkit: usage telemetry • quotas • approval thresholds • budgets/alerts • showback/chargeback</div></section><section class="col"><div class="colHead">Cost Optimization</div><div class="q">Use the least-cost approach that still works</div><ul><li>Match the model to task complexity</li><li>Shorten prompts and trim unnecessary context</li><li>Cache repeated outputs and batch/reuse requests where appropriate</li><li>Remove unnecessary calls before scaling the workflow</li></ul><div class="toolkit">Toolkit: model-to-task routing • prompt/context control • caching • batching • call elimination</div></section><section class="col"><div class="colHead">Commercial Levers</div><div class="q">Protect economics as AI usage evolves</div><ul><li>Negotiate token / unit pricing and volume tiers</li><li>Challenge committed spend and preserve flexibility between models</li><li>Cover future models, support and professional services</li><li>Protect data use, ownership, IP position, portability and exit rights</li></ul><div class="toolkit">Toolkit: unit rates • commitments • future-model terms • data / IP • exit rights</div></section></div></div><div class="flow">Do not negotiate large AI commitments against an immature use-case and consumption forecast.</div><div class="slidenum">52</div></section></main><style>html.itpf-cips-hidden img[data-itpf-cips-logo]{visibility:hidden!important}</style>
 <script id="itpf-cips-visibility">
 (function(){
  function apply(visible){
@@ -117,20 +21,6 @@ h1{margin:0;color:var(--navy);font-size:clamp(28px,3.15vw,55px);line-height:1.05
  }
  try{apply(localStorage.getItem('itpf.cipsLogo.visible')!=='false')}catch(e){}
  window.addEventListener('message',function(e){if(e.source===window.parent&&e.data&&e.data.type==='ITPF_CIPS_VISIBILITY')apply(e.data.visible===true)});
-})();
-</script>
-
-<script id="g2-pricing-tabs">
-(function(){
- const buttons=[...document.querySelectorAll('.tab')], panels={findings:document.getElementById('g2-findings'),outcomes:document.getElementById('outcome-panel'),comparison:document.getElementById('comparison-panel')};
- function select(which){
-  Object.entries(panels).forEach(([name,panel])=>panel.style.display=name===which?'grid':'none');
-  document.querySelectorAll('.g2-only').forEach(e=>e.style.display=which==='findings'?'':'none');
-  document.querySelector('.outcome-sources').style.display=which==='outcomes'?'block':'none';
-  document.querySelector('.comparison-sources').style.display=which==='comparison'?'block':'none';
-  buttons.forEach(b=>{const active=b.dataset.panel===which;b.classList.toggle('active',active);b.setAttribute('aria-selected',String(active))});
- }
- buttons.forEach(b=>b.addEventListener('click',()=>select(b.dataset.panel)));
 })();
 </script>
 </body></html>

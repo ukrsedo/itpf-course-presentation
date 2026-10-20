@@ -1,0 +1,888 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IT Procurement Foundations — Course Hub</title>
+
+<style>
+:root{
+  --navy:#14213d;
+  --navy-2:#20324f;
+  --teal:#3c7885;
+  --teal-dark:#2f626c;
+  --line:#d7e0e8;
+  --muted:#607086;
+  --page:#eef4f8;
+  --white:#ffffff;
+
+  --violet:#6b5ca5;
+  --coral:#c96d5c;
+  --blue:#2f6fa8;
+  --gold:#b47a17;
+  --green:#4f8a69;
+  --grey:#667382;
+}
+
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  min-height:100%;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--navy);
+  background:var(--page);
+}
+
+body{
+  padding:28px;
+}
+
+.page{
+  width:min(1240px,100%);
+  margin:0 auto;
+  overflow:hidden;
+  background:#fff;
+  border:1px solid #d8e2ea;
+  border-radius:24px;
+  box-shadow:0 16px 42px rgba(20,33,61,.10);
+}
+
+.hero{
+  position:relative;
+  padding:38px 42px 34px;
+  background:
+    radial-gradient(circle at 92% 12%,rgba(60,120,133,.16),transparent 31%),
+    linear-gradient(135deg,#f9fcfe 0%,#eef5f8 100%);
+  border-bottom:1px solid #dce6ed;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  left:42px;
+  bottom:0;
+  width:86px;
+  height:4px;
+  border-radius:4px 4px 0 0;
+  background:var(--teal);
+}
+
+.eyebrow{
+  margin:0 0 10px;
+  color:var(--teal-dark);
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+
+.hero h1{
+  margin:0;
+  max-width:930px;
+  font-size:clamp(34px,4.2vw,58px);
+  line-height:1.03;
+  letter-spacing:-.04em;
+  font-weight:900;
+}
+
+.hero p{
+  margin:14px 0 0;
+  max-width:760px;
+  color:var(--muted);
+  font-size:clamp(17px,1.55vw,21px);
+  line-height:1.45;
+}
+
+.student-lookup{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(300px,.8fr);
+  gap:34px;
+  margin:28px 30px 0;
+  padding:25px 28px;
+  background:linear-gradient(135deg,#f4fafb,#eef6f8);
+  border:1px solid #cadde2;
+  border-radius:18px;
+}
+
+.student-kicker{
+  margin:0 0 7px;
+  color:var(--teal-dark);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+.student-lookup h2{
+  margin:0;
+  font-size:28px;
+  color:var(--navy-2);
+}
+
+.student-lookup-copy > p:last-child{
+  margin:9px 0 0;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.45;
+  max-width:620px;
+}
+
+.student-lookup-form{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+
+.student-lookup-form label{
+  font-size:13px;
+  font-weight:800;
+  color:var(--navy-2);
+}
+
+.student-lookup-form select{
+  width:100%;
+  min-height:44px;
+  padding:0 12px;
+  border:1px solid #bbcbd5;
+  border-radius:9px;
+  background:#fff;
+  color:var(--navy);
+  font-size:15px;
+}
+
+.student-lookup-form button{
+  min-height:44px;
+  border:0;
+  border-radius:9px;
+  background:var(--teal-dark);
+  color:#fff;
+  font-size:15px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.student-lookup-form button:hover{
+  background:var(--teal);
+}
+
+.student-lookup-form button:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.student-message{
+  min-height:18px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.student-result{
+  margin-top:4px;
+  padding:14px 16px;
+  background:#fff;
+  border:1px solid #bcd3d8;
+  border-radius:10px;
+}
+
+.student-result span,
+.student-result small{
+  display:block;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.student-result strong{
+  display:block;
+  margin:3px 0 4px;
+  color:var(--navy);
+  font-size:25px;
+  letter-spacing:.03em;
+}
+
+.menu{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+  padding:28px 30px 32px;
+}
+
+.card{
+  --accent:var(--teal);
+  --tint:#f4f9fa;
+
+  position:relative;
+  display:flex;
+  min-height:184px;
+  padding:24px 24px 22px;
+  overflow:hidden;
+  color:inherit;
+  text-decoration:none;
+  background:
+    linear-gradient(145deg,#fff 0%,#fff 61%,var(--tint) 100%);
+  border:1px solid var(--line);
+  border-radius:18px;
+  box-shadow:0 5px 16px rgba(20,33,61,.045);
+  transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease;
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0 auto 0 0;
+  width:5px;
+  background:var(--accent);
+}
+
+.card::after{
+  content:"↗";
+  position:absolute;
+  top:18px;
+  right:20px;
+  color:var(--accent);
+  font-size:21px;
+  font-weight:700;
+  opacity:.55;
+  transition:transform .16s ease,opacity .16s ease;
+}
+
+.card:hover,
+.card:focus-visible{
+  transform:translateY(-3px);
+  border-color:#bdcbd6;
+  box-shadow:0 13px 30px rgba(20,33,61,.10);
+  outline:none;
+}
+
+.card:hover::after,
+.card:focus-visible::after{
+  transform:translate(2px,-2px);
+  opacity:1;
+}
+
+.card-content{
+  display:flex;
+  flex-direction:column;
+  width:100%;
+  min-width:0;
+}
+
+.card-meta{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  margin-bottom:18px;
+  color:var(--accent);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.card-no{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:30px;
+  height:30px;
+  flex:0 0 30px;
+  border-radius:9px;
+  background:color-mix(in srgb,var(--accent) 11%,white);
+  border:1px solid color-mix(in srgb,var(--accent) 28%,white);
+  letter-spacing:0;
+}
+
+.card h2{
+  margin:0;
+  padding-right:28px;
+  color:var(--navy-2);
+  font-size:clamp(22px,1.8vw,29px);
+  line-height:1.12;
+  letter-spacing:-.025em;
+  font-weight:850;
+}
+
+.card p{
+  margin:11px 0 0;
+  max-width:92%;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.42;
+}
+
+.status{
+  display:inline-flex;
+  align-items:center;
+  align-self:flex-start;
+  gap:7px;
+  margin-top:auto;
+  padding-top:18px;
+  color:var(--grey);
+  font-size:13px;
+  font-weight:800;
+}
+
+.status::before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:currentColor;
+  opacity:.75;
+}
+
+.deck{
+  grid-column:1 / -1;
+  min-height:142px;
+  --accent:var(--teal);
+  --tint:#eef8fa;
+}
+
+.deck .card-content{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(320px,.75fr);
+  align-items:center;
+  column-gap:34px;
+}
+
+.deck .card-meta{
+  grid-column:1;
+  margin-bottom:10px;
+}
+
+.deck h2{
+  grid-column:1;
+}
+
+.deck p{
+  grid-column:2;
+  grid-row:1 / span 2;
+  align-self:center;
+  margin:0;
+  max-width:none;
+  padding:0 24px 0 6px;
+  border-left:1px solid #cfe0e6;
+  font-size:16px;
+}
+
+.gpt{--accent:var(--violet);--tint:#f6f3fb}
+.simulator{--accent:var(--coral);--tint:#fff5f1}
+.strategy{--accent:var(--blue);--tint:#f1f7fc}
+.kraljic{--accent:var(--gold);--tint:#fff9ed}
+.cases{--accent:var(--green);--tint:#f1f8f3}
+.quizzes{--accent:var(--grey);--tint:#f4f6f8}
+
+.footer{
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  padding:18px 30px 21px;
+  color:#758397;
+  font-size:13px;
+  border-top:1px solid #e0e7ed;
+  background:#fbfcfd;
+}
+
+.footer strong{
+  color:#58677a;
+}
+
+@media (max-width:900px){
+  body{
+    padding:18px;
+  }
+
+  .hero{
+    padding:32px 28px 30px;
+  }
+
+  .hero::after{
+    left:28px;
+  }
+
+  .menu{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    padding:24px;
+  }
+
+  .deck .card-content{
+    display:block;
+  }
+
+  .deck p{
+    margin-top:12px;
+    padding:0;
+    border-left:0;
+  }
+}
+
+@media (max-width:700px){
+  .student-lookup{
+    grid-template-columns:1fr;
+    gap:20px;
+    margin:18px;
+    padding:22px 20px;
+  }
+}
+
+@media (max-width:620px){
+  body{
+    padding:10px;
+  }
+
+  .page{
+    border-radius:18px;
+  }
+
+  .hero{
+    padding:27px 20px 25px;
+  }
+
+  .hero::after{
+    left:20px;
+  }
+
+  .hero h1{
+    font-size:36px;
+  }
+
+  .menu{
+    grid-template-columns:1fr;
+    gap:14px;
+    padding:18px;
+  }
+
+  .deck{
+    grid-column:auto;
+  }
+
+  .card{
+    min-height:150px;
+    padding:21px 20px 19px;
+  }
+
+  .card h2{
+    font-size:24px;
+  }
+
+  .card p{
+    max-width:100%;
+  }
+
+  .footer{
+    display:block;
+    padding:16px 20px 18px;
+    line-height:1.45;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="page">
+
+  <section class="hero">
+    <p class="eyebrow">IT Procurement Foundations</p>
+
+    <h1>Useful Course Links</h1>
+
+    <p>
+      Quick access to the presentation, AI support, practical tools,
+      exercises and assessment resources used throughout the course.
+    </p>
+  </section>
+
+  <section class="student-lookup" aria-label="Student ID lookup">
+
+    <div class="student-lookup-copy">
+      <p class="student-kicker">Course assessments</p>
+
+      <h2>Your Student ID</h2>
+
+      <p>
+        Select your name to retrieve the Student ID used for course cases,
+        quizzes and negotiation activities.
+      </p>
+    </div>
+
+    <div class="student-lookup-form">
+
+      <label for="studentName">
+        Your name
+      </label>
+
+      <select id="studentName">
+        <option value="">Loading students…</option>
+      </select>
+
+      <button
+        id="getStudentId"
+        type="button"
+        disabled>
+        Get my Student ID
+      </button>
+
+      <div
+        id="studentMessage"
+        class="student-message"
+        aria-live="polite">
+      </div>
+
+      <div
+        id="studentResult"
+        class="student-result"
+        hidden>
+
+        <span>Your Student ID</span>
+
+        <strong id="studentIdValue"></strong>
+
+        <small>
+          Please use this ID throughout the course.
+        </small>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="menu" aria-label="Course links">
+
+    <a
+      class="card deck"
+      href="https://ukrsedo.github.io/itpf-course-presentation/"
+      target="_blank"
+      rel="noopener">
+
+      <div class="card-content">
+
+        <div class="card-meta">
+          <span class="card-no">01</span>
+          Core resource
+        </div>
+
+        <h2>Course Presentation</h2>
+
+        <p>
+          Interactive 80-slide course deck with “Explain this slide” support.
+        </p>
+
+      </div>
+    </a>
+
+    <a
+      class="card gpt"
+      href="https://www.goodspending.com/techology-it-procurement-foundations-cips-skills"
+      target="_blank"
+      rel="noopener">
+
+      <div class="card-content">
+
+        <div class="card-meta">
+          <span class="card-no">02</span>
+          AI support
+        </div>
+
+        <h2>Course Refresher</h2>
+
+        <p>
+          Browse the course topics or ask a question to refresh your understanding.
+        </p>
+
+      </div>
+    </a>
+
+    <a
+      class="card simulator"
+      href="https://www.goodspending.com/it-procurement-negotiation-simulator"
+      target="_blank"
+      rel="noopener">
+
+      <div class="card-content">
+
+        <div class="card-meta">
+          <span class="card-no">03</span>
+          Practice
+        </div>
+
+        <h2>Negotiation Simulator</h2>
+
+        <p>
+          Practise IT supplier negotiations using interactive course scenarios.
+        </p>
+
+      </div>
+    </a>
+
+    <a
+      class="card strategy"
+      href="https://www.goodspending.com/sourcing-strategy-tool"
+      target="_blank"
+      rel="noopener">
+
+      <div class="card-content">
+
+        <div class="card-meta">
+          <span class="card-no">04</span>
+          Tool
+        </div>
+
+        <h2>IT Sourcing Strategy Tool</h2>
+
+        <p>
+          Build a structured sourcing approach from the facts of the requirement.
+        </p>
+
+      </div>
+    </a>
+
+    <a
+      class="card kraljic"
+      href="https://www.goodspending.com/kraljic-matrix-demo"
+      target="_blank"
+      rel="noopener">
+
+      <div class="card-content">
+
+        <div class="card-meta">
+          <span class="card-no">05</span>
+          Tool
+        </div>
+
+        <h2>Kraljic Matrix Demo Tool</h2>
+
+        <p>
+          Explore category positioning using profit impact and supply risk.
+        </p>
+
+      </div>
+    </a>
+
+    <a
+      class="card cases"
+      href="https://www.goodspending.com/techology-it-procurement-foundations-cips-skills/case-studies"
+      target="_blank"
+      rel="noopener">
+
+      <div class="card-content">
+
+        <div class="card-meta">
+          <span class="card-no">06</span>
+          Assessment
+        </div>
+
+        <h2>Case Studies</h2>
+
+        <p>
+          Course cases and applied assessment activities.
+        </p>
+
+        <span class="status">
+          Password protected
+        </span>
+
+      </div>
+    </a>
+
+    <a
+      class="card quizzes"
+      href="https://www.goodspending.com/techology-it-procurement-foundations-cips-skills/course-quizzes"
+      target="_blank"
+      rel="noopener">
+
+      <div class="card-content">
+
+        <div class="card-meta">
+          <span class="card-no">07</span>
+          Assessment
+        </div>
+
+        <h2>Day 1 &amp; 2 Quizzes</h2>
+
+        <p>
+          Knowledge checks for both course days.
+        </p>
+
+        <span class="status">
+          Password protected
+        </span>
+
+      </div>
+    </a>
+
+  </section>
+
+  <footer class="footer">
+    <span>
+      <strong>IT Procurement Foundations</strong>
+    </span>
+
+    <span>
+      Course resources &amp; practical tools
+    </span>
+  </footer>
+
+</main>
+
+<script>
+const studentSelect = document.getElementById("studentName");
+const getStudentIdButton = document.getElementById("getStudentId");
+const studentMessage = document.getElementById("studentMessage");
+const studentResult = document.getElementById("studentResult");
+const studentIdValue = document.getElementById("studentIdValue");
+
+function sendToWix(message){
+  window.parent.postMessage(message, "*");
+}
+
+function showSavedStudentId(){
+  try{
+    const savedStudentId = localStorage.getItem("itpfStudentId");
+
+    if(savedStudentId){
+      studentIdValue.textContent = savedStudentId;
+      studentResult.hidden = false;
+    }
+  }catch(error){
+    console.warn("Local storage unavailable.");
+  }
+}
+
+showSavedStudentId();
+
+sendToWix({
+  type:"STUDENT_PORTAL",
+  action:"list"
+});
+
+studentSelect.addEventListener("change",() => {
+  getStudentIdButton.disabled = !studentSelect.value;
+  studentMessage.textContent = "";
+
+  if(studentSelect.value){
+    studentResult.hidden = true;
+  }
+});
+
+getStudentIdButton.addEventListener("click",() => {
+
+  if(!studentSelect.value){
+    return;
+  }
+
+  getStudentIdButton.disabled = true;
+
+  studentMessage.textContent =
+    "Retrieving your Student ID…";
+
+  studentResult.hidden = true;
+
+  sendToWix({
+    type:"STUDENT_PORTAL",
+    action:"lookup",
+    recordId:studentSelect.value
+  });
+});
+
+window.addEventListener("message",event => {
+
+  const data = event.data;
+
+  if(
+    !data ||
+    data.type !== "STUDENT_PORTAL_RESPONSE"
+  ){
+    return;
+  }
+
+  if(data.action === "list"){
+
+    const students =
+      Array.isArray(data.students)
+        ? data.students
+        : [];
+
+    studentSelect.innerHTML =
+      '<option value="">Select your name</option>';
+
+    students.forEach(student => {
+
+      const option =
+        document.createElement("option");
+
+      option.value =
+        student.recordId;
+
+      option.textContent =
+        student.studentName;
+
+      studentSelect.appendChild(option);
+    });
+
+    if(students.length){
+
+      studentMessage.textContent = "";
+
+    }else{
+
+      studentMessage.textContent =
+        "No active students found.";
+
+    }
+
+    return;
+  }
+
+  if(data.action === "lookup"){
+
+    getStudentIdButton.disabled =
+      !studentSelect.value;
+
+    if(!data.studentId){
+
+      studentMessage.textContent =
+        data.message ||
+        "Student ID could not be found.";
+
+      return;
+    }
+
+    studentIdValue.textContent =
+      data.studentId;
+
+    studentResult.hidden = false;
+
+    studentMessage.textContent = "";
+
+    try{
+      localStorage.setItem(
+        "itpfStudentId",
+        data.studentId
+      );
+    }catch(error){
+      console.warn(
+        "Student ID could not be stored locally."
+      );
+    }
+
+    return;
+  }
+
+  if(data.action === "error"){
+
+    getStudentIdButton.disabled =
+      !studentSelect.value;
+
+    studentMessage.textContent =
+      data.message ||
+      "Unable to retrieve student information.";
+
+  }
+
+});
+</script>
+
+</body>
+</html>
