@@ -1,38 +1,104 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ITPF — Slide 56 — Software Buying in 2026: G2 Findings</title>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Slide 56 — SAP Negotiation Game</title>
 <style>
-:root{--navy:#003b70;--cyan:#00b7e5;--magenta:#c00067;--ink:#173a59;--muted:#60758a}
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif}
+:root {
+  --navy:#003b70;
+  --cyan:#12bddf;
+  --orange:#ff5a00;
+  --ink:#173f66;
+  --line:#c7d9ea;
+  --soft:#f7fbff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--navy)}
 .stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
 .slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
-.logo{position:absolute;right:4.1%;top:3.6%;width:10.3%;height:auto;z-index:5}
-.header{position:absolute;left:5.2%;top:4.5%;right:17%}
-.kicker{color:var(--magenta);font-size:clamp(12px,.95vw,17px);font-weight:800;letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px}
-h1{margin:0;color:var(--navy);font-size:clamp(28px,3.15vw,55px);line-height:1.05;letter-spacing:-.025em}
-.subtitle{margin:10px 0 0;color:var(--muted);font-size:clamp(14px,1.2vw,21px);font-weight:600}
-.findings{position:absolute;left:5.2%;right:5.2%;top:25%;bottom:22%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:13px}
-.card{border:2px solid var(--navy);border-top:6px solid var(--navy);border-radius:12px;background:#fff;padding:17px 19px;box-shadow:0 4px 12px rgba(0,59,112,.08)}
-.metric{color:var(--navy);font-size:clamp(28px,2.7vw,46px);font-weight:900;line-height:1;letter-spacing:-.025em;margin:0 0 9px}
-.card h2{margin:0 0 7px;color:var(--navy);font-size:clamp(16px,1.42vw,24px);line-height:1.1}
-.card p{margin:0;color:var(--ink);font-size:clamp(14px,1.2vw,20px);line-height:1.25;font-weight:600}
-.implication{position:absolute;left:5.2%;right:5.2%;bottom:12.5%;border-left:5px solid var(--magenta);padding:8px 13px;color:var(--ink);font-size:clamp(15px,1.32vw,23px);line-height:1.25}
-.scope{position:absolute;left:5.2%;right:5.2%;bottom:6.9%;margin:0;color:var(--muted);font-size:clamp(12px,1.02vw,18px);line-height:1.2}
-.source{position:absolute;left:5.2%;bottom:2.7%;color:var(--navy);font-size:clamp(12px,1.02vw,18px);font-weight:700;text-underline-offset:3px}
-.footerline{position:absolute;left:0;right:0;bottom:0;height:7px;background:linear-gradient(90deg,var(--navy) 0 33%,var(--cyan) 33% 100%)}
-</style></head><body><main class="stage"><section class="slide" aria-label="Slide 56: Software Buying in 2026: G2 Findings">
-<img data-itpf-cips-logo class="logo" alt="CIPS" src="../assets/cips-logo.png">
-<header class="header"><div class="kicker">G2 Buyer Behavior Report · July 2026</div><h1>Software Buying in 2026</h1><p class="subtitle">The Evaluation Maze: discovery accelerates, evaluation takes longer</p></header>
-<div class="findings"><article class="card"><div class="metric">82%</div><h2>AI-assisted discovery</h2><p>Sourced software recommendations from AI chatbots during the previous 24 months.</p></article>
-<article class="card"><div class="metric">39% / 50%</div><h2>Security delays</h2><p>Cited IT security review as a purchasing delay: 39% overall, 50% among enterprise buyers.</p></article>
-<article class="card"><div class="metric">31% → 46%</div><h2>Finance involvement</h2><p>Finance involvement in software decisions increased over one year.</p></article>
-<article class="card"><div class="metric">70%</div><h2>Shorter contracts</h2><p>Said the pace of AI innovation was pushing them toward shorter contracts.</p></article>
-<article class="card"><div class="metric">11% → 23%</div><h2>Outcome-based pricing</h2><p>Preference for outcome-based pricing more than doubled since 2025.</p></article>
-<article class="card"><div class="metric">9% / 2%</div><h2>Agent purchasing authority</h2><p>Comfortable with agent purchases: 9% within approved guardrails, 2% without pre-approval.</p></article></div>
-<div class="implication"><strong>Procurement implication:</strong> validate shortlists early, involve security and finance, and control variable spending.</div>
-<p class="scope">Survey of 1,000+ software buyers, plus 50+ sales and marketing interviews. Figures describe survey respondents.</p>
-<a class="source" href="https://company.g2.com/news/buyer-behavior-2026" target="_blank" rel="noopener noreferrer">Source: G2, 2026 Buyer Behavior Report findings · 22 July 2026</a>
-<div class="footerline"></div></section></main>
+.logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:5}
+.logoText{position:absolute;right:4.3%;top:4%;font-size:30px;font-weight:900;color:var(--navy);z-index:5}
+.corner{position:absolute;right:0;top:0;width:28%;height:50%;background:var(--cyan);clip-path:polygon(100% 0,100% 100%,0 0);opacity:.95}
+.header{position:absolute;left:6%;top:5.3%;right:17%}
+.session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.35rem}
+.dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
+h1{margin:0;color:var(--navy);font-size:clamp(42px,4.0vw,74px);line-height:1.00;letter-spacing:-.035em;font-weight:900}
+.subtitle{font-size:clamp(20px,1.45vw,30px);margin-top:.55rem;color:#2f5f88;font-weight:800}
+
+.main{position:absolute;left:6%;right:6%;top:30%;bottom:7%;display:grid;grid-template-columns:44% 56%;gap:1.15rem;min-height:0}
+.left{display:flex;flex-direction:column;gap:.9rem;min-height:0}
+.caseBox{border:4px solid var(--navy);border-radius:18px;background:#fff;overflow:hidden;box-shadow:0 10px 28px rgba(0,35,70,.08)}
+.caseHead{background:var(--navy);color:#fff;font-size:clamp(24px,1.75vw,36px);font-weight:900;line-height:1.05;padding:.78rem 1rem}
+.caseBody{padding:1rem 1.1rem;font-size:clamp(19px,1.32vw,27px);line-height:1.22;font-weight:780;color:var(--ink)}
+.caseBody strong{color:var(--navy)}
+
+.signal{border-left:10px solid var(--orange);background:#fff8f4;border-radius:14px;padding:.85rem 1rem;font-size:clamp(18px,1.22vw,25px);line-height:1.18;font-weight:820;color:var(--ink)}
+
+.right{display:grid;grid-template-rows:auto 1fr;gap:.8rem;min-height:0}
+.title2{font-size:clamp(25px,1.75vw,36px);font-weight:900;color:var(--navy);margin:0}
+.steps{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:.75rem;min-height:0}
+.step{border:3px solid var(--line);border-radius:16px;background:var(--soft);padding:.8rem .9rem;display:grid;grid-template-columns:auto 1fr;gap:.65rem;align-content:start;min-height:0}
+.num{width:42px;height:42px;border-radius:50%;background:var(--cyan);display:grid;place-items:center;color:#003b70;font-size:clamp(20px,1.38vw,28px);font-weight:900;flex:none}
+.step h3{margin:0 0 .25rem 0;font-size:clamp(18px,1.25vw,25px);line-height:1.05;font-weight:900;color:var(--navy)}
+.step p{margin:0;font-size:clamp(15px,1.0vw,20px);line-height:1.16;font-weight:760;color:var(--ink)}
+.launch{position:absolute;left:6%;right:6%;bottom:2.2%;display:flex;justify-content:space-between;align-items:center;border-top:2px solid var(--line);padding-top:.45rem}
+.launchText{font-size:clamp(15px,1.05vw,21px);font-weight:900;color:var(--navy)}
+.badge{background:var(--orange);color:#fff;border-radius:999px;padding:.55rem 1.15rem;font-size:clamp(16px,1.1vw,22px);font-weight:900;text-decoration:none;display:inline-block}
+</style>
+</head>
+<body>
+<main class="stage">
+<section aria-label="Transition to SAP negotiation game" class="slide">
+<div class="corner"></div>
+<img data-itpf-cips-logo alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
+<div class="header">
+<div class="session"><span class="dot"></span><span>Session 3 Cloud Computing</span></div>
+<h1>Game #1</h1>
+<div class="subtitle">SAP Transformation</div>
+</div>
+<div class="main">
+<div class="left">
+<section class="caseBox">
+<div class="caseHead">Case setup</div>
+<div class="caseBody">
+          You are the <strong>customer negotiation team</strong>. Your task is to protect continuity, control cost, and manage the supplier’s transformation agenda.
+        </div>
+</section>
+<div class="signal">
+        Expect pressure around migration timing, commercial concessions, cloud roadmap, and end-of-life risk.
+      </div>
+</div>
+<div class="right">
+<h2 class="title2">How to play</h2>
+<div class="steps">
+<div class="step">
+<div class="num">1</div>
+<div><h3>Read the brief</h3><p>Review customer objectives, supplier objectives, constraints, and the opening context.</p></div>
+</div>
+<div class="step">
+<div class="num">2</div>
+<div><h3>Negotiate in rounds</h3><p>Select actions carefully. Each round changes leverage, risk, and commercial position.</p></div>
+</div>
+<div class="step">
+<div class="num">3</div>
+<div><h3>Watch active effects</h3><p>Supplier moves can block options, create urgency, or change the economics.</p></div>
+</div>
+<div class="step">
+<div class="num">4</div>
+<div><h3>Commit or withdraw</h3><p>Final outcome depends on trade-offs, not on always “winning” every move.</p></div>
+</div>
+</div>
+</div>
+</div>
+<div class="launch">
+<div class="launchText">Open the SAP negotiation simulator and enter your Student ID if score recording is required.</div>
+<a class="badge" href="https://www.goodspending.com/it-procurement-negotiation-simulator" rel="noopener" target="_blank">Start Game</a>
+</div>
+</section>
+</main>
 <script id="itpf-deck-bridge">
 (function(){
   function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
@@ -70,5 +136,5 @@ h1{margin:0;color:var(--navy);font-size:clamp(28px,3.15vw,55px);line-height:1.05
  window.addEventListener('message',function(e){if(e.source===window.parent&&e.data&&e.data.type==='ITPF_CIPS_VISIBILITY')apply(e.data.visible===true)});
 })();
 </script>
-
-</body></html>
+</body>
+</html>
