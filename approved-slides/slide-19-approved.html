@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>Slide 19 — Bimodal Procurement by the Asian Development Bank (ADB)</title>
+<title>Slide 19 — ADB IT Procurement: Single-Stage and Two-Stage Bidding</title>
 <style>
 :root {
   --navy:#003b70;
@@ -31,8 +31,8 @@ h1{margin:0;color:var(--navy);font-size:clamp(31px,2.7vw,51px);line-height:1.04;
 .tab.run.active{background:var(--cyan);color:#fff;border-color:var(--cyan)}
 .tab.innov.active{background:var(--orange);color:#fff;border-color:var(--orange)}
 
-.panel{position:absolute;left:6%;right:6%;top:34%;bottom:7%;display:none}
-.panel.active{display:grid;grid-template-columns:32% 47% 21%;gap:1rem}
+.panel{position:absolute;left:6%;right:6%;top:35%;bottom:11%;display:none}
+.panel.active{display:grid;grid-template-columns:29% 41% 1fr;gap:1rem}
 .box{border:3px solid var(--navy);background:#fff;min-width:0;display:flex;flex-direction:column}
 #runPanel .box{border-color:var(--cyan)}
 #innovationPanel .box{border-color:var(--orange)}
@@ -47,89 +47,28 @@ h1{margin:0;color:var(--navy);font-size:clamp(31px,2.7vw,51px);line-height:1.04;
 .pill{display:block;border:2px solid currentColor;padding:.55rem .5rem;margin:.42rem 0;text-align:center}
 .pill small{display:block;font-size:clamp(11px,.72vw,15px);line-height:1.08;font-weight:700;margin-top:.22rem;color:#2f5f88}
 .footer{position:absolute;left:4.9%;bottom:3.3%;font-size:clamp(14px,1vw,22px);color:#168cff}
-</style>
+.source{position:absolute;left:6%;right:6%;bottom:3%;font-size:clamp(11px,.95vw,18px);line-height:1.2;color:#42617b}.source a{color:#003b70;text-underline-offset:3px}.body{font-size:clamp(16px,1.18vw,23px);line-height:1.2}.box h2{font-size:clamp(18px,1.4vw,27px)}.tab{font-size:clamp(20px,1.65vw,30px)}@media(max-width:1050px){.body{font-size:13px;padding:10px}.box h2{font-size:16px;padding:9px}.tab{font-size:17px;padding:8px}.tab span{font-size:12px}h1{font-size:25px}.session{font-size:12px}.panel.active{gap:10px}.tabs{gap:10px}} </style>
 </head>
-<body>
-<main class="stage">
-<section aria-label="Bimodal Procurement by ADB" class="slide">
+<body><main class="stage"><section class="slide" aria-label="Slide 19: ADB IT procurement">
 <img data-itpf-cips-logo alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
-<div class="header">
-<div class="session"><span class="dot"></span><span>Session 1 Setting the Scene</span></div>
-<h1>Bimodal Procurement by the Asian Development Bank (ADB)</h1>
-</div>
-<div class="tabs">
-<button class="tab run active" data-panel="runPanel" type="button">“Run” Procurement <span>Off-the-shelf commodities</span></button>
-<button class="tab innov" data-panel="innovationPanel" type="button">Procurement of Innovation <span>Complex solutions and services</span></button>
-</div>
-<div class="panel active" id="runPanel">
-<div class="box">
-<h2>Mode logic</h2>
-<div class="body">
-      Conventional procurement processes prioritising compliance, risk mitigation and cost efficiency.
-      <br/><br/>
-      Standardised procedures and documentation keep procurement aligned with ADB regulations and policies.
-    </div>
-</div>
-<div class="box">
-<h2>Scope</h2>
-<div class="body">
-<p><strong>Predefined goods and services:</strong> standard equipment, supplies and software licences that do not require design or customisation.</p>
-<p><strong>Non-complex procurements:</strong> lower-value, low-risk contracts following routine bidding procedures.</p>
-<p><strong>Open competitive bidding and alternative arrangements:</strong> packaged for competition, with flexibility to use borrower procedures if aligned with ADB standards.</p>
-<p><strong>Consultants and non-consulting services:</strong> standard IT, maintenance or facility services.</p>
-</div>
-</div>
-<div class="box">
-<h2>Supplier selection</h2>
-<div class="methods">
-<span class="pill">ICB<small>International Competitive Bidding</small></span>
-<span class="pill">NCB<small>National Competitive Bidding</small></span>
-<span class="pill">RFQ<small>Request for Quotation</small></span>
-</div>
-</div>
-</div>
-<div class="panel" id="innovationPanel">
-<div class="box">
-<h2>Mode logic</h2>
-<div class="body">
-      Flexible, agile and innovation-oriented procurement for complex project requirements and emerging market trends.
-      <br/><br/>
-      The model explores new procurement methods, digital technologies and sustainable practices.
-    </div>
-</div>
-<div class="box">
-<h2>Scope</h2>
-<div class="body">
-<p><strong>Digital Sandbox Programs:</strong> engagement with startups and technology companies to test and co-create solutions.</p>
-<p><strong>Knowledge sharing and capacity building:</strong> workshops on innovative procurement practices, especially in infrastructure and digital transformation.</p>
-<p><strong>Pilot projects and PPP models:</strong> novel solutions such as smart infrastructure or green technologies.</p>
-<p><strong>Policy and advisory work:</strong> guidelines and policy notes encouraging procurement to stimulate innovation.</p>
-</div>
-</div>
-<div class="box">
-<h2>Supplier selection</h2>
-<div class="methods">
-<span class="pill">Competitive dialogues</span>
-<span class="pill">PPPs<small>Public-Private Partnerships</small></span>
-<span class="pill">Sandboxes</span>
-<span class="pill">QCBS<small>Quality and Cost-Based Selection</small></span>
-</div>
-</div>
-</div>
-<div class="footer">©</div>
-</section>
-</main>
-<script>
-document.querySelectorAll('.tab').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(btn.dataset.panel).classList.add('active');
-  });
-});
-</script>
-<script id="itpf-deck-bridge">
+<div class="header"><div class="session"><span class="dot"></span><span>Session 1 Setting the Scene</span></div><h1>ADB IT Procurement: Single-Stage and Two-Stage Bidding</h1></div>
+<div class="tabs" role="tablist" aria-label="ADB bidding approaches">
+<button class="tab run active" id="tab-single" data-panel="runPanel" type="button" role="tab" aria-selected="true">Single-stage bidding<span>Straightforward IT products and services</span></button>
+<button class="tab innov" id="tab-two" data-panel="innovationPanel" type="button" role="tab" aria-selected="false">Two-stage bidding<span>Complex systems and transformational IT projects</span></button></div>
+<div class="panel active" id="runPanel" role="tabpanel" aria-labelledby="tab-single">
+<div class="box"><h2>When to use it</h2><div class="body"><p>Straightforward IT products and services.</p><p>The purchaser can define the requirements before inviting final bids.</p><p><strong>Selection follows the complexity of the subject.</strong></p></div></div>
+<div class="box"><h2>Evaluation approach</h2><div class="body"><p><strong>Lowest evaluated price:</strong> the guide identifies the goods bidding document where this achieves value for money among substantially responsive bids.</p><p><strong>Quality matters:</strong> the IT products and services bidding document supports point scoring to give technical quality greater importance.</p></div></div>
+<div class="box"><h2>Envelope variants</h2><div class="body"><p><strong>One-envelope</strong><br>The main procedure for most ADB-financed procurement.</p><p><strong>Two-envelope</strong><br>Technical and administrative evaluation takes place without reference to price.</p></div></div></div>
+<div class="panel" id="innovationPanel" role="tabpanel" aria-labelledby="tab-two">
+<div class="box"><h2>When to use it</h2><div class="body"><p>Complex business applications and transformational IT projects.</p><p>Extensive development, integration, customisation or technical services.</p><p>Start with <strong>business and functional requirements</strong>.</p></div></div>
+<div class="box"><h2>Stage 1: technical development</h2><div class="body"><p>Invite <strong>technical proposals without prices</strong>.</p><p>Use structured technical discussions to clarify conformity, gaps and proposed solutions.</p><p>Refine the specifications and bidding documents where needed. Document the understanding with each bidder.</p></div></div>
+<div class="box"><h2>Stage 2: final bids</h2><div class="body"><p>Invite sufficiently responsive bidders to submit:</p><p><strong>Revised technical proposals</strong></p><p><strong>Financial proposals</strong></p><p>Evaluate the complete final bids against the agreed requirements.</p></div></div></div>
+<div class="source">Source: <a href="https://www.adb.org/documents/procurement-ict-guide" target="_blank" rel="noopener">ADB, User Guide for Procurement of Information Technology Products and Services (December 2021), pp. 5–6</a></div>
+</section></main><script>
+document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{
+document.querySelectorAll('.tab').forEach(b=>{b.classList.toggle('active',b===btn);b.setAttribute('aria-selected',String(b===btn))});
+document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===btn.dataset.panel));}));
+</script><script id="itpf-deck-bridge">
 (function(){
   function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
   window.addEventListener('keydown',function(e){
