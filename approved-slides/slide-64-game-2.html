@@ -48,7 +48,23 @@ h1{margin:0;color:var(--navy);font-size:clamp(42px,4.0vw,74px);line-height:1.00;
 .launchText{font-size:clamp(15px,1.05vw,21px);font-weight:900;color:var(--navy)}
 .badge{background:var(--orange);color:#fff;border-radius:999px;padding:.55rem 1.15rem;font-size:clamp(16px,1.1vw,22px);font-weight:900;text-decoration:none;display:inline-block}
 </style>
-</head>
+<style id="itpf-topic-addition-style">
+.slide{container-type:inline-size}
+.topic-tabs{position:absolute;z-index:20;display:flex;gap:.6cqw;right:6%;font-family:Arial,Helvetica,sans-serif}
+.topic-tabs button{font:700 1.25cqw Arial,Helvetica,sans-serif;padding:.65cqw 1.1cqw;border:1px solid #b7cddd;border-radius:.45cqw;background:#fff;color:#073b72;cursor:pointer}
+.topic-tabs button[aria-selected="true"]{background:#073b72;color:#fff;border-color:#073b72}
+.topic-addition{position:absolute;inset:0;background:#fff;font-family:Arial,Helvetica,sans-serif;color:#073b72;padding:5% 6%;z-index:10}
+.topic-addition[hidden]{display:none}
+.topic-addition .topic-session{margin:0;font-size:1.45cqw}
+.topic-addition .topic-session:before{content:"";display:inline-block;width:.8cqw;height:.8cqw;border:.25cqw solid #12bce7;border-radius:50%;margin-right:.7cqw;vertical-align:middle}
+.topic-addition h2{position:absolute;left:6%;top:12.5%;width:87%;margin:0;font-size:2.8cqw;line-height:1.12;font-weight:700}
+.topic-copy{position:absolute;top:31%;left:6%;right:6%;font-size:1.8cqw;line-height:1.4}
+.topic-copy p{margin:0 0 1.2cqw}
+.topic-copy ul{margin:.7cqw 0 0;padding-left:2.2cqw}
+.topic-copy li{margin:0 0 .65cqw;padding-left:.3cqw}
+.topic-addition img.topic-logo{position:absolute;inset:auto;right:4.3%;top:3%;width:11%;height:auto;background:transparent}
+.slide[data-topic="addition"]>:not(.topic-tabs):not(.topic-addition){visibility:hidden}
+</style></head>
 <body>
 <main class="stage">
 <section aria-label="Transition to Oracle Audit negotiation game" class="slide">
@@ -97,14 +113,14 @@ h1{margin:0;color:var(--navy);font-size:clamp(42px,4.0vw,74px);line-height:1.00;
 <div class="launchText">Open the Oracle Audit negotiation simulator and enter your Student ID if score recording is required.</div>
 <a class="badge" href="https://www.goodspending.com/it-procurement-negotiation-simulator" rel="noopener" target="_blank">Start Game</a>
 </div>
-</section>
+<section id="topic-addition" class="topic-addition" aria-label="Audit response as an evidence and governance process" hidden><p class="topic-session">Session 5 Source-to-Contract</p><img class="topic-logo" data-itpf-cips-logo src="../assets/cips-logo.png" alt="CIPS"><h2>Audit response as an evidence and governance process</h2><div class="topic-copy"><p>An audit is partly a negotiation, but the buyer first needs a reliable position on the contractual obligation and the evidence.</p><p>The interesting questions are:</p><ul><li>What exactly is being requested, and under which agreement?</li><li>Which entities, products, and periods are in scope?</li><li>Who validates technical data before it is disclosed?</li><li>Which findings are supported, disputed or unresolved?</li><li>Does the final settlement adequately close the identified issue?</li></ul></div></section><nav class="topic-tabs" role="tablist" aria-label="Slide topics" style="top:21.5%"><button type="button" role="tab" aria-selected="true">Oracle Audit game</button><button type="button" role="tab" aria-selected="false" aria-controls="topic-addition">Audit response</button></nav></section>
 </main>
 <script id="itpf-deck-bridge">
 (function(){
   function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
   window.addEventListener('keydown',function(e){
     var t=e.target, tag=(t&&t.tagName||'').toLowerCase();
-    if(tag==='input'||tag==='textarea'||tag==='select'||(t&&t.isContentEditable)) return;
+    if(tag==='input'||tag==='textarea'||tag==='select'||(t&&t.getAttribute&&t.getAttribute('role')==='tab')||(t&&t.isContentEditable)) return;
     var action=null;
     if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') action='next';
     else if(e.key==='ArrowLeft'||e.key==='PageUp') action='prev';
@@ -136,5 +152,12 @@ h1{margin:0;color:var(--navy);font-size:clamp(42px,4.0vw,74px);line-height:1.00;
  window.addEventListener('message',function(e){if(e.source===window.parent&&e.data&&e.data.type==='ITPF_CIPS_VISIBILITY')apply(e.data.visible===true)});
 })();
 </script>
-</body>
+<script id="itpf-topic-addition-script">
+(function(){
+const slide=document.querySelector('.slide'),tabs=[...document.querySelectorAll('.topic-tabs button')],panel=document.getElementById('topic-addition');
+function activate(index){slide.dataset.topic=index?'addition':'original';panel.hidden=!index;tabs.forEach((b,i)=>{b.setAttribute('aria-selected',String(i===index));b.tabIndex=i===index?0:-1});}
+tabs.forEach((button,index)=>{button.addEventListener('click',()=>activate(index));button.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();e.stopPropagation();activate(1-index);tabs[1-index].focus()}})});
+activate(0);
+})();
+</script></body>
 </html>
