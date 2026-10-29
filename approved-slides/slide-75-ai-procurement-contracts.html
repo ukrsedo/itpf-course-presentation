@@ -37,7 +37,7 @@ h1{margin:0;color:var(--navy);font-size:clamp(31px,2.36vw,46px);line-height:1.02
 /* Slide 75: case exercise and concise contract checklist */
 .tabs{grid-template-columns:repeat(2,1fr)}
 .panel.active{display:block}
-.case-content{height:100%;display:flex;flex-direction:column;gap:.5rem}
+.case-content{height:100%;display:flex;flex-direction:column;gap:.42rem}
 .case-content h2{margin:0;font-size:clamp(19px,1.5vw,27px);line-height:1.1}
 .case-content p{margin:0;font-size:clamp(16px,1.23vw,23px);line-height:1.25;color:var(--ink)}
 .case-content .source{font-size:clamp(15px,1.1vw,20px)}
@@ -49,6 +49,16 @@ h1{margin:0;color:var(--navy);font-size:clamp(31px,2.36vw,46px);line-height:1.02
 .provisions li{padding-left:.25rem}
 .provisions strong{color:var(--navy)}
 
+
+#panel-case{bottom:5.7%}
+.case-content p{font-size:clamp(15px,1.14vw,21px);line-height:1.22}
+.case-content .guardrails{font-size:clamp(14px,1.04vw,19px);padding:.4rem .65rem}
+.case-content .source{font-size:clamp(13px,1vw,18px)}
+.case-table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:clamp(15px,1.12vw,21px);line-height:1.2;color:var(--ink)}
+.case-table th,.case-table td{border:1px solid var(--line);padding:.42rem .65rem;text-align:left;vertical-align:top}
+.case-table th{background:var(--navy);color:#fff}
+.case-table th:first-child{width:39%}
+.case-table tbody tr:nth-child(even){background:var(--soft)}
 </style>
 </head>
 <body>
@@ -68,17 +78,21 @@ h1{margin:0;color:var(--navy);font-size:clamp(31px,2.36vw,46px);line-height:1.02
 
 <section id="panel-case" class="panel active" data-panel="case" role="tabpanel" aria-labelledby="tab-case">
   <div class="case-content">
-    <h2>US defence AI procurement guidance</h2>
-    <p>The buyer requires AI that gives accurate factual answers, acknowledges uncertainty and avoids ideological favouring. Suppliers must submit model documentation, acceptable-use policies and user guidance, and provide a channel for reporting problematic outputs. Additional bias evaluations may be requested.</p>
-    <p>After notice of a suspected breach, the supplier has <strong>15 business days to investigate and respond</strong> with findings, proposed corrective actions and a timetable. Significant model changes require updated documentation. Relevant obligations pass down to subcontractors.</p>
-    <p class="source"><a href="https://www.acq.osd.mil/dpap/policy/policyvault/USA001389-26-DPCAP.pdf" target="_blank" rel="noopener noreferrer">Original guidance: USA001389-26-DPCAP.pdf</a></p>
-    <p class="guardrails"><strong>Guardrails:</strong> Assess the provisions as written. Focus on contract enforceability, not political objectives. Do not assume error-free AI or treat documentation as proof. The templates are adaptable.</p>
-    <h2>Questions</h2>
-    <ol class="questions">
-      <li>What is missing for the buyer to assess compliance consistently?</li>
-      <li>Identify four gaps. What dispute or operational problem could each create?</li>
-      <li>What specific contract provision would you add for each gap?</li>
-    </ol>
+    <h2>Case: US defence AI procurement guidance</h2>
+    <p>The guidance turns a policy for accurate, ideologically neutral AI into three procurement templates: <strong>A</strong> selects supplier disclosures, <strong>B</strong> requests them in the tender, and <strong>C</strong> makes compliance an ongoing contract obligation. Truth-seeking means factual accuracy and acknowledgement of uncertainty. Ideological neutrality means avoiding manipulation in favour of ideological positions.</p>
+    <p>For LLM purchases, suppliers provide their developer’s acceptable-use policy, model/system/data cards explaining training, risks and evaluation results, user guidance and a feedback mechanism. Buyers may request further bias evaluations. Missing required information may make a bid ineligible. The table summarises the ongoing controls.</p>
+    <table class="case-table">
+      <thead><tr><th scope="col">What the guidance provides</th><th scope="col">Questions to answer</th></tr></thead>
+      <tbody>
+        <tr><td>Definitions of truth-seeking and ideological neutrality</td><td>What evidence would you need to determine compliance? How would you judge whether an output meets these principles?</td></tr>
+        <tr><td>Supplier documentation and optional bias evaluations</td><td>How should the buyer test whether the evidence demonstrates suitability for its intended use?</td></tr>
+        <tr><td>A channel for reporting problematic outputs</td><td>When does a problematic answer become contractual noncompliance rather than an isolated error?</td></tr>
+        <tr><td>Supplier investigation and response within 15 business days, with findings, proposed fixes and a timetable</td><td>Who validates the supplier’s findings? How are disagreements resolved, and when must corrective action be completed?</td></tr>
+        <tr><td>Updated documentation after significant model changes, with relevant obligations passed to subcontractors</td><td>Which changes should trigger retesting, and what should constitute acceptance of the modified model?</td></tr>
+      </tbody>
+    </table>
+    <p class="guardrails"><strong>Task:</strong> Answer every row and propose a specific contract addition. Assess enforceability, not politics. Do not assume error-free AI or that documentation proves performance. The templates are adaptable.</p>
+    <p class="source"><a href="https://www.acq.osd.mil/dpap/policy/policyvault/USA001389-26-DPCAP.pdf" target="_blank" rel="noopener noreferrer">Source: original guidance (reference only, no reading required)</a></p>
   </div>
 </section>
 
