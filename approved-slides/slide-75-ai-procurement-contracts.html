@@ -69,6 +69,15 @@ h1{margin:0;color:var(--navy);font-size:clamp(31px,2.36vw,46px);line-height:1.02
 #panel-case .case-content{height:auto;min-height:100%}
 .case-table q{quotes:"\201C" "\201D" "\2018" "\2019"}
 .case-table small{display:block;margin-top:.2rem;color:#637f98;font-size:.82em}
+
+.reveal-controls{position:sticky;top:0;z-index:6;display:flex;gap:.55rem;background:#fff;padding:.4rem 0;border-bottom:1px solid var(--line)}
+.reveal-controls button{border:2px solid var(--navy);border-radius:7px;background:var(--navy);color:#fff;padding:.45rem .8rem;font:700 clamp(14px,1.05vw,20px) Arial,Helvetica,sans-serif;cursor:pointer}
+.reveal-controls button:disabled{opacity:.4;cursor:default}
+.reveal-controls button:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.case-table[data-stage="0"] tr>:nth-child(2),.case-table[data-stage="0"] tr>:nth-child(3),.case-table[data-stage="1"] tr>:nth-child(3){display:none}
+.case-table[data-stage="0"] th:first-child{width:100%}
+.case-table[data-stage="1"] th:first-child{width:52%}
+.case-table[data-stage="1"] th:nth-child(2){width:48%}
 </style>
 </head>
 <body>
@@ -91,7 +100,11 @@ h1{margin:0;color:var(--navy);font-size:clamp(31px,2.36vw,46px);line-height:1.02
     <h2>Case: US defence AI procurement guidance</h2>
     <p>The guidance turns a policy for accurate, ideologically neutral AI into three procurement templates: <strong>A</strong> selects supplier disclosures, <strong>B</strong> requests them in the tender, and <strong>C</strong> makes compliance an ongoing contract obligation. Truth-seeking means factual accuracy and acknowledgement of uncertainty. Ideological neutrality means avoiding manipulation in favour of ideological positions.</p>
     <p>For LLM purchases, suppliers provide their developer’s acceptable-use policy, model/system/data cards explaining training, risks and evaluation results, user guidance and a feedback mechanism. Buyers may request further bias evaluations. Missing required information may make a bid ineligible. The table summarises the ongoing controls.</p>
-    <table class="case-table">
+    <div class="reveal-controls" aria-label="Case discussion controls">
+      <button type="button" id="reveal-questions" aria-controls="case-table" aria-expanded="false">Show questions</button>
+      <button type="button" id="reveal-answers" aria-controls="case-table" aria-expanded="false" disabled>Show answers</button>
+    </div>
+    <table id="case-table" class="case-table" data-stage="0">
       <thead><tr><th scope="col">What the guidance provides (original wording)</th><th scope="col">Questions to answer</th><th scope="col">Suggested solutions</th></tr></thead>
       <tbody>
         <tr><td><q>Truth-seeking means the LLM is truthful in responding to user prompts seeking factual information or analysis.</q><br><q>Ideological Neutrality means the LLM is a neutral, nonpartisan tool that does not manipulate responses in favor of ideological dogmas.</q><small>Attachment C(a), p. 8</small></td><td>What evidence would you need to determine compliance? How would you judge whether an output meets these principles?</td><td><ul class="row-solutions"><li>Benchmark against standardised datasets and authoritative references.</li><li>Agree a scoring rubric and acceptable error thresholds.</li><li>Use matched prompts and human review to assess neutrality.</li></ul></td></tr>
@@ -136,12 +149,30 @@ h1{margin:0;color:var(--navy);font-size:clamp(31px,2.36vw,46px);line-height:1.02
   });
 })();
 </script>
+<script id="case-reveal">
+(function(){
+  var table=document.getElementById('case-table');
+  var questions=document.getElementById('reveal-questions');
+  var answers=document.getElementById('reveal-answers');
+  function setStage(stage){
+    table.setAttribute('data-stage',String(stage));
+    questions.setAttribute('aria-expanded',String(stage>0));
+    questions.textContent=stage>0?'Hide questions':'Show questions';
+    answers.disabled=stage===0;
+    answers.setAttribute('aria-expanded',String(stage===2));
+    answers.textContent=stage===2?'Hide answers':'Show answers';
+  }
+  questions.addEventListener('click',function(){setStage(table.getAttribute('data-stage')==='0'?1:0);});
+  answers.addEventListener('click',function(){if(table.getAttribute('data-stage')!=='0')setStage(table.getAttribute('data-stage')==='2'?1:2);});
+  setStage(0);
+})();
+</script>
 <script id="itpf-deck-bridge">
 (function(){
   function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
   window.addEventListener('keydown',function(e){
     var t=e.target, tag=(t&&t.tagName||'').toLowerCase();
-    if(tag==='input'||tag==='textarea'||tag==='select'||(t&&t.isContentEditable)) return;
+    if(tag==='input'||tag==='textarea'||tag==='select'||tag==='button'||tag==='a'||(t&&t.isContentEditable)) return;
     var action=null;
     if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') action='next';
     else if(e.key==='ArrowLeft'||e.key==='PageUp') action='prev';
