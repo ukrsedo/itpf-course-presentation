@@ -57,8 +57,14 @@ h1{margin:0;color:var(--navy);font-size:clamp(31px,2.36vw,46px);line-height:1.02
 .case-table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:clamp(15px,1.12vw,21px);line-height:1.2;color:var(--ink)}
 .case-table th,.case-table td{border:1px solid var(--line);padding:.42rem .65rem;text-align:left;vertical-align:top}
 .case-table th{background:var(--navy);color:#fff}
-.case-table th:first-child{width:39%}
+.case-table th:first-child{width:52%}
 .case-table tbody tr:nth-child(even){background:var(--soft)}
+
+/* Preserve readable original excerpts and full questions when content exceeds the canvas. */
+#panel-case{overflow-y:auto;overscroll-behavior:contain;padding-right:.25rem}
+#panel-case .case-content{height:auto;min-height:100%}
+.case-table q{quotes:"\201C" "\201D" "\2018" "\2019"}
+.case-table small{display:block;margin-top:.2rem;color:#637f98;font-size:.82em}
 </style>
 </head>
 <body>
@@ -82,13 +88,13 @@ h1{margin:0;color:var(--navy);font-size:clamp(31px,2.36vw,46px);line-height:1.02
     <p>The guidance turns a policy for accurate, ideologically neutral AI into three procurement templates: <strong>A</strong> selects supplier disclosures, <strong>B</strong> requests them in the tender, and <strong>C</strong> makes compliance an ongoing contract obligation. Truth-seeking means factual accuracy and acknowledgement of uncertainty. Ideological neutrality means avoiding manipulation in favour of ideological positions.</p>
     <p>For LLM purchases, suppliers provide their developer’s acceptable-use policy, model/system/data cards explaining training, risks and evaluation results, user guidance and a feedback mechanism. Buyers may request further bias evaluations. Missing required information may make a bid ineligible. The table summarises the ongoing controls.</p>
     <table class="case-table">
-      <thead><tr><th scope="col">What the guidance provides</th><th scope="col">Questions to answer</th></tr></thead>
+      <thead><tr><th scope="col">What the guidance provides (original wording)</th><th scope="col">Questions to answer</th></tr></thead>
       <tbody>
-        <tr><td>Definitions of truth-seeking and ideological neutrality</td><td>What evidence would you need to determine compliance? How would you judge whether an output meets these principles?</td></tr>
-        <tr><td>Supplier documentation and optional bias evaluations</td><td>How should the buyer test whether the evidence demonstrates suitability for its intended use?</td></tr>
-        <tr><td>A channel for reporting problematic outputs</td><td>When does a problematic answer become contractual noncompliance rather than an isolated error?</td></tr>
-        <tr><td>Supplier investigation and response within 15 business days, with findings, proposed fixes and a timetable</td><td>Who validates the supplier’s findings? How are disagreements resolved, and when must corrective action be completed?</td></tr>
-        <tr><td>Updated documentation after significant model changes, with relevant obligations passed to subcontractors</td><td>Which changes should trigger retesting, and what should constitute acceptance of the modified model?</td></tr>
+        <tr><td><q>Truth-seeking means the LLM is truthful in responding to user prompts seeking factual information or analysis.</q><br><q>Ideological Neutrality means the LLM is a neutral, nonpartisan tool that does not manipulate responses in favor of ideological dogmas.</q><small>Attachment C(a), p. 8</small></td><td>What evidence would you need to determine compliance? How would you judge whether an output meets these principles?</td></tr>
+        <tr><td><q>These documents should summarize the training process, identified risks and mitigations, and model evaluation scores on relevant benchmarks.</q><br>Optional: <q>Results and methodology of bias evaluations conducted by the vendor.</q><small>Attachment A(b)(2), (c)(2)(a), pp. 4–5</small></td><td>How should the buyer test whether the evidence demonstrates suitability for its intended use?</td></tr>
+        <tr><td><q>A description of the mechanism through which the Government, as an end-user, can provide feedback to the vendor on outputs that may violate the Unbiased AI Principles.</q><small>Attachment A(b)(4), p. 4</small></td><td>When does a problematic answer become contractual noncompliance rather than an isolated error?</td></tr>
+        <tr><td><q>The Contractor must, within 15 business days, investigate the matter and provide a written response to the Contracting Officer detailing the findings, whether there was a violation, the most likely cause of the violation, the contractor's proposed corrective action(s) to remedy the violation, and the contractor's proposed timeline to complete the corrective action(s).</q><small>Attachment C(c)(2), p. 9</small></td><td>Who validates the supplier’s findings? How are disagreements resolved, and when must corrective action be completed?</td></tr>
+        <tr><td><q>The contractor must provide the Government with updated documentation when significant modifications are made to the AI model.</q><small>Attachment C(b), p. 8</small></td><td>Which changes should trigger retesting, and what should constitute acceptance of the modified model?</td></tr>
       </tbody>
     </table>
     <p class="guardrails"><strong>Task:</strong> Answer every row and propose a specific contract addition. Assess enforceability, not politics. Do not assume error-free AI or that documentation proves performance. The templates are adaptable.</p>
