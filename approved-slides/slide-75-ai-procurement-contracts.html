@@ -16,7 +16,7 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;fon
 .session{font-size:clamp(15px,1vw,20px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.5rem;margin-bottom:.35rem;font-weight:850}
 .dot{width:12px;height:12px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
 h1{margin:0;color:var(--navy);font-size:clamp(31px,2.36vw,46px);line-height:1.02;letter-spacing:-.03em;font-weight:950}
-.tabs{position:absolute;left:5.2%;right:5.2%;top:18.3%;height:7.2%;display:grid;grid-template-columns:repeat(3,1fr);gap:.62rem;z-index:4}
+.tabs{position:absolute;left:5.2%;right:5.2%;top:18.3%;height:7.2%;display:grid;grid-template-columns:repeat(2,1fr);gap:.62rem;z-index:4}
 .tab{border:2px solid var(--line);background:#fff;color:var(--navy);border-radius:13px;padding:.5rem .65rem;font-size:clamp(15px,1vw,20px);font-weight:900;cursor:pointer;box-shadow:0 4px 10px rgba(0,35,70,.06)}
 .tab[aria-selected="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
 .panel{position:absolute;left:5.2%;right:5.2%;top:27%;bottom:7.2%;display:none}
@@ -33,6 +33,22 @@ h1{margin:0;color:var(--navy);font-size:clamp(31px,2.36vw,46px);line-height:1.02
 .panel[data-panel="risk"] .grid{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,1fr)}
 .footer{position:absolute;left:5.2%;right:5.2%;bottom:1.4%;font-size:clamp(11px,.78vw,15px);font-weight:700;color:#7892aa}
 @media(max-width:900px){.card{padding:.66rem}.card p{line-height:1.12}.tabs{gap:.35rem}.tab{padding:.35rem}}
+
+/* Slide 75: case exercise and concise contract checklist */
+.tabs{grid-template-columns:repeat(2,1fr)}
+.panel.active{display:block}
+.case-content{height:100%;display:flex;flex-direction:column;gap:.5rem}
+.case-content h2{margin:0;font-size:clamp(19px,1.5vw,27px);line-height:1.1}
+.case-content p{margin:0;font-size:clamp(16px,1.23vw,23px);line-height:1.25;color:var(--ink)}
+.case-content .source{font-size:clamp(15px,1.1vw,20px)}
+.source a{color:var(--navy);text-decoration:underline;text-underline-offset:3px}
+.case-content .guardrails{border-left:5px solid var(--orange);background:#fff7f0;padding:.5rem .75rem;font-size:clamp(15px,1.12vw,21px)}
+.questions{margin:0;padding-left:1.5em;color:var(--ink);font-size:clamp(16px,1.23vw,23px);line-height:1.3}
+.questions li{padding:.12rem 0}
+.provisions{height:100%;margin:0;padding:0 0 0 1.3em;display:flex;flex-direction:column;justify-content:space-between;gap:.3rem;color:var(--ink);font-size:clamp(16px,1.25vw,23px);line-height:1.25}
+.provisions li{padding-left:.25rem}
+.provisions strong{color:var(--navy)}
+
 </style>
 </head>
 <body>
@@ -46,47 +62,41 @@ h1{margin:0;color:var(--navy);font-size:clamp(31px,2.36vw,46px);line-height:1.02
 </div>
 
 <div class="tabs" role="tablist" aria-label="AI contract topics">
-  <button class="tab" role="tab" aria-selected="true" data-target="data">1. Data and IP</button>
-  <button class="tab" role="tab" aria-selected="false" data-target="performance">2. Performance and Change</button>
-  <button class="tab" role="tab" aria-selected="false" data-target="risk">3. Risk, Liability and Exit</button>
+  <button id="tab-case" class="tab" role="tab" aria-controls="panel-case" aria-selected="true" data-target="case">1. Case and questions</button>
+  <button id="tab-provisions" class="tab" role="tab" aria-controls="panel-provisions" aria-selected="false" data-target="provisions">2. Critical contract provisions</button>
 </div>
 
-<section class="panel active" data-panel="data" role="tabpanel">
-  <div class="grid">
-    <article class="card"><span class="num">1</span><div><h2>Licensing scope and definitions</h2><p>Define exactly what is licensed: <strong>models, APIs, datasets, inputs, outputs and any fine-tuned artefacts</strong>.</p></div></article>
-    <article class="card"><span class="num">2</span><div><h2>Vendor data-use rights</h2><p>Restrict the supplier from using buyer inputs, outputs or metadata for <strong>training, analytics or other customers</strong> without explicit consent.</p></div></article>
-    <article class="card"><span class="num">3</span><div><h2>Confidentiality and data governance</h2><p>Specify data location, retention, deletion, access controls, sub-processors and treatment of proprietary or sensitive information.</p></div></article>
-    <article class="card"><span class="num">4</span><div><h2>Ownership and permitted use</h2><p>Clarify ownership and permitted use of <strong>inputs, outputs, prompts, embeddings, configurations and generated content</strong>.</p></div></article>
-    <article class="card"><span class="num">5</span><div><h2>IP infringement and indemnity</h2><p>Allocate risk for claims arising from training data, model operation or generated outputs; define warranties, filters and defence obligations.</p></div></article>
-    <div class="callout"><strong>Buyer question:</strong> What data or intellectual property could the supplier reuse, retain or expose after the contract ends?</div>
+<section id="panel-case" class="panel active" data-panel="case" role="tabpanel" aria-labelledby="tab-case">
+  <div class="case-content">
+    <h2>US defence AI procurement guidance</h2>
+    <p>The buyer requires AI that gives accurate factual answers, acknowledges uncertainty and avoids ideological favouring. Suppliers must submit model documentation, acceptable-use policies and user guidance, and provide a channel for reporting problematic outputs. Additional bias evaluations may be requested.</p>
+    <p>After notice of a suspected breach, the supplier has <strong>15 business days to investigate and respond</strong> with findings, proposed corrective actions and a timetable. Significant model changes require updated documentation. Relevant obligations pass down to subcontractors.</p>
+    <p class="source"><a href="https://www.acq.osd.mil/dpap/policy/policyvault/USA001389-26-DPCAP.pdf" target="_blank" rel="noopener noreferrer">Original guidance: USA001389-26-DPCAP.pdf</a></p>
+    <p class="guardrails"><strong>Guardrails:</strong> Assess the provisions as written. Focus on contract enforceability, not political objectives. Do not assume error-free AI or treat documentation as proof. The templates are adaptable.</p>
+    <h2>Questions</h2>
+    <ol class="questions">
+      <li>What is missing for the buyer to assess compliance consistently?</li>
+      <li>Identify four gaps. What dispute or operational problem could each create?</li>
+      <li>What specific contract provision would you add for each gap?</li>
+    </ol>
   </div>
 </section>
 
-<section class="panel" data-panel="performance" role="tabpanel">
-  <div class="grid">
-    <article class="card"><span class="num">1</span><div><h2>Service levels</h2><p>Define measurable commitments for <strong>availability, latency, throughput, support and recovery</strong>.</p></div></article>
-    <article class="card"><span class="num">2</span><div><h2>Accuracy and quality</h2><p>Use agreed benchmarks, test cases and acceptance criteria where output quality is material to the use case.</p></div></article>
-    <article class="card"><span class="num">3</span><div><h2>Warranties and disclaimers</h2><p>Separate normal AI limitations from explicit performance promises. Avoid relying on general marketing claims.</p></div></article>
-    <article class="card"><span class="num">4</span><div><h2>Change control and versioning</h2><p>Require notice, testing rights and remediation for material changes to models, APIs, safety controls or functionality.</p></div></article>
-    <article class="card"><span class="num">5</span><div><h2>Validation and audit rights</h2><p>Preserve the buyer’s ability to test outputs, inspect relevant evidence and verify performance against the agreed method.</p></div></article>
-    <article class="card"><span class="num">6</span><div><h2>Corrective action</h2><p>Define service credits, retraining, reconfiguration, rollback, replacement or termination when performance repeatedly fails.</p></div></article>
-    <div class="callout"><strong>Important:</strong> “Hallucination” or accuracy SLAs are only workable when the contract defines the use case, test set, sampling method, tolerance and validation owner.</div>
-  </div>
+<section id="panel-provisions" class="panel" data-panel="provisions" role="tabpanel" aria-labelledby="tab-provisions">
+  <ul class="provisions">
+    <li><strong>Testing methodology:</strong> agree representative tasks, test data, sampling, model settings, testing frequency and responsibility for validation.</li>
+    <li><strong>Objective criteria:</strong> set measurable quality thresholds, severity levels and rules distinguishing isolated errors from contractual breaches.</li>
+    <li><strong>Hallucination control:</strong> define fabricated or unsupported factual claims, an SLA and measurement method, correction deadlines, supplier-funded retraining and buyer reacceptance.</li>
+    <li><strong>Dispute resolution:</strong> preserve evidence and buyer audit rights, independent verification, escalation and a process for disputed findings.</li>
+    <li><strong>Change controls and reacceptance:</strong> define material changes, advance notice, approval rights, regression tests, renewed acceptance and rollback.</li>
+    <li><strong>Data and IP:</strong> define licensed scope, ownership and permitted use, confidentiality, retention, deletion and restrictions on supplier training with buyer data.</li>
+    <li><strong>Service and security:</strong> agree availability, latency, access controls, monitoring, incident response and obligations for subcontractors.</li>
+    <li><strong>Liability and exit:</strong> allocate IP and data risks, remedies and termination rights, and secure portability, transition support and deletion confirmation.</li>
+  </ul>
 </section>
 
-<section class="panel" data-panel="risk" role="tabpanel">
-  <div class="grid">
-    <article class="card"><span class="num">1</span><div><h2>Security and monitoring</h2><p>Set requirements for access control, incident response, logging, model abuse prevention and monitoring of material risks.</p></div></article>
-    <article class="card"><span class="num">2</span><div><h2>Compliance and permitted uses</h2><p>Allocate responsibility for privacy, sector regulation, export controls, records management and prohibited applications.</p></div></article>
-    <article class="card"><span class="num">3</span><div><h2>Liability and indemnification</h2><p>Set meaningful caps and exceptions for data breaches, confidentiality failures, IP claims and regulatory exposure.</p></div></article>
-    <article class="card"><span class="num">4</span><div><h2>Insurance</h2><p>Require suitable coverage for cyber, professional liability and relevant legal or regulatory claims where available.</p></div></article>
-    <article class="card"><span class="num">5</span><div><h2>Portability and exit</h2><p>Secure retrieval of data and artefacts, transition support, deletion confirmation and continuity during migration.</p></div></article>
-    <article class="card"><span class="num">6</span><div><h2>Termination and disputes</h2><p>Define exit triggers for repeated performance failure, security incidents, legal claims or material unilateral changes.</p></div></article>
-    <div class="callout"><strong>Core lesson:</strong> AI contracting is not a separate legal universe; it extends established controls for data, service performance, change, liability and exit to model-specific risks.</div>
-  </div>
-</section>
+<div class="footer">© CIPS. Case: review the source provisions. Contract checklist: proposed buyer controls, not requirements stated in the guidance.</div>
 
-<div class="footer">© CIPS. Contract design must reflect the use case, data sensitivity, operational dependence and ability to validate AI performance.</div>
 </section>
 </main>
 <script>
