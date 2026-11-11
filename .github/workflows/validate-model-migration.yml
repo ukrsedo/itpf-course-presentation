@@ -1,0 +1,43 @@
+name: Validate ITPF model retirement migration
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'itpf-course-assistant-worker.js'
+      - 'course-refresher/worker.js'
+      - 'tests/model-retirement.test.mjs'
+      - '.github/workflows/validate-model-migration.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check Worker syntax and migration invariants
+        run: |
+          node --check itpf-course-assistant-worker.js
+          node --check course-refresher/worker.js
+          node --test tests/model-retirement.test.mjs
+      - name: Bundle standalone Cloudflare Worker scripts
+        run: |
+          mkdir -p dist
+          npx --yes esbuild@0.25.12 itpf-course-assistant-worker.js --bundle --platform=browser --format=esm --target=es2022 --outfile=dist/itpf-course-assistant.js
+          npx --yes esbuild@0.25.12 course-refresher/worker.js --bundle --platform=browser --format=esm --target=es2022 --outfile=dist/itpf-course-refresher.js
+          node --check dist/itpf-course-assistant.js
+          node --check dist/itpf-course-refresher.js
+          grep -q 'gpt-5.6-terra' dist/itpf-course-assistant.js
+          grep -q 'gpt-5.6-terra' dist/itpf-course-refresher.js
+      - uses: actions/upload-artifact@v4
+        with:
+          name: itpf-workers-gpt-5-6-terra
+          path: |
+            dist/itpf-course-assistant.js
+            dist/itpf-course-refresher.js
+          retention-days: 30
