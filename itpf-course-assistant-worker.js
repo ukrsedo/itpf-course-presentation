@@ -831,7 +831,8 @@ COURSE TOPIC KNOWLEDGE
 ${topicText || "No additional topic block is mapped. Explain only from the current slide content."}`;
 
     async function callOpenAI(maxOutputTokens) {
-      const model = env.OPENAI_MODEL || "gpt-5-mini";
+      // gpt-5-mini retires on 2026-12-11. The configured model can override this fallback.
+      const model = env.OPENAI_MODEL || "gpt-5.6-terra";
       const body = {
         model,
         instructions,
@@ -839,12 +840,13 @@ ${topicText || "No additional topic block is mapped. Explain only from the curre
         max_output_tokens: maxOutputTokens
       };
 
-      // Reasoning controls are relevant to GPT-5 / o-series models.
-      // Do not send this field if an older non-reasoning model is configured.
-      if (/^(gpt-5|o[1-9])/i.test(model)) {
-        body.reasoning = {
-          effort: env.OPENAI_REASONING_EFFORT || "minimal"
-        };
+      // GPT-5.6 Terra supports "low" but not "minimal". Normalize a legacy
+      // Cloudflare setting without changing other model configurations.
+      if (/^(gpt-5\\.6|gpt-6|o[1-9])/i.test(model)) {
+        const effort = env.OPENAI_REASONING_EFFORT || "low";
+        body.reasoning = { effort: effort === "minimal" ? "low" : effort };
+      } else if (/^gpt-5(?:-|$)/i.test(model)) {
+        body.reasoning = { effort: env.OPENAI_REASONING_EFFORT || "minimal" };
       }
 
       const response = await fetch("https://api.openai.com/v1/responses", {
