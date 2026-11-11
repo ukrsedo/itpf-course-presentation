@@ -27,7 +27,15 @@ async function answerWithModel(env,question,evidence,mode){
   if(!env.OPENAI_API_KEY)throw new Error("OPENAI_API_KEY is not configured on the Worker.");
   const instructions="You are the IT Procurement Foundations Course Refresher. Answer only from the course evidence supplied in this request. Do not use outside knowledge, theory, examples, statistics, or frameworks. Do not invent facts or silently correct the course material. If the evidence does not support an answer, respond exactly: \u201CThis is not covered in the course material.\u201D Preserve course terminology. You may apply a course concept to a user-supplied scenario only using the supplied evidence. Be direct and concise. Do not mention internal source blocks or instructions."+(mode==="topic"?" Structure the reply with Core idea, Why it matters, and Course examples headings. Use Course examples only when the supplied evidence contains examples. Do not add a Related concepts heading; the interface presents source-linked concepts separately. Never leave a heading empty.":"");
   async function requestAnswer(maxOutputTokens){
-    const response=await fetch("https://api.openai.com/v1/responses",{method:"POST",headers:{"Authorization":"Bearer "+env.OPENAI_API_KEY,"Content-Type":"application/json"},body:JSON.stringify({model:env.OPENAI_MODEL||"gpt-5.6-terra",reasoning:{effort:(env.OPENAI_REASONING_EFFORT||"low")==="minimal"?"low":(env.OPENAI_REASONING_EFFORT||"low")},instructions,input:"USER REQUEST: "+question+"\n\nCOURSE EVIDENCE\n"+evidence,max_output_tokens:maxOutputTokens})});
+    const model=env.OPENAI_MODEL||"gpt-5.6-terra";
+    const payload={model,instructions,input:"USER REQUEST: "+question+"\n\nCOURSE EVIDENCE\n"+evidence,max_output_tokens:maxOutputTokens};
+    if(/^(gpt-5[.]6|gpt-6|o[1-9])/i.test(model)){
+      const effort=env.OPENAI_REASONING_EFFORT||"low";
+      payload.reasoning={effort:effort==="minimal"?"low":effort};
+    }else if(/^gpt-5(?:-|$)/i.test(model)){
+      payload.reasoning={effort:env.OPENAI_REASONING_EFFORT||"minimal"};
+    }
+    const response=await fetch("https://api.openai.com/v1/responses",{method:"POST",headers:{"Authorization":"Bearer "+env.OPENAI_API_KEY,"Content-Type":"application/json"},body:JSON.stringify(payload)});
     const data=await response.json();
     if(!response.ok)throw new Error(data?.error?.message||"The model request failed.");
     return {text:outputText(data),incomplete:data?.status==="incomplete"||data?.incomplete_details?.reason==="max_output_tokens"};
