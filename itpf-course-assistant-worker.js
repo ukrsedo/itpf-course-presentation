@@ -842,7 +842,7 @@ ${topicText || "No additional topic block is mapped. Explain only from the curre
 
       // GPT-5.6 Terra supports "low" but not "minimal". Normalize a legacy
       // Cloudflare setting without changing other model configurations.
-      if (/^(gpt-5\\.6|gpt-6|o[1-9])/i.test(model)) {
+      if (/^(gpt-5[.]6|gpt-6|o[1-9])/i.test(model)) {
         const effort = env.OPENAI_REASONING_EFFORT || "low";
         body.reasoning = { effort: effort === "minimal" ? "low" : effort };
       } else if (/^gpt-5(?:-|$)/i.test(model)) {
