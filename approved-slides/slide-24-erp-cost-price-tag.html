@@ -1,241 +1,305 @@
 <!doctype html>
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>Slide 24 — ERP COST ≠ PRICE TAG</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Slide 24 — What Drives the Cost of a Complex IT Platform?</title>
 <style>
-:root {
+:root{
   --navy:var(--itpf-navy);
-  --deep:var(--itpf-navy);
-  --cyan:var(--itpf-cyan);
-  --orange:var(--itpf-orange);
-  --red:var(--itpf-red);
-  --green:var(--itpf-green);
   --blue:var(--itpf-blue);
+  --cyan:var(--itpf-cyan);
   --ink:var(--itpf-ink);
   --line:var(--itpf-line);
-  --soft:var(--itpf-blue-soft);
+  --soft:var(--itpf-surface);
 }
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--itpf-canvas);font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--itpf-canvas);font-family:Arial,Helvetica,sans-serif;color:var(--itpf-ink)}
 .stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
 .slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:var(--itpf-white);box-shadow:0 18px 60px rgba(var(--itpf-blue-rgb),.18);overflow:hidden}
 .logo{position:absolute;right:4.3%;top:3.5%;width:10%;height:auto;z-index:5}
-.header{position:absolute;left:0;right:0;top:0;height:18.4%;background:var(--deep);color:var(--itpf-white);padding:2.4% 6% 1.4%}
-.header h1{margin:0;font-size:clamp(35px,3.2vw,62px);line-height:1.02;font-weight:900;letter-spacing:-.02em}
-.header .subtitle{font-size:clamp(19px,1.45vw,29px);font-weight:800;margin-top:.35rem}
-.tabs{position:absolute;left:6%;right:6%;top:21.2%;display:flex;gap:.85rem}
-.tab{border:3px solid var(--navy);background:var(--itpf-white);color:var(--navy);font-size:clamp(20px,1.45vw,30px);font-weight:900;padding:.56rem 1rem;cursor:pointer}
-.tab.active{background:var(--navy);color:var(--itpf-white)}
-.panel{position:absolute;left:6%;right:6%;top:30%;bottom:6.5%;display:none}
-.panel.active{display:block}
-
-.chart{position:relative;width:100%;height:100%}
-.myth,.reality{position:absolute;top:0;width:32.5%;height:31%;color:var(--itpf-white);padding:1.1rem 1.15rem;display:flex;flex-direction:column;justify-content:center}
-.myth{left:0;background:var(--red)}
-.reality{right:0;background:var(--green)}
-.boxTitle{font-size:clamp(22px,1.65vw,34px);font-weight:900;margin-bottom:1.6rem}
-.boxText{font-size:clamp(21px,1.55vw,31px);line-height:1.18;font-weight:750}
-
-.bigArrow{position:absolute;left:45.7%;top:13%;font-size:clamp(54px,4.6vw,86px);line-height:1;color:var(--orange);-webkit-text-stroke:1px var(--itpf-purple);text-shadow:0 0 0 var(--itpf-shadow)}
-
-.flow{position:absolute;left:0;right:0;top:38.5%;height:20%;display:grid;grid-template-columns:1.18fr .22fr 1.18fr .22fr 1.18fr .22fr 1fr;align-items:center;gap:.4rem}
-.oval{height:76%;border-radius:999px;background:var(--blue);border:2px solid var(--itpf-purple);color:var(--itpf-white);display:flex;align-items:center;justify-content:center;font-size:clamp(22px,1.75vw,34px);font-weight:750}
-.arrow{font-size:clamp(42px,3.6vw,68px);color:var(--orange);-webkit-text-stroke:1px var(--itpf-purple);line-height:1;text-align:center}
-.drivers{position:absolute;left:4%;right:4%;top:63%;bottom:12%;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem 2.2rem}
-.driver{border:2px solid var(--itpf-purple);border-radius:16px;background:var(--itpf-canvas);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:clamp(20px,1.5vw,30px);font-weight:800;text-align:center;padding:.5rem}
-.question{position:absolute;left:0;right:0;bottom:0;border-top:2px solid var(--line);padding-top:.55rem;text-align:center;font-size:clamp(18px,1.35vw,27px);line-height:1.12;font-weight:900;color:var(--navy)}
-
-.feedbackGrid{height:100%;display:grid;grid-template-columns:.9fr 1.1fr;gap:1.1rem}
-.entry,.responses{border:3px solid var(--navy);background:var(--itpf-white);min-height:0;display:flex;flex-direction:column}
-.entry h2,.responses h2{margin:0;background:var(--navy);color:var(--itpf-white);font-size:clamp(23px,1.75vw,35px);line-height:1.05;padding:.75rem .95rem;font-weight:900}
-.entryBody{padding:1rem;display:flex;flex-direction:column;flex:1;min-height:0}
-.prompt{font-size:clamp(17px,1.2vw,24px);line-height:1.2;font-weight:800;color:var(--itpf-navy);margin:0 0 .8rem}
-textarea{width:100%;flex:1;min-height:130px;resize:none;border:2px solid var(--line);border-radius:10px;padding:.9rem;font:inherit;font-size:clamp(16px,1.12vw,22px);line-height:1.25;color:var(--itpf-navy);outline:none}
-textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(var(--itpf-cyan-rgb),.16)}
-.actions{display:flex;align-items:center;gap:.75rem;margin-top:.8rem}
-button.submit{border:0;background:var(--navy);color:var(--itpf-white);border-radius:8px;padding:.7rem 1.1rem;font-size:clamp(15px,1vw,19px);font-weight:900;cursor:pointer}
-.counter{margin-left:auto;font-size:clamp(12px,.85vw,16px);font-weight:800;color:var(--itpf-muted)}
-.message{height:20px;margin-top:.45rem;font-size:clamp(12px,.85vw,16px);font-weight:900}
-.responseHead{display:flex;align-items:center;justify-content:space-between;background:var(--navy);color:var(--itpf-white);padding:0 .95rem 0 0}
-.responseHead h2{padding:.75rem .95rem;background:transparent}
-.count{font-size:clamp(12px,.85vw,16px);font-weight:900}
-.empty{margin:auto;text-align:center;color:var(--itpf-muted);font-size:clamp(16px,1.1vw,22px);line-height:1.3;max-width:74%;font-weight:750}
-ul{list-style:none;margin:.75rem 0 0;padding:0 1rem 1rem;overflow:auto;display:flex;flex-direction:column;gap:.6rem}
-li{border-left:5px solid var(--cyan);background:var(--itpf-cyan-soft);padding:.65rem .8rem;border-radius:0 8px 8px 0;font-size:clamp(14px,1vw,19px);line-height:1.25;font-weight:700;overflow-wrap:anywhere}
-.footer{position:absolute;left:4.9%;bottom:2.7%;font-size:clamp(14px,1vw,22px);color:var(--itpf-blue)}
+.header{position:absolute;left:0;right:0;top:0;height:18.5%;background:var(--navy);color:var(--itpf-white);padding:2.15% 6% 1.1%}
+.header h1{margin:0;max-width:78%;font-size:clamp(32px,2.65vw,52px);line-height:1.05;font-weight:900;letter-spacing:-.02em}
+.header .subtitle{font-size:clamp(17px,1.18vw,24px);font-weight:700;margin-top:.45rem;color:var(--itpf-cyan-soft)}
+.exercise{position:absolute;left:4.5%;right:4.5%;top:21%;bottom:5.2%;display:grid;grid-template-columns:1.08fr .92fr;gap:1rem;min-height:0}
+.card{min-width:0;min-height:0;border:2px solid var(--line);border-radius:14px;background:var(--itpf-white);padding:.85rem 1rem;display:flex;flex-direction:column;overflow:hidden}
+.section-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:.65rem;margin-bottom:.5rem}
+.section-heading h2{margin:0;color:var(--navy);font-size:clamp(21px,1.4vw,29px);line-height:1.05;font-weight:900}
+.section-heading p{margin:.28rem 0 0;color:var(--itpf-muted);font-size:clamp(13px,.9vw,18px);line-height:1.18;font-weight:650}
+.progress{flex:0 0 auto;border:1px solid var(--line);border-radius:999px;padding:.32rem .58rem;background:var(--itpf-blue-soft);color:var(--navy);font-size:clamp(12px,.78vw,16px);font-weight:850;white-space:nowrap}
+.instruction{margin:.15rem 0 .55rem;border-left:5px solid var(--blue);background:var(--itpf-blue-soft);padding:.48rem .65rem;color:var(--itpf-ink);font-size:clamp(13px,.9vw,18px);line-height:1.2;font-weight:700}
+.factor-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,minmax(52px,1fr));gap:.5rem;min-height:174px;flex:1}
+.factor-button{width:100%;min-height:0;border:2px solid var(--itpf-blue);border-radius:10px;background:var(--itpf-blue-soft);color:var(--navy);padding:.5rem .65rem;text-align:left;font:800 clamp(16px,1.08vw,22px) Arial,Helvetica,sans-serif;line-height:1.1;cursor:pointer;transition:background .12s,border-color .12s,transform .12s}
+.factor-button:hover:not(:disabled){background:var(--itpf-cyan-soft);border-color:var(--cyan);transform:translateY(-1px)}
+.factor-button:focus-visible,.action-button:focus-visible{outline:3px solid var(--itpf-orange);outline-offset:2px}
+.factor-button:disabled{opacity:.58;cursor:default;border-color:var(--line);background:var(--itpf-surface);color:var(--itpf-muted)}
+.factor-button .selected-label{display:block;margin-top:.24rem;font-size:.72em;color:var(--itpf-blue);font-weight:800}
+.your-order{margin:.65rem 0 0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:.28rem .5rem;min-height:0}
+.order-item{display:flex;align-items:center;gap:.45rem;min-width:0;border-bottom:1px solid var(--line);padding:.24rem .1rem;color:var(--itpf-ink);font-size:clamp(13px,.88vw,18px);line-height:1.12;font-weight:750}
+.order-item.pending{color:var(--itpf-muted);font-weight:600}
+.rank-number{flex:0 0 1.55rem;width:1.55rem;height:1.55rem;display:grid;place-items:center;border-radius:50%;background:var(--blue);color:var(--itpf-white);font-size:.78em;font-weight:900}
+.order-item.pending .rank-number{background:var(--itpf-line);color:var(--navy)}
+.order-name{overflow:hidden;text-overflow:ellipsis}
+.actions{display:flex;align-items:center;gap:.45rem;flex-wrap:wrap;margin-top:.65rem}
+.action-button{min-height:35px;border:1px solid var(--navy);border-radius:7px;padding:.42rem .72rem;background:var(--itpf-white);color:var(--navy);font:800 clamp(13px,.85vw,17px) Arial,Helvetica,sans-serif;cursor:pointer}
+.action-button.primary{background:var(--navy);color:var(--itpf-white)}
+.action-button.primary:hover:not(:disabled){background:var(--blue);border-color:var(--blue)}
+.action-button:hover:not(:disabled){background:var(--itpf-blue-soft)}
+.action-button:disabled{opacity:.42;cursor:default}
+.action-button.next{background:var(--itpf-green-soft);border-color:var(--itpf-green);color:var(--itpf-green-text)}
+.status{min-height:1.2em;margin:.45rem 0 0;color:var(--itpf-muted);font-size:clamp(12px,.78vw,16px);line-height:1.18;font-weight:750}
+.status.success{color:var(--itpf-green-text)}
+.status.error{color:var(--itpf-red-text)}
+.aggregate-note{margin:.45rem 0 .6rem;padding:.5rem .65rem;border-left:5px solid var(--cyan);background:var(--itpf-cyan-soft);color:var(--itpf-ink);font-size:clamp(13px,.9vw,18px);line-height:1.2;font-weight:700}
+.aggregate-meta{margin:0 0 .35rem;color:var(--itpf-muted);font-size:clamp(12px,.8vw,16px);font-weight:800}
+.combined-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.42rem;min-height:0;overflow:auto}
+.combined-row{display:grid;grid-template-columns:2rem minmax(0,1fr) auto;align-items:center;gap:.6rem;border:1px solid var(--line);border-radius:9px;background:var(--itpf-surface);padding:.48rem .6rem;min-height:46px}
+.combined-rank{display:grid;place-items:center;width:1.8rem;height:1.8rem;border-radius:50%;background:var(--navy);color:var(--itpf-white);font-size:clamp(13px,.85vw,17px);font-weight:900}
+.combined-name{color:var(--navy);font-size:clamp(15px,1vw,20px);line-height:1.1;font-weight:850}
+.average{color:var(--itpf-muted);font-size:clamp(12px,.8vw,16px);font-weight:800;text-align:right;white-space:nowrap}
+.combined-empty{margin:auto 0;color:var(--itpf-muted);font-size:clamp(15px,1.05vw,21px);line-height:1.3;font-weight:700;text-align:center;padding:1.2rem}
+.aggregate-status{margin:.5rem 0 0;min-height:1em;color:var(--itpf-red-text);font-size:clamp(12px,.78vw,16px);font-weight:700}
+.footer{position:absolute;right:4.8%;bottom:1.5%;font-size:clamp(11px,.7vw,14px);color:var(--itpf-muted)}
+[hidden]{display:none!important}
+@media(max-width:800px){html,body{height:auto;min-height:100%;overflow:auto}.stage{display:block;padding:8px}.slide{aspect-ratio:auto;min-height:100vh;width:100%;overflow:visible;padding:150px 14px 42px}.header{height:125px;padding:22px 18px}.header h1{max-width:76%;font-size:clamp(28px,7vw,38px)}.header .subtitle{font-size:16px}.logo{width:15%;right:5%;top:18px}.exercise{position:static;display:grid;grid-template-columns:1fr;gap:12px}.card{min-height:400px;padding:12px}.factor-grid{min-height:230px}.factor-button{font-size:16px}.your-order{grid-template-columns:1fr 1fr}.combined-list{overflow:visible}.footer{right:14px;bottom:12px}}
 </style>
 <link rel="stylesheet" href="../assets/itpf-color-system.css">
 </head>
 <body>
 <main class="stage">
-<section aria-label="ERP cost feedback" class="slide">
+<section aria-label="Rank the cost drivers of a complex IT platform" class="slide">
 <img data-itpf-cips-logo alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
-<div class="header">
-<h1>ERP COST ≠ PRICE TAG</h1>
-<div class="subtitle">It is a function of decisions, not a fixed number</div>
+<header class="header">
+  <h1>What Drives the Cost of a Complex IT Platform?</h1>
+  <div class="subtitle">Rank the factors from greatest to least influence on total cost</div>
+</header>
+<div class="exercise">
+  <section class="card" aria-labelledby="your-ranking-title">
+    <div class="section-heading">
+      <div><h2 id="your-ranking-title">Build your ranking</h2><p>Select the biggest cost influence first. Your first choice is rank 1.</p></div>
+      <span class="progress" id="progress">0 of 6 ranked</span>
+    </div>
+    <p class="instruction">Choose the six factors one by one, in your order of importance. You can undo the last choice or start again.</p>
+    <div class="factor-grid" id="factorChoices" role="group" aria-label="Select cost factors in order of importance"></div>
+    <ol class="your-order" id="yourOrder" aria-label="Your ranking from most to least influential"></ol>
+    <div class="actions">
+      <button class="action-button" id="undo" type="button" disabled>Undo last</button>
+      <button class="action-button" id="reset" type="button" disabled>Reset</button>
+      <button class="action-button primary" id="submit" type="button" disabled>Submit ranking</button>
+      <button class="action-button next" id="nextRanking" type="button" hidden>Start next ranking</button>
+    </div>
+    <p class="status" id="status" aria-live="polite">One completed ranking counts as one participant response.</p>
+  </section>
+  <section class="card" aria-labelledby="combined-title">
+    <div class="section-heading">
+      <div><h2 id="combined-title">Combined class ranking</h2><p>Average position across completed rankings. A lower average means greater influence.</p></div>
+    </div>
+    <p class="aggregate-note">There is no preset “correct” order. The combined result shows the class’s view.</p>
+    <p class="aggregate-meta" id="aggregateMeta">0 completed rankings</p>
+    <p class="combined-empty" id="combinedEmpty">Class rankings will appear here after participants submit their selections.</p>
+    <ol class="combined-list" id="combinedList" aria-live="polite" aria-label="Combined class ranking"></ol>
+    <p class="aggregate-status" id="aggregateStatus" aria-live="polite"></p>
+  </section>
 </div>
-<div class="tabs">
-<button class="tab active" data-panel="chart" type="button">Chart</button>
-<button class="tab" data-panel="feedback" type="button">Feedback</button>
-</div>
-<div class="panel active" id="chart">
-<div class="chart">
-<div class="myth">
-<div class="boxTitle">MYTH</div>
-<div class="boxText">$80k–$120k<br/>“Typical ERP”</div>
-</div>
-<div class="bigArrow">➜</div>
-<div class="reality">
-<div class="boxTitle">REALITY</div>
-<div class="boxText">$3k → $1M+<br/>Depends on choices</div>
-</div>
-<div class="flow">
-<div class="oval">Scope</div><div class="arrow">➜</div>
-<div class="oval">Complexity</div><div class="arrow">➜</div>
-<div class="oval">Effort</div><div class="arrow">➜</div>
-<div class="oval">Cost</div>
-</div>
-<div class="drivers">
-<div class="driver">Depth</div>
-<div class="driver">Scale</div>
-<div class="driver">Integrations</div>
-<div class="driver">Customizations</div>
-<div class="driver">Team</div>
-<div class="driver">Decision-making</div>
-</div>
-</div>
-</div>
-<div class="panel" id="feedback">
-<div class="feedbackGrid">
-<section class="entry">
-<h2>Your view</h2>
-<div class="entryBody">
-<p class="prompt">Which decision driver most often turns an ERP project from affordable into expensive?</p>
-<textarea id="input" maxlength="220" placeholder="Type your answer here…"></textarea>
-<div class="actions">
-<button class="submit" id="submit">Submit</button>
-<span class="counter"><span id="chars">0</span>/220</span>
-</div>
-<div aria-live="polite" class="message" id="message"></div>
-</div>
-</section>
-<section class="responses">
-<div class="responseHead"><h2>Group feedback</h2><span class="count" id="count">0 responses</span></div>
-<div class="empty" id="empty">Responses will appear here as they are submitted.</div>
-<ul id="list"></ul>
-</section>
-</div>
-</div>
-<div class="footer">©</div>
+<div class="footer">© CIPS</div>
 </section>
 </main>
 <script>
-document.querySelectorAll('.tab').forEach(btn => btn.addEventListener('click', () => {
-  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById(btn.dataset.panel).classList.add('active');
-}));
-
 const WORKER_URL = "https://itpf-live-responses.ukrsedo-e2e.workers.dev";
 const SESSION_ID = "ITPF-2026-09-10-11";
-const QUESTION_ID = "ERP-COST-DRIVERS-01";
+const QUESTION_ID = "ERP-PLATFORM-COST-RANKING-V1";
 const REFRESH_INTERVAL_MS = 15000;
-
-const input = document.getElementById('input');
-const submit = document.getElementById('submit');
-const chars = document.getElementById('chars');
-const message = document.getElementById('message');
-const list = document.getElementById('list');
-const empty = document.getElementById('empty');
-const count = document.getElementById('count');
+const factors = [
+  {id:"scope", label:"Scope"},
+  {id:"pricing", label:"Commercial/Pricing Model"},
+  {id:"integrations", label:"Integrations"},
+  {id:"customizations", label:"Customizations"},
+  {id:"people", label:"People"},
+  {id:"culture", label:"Corporate Culture"}
+];
+const factorById = new Map(factors.map(factor => [factor.id, factor]));
+const factorChoices = document.getElementById("factorChoices");
+const yourOrder = document.getElementById("yourOrder");
+const progress = document.getElementById("progress");
+const undoButton = document.getElementById("undo");
+const resetButton = document.getElementById("reset");
+const submitButton = document.getElementById("submit");
+const nextButton = document.getElementById("nextRanking");
+const status = document.getElementById("status");
+const combinedList = document.getElementById("combinedList");
+const combinedEmpty = document.getElementById("combinedEmpty");
+const aggregateMeta = document.getElementById("aggregateMeta");
+const aggregateStatus = document.getElementById("aggregateStatus");
+let ranking = [];
 let submitting = false;
+let submitted = false;
 
-input.addEventListener('input', () => { chars.textContent = input.value.length; message.textContent = ''; });
+function endpoint() { return `${WORKER_URL.replace(/\/$/, "")}/responses`; }
+function setStatus(text, kind="") { status.textContent = text; status.className = `status${kind ? ` ${kind}` : ""}`; }
+function makeResponseId() { return crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`; }
 
-function endpoint() { return `${WORKER_URL.replace(/\/$/, '')}/responses`; }
-
-function setMessage(text, type='info') {
-  message.textContent = text;
-  message.style.color = type === 'error' ? 'var(--itpf-red-text)' : type === 'success' ? 'var(--itpf-green-text)' : 'var(--itpf-ink)';
-}
-
-function renderResponses(items) {
-  list.replaceChildren();
-  for (const item of items) {
-    const li = document.createElement('li');
-    li.textContent = item.response || item.text || '';
-    list.appendChild(li);
+function renderChoices() {
+  factorChoices.replaceChildren();
+  for (const factor of factors) {
+    const rank = ranking.indexOf(factor.id);
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "factor-button";
+    button.setAttribute("aria-pressed", String(rank >= 0));
+    button.disabled = submitted || submitting || rank >= 0 || ranking.length === factors.length;
+    button.textContent = factor.label;
+    if (rank >= 0) {
+      const selected = document.createElement("span");
+      selected.className = "selected-label";
+      selected.textContent = `Rank ${rank + 1}`;
+      button.appendChild(selected);
+    }
+    button.addEventListener("click", () => {
+      if (submitted || submitting || ranking.includes(factor.id) || ranking.length >= factors.length) return;
+      ranking.push(factor.id);
+      renderExercise();
+      setStatus("Factor added to your ranking.");
+    });
+    factorChoices.appendChild(button);
   }
-  empty.hidden = items.length > 0;
-  count.textContent = `${items.length} response${items.length === 1 ? '' : 's'}`;
 }
 
-async function loadResponses(showError=false) {
+function renderOrder() {
+  yourOrder.replaceChildren();
+  for (let index = 0; index < factors.length; index++) {
+    const item = document.createElement("li");
+    const isPending = index >= ranking.length;
+    item.className = `order-item${isPending ? " pending" : ""}`;
+    const number = document.createElement("span");
+    number.className = "rank-number";
+    number.textContent = String(index + 1);
+    const name = document.createElement("span");
+    name.className = "order-name";
+    name.textContent = isPending ? `Select factor ${index + 1}` : factorById.get(ranking[index]).label;
+    item.append(number, name);
+    yourOrder.appendChild(item);
+  }
+}
+
+function renderExercise() {
+  renderChoices();
+  renderOrder();
+  progress.textContent = `${ranking.length} of ${factors.length} ranked`;
+  undoButton.disabled = submitted || submitting || ranking.length === 0;
+  resetButton.disabled = submitted || submitting || ranking.length === 0;
+  submitButton.disabled = submitted || submitting || ranking.length !== factors.length;
+  submitButton.textContent = submitting ? "Submitting…" : "Submit ranking";
+}
+
+function parseRanking(item) {
+  const value = item && (item.response || item.text);
+  if (typeof value !== "string") return null;
+  try {
+    const payload = JSON.parse(value);
+    const ids = payload && payload.rankedFactors;
+    if (payload.type !== "itpf-cost-factor-ranking" || payload.version !== 1 || !Array.isArray(ids) || ids.length !== factors.length) return null;
+    if (new Set(ids).size !== factors.length || ids.some(id => !factorById.has(id))) return null;
+    return ids;
+  } catch { return null; }
+}
+
+function renderCombined(responses) {
+  const rankings = responses.map(parseRanking).filter(Boolean);
+  aggregateMeta.textContent = `${rankings.length} completed ranking${rankings.length === 1 ? "" : "s"}`;
+  combinedEmpty.hidden = rankings.length > 0;
+  combinedList.replaceChildren();
+  if (!rankings.length) return;
+  const rows = factors.map((factor, order) => {
+    const average = rankings.reduce((total, submittedRanking) => total + submittedRanking.indexOf(factor.id) + 1, 0) / rankings.length;
+    return {factor, order, average};
+  }).sort((a, b) => a.average - b.average || a.order - b.order);
+  let displayRank = 0;
+  let previousAverage = null;
+  rows.forEach((row, index) => {
+    if (previousAverage === null || Math.abs(row.average - previousAverage) > 1e-9) displayRank = index + 1;
+    previousAverage = row.average;
+    const item = document.createElement("li");
+    item.className = "combined-row";
+    const rank = document.createElement("span");
+    rank.className = "combined-rank";
+    rank.textContent = String(displayRank);
+    const name = document.createElement("span");
+    name.className = "combined-name";
+    name.textContent = row.factor.label;
+    const averageLabel = document.createElement("span");
+    averageLabel.className = "average";
+    averageLabel.textContent = `Mean position ${row.average.toFixed(2)}`;
+    item.append(rank, name, averageLabel);
+    combinedList.appendChild(item);
+  });
+}
+
+async function loadRankings() {
   try {
     const url = new URL(endpoint());
-    url.searchParams.set('sessionId', SESSION_ID);
-    url.searchParams.set('questionId', QUESTION_ID);
-    const response = await fetch(url, { method: 'GET', cache: 'no-store' });
+    url.searchParams.set("sessionId", SESSION_ID);
+    url.searchParams.set("questionId", QUESTION_ID);
+    const response = await fetch(url, {method:"GET", cache:"no-store"});
     const data = await response.json();
-    if (!response.ok || !data.success) throw new Error(data.error || 'Unable to load responses.');
-    renderResponses(Array.isArray(data.responses) ? data.responses : []);
-  } catch (error) {
-    if (showError) setMessage(error.message || 'Unable to load responses.', 'error');
+    if (!response.ok || !data.success) throw new Error(data.error || "Unable to load class rankings.");
+    renderCombined(Array.isArray(data.responses) ? data.responses : []);
+    aggregateStatus.textContent = "";
+  } catch {
+    aggregateStatus.textContent = "Live class rankings could not be loaded. Your selection can still be submitted.";
   }
 }
 
-async function submitResponse() {
-  if (submitting) return;
-  const value = input.value.trim().replace(/\s+/g, ' ');
-  if (!value) { setMessage('Please enter a response.', 'error'); return; }
-
+async function submitRanking() {
+  if (submitting || submitted || ranking.length !== factors.length) return;
   submitting = true;
-  submit.disabled = true;
-  submit.textContent = 'Submitting…';
-  setMessage('');
-
+  renderExercise();
+  setStatus("Submitting your ranking…");
   try {
     const response = await fetch(endpoint(), {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({
-        sessionId: SESSION_ID,
-        questionId: QUESTION_ID,
-        responseId: (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`),
-        response: value
+      method:"POST",
+      headers:{"content-type":"application/json"},
+      body:JSON.stringify({
+        sessionId:SESSION_ID,
+        questionId:QUESTION_ID,
+        responseId:makeResponseId(),
+        response:JSON.stringify({type:"itpf-cost-factor-ranking",version:1,rankedFactors:ranking})
       })
     });
     const data = await response.json();
-    if (!response.ok || !data.success) throw new Error(data.error || 'Submission failed.');
-    input.value = '';
-    chars.textContent = '0';
-    setMessage('Submitted.', 'success');
-    await loadResponses(true);
-    input.focus();
+    if (!response.ok || !data.success) throw new Error(data.error || "Submission failed.");
+    submitted = true;
+    nextButton.hidden = false;
+    setStatus("Ranking recorded. The combined class ranking will refresh on connected screens.", "success");
+    await loadRankings();
   } catch (error) {
-    setMessage(`${error.message || 'Submission failed.'} Your text has not been cleared.`, 'error');
+    setStatus(`${error.message || "Submission failed."} Your ranking is still available to retry.`, "error");
   } finally {
     submitting = false;
-    submit.disabled = false;
-    submit.textContent = 'Submit';
+    renderExercise();
   }
 }
 
-submit.addEventListener('click', submitResponse);
-loadResponses(false);
-setInterval(() => loadResponses(false), REFRESH_INTERVAL_MS);
+undoButton.addEventListener("click", () => { if (!submitted && ranking.length) { ranking.pop(); renderExercise(); setStatus("Last selection removed."); } });
+resetButton.addEventListener("click", () => { if (!submitted) { ranking = []; renderExercise(); setStatus("Ranking cleared. Start again with the factor you consider most influential."); } });
+submitButton.addEventListener("click", submitRanking);
+nextButton.addEventListener("click", () => {
+  ranking = [];
+  submitted = false;
+  nextButton.hidden = true;
+  renderExercise();
+  setStatus("Ready for the next participant ranking.");
+});
+renderExercise();
+loadRankings();
+setInterval(loadRankings, REFRESH_INTERVAL_MS);
 </script>
 <script id="itpf-deck-bridge">
 (function(){
   function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
   window.addEventListener('keydown',function(e){
     var t=e.target, tag=(t&&t.tagName||'').toLowerCase();
-    if(tag==='input'||tag==='textarea'||tag==='select'||(t&&t.isContentEditable)) return;
+    if(tag==='input'||tag==='textarea'||tag==='select'||tag==='button'||(t&&t.isContentEditable)) return;
     var action=null;
     if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') action='next';
     else if(e.key==='ArrowLeft'||e.key==='PageUp') action='prev';

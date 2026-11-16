@@ -27,7 +27,7 @@ Current deck: **79 slides**. The number and title below match the presentation p
 | 21 | Pace Layer Model | [slide-21-pace-layer-model.html](approved-slides/slide-21-pace-layer-model.html) | [View](https://ukrsedo.github.io/itpf-course-presentation/#21) |
 | 22 | Hybrid Sourcing Strategy | [slide-22-hybrid-sourcing-strategy.html](approved-slides/slide-22-hybrid-sourcing-strategy.html) | [View](https://ukrsedo.github.io/itpf-course-presentation/#22) |
 | 23 | Apply the Models: HITSS | [slide-23-apply-the-models-hitss.html](approved-slides/slide-23-apply-the-models-hitss.html) | [View](https://ukrsedo.github.io/itpf-course-presentation/#23) |
-| 24 | ERP COST ≠ PRICE TAG | [slide-24-erp-cost-price-tag.html](approved-slides/slide-24-erp-cost-price-tag.html) | [View](https://ukrsedo.github.io/itpf-course-presentation/#24) |
+| 24 | What Drives the Cost of a Complex IT Platform? | [slide-24-erp-cost-price-tag.html](approved-slides/slide-24-erp-cost-price-tag.html) | [View](https://ukrsedo.github.io/itpf-course-presentation/#24) |
 | 25 | Integrated Procurement Planning | [slide-25-integrated-procurement-planning.html](approved-slides/slide-25-integrated-procurement-planning.html) | [View](https://ukrsedo.github.io/itpf-course-presentation/#25) |
 | 26 | Business-driven ITIL® Service Lifecycle | [slide-26-business-driven-itil-service-lifecycle.html](approved-slides/slide-26-business-driven-itil-service-lifecycle.html) | [View](https://ukrsedo.github.io/itpf-course-presentation/#26) |
 | 27 | Project Management Cycle | [slide-27-project-management-cycle.html](approved-slides/slide-27-project-management-cycle.html) | [View](https://ukrsedo.github.io/itpf-course-presentation/#27) |
