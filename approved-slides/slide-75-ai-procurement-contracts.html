@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Slide 75 — AI Procurement Contracts</title>
 <style>
-:root{--navy:#003b70;--cyan:#12bddf;--orange:#ff5a00;--ink:#173f66;--line:#c7d9ea;--soft:#f7fbff;--pale:#eef8fc;--green:#16885a;--red:#b84545}
+:root{--navy:var(--itpf-navy);--cyan:var(--itpf-cyan);--orange:var(--itpf-orange);--ink:var(--itpf-ink);--line:var(--itpf-line);--soft:var(--itpf-blue-soft);--pale:var(--itpf-cyan-soft);--green:var(--itpf-green);--red:var(--itpf-red)}
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--navy)}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--itpf-canvas);font-family:Arial,Helvetica,sans-serif;color:var(--navy)}
 .stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
-.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:var(--itpf-white);box-shadow:0 18px 60px rgba(var(--itpf-blue-rgb),.18);overflow:hidden}
 .corner{position:absolute;right:0;top:0;width:25%;height:42%;background:var(--cyan);clip-path:polygon(100% 0,100% 100%,0 0);opacity:.95}
 .logo{position:absolute;right:4.1%;top:3.8%;width:9.6%;height:auto;z-index:5}
 .header{position:absolute;left:5.2%;top:4.4%;right:22%;z-index:3}
@@ -17,21 +17,21 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;fon
 .dot{width:12px;height:12px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
 h1{margin:0;color:var(--navy);font-size:clamp(31px,2.36vw,46px);line-height:1.02;letter-spacing:-.03em;font-weight:950}
 .tabs{position:absolute;left:5.2%;right:5.2%;top:18.3%;height:7.2%;display:grid;grid-template-columns:repeat(2,1fr);gap:.62rem;z-index:4}
-.tab{border:2px solid var(--line);background:#fff;color:var(--navy);border-radius:13px;padding:.5rem .65rem;font-size:clamp(15px,1vw,20px);font-weight:900;cursor:pointer;box-shadow:0 4px 10px rgba(0,35,70,.06)}
-.tab[aria-selected="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tab{border:2px solid var(--line);background:var(--itpf-white);color:var(--navy);border-radius:13px;padding:.5rem .65rem;font-size:clamp(15px,1vw,20px);font-weight:900;cursor:pointer;box-shadow:0 4px 10px rgba(var(--itpf-blue-rgb),.06)}
+.tab[aria-selected="true"]{background:var(--navy);color:var(--itpf-white);border-color:var(--navy)}
 .panel{position:absolute;left:5.2%;right:5.2%;top:27%;bottom:7.2%;display:none}
 .panel.active{display:grid}
 .grid{height:100%;display:grid;grid-template-columns:repeat(2,1fr);gap:.72rem}
-.card{border:2px solid var(--line);border-radius:16px;background:var(--soft);padding:.82rem .9rem;display:grid;grid-template-columns:auto 1fr;gap:.68rem;align-content:start;box-shadow:0 5px 16px rgba(0,35,70,.055)}
-.num{width:2rem;height:2rem;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:#fff;font-size:clamp(13px,.9vw,17px);font-weight:950;flex:none}
+.card{border:2px solid var(--line);border-radius:16px;background:var(--soft);padding:.82rem .9rem;display:grid;grid-template-columns:auto 1fr;gap:.68rem;align-content:start;box-shadow:0 5px 16px rgba(var(--itpf-blue-rgb),.055)}
+.num{width:2rem;height:2rem;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:var(--itpf-white);font-size:clamp(13px,.9vw,17px);font-weight:950;flex:none}
 .card h2{margin:.05rem 0 .22rem;font-size:clamp(18px,1.22vw,24px);line-height:1.05;color:var(--navy);font-weight:950}
 .card p{margin:0;font-size:clamp(16px,1.06vw,20px);line-height:1.16;color:var(--ink);font-weight:760}
 .card strong{color:var(--navy)}
-.callout{grid-column:1/-1;border-left:8px solid var(--orange);background:#fff7f0;border-radius:14px;padding:.58rem .8rem;font-size:clamp(16px,1.06vw,20px);line-height:1.15;color:var(--ink);font-weight:820}
+.callout{grid-column:1/-1;border-left:8px solid var(--orange);background:var(--itpf-orange-soft);border-radius:14px;padding:.58rem .8rem;font-size:clamp(16px,1.06vw,20px);line-height:1.15;color:var(--ink);font-weight:820}
 .callout strong{color:var(--navy)}
 .panel[data-panel="performance"] .grid{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,1fr)}
 .panel[data-panel="risk"] .grid{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,1fr)}
-.footer{position:absolute;left:5.2%;right:5.2%;bottom:1.4%;font-size:clamp(11px,.78vw,15px);font-weight:700;color:#7892aa}
+.footer{position:absolute;left:5.2%;right:5.2%;bottom:1.4%;font-size:clamp(11px,.78vw,15px);font-weight:700;color:var(--itpf-muted)}
 @media(max-width:900px){.card{padding:.66rem}.card p{line-height:1.12}.tabs{gap:.35rem}.tab{padding:.35rem}}
 
 /* Slide 75: case exercise and concise contract checklist */
@@ -42,7 +42,7 @@ h1{margin:0;color:var(--navy);font-size:clamp(31px,2.36vw,46px);line-height:1.02
 .case-content p{margin:0;font-size:clamp(16px,1.23vw,23px);line-height:1.25;color:var(--ink)}
 .case-content .source{font-size:clamp(15px,1.1vw,20px)}
 .source a{color:var(--navy);text-decoration:underline;text-underline-offset:3px}
-.case-content .guardrails{border-left:5px solid var(--orange);background:#fff7f0;padding:.5rem .75rem;font-size:clamp(15px,1.12vw,21px)}
+.case-content .guardrails{border-left:5px solid var(--orange);background:var(--itpf-orange-soft);padding:.5rem .75rem;font-size:clamp(15px,1.12vw,21px)}
 .questions{margin:0;padding-left:1.5em;color:var(--ink);font-size:clamp(16px,1.23vw,23px);line-height:1.3}
 .questions li{padding:.12rem 0}
 .provisions{height:100%;margin:0;padding:0 0 0 1.3em;display:flex;flex-direction:column;justify-content:space-between;gap:.3rem;color:var(--ink);font-size:clamp(16px,1.25vw,23px);line-height:1.25}
@@ -56,7 +56,7 @@ h1{margin:0;color:var(--navy);font-size:clamp(31px,2.36vw,46px);line-height:1.02
 .case-content .source{font-size:clamp(13px,1vw,18px)}
 .case-table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:clamp(15px,1.12vw,21px);line-height:1.2;color:var(--ink)}
 .case-table th,.case-table td{border:1px solid var(--line);padding:.42rem .65rem;text-align:left;vertical-align:top}
-.case-table th{background:var(--navy);color:#fff}
+.case-table th{background:var(--navy);color:var(--itpf-white)}
 .case-table th:first-child{width:40%}
 .case-table th:nth-child(2){width:31%}
 .case-table th:nth-child(3){width:29%}
@@ -68,10 +68,10 @@ h1{margin:0;color:var(--navy);font-size:clamp(31px,2.36vw,46px);line-height:1.02
 #panel-case{overflow-y:auto;overscroll-behavior:contain;padding-right:.25rem}
 #panel-case .case-content{height:auto;min-height:100%}
 .case-table q{quotes:"\201C" "\201D" "\2018" "\2019"}
-.case-table small{display:block;margin-top:.2rem;color:#637f98;font-size:.82em}
+.case-table small{display:block;margin-top:.2rem;color:var(--itpf-muted);font-size:.82em}
 
-.reveal-controls{position:sticky;top:0;z-index:6;display:flex;gap:.55rem;background:#fff;padding:.4rem 0;border-bottom:1px solid var(--line)}
-.reveal-controls button{border:2px solid var(--navy);border-radius:7px;background:var(--navy);color:#fff;padding:.45rem .8rem;font:700 clamp(14px,1.05vw,20px) Arial,Helvetica,sans-serif;cursor:pointer}
+.reveal-controls{position:sticky;top:0;z-index:6;display:flex;gap:.55rem;background:var(--itpf-white);padding:.4rem 0;border-bottom:1px solid var(--line)}
+.reveal-controls button{border:2px solid var(--navy);border-radius:7px;background:var(--navy);color:var(--itpf-white);padding:.45rem .8rem;font:700 clamp(14px,1.05vw,20px) Arial,Helvetica,sans-serif;cursor:pointer}
 .reveal-controls button:disabled{opacity:.4;cursor:default}
 .reveal-controls button:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
 .case-table[data-stage="0"] tr>:nth-child(2),.case-table[data-stage="0"] tr>:nth-child(3),.case-table[data-stage="1"] tr>:nth-child(3){display:none}
@@ -79,6 +79,7 @@ h1{margin:0;color:var(--navy);font-size:clamp(31px,2.36vw,46px);line-height:1.02
 .case-table[data-stage="1"] th:first-child{width:52%}
 .case-table[data-stage="1"] th:nth-child(2){width:48%}
 </style>
+<link rel="stylesheet" href="../assets/itpf-color-system.css">
 </head>
 <body>
 <main class="stage">

@@ -8,40 +8,41 @@
 <title>Slide 18 — Concepts for IT Transformation</title>
 <style>
 :root {
-  --navy:#003b70;
-  --cyan:#12bddf;
-  --orange:#ff5a00;
-  --blue:#2d8cff;
-  --ink:#003b70;
-  --line:#c7d9ea;
-  --soft:#f6fbff;
+  --navy:var(--itpf-navy);
+  --cyan:var(--itpf-cyan);
+  --orange:var(--itpf-orange);
+  --blue:var(--itpf-blue);
+  --ink:var(--itpf-ink);
+  --line:var(--itpf-line);
+  --soft:var(--itpf-blue-soft);
 }
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--itpf-canvas);font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
 .stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
-.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:var(--itpf-white);box-shadow:0 18px 60px rgba(var(--itpf-blue-rgb),.18);overflow:hidden}
 .logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:5}
 .header{position:absolute;left:6.2%;top:7.6%;right:18%}
 .session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.45rem}
 .dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
 h1{margin:0;color:var(--navy);font-size:clamp(33px,2.8vw,52px);line-height:1.03;letter-spacing:-.02em;font-weight:800}
-.subtitle{font-size:clamp(17px,1.25vw,25px);margin-top:.45rem;color:#2f5f88;font-weight:600}
+.subtitle{font-size:clamp(17px,1.25vw,25px);margin-top:.45rem;color:var(--itpf-navy);font-weight:600}
 .grid{position:absolute;left:6.2%;right:6.2%;top:26%;bottom:10.5%;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.1rem}
-.card{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-width:0}
+.card{border:3px solid var(--navy);background:var(--itpf-white);display:flex;flex-direction:column;min-width:0}
 .card:nth-child(1){border-color:var(--cyan)}
 .card:nth-child(2){border-color:var(--orange)}
 .card:nth-child(3){border-color:var(--navy)}
-.cardHead{color:#fff;font-size:clamp(24px,1.9vw,36px);font-weight:800;line-height:1.04;padding:.85rem 1rem}
+.cardHead{color:var(--itpf-white);font-size:clamp(24px,1.9vw,36px);font-weight:800;line-height:1.04;padding:.85rem 1rem}
 .card:nth-child(1) .cardHead{background:var(--cyan)}
 .card:nth-child(2) .cardHead{background:var(--orange)}
 .card:nth-child(3) .cardHead{background:var(--navy)}
 .cardBody{padding:1rem 1.05rem;font-size:clamp(16px,1.12vw,22px);line-height:1.22;display:flex;flex-direction:column;gap:.75rem}
 .label{font-weight:800;color:var(--navy);font-size:clamp(15px,1.02vw,21px);text-transform:uppercase;letter-spacing:.03em}
-.bodyText{color:#123f66}
+.bodyText{color:var(--itpf-navy)}
 .modeList{margin:0;padding-left:1.3rem}
 .modeList li{margin:.35rem 0}
-.footer{position:absolute;left:4.9%;bottom:4.1%;font-size:clamp(14px,1vw,22px);color:#168cff}
+.footer{position:absolute;left:4.9%;bottom:4.1%;font-size:clamp(14px,1vw,22px);color:var(--itpf-blue)}
 </style>
+<link rel="stylesheet" href="../assets/itpf-color-system.css">
 </head>
 <body>
 <main class="stage">

@@ -8,23 +8,23 @@
 <title>Slide 27 — Project Management Cycle</title>
 <style>
 :root {
-  --navy:#003b70;
-  --cyan:#12bddf;
-  --ink:#003b70;
-  --line:#c7d9ea;
+  --navy:var(--itpf-navy);
+  --cyan:var(--itpf-cyan);
+  --ink:var(--itpf-ink);
+  --line:var(--itpf-line);
 }
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--itpf-canvas);font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
 .stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
-.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:var(--itpf-white);box-shadow:0 18px 60px rgba(var(--itpf-blue-rgb),.18);overflow:hidden}
 .logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:5}
 .header{position:absolute;left:6%;top:6.2%;right:17%}
 .session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.34rem}
 .dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
 h1{margin:0;color:var(--navy);font-size:clamp(32px,2.85vw,55px);line-height:1.03;letter-spacing:-.02em;font-weight:900}
 .tabs{position:absolute;left:6%;right:6%;top:21%;display:flex;gap:.85rem}
-.tab{border:3px solid var(--navy);background:#fff;color:var(--navy);font-size:clamp(20px,1.45vw,30px);font-weight:900;padding:.56rem 1rem;cursor:pointer}
-.tab.active{background:var(--navy);color:#fff}
+.tab{border:3px solid var(--navy);background:var(--itpf-white);color:var(--navy);font-size:clamp(20px,1.45vw,30px);font-weight:900;padding:.56rem 1rem;cursor:pointer}
+.tab.active{background:var(--navy);color:var(--itpf-white)}
 .panel{position:absolute;left:4%;right:4%;top:29%;bottom:4.5%;display:none}
 .panel.active{display:block}
 .chartImageWrap{width:100%;height:100%;display:flex;align-items:center;justify-content:center}.cycleDiagram{width:100%;height:100%;display:block}
@@ -32,24 +32,25 @@ h1{margin:0;color:var(--navy);font-size:clamp(32px,2.85vw,55px);line-height:1.03
 
 
 .feedbackGrid{height:100%;display:grid;grid-template-columns:.9fr 1.1fr;gap:1.1rem}
-.entry,.responses{border:3px solid var(--navy);background:#fff;min-height:0;display:flex;flex-direction:column}
-.entry h2,.responses h2{margin:0;background:var(--navy);color:#fff;font-size:clamp(23px,1.75vw,35px);line-height:1.05;padding:.75rem .95rem;font-weight:900}
+.entry,.responses{border:3px solid var(--navy);background:var(--itpf-white);min-height:0;display:flex;flex-direction:column}
+.entry h2,.responses h2{margin:0;background:var(--navy);color:var(--itpf-white);font-size:clamp(23px,1.75vw,35px);line-height:1.05;padding:.75rem .95rem;font-weight:900}
 .entryBody{padding:1rem;display:flex;flex-direction:column;flex:1;min-height:0}
-.prompt{font-size:clamp(18px,1.25vw,25px);line-height:1.18;font-weight:850;color:#244d72;margin:0 0 .85rem}
-textarea{width:100%;flex:1;min-height:130px;resize:none;border:2px solid var(--line);border-radius:10px;padding:.9rem;font:inherit;font-size:clamp(16px,1.12vw,22px);line-height:1.25;color:#183d60;outline:none}
-textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(18,189,223,.16)}
+.prompt{font-size:clamp(18px,1.25vw,25px);line-height:1.18;font-weight:850;color:var(--itpf-navy);margin:0 0 .85rem}
+textarea{width:100%;flex:1;min-height:130px;resize:none;border:2px solid var(--line);border-radius:10px;padding:.9rem;font:inherit;font-size:clamp(16px,1.12vw,22px);line-height:1.25;color:var(--itpf-navy);outline:none}
+textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(var(--itpf-cyan-rgb),.16)}
 .actions{display:flex;align-items:center;gap:.75rem;margin-top:.8rem}
-button.submit{border:0;background:var(--navy);color:#fff;border-radius:8px;padding:.7rem 1.1rem;font-size:clamp(15px,1vw,19px);font-weight:900;cursor:pointer}
-.counter{margin-left:auto;font-size:clamp(12px,.85vw,16px);font-weight:800;color:#60768c}
+button.submit{border:0;background:var(--navy);color:var(--itpf-white);border-radius:8px;padding:.7rem 1.1rem;font-size:clamp(15px,1vw,19px);font-weight:900;cursor:pointer}
+.counter{margin-left:auto;font-size:clamp(12px,.85vw,16px);font-weight:800;color:var(--itpf-muted)}
 .message{height:20px;margin-top:.45rem;font-size:clamp(12px,.85vw,16px);font-weight:900}
-.responseHead{display:flex;align-items:center;justify-content:space-between;background:var(--navy);color:#fff;padding:0 .95rem 0 0}
+.responseHead{display:flex;align-items:center;justify-content:space-between;background:var(--navy);color:var(--itpf-white);padding:0 .95rem 0 0}
 .responseHead h2{padding:.75rem .95rem;background:transparent}
 .count{font-size:clamp(12px,.85vw,16px);font-weight:900}
-.empty{margin:auto;text-align:center;color:#5e7286;font-size:clamp(16px,1.1vw,22px);line-height:1.3;max-width:74%;font-weight:750}
+.empty{margin:auto;text-align:center;color:var(--itpf-muted);font-size:clamp(16px,1.1vw,22px);line-height:1.3;max-width:74%;font-weight:750}
 ul{list-style:none;margin:.75rem 0 0;padding:0 1rem 1rem;overflow:auto;display:flex;flex-direction:column;gap:.6rem}
-li{border-left:5px solid var(--cyan);background:#f6f9fb;padding:.65rem .8rem;border-radius:0 8px 8px 0;font-size:clamp(14px,1vw,19px);line-height:1.25;font-weight:700;overflow-wrap:anywhere}
-.footer{position:absolute;left:4.9%;bottom:2.7%;font-size:clamp(14px,1vw,22px);color:#168cff}
+li{border-left:5px solid var(--cyan);background:var(--itpf-cyan-soft);padding:.65rem .8rem;border-radius:0 8px 8px 0;font-size:clamp(14px,1vw,19px);line-height:1.25;font-weight:700;overflow-wrap:anywhere}
+.footer{position:absolute;left:4.9%;bottom:2.7%;font-size:clamp(14px,1vw,22px);color:var(--itpf-blue)}
 </style>
+<link rel="stylesheet" href="../assets/itpf-color-system.css">
 </head>
 <body>
 <main class="stage">
@@ -66,12 +67,12 @@ li{border-left:5px solid var(--cyan);background:#f6f9fb;padding:.65rem .8rem;bor
 <div class="panel active" id="chart">
 <div class="chartImageWrap"><svg class="cycleDiagram" viewBox="0 0 1540 590" role="img" aria-labelledby="cycleTitle cycleDesc" xmlns="http://www.w3.org/2000/svg">
 <title id="cycleTitle">Project Management Cycle</title><desc id="cycleDesc">Initiation and planning lead to parallel development, solution set-up and training. Testing and business readiness lead to cutover, followed by post-cutover operation.</desc>
-<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#003b70"/></marker></defs>
-<style>.activity rect{fill:white;stroke:#52728e;stroke-width:1.8}.gate rect{fill:#003b70}.activity text,.gate text{font-family:Arial,sans-serif;font-size:20px;text-anchor:middle;dominant-baseline:middle;fill:#003b70}.gate text{fill:white;font-weight:700}.phase{font:700 20px Arial;fill:#47822b}.service{font:700 20px Arial;fill:#d55200}.guide{stroke:#d7e2e9;stroke-width:1.4;stroke-dasharray:4 5}</style>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="var(--itpf-navy)"/></marker></defs>
+<style>.activity rect{fill:white;stroke:var(--itpf-navy);stroke-width:1.8}.gate rect{fill:var(--itpf-navy)}.activity text,.gate text{font-family:Arial,sans-serif;font-size:20px;text-anchor:middle;dominant-baseline:middle;fill:var(--itpf-navy)}.gate text{fill:white;font-weight:700}.phase{font:700 20px Arial;fill:var(--itpf-green)}.service{font:700 20px Arial;fill:var(--itpf-orange)}.guide{stroke:var(--itpf-cyan);stroke-width:1.4;stroke-dasharray:4 5}</style>
 <path class="guide" d="M145 174H1320M145 232H1320M145 538H1320"/>
 <text class="phase" x="5" y="105">Initiation</text><text class="phase" x="5" y="207">Planning</text><text class="phase" x="5" y="390">Execution</text>
 <text class="service" x="1330" y="95">Service strategy</text><text class="service" x="1330" y="207">Service design</text><text class="service" x="1330" y="390">Service transition</text><text class="service" x="1330" y="570">Service operation</text>
-<g fill="none" stroke="#003b70" stroke-width="2" marker-end="url(#arrow)" stroke-linejoin="round"><path d="M565 23H332V64"/><path d="M865 23H1140V68"/><path d="M332 110V124"/><path d="M332 162V200H565"/><path d="M1140 106V200H865"/><path d="M715 219V230H332V242"/><path d="M715 219V242"/><path d="M865 200H1140V242"/><path d="M332 280V300"/><path d="M510 261H540V323H565"/><path d="M332 338V362"/><path d="M565 323H542V381H510"/><path d="M332 400V420"/><path d="M510 443H565"/><path d="M742 280V289H938V408H742V420"/><path d="M920 261H952V381H990"/><path d="M1140 400V420"/><path d="M1290 261H1308V443H1290"/><path d="M742 466V482"/><path d="M1140 466V486"/><path d="M920 505H990"/><path d="M1140 524V546"/></g><g class="gate"><rect x="565" y="4" width="300" height="38" rx="4"/><text x="715" y="24"><tspan x="715" dy="0">Start of project</tspan></text></g><g class="activity"><rect x="155" y="64" width="355" height="46" rx="4"/><text x="332.5" y="77"><tspan x="332.5" dy="0">Customer-specific</tspan><tspan x="332.5" dy="22">requirements analysis</tspan></text></g><g class="activity"><rect x="990" y="68" width="300" height="38" rx="4"/><text x="1140" y="88"><tspan x="1140" dy="0">Scoping</tspan></text></g><g class="activity"><rect x="155" y="124" width="355" height="38" rx="4"/><text x="332.5" y="144"><tspan x="332.5" dy="0">Functional and technical specs</tspan></text></g><g class="gate"><rect x="565" y="181" width="300" height="38" rx="4"/><text x="715" y="201"><tspan x="715" dy="0">Baseline plan sign-off</tspan></text></g><g class="activity"><rect x="155" y="242" width="355" height="38" rx="4"/><text x="332.5" y="262"><tspan x="332.5" dy="0">Gap development</tspan></text></g><g class="activity"><rect x="565" y="242" width="355" height="38" rx="4"/><text x="742.5" y="262"><tspan x="742.5" dy="0">Solution set-up</tspan></text></g><g class="activity"><rect x="990" y="242" width="300" height="38" rx="4"/><text x="1140" y="262"><tspan x="1140" dy="0">Training</tspan></text></g><g class="activity"><rect x="155" y="300" width="355" height="38" rx="4"/><text x="332.5" y="320"><tspan x="332.5" dy="0">Gap development for UAT</tspan></text></g><g class="activity"><rect x="565" y="300" width="355" height="46" rx="4"/><text x="742.5" y="313"><tspan x="742.5" dy="0">Customer test systems</tspan><tspan x="742.5" dy="22">ready for UAT</tspan></text></g><g class="activity"><rect x="155" y="362" width="355" height="38" rx="4"/><text x="332.5" y="382"><tspan x="332.5" dy="0">User acceptance testing</tspan></text></g><g class="gate"><rect x="155" y="420" width="355" height="46" rx="4"/><text x="332.5" y="433"><tspan x="332.5" dy="0">User acceptance testing</tspan><tspan x="332.5" dy="22">sign-off programme</tspan></text></g><g class="activity"><rect x="565" y="420" width="355" height="46" rx="4"/><text x="742.5" y="433"><tspan x="742.5" dy="0">Integration &amp; business</tspan><tspan x="742.5" dy="22">process testing</tspan></text></g><g class="activity"><rect x="990" y="362" width="300" height="38" rx="4"/><text x="1140" y="382"><tspan x="1140" dy="0">Migration</tspan></text></g><g class="activity"><rect x="990" y="420" width="300" height="46" rx="4"/><text x="1140" y="433"><tspan x="1140" dy="0">Customer business</tspan><tspan x="1140" dy="22">readiness sign-off</tspan></text></g><g class="activity"><rect x="565" y="482" width="355" height="46" rx="4"/><text x="742.5" y="495"><tspan x="742.5" dy="0">Production systems</tspan><tspan x="742.5" dy="22">ready for cutover</tspan></text></g><g class="gate"><rect x="990" y="486" width="300" height="38" rx="4"/><text x="1140" y="506"><tspan x="1140" dy="0">Cutover</tspan></text></g><g class="activity"><rect x="990" y="546" width="300" height="38" rx="4"/><text x="1140" y="566"><tspan x="1140" dy="0">Post cutover</tspan></text></g></svg></div></div><div class="panel" id="feedback">
+<g fill="none" stroke="var(--itpf-blue)" stroke-width="2" marker-end="url(#arrow)" stroke-linejoin="round"><path d="M565 23H332V64"/><path d="M865 23H1140V68"/><path d="M332 110V124"/><path d="M332 162V200H565"/><path d="M1140 106V200H865"/><path d="M715 219V230H332V242"/><path d="M715 219V242"/><path d="M865 200H1140V242"/><path d="M332 280V300"/><path d="M510 261H540V323H565"/><path d="M332 338V362"/><path d="M565 323H542V381H510"/><path d="M332 400V420"/><path d="M510 443H565"/><path d="M742 280V289H938V408H742V420"/><path d="M920 261H952V381H990"/><path d="M1140 400V420"/><path d="M1290 261H1308V443H1290"/><path d="M742 466V482"/><path d="M1140 466V486"/><path d="M920 505H990"/><path d="M1140 524V546"/></g><g class="gate"><rect x="565" y="4" width="300" height="38" rx="4"/><text x="715" y="24"><tspan x="715" dy="0">Start of project</tspan></text></g><g class="activity"><rect x="155" y="64" width="355" height="46" rx="4"/><text x="332.5" y="77"><tspan x="332.5" dy="0">Customer-specific</tspan><tspan x="332.5" dy="22">requirements analysis</tspan></text></g><g class="activity"><rect x="990" y="68" width="300" height="38" rx="4"/><text x="1140" y="88"><tspan x="1140" dy="0">Scoping</tspan></text></g><g class="activity"><rect x="155" y="124" width="355" height="38" rx="4"/><text x="332.5" y="144"><tspan x="332.5" dy="0">Functional and technical specs</tspan></text></g><g class="gate"><rect x="565" y="181" width="300" height="38" rx="4"/><text x="715" y="201"><tspan x="715" dy="0">Baseline plan sign-off</tspan></text></g><g class="activity"><rect x="155" y="242" width="355" height="38" rx="4"/><text x="332.5" y="262"><tspan x="332.5" dy="0">Gap development</tspan></text></g><g class="activity"><rect x="565" y="242" width="355" height="38" rx="4"/><text x="742.5" y="262"><tspan x="742.5" dy="0">Solution set-up</tspan></text></g><g class="activity"><rect x="990" y="242" width="300" height="38" rx="4"/><text x="1140" y="262"><tspan x="1140" dy="0">Training</tspan></text></g><g class="activity"><rect x="155" y="300" width="355" height="38" rx="4"/><text x="332.5" y="320"><tspan x="332.5" dy="0">Gap development for UAT</tspan></text></g><g class="activity"><rect x="565" y="300" width="355" height="46" rx="4"/><text x="742.5" y="313"><tspan x="742.5" dy="0">Customer test systems</tspan><tspan x="742.5" dy="22">ready for UAT</tspan></text></g><g class="activity"><rect x="155" y="362" width="355" height="38" rx="4"/><text x="332.5" y="382"><tspan x="332.5" dy="0">User acceptance testing</tspan></text></g><g class="gate"><rect x="155" y="420" width="355" height="46" rx="4"/><text x="332.5" y="433"><tspan x="332.5" dy="0">User acceptance testing</tspan><tspan x="332.5" dy="22">sign-off programme</tspan></text></g><g class="activity"><rect x="565" y="420" width="355" height="46" rx="4"/><text x="742.5" y="433"><tspan x="742.5" dy="0">Integration &amp; business</tspan><tspan x="742.5" dy="22">process testing</tspan></text></g><g class="activity"><rect x="990" y="362" width="300" height="38" rx="4"/><text x="1140" y="382"><tspan x="1140" dy="0">Migration</tspan></text></g><g class="activity"><rect x="990" y="420" width="300" height="46" rx="4"/><text x="1140" y="433"><tspan x="1140" dy="0">Customer business</tspan><tspan x="1140" dy="22">readiness sign-off</tspan></text></g><g class="activity"><rect x="565" y="482" width="355" height="46" rx="4"/><text x="742.5" y="495"><tspan x="742.5" dy="0">Production systems</tspan><tspan x="742.5" dy="22">ready for cutover</tspan></text></g><g class="gate"><rect x="990" y="486" width="300" height="38" rx="4"/><text x="1140" y="506"><tspan x="1140" dy="0">Cutover</tspan></text></g><g class="activity"><rect x="990" y="546" width="300" height="38" rx="4"/><text x="1140" y="566"><tspan x="1140" dy="0">Post cutover</tspan></text></g></svg></div></div><div class="panel" id="feedback">
 <div class="feedbackGrid">
 <section class="entry">
 <h2>Your view</h2>
@@ -123,7 +124,7 @@ function endpoint() { return `${WORKER_URL.replace(/\/$/, '')}/responses`; }
 
 function setMessage(text, type='info') {
   message.textContent = text;
-  message.style.color = type === 'error' ? '#a22' : type === 'success' ? '#197241' : '#5e7286';
+  message.style.color = type === 'error' ? 'var(--itpf-red-text)' : type === 'success' ? 'var(--itpf-green-text)' : 'var(--itpf-ink)';
 }
 
 function renderResponses(items) {

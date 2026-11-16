@@ -7,49 +7,50 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Slide 74 — IT Procurement Contracts</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:#073b72}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--itpf-canvas);font-family:Arial,Helvetica,sans-serif;color:var(--itpf-navy)}
 .stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
-.slide{position:relative;width:min(100%,calc((100vh - 36px)*16/9));aspect-ratio:16/9;background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.slide{position:relative;width:min(100%,calc((100vh - 36px)*16/9));aspect-ratio:16/9;background:var(--itpf-white);box-shadow:0 18px 60px rgba(var(--itpf-blue-rgb),.18);overflow:hidden}
 .canvas{position:absolute;inset:0;width:1600px;height:900px;transform-origin:top left;transform:scale(calc(var(--sw,1)))}
 @supports (scale:1){.canvas{transform:none;scale:calc(var(--sw,1));}}
-.header-dot{position:absolute;left:78px;top:72px;width:19px;height:19px;border:6px solid #12bce7;border-radius:50%}
-.session{position:absolute;left:118px;top:67px;font-size:24px;line-height:1;color:#003b75}
+.header-dot{position:absolute;left:78px;top:72px;width:19px;height:19px;border:6px solid var(--itpf-cyan);border-radius:50%}
+.session{position:absolute;left:118px;top:67px;font-size:24px;line-height:1;color:var(--itpf-navy)}
 .logo{position:absolute;right:44px;top:27px;width:232px;height:auto;object-fit:contain}
-h1{position:absolute;left:78px;top:112px;margin:0;font-size:44px;line-height:1.05;color:#073b72;font-weight:700}
+h1{position:absolute;left:78px;top:112px;margin:0;font-size:44px;line-height:1.05;color:var(--itpf-navy);font-weight:700}
 .left{position:absolute;left:78px;top:205px;width:555px;height:590px}
-.typical{position:absolute;left:250px;top:0;font-size:30px;font-weight:700;color:#073b72}
-.dash{position:absolute;left:0;top:54px;width:555px;border-top:4px dashed #f36c21}
-.stage-title{position:absolute;font-size:28px;line-height:1;font-weight:400;color:#073b72}
+.typical{position:absolute;left:250px;top:0;font-size:30px;font-weight:700;color:var(--itpf-navy)}
+.dash{position:absolute;left:0;top:54px;width:555px;border-top:4px dashed var(--itpf-orange)}
+.stage-title{position:absolute;font-size:28px;line-height:1;font-weight:400;color:var(--itpf-navy)}
 .foundation{left:395px;top:75px}.change{left:405px;top:240px}.governance{left:410px;top:435px}
-.node{position:absolute;width:57px;height:38px;border:2px solid #073b72;border-radius:50%;background:#fff}
+.node{position:absolute;width:57px;height:38px;border:2px solid var(--itpf-navy);border-radius:50%;background:var(--itpf-white)}
 .hub{width:75px;height:75px;}
 .n1{left:312px;top:100px}.n2{left:312px;top:141px}.n3{left:312px;top:182px}.h1n{left:410px;top:120px}
 .n4{left:312px;top:270px}.n5{left:312px;top:311px}.n6{left:312px;top:352px}.h2n{left:410px;top:291px}
 .n7{left:312px;top:438px}.n8{left:312px;top:479px}.n9{left:312px;top:520px}.n10{left:312px;top:561px}.n11{left:312px;top:602px}.h3n{left:410px;top:500px}
-.label{position:absolute;left:8px;font-size:25px;line-height:1.05;white-space:nowrap;color:#073b72}
+.label{position:absolute;left:8px;font-size:25px;line-height:1.05;white-space:nowrap;color:var(--itpf-navy)}
 .l1{top:102px}.l2{top:143px}.l3{top:184px}.l4{top:272px}.l5{top:313px}.l6{top:354px}.l7{top:440px}.l8{top:481px}.l9{top:522px}.l10{top:563px}.l11{top:604px}
-.arrow{position:absolute;height:2px;background:#073b72;transform-origin:left center}.arrow:after{content:"";position:absolute;right:-1px;top:-5px;border-left:11px solid #073b72;border-top:6px solid transparent;border-bottom:6px solid transparent}
+.arrow{position:absolute;height:2px;background:var(--itpf-navy);transform-origin:left center}.arrow:after{content:"";position:absolute;right:-1px;top:-5px;border-left:11px solid var(--itpf-navy);border-top:6px solid transparent;border-bottom:6px solid transparent}
 .a1{left:368px;top:119px;width:45px;transform:rotate(18deg)}.a2{left:368px;top:160px;width:42px}.a3{left:368px;top:201px;width:47px;transform:rotate(-18deg)}
 .a4{left:368px;top:289px;width:45px;transform:rotate(14deg)}.a5{left:368px;top:330px;width:42px}.a6{left:368px;top:371px;width:46px;transform:rotate(-14deg)}
 .a7{left:368px;top:457px;width:47px;transform:rotate(24deg)}.a8{left:368px;top:498px;width:46px;transform:rotate(13deg)}.a9{left:368px;top:539px;width:43px}.a10{left:368px;top:580px;width:46px;transform:rotate(-13deg)}.a11{left:368px;top:621px;width:49px;transform:rotate(-24deg)}
 .middle{position:absolute;left:650px;top:215px;width:600px;height:630px}
 .right{position:absolute;left:1270px;top:175px;width:292px;height:680px}
-.block{position:absolute;padding-left:75px;color:#073b72}
+.block{position:absolute;padding-left:75px;color:var(--itpf-navy)}
 .middle .block{width:590px}.right .block{width:292px;padding-left:68px}
-.check{position:absolute;left:0;top:0;width:52px;height:52px;border-radius:50%;background:radial-gradient(circle at 60% 35%,#118ead 0 20%,#004764 45%,#02080c 72%);box-shadow:inset 0 0 0 2px #000}
-.check:before{content:"";position:absolute;left:14px;top:11px;width:22px;height:13px;border-left:8px solid #fff;border-bottom:8px solid #fff;transform:rotate(-45deg)}
-.block h2{margin:0 0 8px;color:#080808;font-size:28px;line-height:1.05;font-weight:700}
-.block ul{margin:0;padding-left:24px;font-size:19px;line-height:1.26;color:#073b72}
+.check{position:absolute;left:0;top:0;width:52px;height:52px;border-radius:50%;background:radial-gradient(circle at 60% 35%,var(--itpf-cyan) 0 20%,var(--itpf-cyan) 45%,var(--itpf-cyan) 72%);box-shadow:inset 0 0 0 2px var(--itpf-shadow)}
+.check:before{content:"";position:absolute;left:14px;top:11px;width:22px;height:13px;border-left:8px solid var(--itpf-white);border-bottom:8px solid var(--itpf-white);transform:rotate(-45deg)}
+.block h2{margin:0 0 8px;color:var(--itpf-ink);font-size:28px;line-height:1.05;font-weight:700}
+.block ul{margin:0;padding-left:24px;font-size:19px;line-height:1.26;color:var(--itpf-navy)}
 .block li{padding-left:2px;margin:0 0 3px}
 .basic{top:0}.breach{top:250px}.data{top:385px}
 .business{top:0}.security{top:122px}.support{top:280px}.benchmark{top:490px}.liability{top:605px}
 .right .block h2{font-size:25px}.right .block ul{font-size:18px;line-height:1.28;padding-left:22px}.right .check{width:50px;height:50px}.right .check:before{left:13px;top:10px}
-.footer{position:absolute;left:78px;bottom:34px;font-size:25px;color:#12aee2}
+.footer{position:absolute;left:78px;bottom:34px;font-size:25px;color:var(--itpf-cyan-text)}
 </style>
 <script>
 function fit(){const s=document.querySelector('.slide'),c=document.querySelector('.canvas');c.style.setProperty('--sw',s.clientWidth/1600)}
 addEventListener('resize',fit);addEventListener('DOMContentLoaded',fit);
 </script>
+<link rel="stylesheet" href="../assets/itpf-color-system.css">
 </head>
 <body><main class="stage"><section aria-label="IT Procurement Contracts" class="slide"><div class="canvas">
 <div class="header-dot"></div><div class="session">Session 5 Source-to-Contract</div><img data-itpf-cips-logo alt="CIPS" class="logo" src="../assets/cips-logo.png"/><h1>IT Procurement Contracts</h1>

@@ -7,30 +7,31 @@
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Slide 2 — Welcome to your Technology IT Procurement Foundations course</title>
 <style>
-:root{--navy:#002b52;--blue:#0078e8;--pale:#eef6fc;--line:#c9d9e7;--paper:#fff;}
+:root{--navy:var(--itpf-navy);--blue:var(--itpf-blue);--pale:var(--itpf-blue-soft);--line:var(--itpf-line);--paper:var(--itpf-white);}
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;overflow:hidden}
+html,body{margin:0;width:100%;height:100%;background:var(--itpf-canvas);font-family:Arial,Helvetica,sans-serif;overflow:hidden}
 .stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
-.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:var(--paper);overflow:hidden;box-shadow:0 18px 60px rgba(0,25,55,.18);padding:5.6% 6.7% 5.1%}
+.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:var(--paper);overflow:hidden;box-shadow:0 18px 60px rgba(var(--itpf-blue-rgb),.18);padding:5.6% 6.7% 5.1%}
 .logo{position:absolute;right:4.2%;top:4.5%;width:9.8%;height:auto}
 .kicker{font-size:clamp(14px,1.05vw,19px);font-weight:700;color:var(--blue);letter-spacing:.02em;margin-bottom:.65%}
 h1{margin:0;width:78%;color:var(--navy);font-size:clamp(28px,3.05vw,52px);line-height:1.12;letter-spacing:-.02em}
-.intro{margin:1.5% 0 2.2%;width:91%;font-size:clamp(15px,1.25vw,22px);line-height:1.43;color:#26384a}
+.intro{margin:1.5% 0 2.2%;width:91%;font-size:clamp(15px,1.25vw,22px);line-height:1.43;color:var(--itpf-navy)}
 .grid{display:grid;grid-template-columns:1.22fr .78fr;gap:2.2%;height:54%}
-.panel{border:1px solid var(--line);border-radius:12px;padding:3.6% 4%;background:#fff}
-.panel.outcomes{background:var(--pale);border-color:#b9d5ea}
+.panel{border:1px solid var(--line);border-radius:12px;padding:3.6% 4%;background:var(--itpf-white)}
+.panel.outcomes{background:var(--pale);border-color:var(--itpf-blue)}
 h2{margin:0 0 3%;color:var(--navy);font-size:clamp(18px,1.55vw,27px);line-height:1.15}
-ul{margin:0;padding-left:1.25em;display:grid;gap:2.1%;font-size:clamp(14px,1.05vw,19px);line-height:1.25;color:#26384a}
+ul{margin:0;padding-left:1.25em;display:grid;gap:2.1%;font-size:clamp(14px,1.05vw,19px);line-height:1.25;color:var(--itpf-navy)}
 .outcome-list{display:grid;gap:6%;margin-top:4%}
 .outcome{display:flex;align-items:center;gap:4%;font-size:clamp(15px,1.15vw,20px);font-weight:700;color:var(--navy)}
-.num{display:grid;place-items:center;flex:0 0 auto;width:2.05em;height:2.05em;border-radius:50%;background:var(--blue);color:#fff;font-size:.85em}
-.footer{position:absolute;left:6.7%;right:6.7%;bottom:2.5%;display:flex;justify-content:space-between;align-items:center;color:#627589;font-size:clamp(10px,.75vw,13px)}
+.num{display:grid;place-items:center;flex:0 0 auto;width:2.05em;height:2.05em;border-radius:50%;background:var(--blue);color:var(--itpf-white);font-size:.85em}
+.footer{position:absolute;left:6.7%;right:6.7%;bottom:2.5%;display:flex;justify-content:space-between;align-items:center;color:var(--itpf-muted);font-size:clamp(10px,.75vw,13px)}
 .rule{position:absolute;left:0;bottom:0;width:100%;height:8px;background:linear-gradient(90deg,var(--navy) 0 31%,var(--blue) 31% 100%)}
 .controls{position:absolute;right:2%;bottom:2.2%;opacity:.18;transition:opacity .2s}
 .slide:hover .controls{opacity:.8}
-button{border:1px solid #c8d3df;background:#fff;color:var(--navy);border-radius:6px;padding:8px 12px;font-weight:700;cursor:pointer}
+button{border:1px solid var(--itpf-line);background:var(--itpf-white);color:var(--navy);border-radius:6px;padding:8px 12px;font-weight:700;cursor:pointer}
 @media(max-width:760px){.slide{padding:6%}.grid{grid-template-columns:1fr;height:auto;gap:3%}.intro{width:100%}.logo{width:14%}.panel{padding:3%}}
 </style>
+<link rel="stylesheet" href="../assets/itpf-color-system.css">
 </head>
 <body>
 <div class="stage">

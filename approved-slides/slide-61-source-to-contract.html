@@ -8,21 +8,21 @@
 <title>Slide 61 — Source-to-Contract</title>
 <style>
 :root {
-  --navy:#003b70; --cyan:#12bddf; --orange:#ff5a00; --ink:#173f66; --line:#c7d9ea; --soft:#f7fbff;
+  --navy:var(--itpf-navy); --cyan:var(--itpf-cyan); --orange:var(--itpf-orange); --ink:var(--itpf-ink); --line:var(--itpf-line); --soft:var(--itpf-blue-soft);
 }
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--navy)}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--itpf-canvas);font-family:Arial,Helvetica,sans-serif;color:var(--navy)}
 .stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
-.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:var(--itpf-white);box-shadow:0 18px 60px rgba(var(--itpf-blue-rgb),.18);overflow:hidden}
 .corner{position:absolute;right:0;top:0;width:31%;height:54%;background:var(--cyan);clip-path:polygon(100% 0,100% 100%,0 0);opacity:.95}
 .logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:5}
 .header{position:absolute;left:6%;top:5.5%;right:18%;z-index:3}
 .session{font-size:clamp(17px,1.2vw,24px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.7rem;font-weight:800}
 .dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
 h1{margin:0;color:var(--navy);font-size:clamp(54px,5.3vw,100px);line-height:.96;letter-spacing:-.05em;font-weight:900}
-.subtitle{font-size:clamp(22px,1.6vw,32px);margin-top:.85rem;color:#2f5f88;font-weight:850}
+.subtitle{font-size:clamp(22px,1.6vw,32px);margin-top:.85rem;color:var(--itpf-navy);font-weight:850}
 .main{position:absolute;left:6%;right:6%;top:35%;bottom:9%;display:grid;grid-template-columns:42% 58%;gap:1.2rem;align-items:stretch}
-.left{border-left:12px solid var(--orange);border-radius:20px;background:#fff8f4;padding:1.2rem 1.35rem;display:flex;flex-direction:column;justify-content:center;box-shadow:0 10px 28px rgba(0,35,70,.08)}
+.left{border-left:12px solid var(--orange);border-radius:20px;background:var(--itpf-orange-soft);padding:1.2rem 1.35rem;display:flex;flex-direction:column;justify-content:center;box-shadow:0 10px 28px rgba(var(--itpf-blue-rgb),.08)}
 .kicker{font-size:clamp(18px,1.25vw,25px);font-weight:900;color:var(--orange);text-transform:uppercase;letter-spacing:.04em;margin-bottom:.5rem}
 .left p{margin:0;font-size:clamp(25px,1.85vw,38px);line-height:1.15;font-weight:900;color:var(--ink)}
 .flow{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:.8rem}
@@ -33,9 +33,10 @@ h1{margin:0;color:var(--navy);font-size:clamp(54px,5.3vw,100px);line-height:.96;
 .footer{position:absolute;left:6%;right:6%;bottom:2.3%;border-top:2px solid var(--line);padding-top:.5rem;font-size:clamp(15px,1.05vw,21px);font-weight:900;color:var(--navy);display:flex;justify-content:space-between;align-items:center}
 .left p{font-size:clamp(22px,1.6vw,32px)}
 .activity-note{margin-top:1rem;font-size:clamp(16px,1.1vw,21px);line-height:1.18;font-weight:850;color:var(--orange)}
-.badge{background:var(--navy);color:#fff;border-radius:999px;padding:.5rem 1rem;font-size:clamp(14px,1vw,20px);font-weight:900;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:42px}
-.badge:hover,.badge:focus-visible{background:#005899;outline:3px solid var(--orange);outline-offset:2px}
+.badge{background:var(--navy);color:var(--itpf-white);border-radius:999px;padding:.5rem 1rem;font-size:clamp(14px,1vw,20px);font-weight:900;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:42px}
+.badge:hover,.badge:focus-visible{background:var(--itpf-navy);outline:3px solid var(--orange);outline-offset:2px}
 </style>
+<link rel="stylesheet" href="../assets/itpf-color-system.css">
 </head>
 <body>
 <main class="stage">

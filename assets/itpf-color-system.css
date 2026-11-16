@@ -1,0 +1,18 @@
+/* Shared ITPF presentation colour system. */
+:root{
+  --itpf-navy:#003b70; --itpf-navy-rgb:0,59,112; --itpf-ink-rgb:23,63,102; --itpf-white-rgb:255,255,255; --itpf-shadow-rgb:0,59,112;
+  --itpf-blue:#168cff; --itpf-blue-rgb:22,140,255; --itpf-blue-soft:#eef7ff;
+  --itpf-cyan:#12bddf; --itpf-cyan-rgb:18,189,223; --itpf-cyan-text:#007d98; --itpf-cyan-soft:#eef8fc;
+  --itpf-orange:#ff5a00; --itpf-orange-rgb:255,90,0; --itpf-orange-text:#a84100; --itpf-orange-soft:#fff1e8;
+  --itpf-purple:#6b5fb5; --itpf-purple-rgb:107,95,181; --itpf-purple-text:#514887; --itpf-purple-soft:#f4f0ff; --itpf-purple-line:#c9bfe8;
+  --itpf-green:#3aa25a; --itpf-green-rgb:58,162,90; --itpf-green-text:#216e47; --itpf-green-soft:#eaf7f0; --itpf-green-line:#a8d5b8;
+  --itpf-red:#c93333; --itpf-red-rgb:201,51,51; --itpf-red-text:#a52626; --itpf-red-soft:#fff1f0; --itpf-red-line:#e3aaa6;
+  --itpf-amber:#b7791f; --itpf-amber-rgb:183,121,31; --itpf-amber-text:#7d5600; --itpf-amber-soft:#fff7df; --itpf-amber-line:#e2c47b;
+  --itpf-ink:#173f66; --itpf-muted:#5f7892; --itpf-line:#c7d9ea; --itpf-surface:#f7fbff; --itpf-canvas:#dfe5eb; --itpf-white:#ffffff;
+  --itpf-shadow:rgba(var(--itpf-shadow-rgb),.16);
+  /* Legacy names retained as semantic aliases for future slide work. */
+  --navy:var(--itpf-navy); --blue:var(--itpf-blue); --cyan:var(--itpf-cyan); --orange:var(--itpf-orange);
+  --magenta:var(--itpf-purple); --purple:var(--itpf-purple); --green:var(--itpf-green); --red:var(--itpf-red); --amber:var(--itpf-amber);
+  --ink:var(--itpf-ink); --text:var(--itpf-ink); --muted:var(--itpf-muted); --line:var(--itpf-line); --border:var(--itpf-line);
+  --paper:var(--itpf-white); --soft:var(--itpf-surface); --bg:var(--itpf-canvas);
+}

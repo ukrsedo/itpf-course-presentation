@@ -8,68 +8,69 @@
 <title>Slide 32 — FSE and the Right to Reduce FSE</title>
 <style>
 :root {
-  --navy:#003b70;
-  --cyan:#12bddf;
-  --orange:#ff5a00;
-  --green:#3aa25a;
-  --ink:#173f66;
-  --line:#c7d9ea;
-  --soft:#f7fbff;
-  --grey:#e7eaee;
-  --yellow:#fff36a;
+  --navy:var(--itpf-navy);
+  --cyan:var(--itpf-cyan);
+  --orange:var(--itpf-orange);
+  --green:var(--itpf-green);
+  --ink:var(--itpf-ink);
+  --line:var(--itpf-line);
+  --soft:var(--itpf-blue-soft);
+  --grey:var(--itpf-canvas);
+  --yellow:var(--itpf-amber);
 }
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:var(--navy)}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--itpf-canvas);font-family:Arial,Helvetica,sans-serif;color:var(--navy)}
 .stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
-.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:var(--itpf-white);box-shadow:0 18px 60px rgba(var(--itpf-blue-rgb),.18);overflow:hidden}
 .logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:5}
 .header{position:absolute;left:6%;top:5.4%;right:17%}
 .session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.24rem}
 .dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
 h1{margin:0;color:var(--navy);font-size:clamp(32px,2.9vw,56px);line-height:1.03;letter-spacing:-.02em;font-weight:900}
-.subtitle{font-size:clamp(17px,1.2vw,24px);margin-top:.28rem;color:#2f5f88;font-weight:750}
+.subtitle{font-size:clamp(17px,1.2vw,24px);margin-top:.28rem;color:var(--itpf-navy);font-weight:750}
 .tabs{position:absolute;left:6%;right:6%;top:18.7%;display:flex;gap:.7rem}
-.tab{border:3px solid var(--navy);background:#fff;color:var(--navy);font-size:clamp(18px,1.28vw,26px);font-weight:900;padding:.48rem .95rem;cursor:pointer}
-.tab.active{background:var(--navy);color:#fff}
+.tab{border:3px solid var(--navy);background:var(--itpf-white);color:var(--navy);font-size:clamp(18px,1.28vw,26px);font-weight:900;padding:.48rem .95rem;cursor:pointer}
+.tab.active{background:var(--navy);color:var(--itpf-white)}
 .panel{position:absolute;left:4.6%;right:4.6%;top:27.0%;bottom:3.4%;display:none}
 .panel.active{display:block}
 
 .calc{height:100%;display:grid;grid-template-columns:37% 63%;gap:1rem;min-height:0}
-.explain,.clause,.capsBox{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-height:0;overflow:hidden}
-.boxTitle{margin:0;background:var(--navy);color:#fff;font-size:clamp(21px,1.5vw,31px);line-height:1.04;padding:.62rem .82rem;font-weight:900}
+.explain,.clause,.capsBox{border:3px solid var(--navy);background:var(--itpf-white);display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.boxTitle{margin:0;background:var(--navy);color:var(--itpf-white);font-size:clamp(21px,1.5vw,31px);line-height:1.04;padding:.62rem .82rem;font-weight:900}
 .explain .body{padding:.9rem 1rem;font-size:clamp(20px,1.35vw,28px);line-height:1.17;font-weight:760;color:var(--ink)}
-.formula{margin-top:1rem;border-left:8px solid var(--cyan);background:#f7fbff;padding:.8rem .9rem;font-size:clamp(21px,1.45vw,30px);font-weight:900;color:var(--navy)}
+.formula{margin-top:1rem;border-left:8px solid var(--cyan);background:var(--itpf-blue-soft);padding:.8rem .9rem;font-size:clamp(21px,1.45vw,30px);font-weight:900;color:var(--navy)}
 .tableWrap{display:flex;flex-direction:column;min-height:0}
 .tableTitle{font-style:italic;font-size:clamp(18px,1.2vw,24px);font-weight:900;color:var(--navy);padding:.35rem .2rem .45rem}
 table{border-collapse:collapse;width:100%;font-size:clamp(18px,1.18vw,24px);line-height:1.05;color:var(--navy);font-weight:760}
-th{background:var(--navy);color:#fff;text-align:left;padding:.55rem .7rem;border:2px solid #fff;font-weight:900}
-td{background:#e4e6e9;padding:.58rem .7rem;border:2px solid #fff}
+th{background:var(--navy);color:var(--itpf-white);text-align:left;padding:.55rem .7rem;border:2px solid var(--itpf-white);font-weight:900}
+td{background:var(--itpf-canvas);padding:.58rem .7rem;border:2px solid var(--itpf-white)}
 td.bold{font-weight:900}
 
 .mechanism{height:100%;display:grid;grid-template-columns:52% 48%;gap:1rem;min-height:0}
 .clauseText{padding:.9rem 1rem;font-size:clamp(18px,1.22vw,25px);line-height:1.18;font-weight:760;color:var(--ink);overflow:hidden}
 .clauseText strong{color:var(--navy);font-weight:900}
-.schedule{border:3px solid var(--cyan);background:#fff;display:flex;flex-direction:column;overflow:hidden}
+.schedule{border:3px solid var(--cyan);background:var(--itpf-white);display:flex;flex-direction:column;overflow:hidden}
 .schedule .boxTitle{background:var(--cyan)}
 .scheduleTable{padding:.7rem;overflow:hidden}
 .scheduleTable table{font-size:clamp(13px,.86vw,18px);line-height:1.02}
 .scheduleTable th{padding:.38rem .35rem;text-align:center}
-.scheduleTable td{padding:.32rem .35rem;background:#f0f1f3;color:#111;font-weight:650}
-.scheduleTable .sku{font-weight:900;color:#111}
-.scheduleTable .num{text-align:center;color:#111;font-weight:850}
+.scheduleTable td{padding:.32rem .35rem;background:var(--itpf-canvas);color:var(--itpf-ink);font-weight:650}
+.scheduleTable .sku{font-weight:900;color:var(--itpf-ink)}
+.scheduleTable .num{text-align:center;color:var(--itpf-ink);font-weight:850}
 
 .caps{height:100%;display:grid;grid-template-columns:49% 51%;gap:1rem;min-height:0}
 .capsBox{border-color:var(--orange)}
 .capsBox .boxTitle{background:var(--orange)}
 .capText{padding:.9rem 1rem;font-size:clamp(19px,1.28vw,26px);line-height:1.16;font-weight:760;color:var(--ink);overflow:hidden}
 mark{background:var(--yellow);padding:0 .12rem}
-mark.cyan{background:#48e9f3}
+mark.cyan{background:var(--itpf-cyan)}
 .rightPanel{display:grid;grid-template-rows:auto 1fr;gap:.75rem;min-height:0}
 .rules{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
-.rule{border:3px solid var(--line);border-left:8px solid var(--orange);background:#fff;padding:.75rem .85rem;font-size:clamp(20px,1.32vw,27px);line-height:1.13;font-weight:900;color:var(--navy)}
+.rule{border:3px solid var(--line);border-left:8px solid var(--orange);background:var(--itpf-white);padding:.75rem .85rem;font-size:clamp(20px,1.32vw,27px);line-height:1.13;font-weight:900;color:var(--navy)}
 .rule strong{font-size:clamp(28px,2vw,42px);color:var(--orange)}
-.footer{position:absolute;left:4.9%;bottom:1.8%;font-size:clamp(14px,1vw,22px);color:#168cff}
+.footer{position:absolute;left:4.9%;bottom:1.8%;font-size:clamp(14px,1vw,22px);color:var(--itpf-blue)}
 </style>
+<link rel="stylesheet" href="../assets/itpf-color-system.css">
 </head>
 <body>
 <main class="stage">

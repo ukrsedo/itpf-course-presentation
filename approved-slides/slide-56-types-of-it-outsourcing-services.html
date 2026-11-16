@@ -6,49 +6,50 @@
 <title>Slide 56 — Types of IT Outsourcing Services</title>
 <style>
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe5eb;font-family:Arial,Helvetica,sans-serif;color:#0f172a}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--itpf-canvas);font-family:Arial,Helvetica,sans-serif;color:var(--itpf-navy)}
 .stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
-.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:var(--itpf-white);box-shadow:0 18px 60px rgba(var(--itpf-blue-rgb),.18);overflow:hidden}
 
 .tabs{position:absolute;right:2.4%;top:12.7%;display:flex;gap:.75rem;z-index:30}
-.tab{border:3px solid #003b70;background:#fff;color:#003b70;font-size:clamp(18px,1.2vw,24px);font-weight:900;padding:.58rem 1.18rem;border-radius:12px;cursor:pointer;min-width:150px;text-align:center}
-.tab.active{background:#003b70;color:#fff}
+.tab{border:3px solid var(--itpf-navy);background:var(--itpf-white);color:var(--itpf-navy);font-size:clamp(18px,1.2vw,24px);font-weight:900;padding:.58rem 1.18rem;border-radius:12px;cursor:pointer;min-width:150px;text-align:center}
+.tab.active{background:var(--itpf-navy);color:var(--itpf-white)}
 
 .panel{position:absolute;inset:0;display:none}
 .panel.active{display:block}
 
-.front{background:#fff}
+.front{background:var(--itpf-white)}
 .front img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.mask-question{position:absolute;left:41.8%;top:0.7%;width:39.9%;height:8.3%;background:#fff;z-index:10}
-.mask-left-list{position:absolute;left:1.4%;top:10.6%;width:35.2%;height:18.9%;background:#fff;z-index:10}
-.mask-right-list{position:absolute;left:36.4%;top:10.6%;width:25.0%;height:18.9%;background:#fff;z-index:10}
+.mask-question{position:absolute;left:41.8%;top:0.7%;width:39.9%;height:8.3%;background:var(--itpf-white);z-index:10}
+.mask-left-list{position:absolute;left:1.4%;top:10.6%;width:35.2%;height:18.9%;background:var(--itpf-white);z-index:10}
+.mask-right-list{position:absolute;left:36.4%;top:10.6%;width:25.0%;height:18.9%;background:var(--itpf-white);z-index:10}
 
-.exercise{padding:3.8% 3.4% 2.5%;background:linear-gradient(180deg,#f8fbff,#fff)}
+.exercise{padding:3.8% 3.4% 2.5%;background:linear-gradient(180deg,var(--itpf-blue-soft),var(--itpf-white))}
 .header{padding-right:22%}
-.kicker{display:inline-block;background:#e8f1fb;color:#003b70;font-weight:900;font-size:clamp(12px,.82vw,16px);padding:.34rem .62rem;border-radius:999px;margin-bottom:.75rem}
-.title{margin:0;color:#003b70;font-size:clamp(31px,2.35vw,45px);line-height:1.08;font-weight:900}
-.subtitle{margin:.62rem 0 0;max-width:78%;font-size:clamp(15px,1.02vw,19px);line-height:1.38;color:#475569;font-weight:650}
+.kicker{display:inline-block;background:var(--itpf-blue-soft);color:var(--itpf-navy);font-weight:900;font-size:clamp(12px,.82vw,16px);padding:.34rem .62rem;border-radius:999px;margin-bottom:.75rem}
+.title{margin:0;color:var(--itpf-navy);font-size:clamp(31px,2.35vw,45px);line-height:1.08;font-weight:900}
+.subtitle{margin:.62rem 0 0;max-width:78%;font-size:clamp(15px,1.02vw,19px);line-height:1.38;color:var(--itpf-ink);font-weight:650}
 
 .exercise-grid{margin-top:1rem;display:grid;grid-template-columns:58% 42%;gap:1rem;height:70%}
-.card-panel{background:#fff;border:2px solid #d9e6f3;border-radius:18px;padding:.9rem;display:flex;flex-direction:column;min-height:0;box-shadow:0 8px 28px rgba(0,35,70,.06)}
-.card-panel h2{margin:0 0 .6rem;color:#003b70;font-size:clamp(19px,1.35vw,26px);line-height:1.1}
+.card-panel{background:var(--itpf-white);border:2px solid var(--itpf-line);border-radius:18px;padding:.9rem;display:flex;flex-direction:column;min-height:0;box-shadow:0 8px 28px rgba(var(--itpf-blue-rgb),.06)}
+.card-panel h2{margin:0 0 .6rem;color:var(--itpf-navy);font-size:clamp(19px,1.35vw,26px);line-height:1.1}
 .activities{display:grid;grid-template-columns:1fr 1fr;gap:.48rem;overflow:auto;padding-right:.2rem}
-.activity{border:2px solid #cbd9e8;background:#f8fafc;color:#173f66;border-radius:12px;text-align:left;padding:.56rem .65rem;font-size:clamp(13px,.9vw,17px);line-height:1.16;font-weight:800;cursor:pointer}
-.activity.selected{background:#eaf7ef;border-color:#1e9a55;color:#106b3c}
-.activity.rejected{background:#fff1f1;border-color:#ca3a3a;color:#8f1f1f}
+.activity{border:2px solid var(--itpf-line);background:var(--itpf-blue-soft);color:var(--itpf-navy);border-radius:12px;text-align:left;padding:.56rem .65rem;font-size:clamp(13px,.9vw,17px);line-height:1.16;font-weight:800;cursor:pointer}
+.activity.selected{background:var(--itpf-green-soft);border-color:var(--itpf-green-text);color:var(--itpf-green-text)}
+.activity.rejected{background:var(--itpf-red-soft);border-color:var(--itpf-red-text);color:var(--itpf-red-text)}
 
-.feedback{background:#fff;border:2px solid #d9e6f3;border-radius:18px;padding:.95rem;display:grid;grid-template-rows:auto 1fr auto;gap:.6rem;min-height:0;box-shadow:0 8px 28px rgba(0,35,70,.06)}
-.feedback h2{margin:0;color:#003b70;font-size:clamp(19px,1.35vw,26px);line-height:1.1}
-.feedback-text{border:2px solid #e2e8f0;border-radius:14px;background:#fbfdff;padding:.75rem;overflow:auto;font-size:clamp(13px,.9vw,16px);line-height:1.32;color:#334155;font-weight:650}
-.feedback-text strong{color:#003b70}
+.feedback{background:var(--itpf-white);border:2px solid var(--itpf-line);border-radius:18px;padding:.95rem;display:grid;grid-template-rows:auto 1fr auto;gap:.6rem;min-height:0;box-shadow:0 8px 28px rgba(var(--itpf-blue-rgb),.06)}
+.feedback h2{margin:0;color:var(--itpf-navy);font-size:clamp(19px,1.35vw,26px);line-height:1.1}
+.feedback-text{border:2px solid var(--itpf-line);border-radius:14px;background:var(--itpf-blue-soft);padding:.75rem;overflow:auto;font-size:clamp(13px,.9vw,16px);line-height:1.32;color:var(--itpf-ink);font-weight:650}
+.feedback-text strong{color:var(--itpf-navy)}
 .actions{display:flex;gap:.55rem;align-items:center;justify-content:space-between}
 .btns{display:flex;gap:.5rem;flex-wrap:wrap}
-.btn{border:none;background:#003b70;color:#fff;border-radius:10px;padding:.56rem .86rem;font-size:clamp(13px,.9vw,16px);font-weight:900;cursor:pointer}
-.btn.secondary{background:#64748b}
-.btn.ghost{background:#e2e8f0;color:#0f172a}
-.score{font-size:clamp(13px,.9vw,16px);font-weight:900;color:#003b70}
-.note{margin-top:.75rem;border-left:8px solid #ff5a00;background:#fff8f4;border-radius:12px;padding:.65rem .8rem;font-size:clamp(13px,.9vw,16px);line-height:1.28;color:#334155;font-weight:750}
-.selector-link{position:absolute;left:4.3%;top:22%;z-index:20;display:inline-flex;align-items:center;padding:11px 18px;background:#ff5a00;color:#fff;font-size:clamp(16px,1.3vw,25px);font-weight:700;text-decoration:none;border-radius:6px}.selector-link:hover,.selector-link:focus{background:#ce4800;outline:3px solid #003b70;outline-offset:2px}</style>
+.btn{border:none;background:var(--itpf-navy);color:var(--itpf-white);border-radius:10px;padding:.56rem .86rem;font-size:clamp(13px,.9vw,16px);font-weight:900;cursor:pointer}
+.btn.secondary{background:var(--itpf-navy)}
+.btn.ghost{background:var(--itpf-blue-soft);color:var(--itpf-navy)}
+.score{font-size:clamp(13px,.9vw,16px);font-weight:900;color:var(--itpf-navy)}
+.note{margin-top:.75rem;border-left:8px solid var(--itpf-orange);background:var(--itpf-orange-soft);border-radius:12px;padding:.65rem .8rem;font-size:clamp(13px,.9vw,16px);line-height:1.28;color:var(--itpf-ink);font-weight:750}
+.selector-link{position:absolute;left:4.3%;top:22%;z-index:20;display:inline-flex;align-items:center;padding:11px 18px;background:var(--itpf-orange);color:var(--itpf-white);font-size:clamp(16px,1.3vw,25px);font-weight:700;text-decoration:none;border-radius:6px}.selector-link:hover,.selector-link:focus{background:var(--itpf-orange);outline:3px solid var(--itpf-navy);outline-offset:2px}</style>
+<link rel="stylesheet" href="../assets/itpf-color-system.css">
 </head>
 <body>
 <main class="stage">

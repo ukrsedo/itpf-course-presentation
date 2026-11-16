@@ -8,120 +8,121 @@
 <title>Slide 38 — Waterfall, Incremental and Agile Delivery Models</title>
 <style>
 :root{
-  --navy:#003b70;
-  --cyan:#12bddf;
-  --orange:#ff5a00;
-  --green:#2f9e5a;
-  --purple:#6b5fb5;
-  --line:#c8d8e8;
-  --soft:#f6fbff;
-  --ink:#173f66;
-  --bg:#dfe5eb;
+  --navy:var(--itpf-navy);
+  --cyan:var(--itpf-cyan);
+  --orange:var(--itpf-orange);
+  --green:var(--itpf-green);
+  --purple:var(--itpf-purple);
+  --line:var(--itpf-line);
+  --soft:var(--itpf-blue-soft);
+  --ink:var(--itpf-ink);
+  --bg:var(--itpf-canvas);
 }
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);font-family:Arial,Helvetica,sans-serif;color:var(--navy)}
 .stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
-.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:#fff;box-shadow:0 18px 60px rgba(0,25,55,.18);overflow:hidden}
+.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:var(--itpf-white);box-shadow:0 18px 60px rgba(var(--itpf-blue-rgb),.18);overflow:hidden}
 .logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:6}
 .header{position:absolute;left:6%;top:5.4%;right:17%;z-index:5}
 .session{font-size:clamp(15px,1.05vw,22px);line-height:1.2;color:var(--navy);display:flex;align-items:center;gap:.55rem;margin-bottom:.24rem}
 .dot{width:13px;height:13px;border:4px solid var(--cyan);border-radius:50%;display:inline-block;flex:none}
 h1{margin:0;color:var(--navy);font-size:clamp(30px,2.65vw,50px);line-height:1.03;letter-spacing:-.02em;font-weight:900}
-.subtitle{font-size:clamp(15px,1.0vw,21px);margin-top:.28rem;color:#2f5f88;font-weight:760;line-height:1.12}
+.subtitle{font-size:clamp(15px,1.0vw,21px);margin-top:.28rem;color:var(--itpf-navy);font-weight:760;line-height:1.12}
 
 .tabs{position:absolute;left:4.3%;right:4.3%;top:20.6%;display:flex;gap:.55rem;z-index:10}
 .tabBtn{
-  border:2px solid var(--navy);background:#fff;color:var(--navy);font-weight:900;
+  border:2px solid var(--navy);background:var(--itpf-white);color:var(--navy);font-weight:900;
   font-size:clamp(14px,.94vw,18px);line-height:1;padding:.52rem .86rem;border-radius:10px;cursor:pointer
 }
-.tabBtn.active{background:var(--navy);color:#fff}
+.tabBtn.active{background:var(--navy);color:var(--itpf-white)}
 
 .content{position:absolute;left:4.3%;right:4.3%;top:26.2%;bottom:4.0%;min-height:0}
 .panelView{display:none;height:100%}
 .panelView.active{display:block}
 
 .grid2{height:100%;display:grid;grid-template-columns:58% 42%;gap:.75rem;min-height:0}
-.panel{border:3px solid var(--navy);background:#fff;display:flex;flex-direction:column;min-height:0;overflow:hidden}
-.panel h2{margin:0;background:var(--navy);color:#fff;font-size:clamp(19px,1.32vw,26px);line-height:1.02;padding:.5rem .68rem;font-weight:900}
+.panel{border:3px solid var(--navy);background:var(--itpf-white);display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.panel h2{margin:0;background:var(--navy);color:var(--itpf-white);font-size:clamp(19px,1.32vw,26px);line-height:1.02;padding:.5rem .68rem;font-weight:900}
 .panel.alt{border-color:var(--cyan)}
-.panel.alt h2{background:var(--cyan);color:#08374f}
+.panel.alt h2{background:var(--cyan);color:var(--itpf-cyan-text)}
 
 .modelsGrid{flex:1;min-height:0;padding:.56rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:.46rem}
-.model{border:3px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;min-height:0;background:#fff}
-.modelHead{padding:.48rem .4rem;color:#fff;text-align:center;font-weight:900;font-size:clamp(19px,1.28vw,27px);line-height:1.02}
+.model{border:3px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;min-height:0;background:var(--itpf-white)}
+.modelHead{padding:.48rem .4rem;color:var(--itpf-white);text-align:center;font-weight:900;font-size:clamp(19px,1.28vw,27px);line-height:1.02}
 .waterfall .modelHead{background:var(--navy)}
 .incremental .modelHead{background:var(--orange)}
 .agile .modelHead{background:var(--green)}
 .modelBody{padding:.48rem;display:grid;grid-template-rows:auto auto 1fr auto;gap:.34rem;flex:1;min-height:0}
-.tag{font-size:clamp(14px,.94vw,17px);line-height:1.05;font-weight:850;color:#456887;text-align:center}
+.tag{font-size:clamp(14px,.94vw,17px);line-height:1.05;font-weight:850;color:var(--itpf-navy);text-align:center}
 .track{display:grid;gap:.20rem}
-.step{border-radius:7px;padding:.28rem .34rem;text-align:center;color:#fff;font-size:clamp(13px,.88vw,16px);line-height:1.02;font-weight:850}
-.waterfall .step{background:#37648e}
-.incremental .step{background:#ff8a45}
-.agile .step{background:#59b877}
-.flowArrow{text-align:center;font-size:clamp(11px,.76vw,14px);line-height:1;color:#6c89a3;font-weight:900}
+.step{border-radius:7px;padding:.28rem .34rem;text-align:center;color:var(--itpf-white);font-size:clamp(13px,.88vw,16px);line-height:1.02;font-weight:850}
+.waterfall .step{background:var(--itpf-blue)}
+.incremental .step{background:var(--itpf-orange)}
+.agile .step{background:var(--itpf-green)}
+.flowArrow{text-align:center;font-size:clamp(11px,.76vw,14px);line-height:1;color:var(--itpf-muted);font-weight:900}
 .valueZone{display:grid;align-content:end;gap:.18rem;min-height:0}
 .valueLabel{font-size:clamp(13px,.88vw,16px);line-height:1.02;font-weight:900;color:var(--ink);text-align:center}
 .valueBars{height:86px;border:2px solid var(--line);border-radius:8px;padding:.28rem;display:grid;grid-template-columns:repeat(5,1fr);gap:.18rem;align-items:end;background:var(--soft)}
 .bar{border-radius:4px 4px 0 0}
-.waterfall .bar{background:#37648e}
-.incremental .bar{background:#ff8a45}
-.agile .bar{background:#59b877}
+.waterfall .bar{background:var(--itpf-blue)}
+.incremental .bar{background:var(--itpf-orange)}
+.agile .bar{background:var(--itpf-green)}
 .note{border-top:2px solid var(--line);padding-top:.26rem;font-size:clamp(13px,.9vw,16px);line-height:1.05;font-weight:770;color:var(--ink)}
 
 .compareBody{flex:1;min-height:0;padding:.5rem;display:grid;grid-template-rows:auto 1fr auto;gap:.34rem}
 .compareTable{display:grid;grid-template-columns:28% 24% 24% 24%;border:2px solid var(--line);min-height:0}
 .cell{border-right:2px solid var(--line);border-bottom:2px solid var(--line);padding:.3rem .32rem;font-size:clamp(13px,.88vw,16px);line-height:1.03;font-weight:780;color:var(--ink);display:flex;align-items:center;justify-content:center;text-align:center}
-.cell.head{font-size:clamp(14px,.96vw,19px);font-weight:900;color:#fff}
-.cell.rowhead{justify-content:flex-start;text-align:left;font-weight:900;color:var(--navy);background:#f8fbfe}
+.cell.head{font-size:clamp(14px,.96vw,19px);font-weight:900;color:var(--itpf-white)}
+.cell.rowhead{justify-content:flex-start;text-align:left;font-weight:900;color:var(--navy);background:var(--itpf-blue-soft)}
 .cell.head.wf{background:var(--navy)}
 .cell.head.inc{background:var(--orange)}
 .cell.head.ag{background:var(--green)}
 .compareTable .cell:nth-child(4n){border-right:none}
 .legend{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.34rem}
-.legendCard{border:2px solid var(--line);border-radius:9px;padding:.36rem .45rem;background:#fff}
+.legendCard{border:2px solid var(--line);border-radius:9px;padding:.36rem .45rem;background:var(--itpf-white)}
 .legendCard strong{display:block;font-size:clamp(13px,.9vw,18px);line-height:1.03;color:var(--navy);margin-bottom:.1rem}
 .legendCard span{display:block;font-size:clamp(13px,.88vw,16px);line-height:1.05;font-weight:770;color:var(--ink)}
-.footerNote{font-size:clamp(12px,.84vw,15px);line-height:1.1;font-weight:850;color:#315b7e;border-top:2px solid var(--line);padding-top:.26rem}
+.footerNote{font-size:clamp(12px,.84vw,15px);line-height:1.1;font-weight:850;color:var(--itpf-navy);border-top:2px solid var(--line);padding-top:.26rem}
 
 .commWrap{height:100%;display:grid;grid-template-columns:53% 47%;gap:.75rem;min-height:0}
 .cardsGrid{flex:1;min-height:0;padding:.56rem;display:grid;grid-template-columns:1fr;grid-template-rows:1fr 1fr 1fr;gap:.44rem}
-.commCard{border:3px solid var(--line);border-left-width:10px;border-radius:10px;background:#fff;padding:.5rem .58rem;display:grid;grid-template-columns:18% 41% 41%;gap:.48rem;align-items:start;min-height:0}
+.commCard{border:3px solid var(--line);border-left-width:10px;border-radius:10px;background:var(--itpf-white);padding:.5rem .58rem;display:grid;grid-template-columns:18% 41% 41%;gap:.48rem;align-items:start;min-height:0}
 .commCard.waterfall{border-left-color:var(--navy)}
 .commCard.incremental{border-left-color:var(--orange)}
 .commCard.agile{border-left-color:var(--green)}
 .modelLabel{font-size:clamp(20px,1.35vw,28px);line-height:1.02;font-weight:900;color:var(--navy)}
-.smallHead{font-size:clamp(13px,.95vw,18px);line-height:1.04;font-weight:900;color:#2f5f88;margin-bottom:.14rem}
+.smallHead{font-size:clamp(13px,.95vw,18px);line-height:1.04;font-weight:900;color:var(--itpf-navy);margin-bottom:.14rem}
 .smallText{font-size:clamp(14px,1vw,18px);line-height:1.1;font-weight:770;color:var(--ink)}
 .sideBody{flex:1;min-height:0;padding:.56rem;display:grid;grid-template-rows:auto auto 1fr auto;gap:.42rem}
 .table2{display:grid;grid-template-columns:34% 66%;border:2px solid var(--line)}
 .table2 .r{border-right:2px solid var(--line);border-bottom:2px solid var(--line);padding:.38rem .42rem;font-size:clamp(12px,.86vw,15px);line-height:1.1;font-weight:770;color:var(--ink)}
 .table2 .r:nth-child(2n){border-right:none}
-.table2 .hd{font-weight:900;color:#fff;background:var(--navy);font-size:clamp(14px,1vw,18px)}
-.bullets{border:2px solid var(--line);border-radius:10px;padding:.42rem .56rem;background:#fbfdff}
+.table2 .hd{font-weight:900;color:var(--itpf-white);background:var(--navy);font-size:clamp(14px,1vw,18px)}
+.bullets{border:2px solid var(--line);border-radius:10px;padding:.42rem .56rem;background:var(--itpf-blue-soft)}
 .bullets ul{margin:.08rem 0 0 .92rem;padding:0}
 .bullets li{font-size:clamp(14px,.96vw,17px);line-height:1.09;font-weight:770;color:var(--ink);margin:.12rem 0}
-.emphasis{border-top:2px solid var(--line);padding-top:.28rem;font-size:clamp(12px,.84vw,15px);line-height:1.1;font-weight:850;color:#315b7e}
+.emphasis{border-top:2px solid var(--line);padding-top:.28rem;font-size:clamp(12px,.84vw,15px);line-height:1.1;font-weight:850;color:var(--itpf-navy)}
 
 .triWrap{height:100%;display:grid;grid-template-columns:48% 52%;gap:.75rem;min-height:0}
 .triPanelBody{flex:1;min-height:0;padding:.56rem;display:grid;grid-template-rows:1fr auto;gap:.42rem}
-.triangleBox{border:2px solid var(--line);border-radius:10px;background:#fbfdff;position:relative;min-height:0;overflow:hidden}
+.triangleBox{border:2px solid var(--line);border-radius:10px;background:var(--itpf-blue-soft);position:relative;min-height:0;overflow:hidden}
 .triangleSvg{width:100%;height:100%}
-.triLabel{font-size:18px;font-weight:900;fill:#003b70}
-.triText{font-size:13px;font-weight:700;fill:#173f66}
+.triLabel{font-size:18px;font-weight:900;fill:var(--itpf-navy)}
+.triText{font-size:13px;font-weight:700;fill:var(--itpf-navy)}
 .triSide{display:grid;grid-template-rows:auto 1fr auto;gap:.46rem;padding:.56rem;min-height:0}
-.infoCard{border:2px solid var(--line);border-radius:10px;background:#fff;padding:.56rem .64rem;display:grid;align-content:center;min-height:0}
+.infoCard{border:2px solid var(--line);border-radius:10px;background:var(--itpf-white);padding:.56rem .64rem;display:grid;align-content:center;min-height:0}
 .infoCard strong{display:block;font-size:clamp(13px,.9vw,18px);line-height:1.03;color:var(--navy);margin-bottom:.12rem}
 .infoCard span{display:block;font-size:clamp(12px,.84vw,15px);line-height:1.1;font-weight:770;color:var(--ink)}
 .miniTable{display:grid;grid-template-columns:32% 22.7% 22.7% 22.6%;border:2px solid var(--line)}
 .miniTable div{border-right:2px solid var(--line);border-bottom:2px solid var(--line);padding:.36rem;font-size:clamp(12px,.84vw,15px);line-height:1.08;font-weight:770;color:var(--ink);text-align:center;display:flex;align-items:center;justify-content:center}
 .infoPair{display:grid;grid-template-rows:1fr 1fr;gap:.46rem;min-height:0}
 .miniTable div:nth-child(4n){border-right:none}
-.miniTable .head{background:var(--navy);color:#fff;font-weight:900;font-size:clamp(13px,.9vw,17px)}
-.miniTable .rowh{background:#f8fbfe;font-weight:900;color:var(--navy);justify-content:flex-start;text-align:left}
-.triCall{fill:#fff;stroke:#8cb1cf;stroke-width:2.5}
+.miniTable .head{background:var(--navy);color:var(--itpf-white);font-weight:900;font-size:clamp(13px,.9vw,17px)}
+.miniTable .rowh{background:var(--itpf-blue-soft);font-weight:900;color:var(--navy);justify-content:flex-start;text-align:left}
+.triCall{fill:var(--itpf-white);stroke:var(--itpf-blue);stroke-width:2.5}
 
 </style>
+<link rel="stylesheet" href="../assets/itpf-color-system.css">
 </head>
 <body>
 <main class="stage">
@@ -334,17 +335,17 @@ h1{margin:0;color:var(--navy);font-size:clamp(30px,2.65vw,50px);line-height:1.03
 <div class="triPanelBody">
 <div class="triangleBox">
 <svg class="triangleSvg" preserveaspectratio="xMidYMid meet" viewbox="0 0 640 420">
-<polygon fill="#f7fbff" points="320,54 108,348 532,348" stroke="#003b70" stroke-width="5"></polygon>
-<circle cx="320" cy="54" fill="#003b70" r="32"></circle>
-<text fill="#fff" font-size="20" font-weight="900" text-anchor="middle" x="320" y="61">SCOPE</text>
-<circle cx="108" cy="348" fill="#ff5a00" r="32"></circle>
-<text fill="#fff" font-size="20" font-weight="900" text-anchor="middle" x="108" y="355">TIME</text>
-<circle cx="532" cy="348" fill="#2f9e5a" r="32"></circle>
-<text fill="#fff" font-size="20" font-weight="900" text-anchor="middle" x="532" y="355">COST</text>
-<circle cx="320" cy="224" fill="#12bddf" r="70" stroke="#003b70" stroke-width="4"></circle>
-<text fill="#003b70" font-size="25" font-weight="900" text-anchor="middle" x="320" y="213">QUALITY</text>
-<text fill="#003b70" font-size="15" font-weight="700" text-anchor="middle" x="320" y="238">Trade-offs are</text>
-<text fill="#003b70" font-size="15" font-weight="700" text-anchor="middle" x="320" y="257">always connected.</text>
+<polygon fill="var(--itpf-blue-soft)" points="320,54 108,348 532,348" stroke="var(--itpf-blue)" stroke-width="5"></polygon>
+<circle cx="320" cy="54" fill="var(--itpf-navy)" r="32"></circle>
+<text fill="var(--itpf-white)" font-size="20" font-weight="900" text-anchor="middle" x="320" y="61">SCOPE</text>
+<circle cx="108" cy="348" fill="var(--itpf-orange)" r="32"></circle>
+<text fill="var(--itpf-white)" font-size="20" font-weight="900" text-anchor="middle" x="108" y="355">TIME</text>
+<circle cx="532" cy="348" fill="var(--itpf-green)" r="32"></circle>
+<text fill="var(--itpf-white)" font-size="20" font-weight="900" text-anchor="middle" x="532" y="355">COST</text>
+<circle cx="320" cy="224" fill="var(--itpf-cyan)" r="70" stroke="var(--itpf-blue)" stroke-width="4"></circle>
+<text fill="var(--itpf-navy)" font-size="25" font-weight="900" text-anchor="middle" x="320" y="213">QUALITY</text>
+<text fill="var(--itpf-navy)" font-size="15" font-weight="700" text-anchor="middle" x="320" y="238">Trade-offs are</text>
+<text fill="var(--itpf-navy)" font-size="15" font-weight="700" text-anchor="middle" x="320" y="257">always connected.</text>
 <rect class="triCall" height="66" rx="12" width="284" x="178" y="88"></rect>
 <text class="triText" font-weight="900" text-anchor="middle" x="320" y="109">Waterfall fixes scope.</text>
 <text class="triText" text-anchor="middle" x="320" y="128">Changes usually move</text>

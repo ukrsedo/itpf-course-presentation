@@ -8,7 +8,8 @@ approved-slides/: one HTML file per slide, named slide-NN-topic-title.html.
 index.html: presentation player and slide order.
 slide-index.html: browser-friendly slide index.
 course-resources.html: course resource tiles.
-assets/: shared logos and source images.
+assets/: shared logos, source images, and the presentation colour system (itpf-color-system.css).
+COLOR-SYSTEM.md: semantic colour roles and usage rules.
 itpf-course-assistant-worker.js: Course Assistant worker source.
 course-refresher/worker.js: Course Refresher worker source.
 
