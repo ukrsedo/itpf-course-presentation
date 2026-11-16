@@ -72,25 +72,34 @@ h1{margin:0;color:var(--navy);font-size:clamp(34px,3vw,58px);line-height:1.03;le
 .transaction-block,.governance-block{margin-top:12px}.cost-table{width:100%;border-collapse:collapse;table-layout:fixed;margin-bottom:10px}.cost-table th,.cost-table td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}.cost-table thead th{background:var(--navy);color:white}.cost-table th:first-child{width:25%}.cost-table tbody th{background:var(--soft)}.small-label{font-size:.9em;font-weight:normal}.cost-point{margin:0!important}.spectrum-title{text-align:center;color:#b00068;font-size:1.15em;font-weight:900;margin:0 0 3px 25%}.spectrum-controls{display:grid;grid-template-columns:25% repeat(3,1fr);text-align:center;color:#b00068;font-weight:900;border-top:4px solid var(--cyan);padding-top:4px;margin:0 0 8px}.governance-table{width:100%;border-collapse:collapse;table-layout:fixed}.governance-table th,.governance-table td{border:2px solid var(--navy);padding:8px 11px;text-align:left}.governance-table thead th{font-size:1.08em;vertical-align:top}.governance-table thead th:first-child{width:25%}.governance-table tbody th{font-weight:700}.governance-table .hybrid{background:#fff600}.product-spectrum{display:grid;grid-template-columns:25% repeat(3,1fr);text-align:center;color:#b00068;font-weight:900;border-bottom:4px solid var(--cyan);padding-bottom:5px;margin:8px 0 0}.product-title{text-align:center;color:#b00068;font-size:1.1em;font-weight:900;margin:3px 0 0 25%}.governance-block .authors{font-size:.85em;color:#315b7e;margin-top:8px}.case-body{margin-top:18px;padding:24px;text-align:center}.case-body p{font-size:1.1em}.case-link{display:inline-block;background:var(--navy);color:white!important;text-decoration:none;padding:14px 20px;border-radius:6px;font-weight:bold}.case-hint{margin-top:14px!important}.tce{font-size:clamp(16px,1.05vw,21px)}
 @media(max-width:800px){.governance-grid{grid-template-columns:1fr}.cost-table{font-size:16px}.cost-table th,.cost-table td{padding:6px}.tabs button{font-size:15px}}
 
-/* Slide 38: PRT explanation within the existing tab structure. */
-.prt{font-size:clamp(17px,1.2vw,24px);line-height:1.22}
-.prt h2{font-size:clamp(22px,1.65vw,32px);margin:0 0 8px}
-.prt-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:8px}.prt-heading h2{margin:0}.prt .prt-tool{font-size:.82em;padding:10px 14px;white-space:nowrap;background:var(--orange);color:#102a43!important}.prt .prt-tool:hover{background:#ff7a33}.prt .prt-tool:focus-visible{outline-color:var(--navy)}.prt-intro{max-width:98%;margin-bottom:12px!important}
-.prt-table{width:100%;border-collapse:collapse;table-layout:fixed;margin:10px 0 12px}
-.prt-table th,.prt-table td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
-.prt-table thead{background:var(--navy);color:#fff}
-.prt-table th:first-child{width:21%}
-.prt-table tbody th{background:var(--soft)}
-.prt-example{border-left:5px solid var(--cyan);padding:6px 0 3px 14px}
-.prt-example h3{font-size:1.06em;margin:0 0 8px}
-.prt-example p{margin-bottom:8px}
-.prt-takeaway{margin-top:10px!important;font-weight:700}
-.prt-scope{font-size:.86em;color:#315b7e;margin:8px 0!important}
-.prt-source{font-size:.78em;color:#315b7e}
-.prt-notes{margin-top:9px;font-size:.86em;border-top:1px solid var(--line);padding-top:6px}
-.prt-notes summary{cursor:pointer;font-weight:700}
-.prt-notes p{margin-top:8px}
-@media(max-width:800px){.prt{font-size:17px}.prt-table{font-size:16px}.prt-table th,.prt-table td{padding:7px}.prt-table th:first-child{width:22%}.prt h2{font-size:23px}}
+/* Property Rights Theory: explain the mechanism, then apply it. */
+.prt{font-size:clamp(15px,1.02vw,20px);line-height:1.2}
+.prt h2{font-size:clamp(21px,1.5vw,29px);margin:0 0 6px}
+.prt-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:7px}
+.prt-heading h2{margin:0}
+.prt .prt-tool{font-size:.8em;padding:8px 12px;white-space:nowrap;background:var(--orange);color:#102a43!important}
+.prt .prt-tool:hover{background:#ff7a33}
+.prt-intro{border:2px solid var(--navy);border-radius:8px;padding:9px 13px;background:var(--soft);margin:0!important}
+.prt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:9px}
+.prt-card{border:2px solid var(--line);border-radius:8px;padding:9px 11px;background:#fff}
+.prt-card h3{margin:0 0 5px;font-size:1em;color:var(--navy)}
+.prt-card p{margin:0}
+.prt-example{margin-top:9px;border:2px solid var(--cyan);border-radius:8px;padding:9px 12px}
+.prt-example h3{font-size:1.02em;margin:0 0 5px}
+.prt-example p{margin:0 0 5px}
+.prt-example p:last-child{margin-bottom:0}
+.prt-rights{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:6px;font-size:.92em}
+.prt-rights th,.prt-rights td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+.prt-rights thead th{background:var(--navy);color:#fff}
+.prt-rights th:first-child{width:25%}
+.prt-bottom{display:grid;grid-template-columns:1.2fr 1fr;gap:9px;margin-top:9px}
+.prt-decision,.prt-distinction{border-radius:8px;padding:8px 11px}
+.prt-decision{background:#f3f8fd;border:2px solid var(--navy)}
+.prt-distinction{background:#fff8f4;border:2px solid var(--orange)}
+.prt-decision strong,.prt-distinction strong{color:var(--navy)}
+.prt-decision p,.prt-distinction p{margin:0}
+.prt-source{font-size:.72em;color:#315b7e;margin:6px 0 0!important}
+@media(max-width:800px){.prt{font-size:17px}.prt-grid,.prt-bottom{grid-template-columns:1fr}.prt-rights{font-size:15px}.prt-rights th,.prt-rights td{padding:6px}.prt h2{font-size:23px}}
 </style>
 </head>
 <body>
@@ -190,22 +199,27 @@ h1{margin:0;color:var(--navy);font-size:clamp(34px,3vw,58px);line-height:1.03;le
 </section>
 </section>
 
-<section class="tce prt" id="prt-panel" role="tabpanel" aria-labelledby="prt-tab" hidden>
-<div class="prt-heading"><h2>Property Rights Theory: who should own what?</h2><a class="case-link prt-tool" href="https://www.goodspending.com/my-courses/itservicemodelselector" target="_blank" rel="noopener noreferrer">IT Service Model Selector ↗</a></div>
-<p class="prt-intro">Ownership affects what each party expects to gain from additional effort. This can change how much each invests in learning or improvement.</p>
-<table class="prt-table"><thead><tr><th>Procurement application</th><th>Transaction Cost Economics (TCE)</th><th>Property Rights Theory (PRT)</th></tr></thead><tbody>
-<tr><th>Decision to examine</th><td><strong>Make or buy?</strong><br>Keep SAP support internally or outsource it?</td><td><strong>Who owns the support tools?</strong><br>Customer, supplier, or different owners for different assets?</td></tr>
-<tr><th>Reasoning</th><td>Compare the costs of coordinating, adapting and safeguarding the work under each arrangement.</td><td>Compare how ownership encourages each party to invest in improvements that a contract cannot fully prescribe.</td></tr>
-</tbody></table>
-<div class="prt-example">
-<h3>Illustrative example: automation for outsourced SAP support</h3>
-<p><strong>Supplier owns reusable automation:</strong> selling or using it elsewhere can reward further development. Agree the customer's usage and continuity rights.</p>
-<p><strong>Customer owns bespoke automation:</strong> control can support further customer investment. Consider how to fund and reward the supplier's additional development effort.</p>
+<section class="tce prt" id="prt-panel" role="tabpanel" aria-labelledby="prt-tab">
+<div class="prt-heading"><h2>Property Rights Theory (PRT): who controls what the contract leaves open?</h2><a class="case-link prt-tool" href="https://www.goodspending.com/my-courses/itservicemodelselector" target="_blank" rel="noopener noreferrer">IT Service Model Selector ↗</a></div>
+<p class="prt-intro"><strong>PRT explains how ownership affects investment.</strong> A contract cannot describe or enforce every future decision. The owner of an asset holds the <strong>residual control rights</strong>: authority to decide how that asset is used in situations the contract does not settle. Those rights shape each party’s incentive to invest in improvements.</p>
+<div class="prt-grid">
+<div class="prt-card"><h3>1. Identify the asset</h3><p>In IT procurement, assets include software, source code, data, interfaces, configurations, tools and know-how. Separate ownership from access, licence and service delivery.</p></div>
+<div class="prt-card"><h3>2. Identify the investment</h3><p>Ask who must spend effort or money to create value that a contract cannot fully specify, such as integrating a system, building automation or adapting a platform.</p></div>
+<div class="prt-card"><h3>3. Consider both incentives</h3><p>Ownership can strengthen the owner’s incentive to invest, while weakening the other party’s. Choose rights that support the combined value of both parties’ investments.</p></div>
 </div>
-<p class="prt-takeaway"><strong>Discussion:</strong> would demanding exclusive customer ownership encourage or discourage the improvements you want?</p>
-<p class="prt-scope">These are practical applications. Both theories also explain integration and firm boundaries. PRT does not automatically favour customer ownership.</p>
-<p class="prt-source">PRT: Grossman &amp; Hart (1986), Hart &amp; Moore (1990). <a href="https://www.nobelprize.org/uploads/2018/06/hart-lecture.pdf" target="_blank" rel="noopener">Hart's explanation</a></p>
-<details class="prt-notes"><summary>Theory note for discussion</summary><p>Williamson's TCE uses bounded rationality and possible opportunism. Standard Grossman–Hart–Moore PRT can assume fully rational parties. Its key limitation is that important investments cannot be verified and enforced through a contract. Ownership allocates residual control rights over assets: decisions the contract has not already settled. Those rights affect bargaining alternatives and investment incentives. Strengthening one party's incentives can weaken the other's. Reuse alone does not establish the best ownership arrangement.</p></details>
+<div class="prt-example">
+<h3>Procurement example: automation developed for outsourced SAP support</h3>
+<p>A supplier is asked to build automation that resolves incidents faster. The tool contains reusable supplier technology and customer-specific workflows.</p>
+<table class="prt-rights"><thead><tr><th>Rights allocation</th><th>Investment effect and procurement response</th></tr></thead><tbody>
+<tr><th>Supplier owns reusable platform</th><td>May support supplier investment and reuse across clients. Secure the customer’s continuing access, data control, service continuity and transition rights.</td></tr>
+<tr><th>Customer controls bespoke workflows</th><td>May support customer investment in its unique processes. Define rights to use, modify and transfer the bespoke work, and agree fair treatment of supplier background IP.</td></tr>
+</tbody></table>
+</div>
+<div class="prt-bottom">
+<div class="prt-decision"><p><strong>Use PRT in the sourcing decision:</strong> identify the critical asset → identify who makes the hard-to-contract investment → compare how alternative ownership rights affect each party → allocate ownership and supporting licence, access, modification and exit rights.</p></div>
+<div class="prt-distinction"><p><strong>PRT complements TCE.</strong> TCE asks which governance form manages exchange costs and risks. PRT asks how asset ownership affects control and investment incentives within that arrangement. Neither theory means “always outsource” or “always give the customer ownership.”</p></div>
+</div>
+<p class="prt-source">Grossman &amp; Hart (1986); Hart &amp; Moore (1990). <a href="https://www.nobelprize.org/uploads/2018/06/hart-lecture.pdf" target="_blank" rel="noopener">Hart’s Nobel lecture</a>. <details class="prt-notes"><summary>Theory note</summary><p>In PRT, parties may be fully rational. The central issue is incomplete contracting: some future actions or outcomes cannot be specified and enforced. Ownership allocates residual control rights over assets and changes bargaining positions and investment incentives. It can improve one party’s incentives while reducing the other’s, so assess the effects together.</p></details></p>
 </section>
 
 <section class="tce" id="dropbox-panel" role="tabpanel" aria-labelledby="dropbox-tab" hidden>
