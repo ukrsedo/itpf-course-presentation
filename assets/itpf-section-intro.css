@@ -1,0 +1,30 @@
+/* Shared layout for ITPF section and session introduction slides. */
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--itpf-canvas);font-family:Arial,Helvetica,sans-serif;color:var(--itpf-ink)}
+.stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
+.section-intro{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));overflow:hidden;background:linear-gradient(125deg,var(--itpf-white) 0 70%,var(--itpf-blue-soft) 70% 100%);box-shadow:0 18px 60px rgba(var(--itpf-blue-rgb),.18)}
+.top-rule{position:absolute;left:0;right:0;top:0;height:9px;background:linear-gradient(90deg,var(--itpf-navy) 0 34%,var(--itpf-cyan) 34% 100%)}
+.intro-header{position:absolute;left:7%;right:7%;top:8%;height:42%}
+.brandline{display:flex;align-items:center;gap:.55rem;color:var(--itpf-navy);font-size:clamp(14px,.95vw,19px);font-weight:900;letter-spacing:.09em;text-transform:uppercase}
+.brandline .dot{width:12px;height:12px;border:4px solid var(--itpf-cyan);border-radius:50%;flex:none}
+.logo{position:absolute;right:0;top:-1%;width:10%;height:auto;z-index:4}
+.session-number{position:absolute;right:2%;top:18%;color:rgba(var(--itpf-blue-rgb),.09);font-size:clamp(170px,18vw,330px);line-height:.82;font-weight:900;letter-spacing:-.09em;user-select:none;z-index:0}
+.intro-title{position:relative;z-index:1;margin:3.4% 15% .65% 0;color:var(--itpf-navy);font-size:clamp(48px,5vw,94px);line-height:.98;letter-spacing:-.045em;font-weight:900;max-width:83%}
+.intro-subtitle{position:relative;z-index:1;margin:0;max-width:78%;color:var(--itpf-ink);font-size:clamp(19px,1.5vw,29px);line-height:1.2;font-weight:700}
+.focus-area{position:absolute;left:7%;right:7%;top:56%;bottom:12%;display:flex;flex-direction:column;min-height:0}
+.focus-heading{display:flex;align-items:baseline;gap:.75rem;margin-bottom:.75rem}
+.focus-kicker{color:var(--itpf-blue);font-size:clamp(12px,.78vw,16px);font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.focus-heading h2{margin:0;color:var(--itpf-navy);font-size:clamp(22px,1.6vw,31px);line-height:1.05;font-weight:900}
+.focus-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;flex:1;min-height:0}
+.focus-card{position:relative;min-width:0;border:1px solid var(--itpf-line);border-top:5px solid var(--itpf-blue);border-radius:12px;background:rgba(var(--itpf-white-rgb),.94);padding:1rem 1rem .85rem;box-shadow:0 8px 22px rgba(var(--itpf-shadow-rgb),.06);display:flex;flex-direction:column;justify-content:flex-start}
+.focus-card:nth-child(2){border-top-color:var(--itpf-cyan)}
+.focus-card:nth-child(3){border-top-color:var(--itpf-purple)}
+.focus-card h2{margin:0 0 .4rem;color:var(--itpf-navy);font-size:clamp(18px,1.28vw,25px);line-height:1.08;font-weight:900}
+.focus-card p{margin:0;color:var(--itpf-ink);font-size:clamp(14px,.98vw,19px);line-height:1.22;font-weight:650}
+.focus-link{display:inline-block;margin-top:.5rem;color:var(--itpf-blue);font-size:clamp(13px,.85vw,17px);font-weight:850;text-decoration:none}
+.focus-link:hover{text-decoration:underline}
+.footer{position:absolute;left:7%;right:7%;bottom:3.1%;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--itpf-line);padding-top:.5rem;color:var(--itpf-muted);font-size:clamp(11px,.75vw,15px);font-weight:800;letter-spacing:.04em}
+.controls{position:absolute;right:1.7%;bottom:1.6%;opacity:.15;transition:opacity .2s;z-index:5}
+.section-intro:hover .controls{opacity:.85}
+.controls button{border:1px solid var(--itpf-line);background:var(--itpf-white);color:var(--itpf-navy);border-radius:6px;padding:8px 12px;font-weight:700;cursor:pointer}
+@media(max-width:800px){html,body{height:auto;min-height:100%;overflow:auto}.stage{display:block;padding:8px}.section-intro{aspect-ratio:auto;min-height:100vh;width:100%;overflow:visible;padding:150px 18px 54px}.intro-header{position:relative;left:auto;right:auto;top:auto;height:auto;min-height:285px}.logo{width:15%;right:0;top:-128px}.brandline{font-size:14px}.intro-title{margin:28px 0 10px;max-width:82%;font-size:clamp(38px,10vw,64px)}.intro-subtitle{max-width:100%;font-size:19px}.session-number{right:0;top:16%;font-size:clamp(140px,45vw,240px)}.focus-area{position:relative;left:auto;right:auto;top:auto;bottom:auto;margin-top:18px}.focus-grid{grid-template-columns:1fr;gap:10px}.focus-card{min-height:96px;padding:12px}.focus-card h2{font-size:19px}.focus-card p{font-size:15px}.focus-heading{flex-direction:column;gap:3px}.footer{position:relative;left:auto;right:auto;bottom:auto;margin-top:20px;padding-bottom:8px}.controls{display:none}}

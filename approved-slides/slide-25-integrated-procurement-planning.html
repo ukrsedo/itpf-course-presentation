@@ -1,32 +1,35 @@
 <!doctype html>
-<!DOCTYPE html>
-
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Slide 25 — Integrated Procurement Planning</title>
-<style>
-:root{--navy:var(--itpf-navy);--cyan:var(--itpf-cyan);--orange:var(--itpf-orange);--ink:var(--itpf-ink);--line:var(--itpf-line);--soft:var(--itpf-blue-soft)}
-*{box-sizing:border-box} html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--itpf-canvas);font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
-.stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
-.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:var(--itpf-white);box-shadow:0 18px 60px rgba(var(--itpf-blue-rgb),.18);overflow:hidden}
-.logo{position:absolute;right:4.3%;top:4%;width:10%;height:auto;z-index:5}
-.band{position:absolute;left:0;top:0;bottom:0;width:36%;background:var(--navy)}
-.accent{position:absolute;left:36%;top:0;bottom:0;width:1.4%;background:var(--cyan)}
-.content{position:absolute;left:42%;right:7%;top:18%;bottom:14%;display:flex;flex-direction:column;justify-content:center}
-.session{font-size:clamp(23px,1.7vw,34px);line-height:1.1;color:var(--orange);font-weight:900;margin-bottom:1.1rem}
-h1{margin:0;color:var(--navy);font-size:clamp(46px,4.2vw,82px);line-height:.98;letter-spacing:-.035em;font-weight:900}
-.sub{margin:1.1rem 0 0;color:var(--itpf-navy);font-size:clamp(22px,1.65vw,34px);line-height:1.15;font-weight:800;max-width:92%}
-.statement{margin-top:2rem;border-left:7px solid var(--cyan);padding:1rem 1.2rem;background:var(--itpf-blue-soft);color:var(--itpf-navy);font-size:clamp(22px,1.55vw,32px);line-height:1.18;font-weight:800}
-.big{position:absolute;left:6%;top:19%;right:69%;color:var(--itpf-white);font-size:clamp(34px,2.9vw,56px);line-height:1.08;font-weight:900}
-.section{position:absolute;left:6%;bottom:10%;right:69%;color:var(--itpf-white);font-size:clamp(18px,1.3vw,26px);line-height:1.2;font-weight:800;opacity:.95}
-.footer{position:absolute;left:4.9%;bottom:3.1%;font-size:clamp(14px,1vw,22px);color:var(--itpf-blue)}
-</style><link rel="stylesheet" href="../assets/itpf-color-system.css">
+<link rel="stylesheet" href="../assets/itpf-color-system.css"/>
+<link rel="stylesheet" href="../assets/itpf-section-intro.css"/>
 </head>
-<body><main class="stage"><section aria-label="Integrated Procurement Planning" class="slide">
-<div class="band"></div><div class="accent"></div><img data-itpf-cips-logo alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
-<div class="big">Integrated Procurement Planning</div>
-<div class="section">Section 2<br/>Aligning procurement activities with the IT Service Lifecycle</div>
-<div class="content"><div class="session">Session 2</div><h1>Integrated Procurement Planning</h1><div class="sub">Procurement activities must be aligned with the IT Service Lifecycle.</div><div class="statement">We move from sourcing strategy into integrated delivery planning, where procurement, project management and service lifecycle decisions connect.</div></div>
-<div class="footer">©</div></section></main>
+<body>
+<main class="stage">
+<section class="section-intro" aria-label="Day 1 · Session 2: Integrated Procurement Planning">
+  <div class="top-rule" aria-hidden="true"></div>
+  <header class="intro-header">
+    <div class="brandline"><span class="dot" aria-hidden="true"></span><span>Day 1 · Session 2</span></div>
+    <img data-itpf-cips-logo class="logo" src="../assets/cips-logo.png" alt="CIPS"/>
+    <div class="session-number" aria-hidden="true">02</div>
+    <h1 class="intro-title">Integrated Procurement Planning</h1>
+    <p class="intro-subtitle">Align procurement activities with the IT Service Lifecycle.</p>
+  </header>
+  <section class="focus-area" aria-label="Section overview">
+    <div class="focus-heading"><span class="focus-kicker">Section overview</span><h2>What this section covers</h2></div>
+    <div class="focus-grid">
+    <article class="focus-card"><h2>Align with the lifecycle</h2><p>Connect sourcing decisions to ITIL service stages.</p></article>
+    <article class="focus-card"><h2>Plan delivery</h2><p>Coordinate procurement with project and transition planning.</p></article>
+    <article class="focus-card"><h2>Understand total cost</h2><p>Include service lifecycle costs and opportunity cost.</p></article>
+    </div>
+  </section>
+  <footer class="footer"><span>Technology (IT) Procurement Foundations</span><span>Slide 25</span></footer>
+  <div class="controls"><button type="button" onclick="parent.postMessage({type:'ITPF_DECK_NAV',action:'fullscreen'},'*')">Full screen</button></div>
+</section>
+</main>
 <script id="itpf-deck-bridge">
 (function(){
   function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
@@ -64,4 +67,5 @@ h1{margin:0;color:var(--navy);font-size:clamp(46px,4.2vw,82px);line-height:.98;l
  window.addEventListener('message',function(e){if(e.source===window.parent&&e.data&&e.data.type==='ITPF_CIPS_VISIBILITY')apply(e.data.visible===true)});
 })();
 </script>
-</body></html>
+</body>
+</html>

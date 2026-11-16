@@ -1,33 +1,35 @@
 <!doctype html>
-<!DOCTYPE html>
-
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Slide 6 — Setting the Scene</title>
-<style>
-:root{--navy:var(--itpf-navy);--cyan:var(--itpf-cyan);--magenta:var(--itpf-purple);--paper:var(--itpf-white);--ink:var(--itpf-ink);--soft:var(--itpf-cyan-soft)}
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--itpf-canvas);font-family:Arial,Helvetica,sans-serif}
-.stage{width:100%;height:100%;display:grid;place-items:center;padding:18px}
-.slide{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 36px)*16/9));background:var(--paper);box-shadow:0 18px 60px rgba(var(--itpf-blue-rgb),.18);overflow:hidden}
-.logo{position:absolute;right:4.3%;top:4.1%;width:10.5%;height:auto;z-index:3}
-.content{position:absolute;left:7%;top:20%;width:72%;z-index:2}
-.kicker{display:inline-flex;align-items:center;gap:12px;color:var(--navy);font-size:clamp(18px,1.55vw,29px);font-weight:700;margin-bottom:3.4%}
-.kicker:before{content:"";width:14px;height:14px;border:5px solid var(--cyan);border-radius:50%;display:inline-block}
-h1{margin:0;color:var(--navy);font-size:clamp(58px,6.2vw,108px);line-height:.95;letter-spacing:-.04em;font-weight:800}
-.session{margin-top:2.6%;font-size:clamp(24px,2.35vw,43px);line-height:1.08;color:var(--magenta);font-weight:800}
-.subline{margin-top:2.1%;height:8px;width:28%;background:linear-gradient(90deg,var(--cyan),var(--navy));border-radius:99px}
-.corner{position:absolute;left:-7%;bottom:-19%;width:45%;aspect-ratio:1/1;border:38px solid rgba(var(--itpf-cyan-rgb),.18);border-radius:50%;z-index:1}
-.corner:after{content:"";position:absolute;left:16%;top:16%;width:56%;height:56%;border:24px solid rgba(var(--itpf-blue-rgb),.12);border-radius:50%}
-.diagonal{position:absolute;right:-13%;bottom:-20%;width:48%;height:54%;background:linear-gradient(135deg,rgba(var(--itpf-blue-rgb),.06),rgba(var(--itpf-cyan-rgb),.16));transform:skewX(-18deg);z-index:0}
-.footer{position:absolute;left:5.2%;right:5.2%;bottom:2.05%;display:flex;justify-content:space-between;color:var(--itpf-muted);font-size:clamp(10px,.72vw,13px);z-index:3}
-.rule{position:absolute;left:0;bottom:0;width:100%;height:8px;background:linear-gradient(90deg,var(--navy) 0 32%,var(--cyan) 32% 100%);z-index:3}
-.controls{position:absolute;right:1.7%;bottom:1.6%;opacity:.15;transition:.2s;z-index:4}.slide:hover .controls{opacity:.85}button{border:1px solid var(--itpf-line);background:var(--itpf-white);color:var(--navy);border-radius:6px;padding:8px 12px;font-weight:700;cursor:pointer}
-</style><link rel="stylesheet" href="../assets/itpf-color-system.css">
-</head><body><div class="stage"><section aria-label="Setting the Scene section divider" class="slide">
-<img data-itpf-cips-logo alt="CIPS" class="logo" src="../assets/cips-logo.png"/>
-<div class="content"><div class="kicker">Day 1</div><h1>Setting the Scene</h1><div class="session">Session 1</div><div class="subline"></div></div>
-<div class="corner"></div><div class="diagonal"></div>
-<div class="footer"><span>Technology (IT) Procurement Foundations</span><span>6</span></div><div class="rule"></div><div class="controls"><button onclick="parent.postMessage({type:'ITPF_DECK_NAV',action:'fullscreen'},'*')">Full screen</button></div>
-</section></div>
+<link rel="stylesheet" href="../assets/itpf-color-system.css"/>
+<link rel="stylesheet" href="../assets/itpf-section-intro.css"/>
+</head>
+<body>
+<main class="stage">
+<section class="section-intro" aria-label="Day 1 · Session 1: Setting the Scene">
+  <div class="top-rule" aria-hidden="true"></div>
+  <header class="intro-header">
+    <div class="brandline"><span class="dot" aria-hidden="true"></span><span>Day 1 · Session 1</span></div>
+    <img data-itpf-cips-logo class="logo" src="../assets/cips-logo.png" alt="CIPS"/>
+    <div class="session-number" aria-hidden="true">01</div>
+    <h1 class="intro-title">Setting the Scene</h1>
+    <p class="intro-subtitle">The market, sourcing and transformation choices that shape IT procurement.</p>
+  </header>
+  <section class="focus-area" aria-label="Section overview">
+    <div class="focus-heading"><span class="focus-kicker">Section overview</span><h2>What this section covers</h2></div>
+    <div class="focus-grid">
+    <article class="focus-card"><h2>Understand the market</h2><p>SaaS trends, software economics and changing technology demand.</p></article>
+    <article class="focus-card"><h2>Choose how to source</h2><p>Transformation, servitization and hybrid sourcing approaches.</p></article>
+    <article class="focus-card"><h2>Apply procurement models</h2><p>Use practical frameworks to shape sourcing decisions.</p></article>
+    </div>
+  </section>
+  <footer class="footer"><span>Technology (IT) Procurement Foundations</span><span>Slide 06</span></footer>
+  <div class="controls"><button type="button" onclick="parent.postMessage({type:'ITPF_DECK_NAV',action:'fullscreen'},'*')">Full screen</button></div>
+</section>
+</main>
 <script id="itpf-deck-bridge">
 (function(){
   function send(action){ if(window.parent!==window) window.parent.postMessage({type:'ITPF_DECK_NAV',action:action},'*'); }
@@ -65,4 +67,5 @@ h1{margin:0;color:var(--navy);font-size:clamp(58px,6.2vw,108px);line-height:.95;
  window.addEventListener('message',function(e){if(e.source===window.parent&&e.data&&e.data.type==='ITPF_CIPS_VISIBILITY')apply(e.data.visible===true)});
 })();
 </script>
-</body></html>
+</body>
+</html>
