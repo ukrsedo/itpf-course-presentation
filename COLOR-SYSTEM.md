@@ -4,10 +4,10 @@ The 79 approved slide files use the shared stylesheet `assets/itpf-color-system.
 
 | Role | Standard | Use |
 | --- | --- | --- |
-| Primary navy | `#003B70` | Headings, navigation, structure and primary actions |
+| Primary navy | `#003B70` | Headings, navigation and structure |
 | Blue | `#168CFF` | Links, secondary emphasis and blue category markers |
 | Cyan | `#12BDDF` | Supporting highlights and process accents |
-| Orange | `#FF5A00` | Attention, key decisions and emphasis |
+| Orange | `#FF5A00` | Primary calls to action only |
 | Purple | `#6B5FB5` | Alternative models and comparison categories |
 | Green | `#3AA25A` | Positive outcomes, success and benefits |
 | Red | `#C93333` | Risks, errors and negative outcomes |
@@ -19,4 +19,4 @@ The 79 approved slide files use the shared stylesheet `assets/itpf-color-system.
 | Canvas | `#DFE5EB` | Slide surround |
 | White | `#FFFFFF` | Slide paper and contrast text |
 
-The status and category colours have coordinated pale fills, darker text shades and border tints in the shared stylesheet. Use those shades only for the matching semantic role. Preserve readable text contrast and label chart or exercise states in words as well as colour. Brand logos and photographic assets remain unchanged.
+The status and category colours have coordinated pale fills, darker text shades and border tints in the shared stylesheet. Use those shades only for the matching semantic role. Keep orange off explanatory content, highlights, diagrams, selection states and focus indicators so it stays reserved for primary actions. Use blue, cyan, purple or the relevant status colour for content emphasis. Preserve readable text contrast and label chart or exercise states in words as well as colour. Brand logos and photographic assets remain unchanged.
